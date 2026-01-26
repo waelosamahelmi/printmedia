@@ -1,0 +1,234 @@
+// Prisma Schema for PrintMedia Website
+// Compatible with Hostinger MySQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// USERS & AUTHENTICATION
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  passwordHash  String    @map("password_hash")
+  role          UserRole  @default(EDITOR)
+  avatar        String?
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+  lastLogin     DateTime? @map("last_login")
+  
+  sessions      Session[]
+  pages         Page[]
+  products      Product[]
+  
+  @@map("users")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("sessions")
+}
+
+enum UserRole {
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+// ============================================
+// PAGES & CONTENT
+// ============================================
+
+model Page {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  description String?   @db.Text
+  content     String?   @db.LongText
+  metaTitle   String?   @map("meta_title")
+  metaDesc    String?   @map("meta_description") @db.Text
+  featuredImg String?   @map("featured_image")
+  template    String    @default("default")
+  status      Status    @default(DRAFT)
+  sortOrder   Int       @default(0) @map("sort_order")
+  authorId    String?   @map("author_id")
+  author      User?     @relation(fields: [authorId], references: [id])
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  publishedAt DateTime? @map("published_at")
+  
+  sections    Section[]
+  
+  @@map("pages")
+}
+
+model Section {
+  id        String   @id @default(cuid())
+  pageId    String   @map("page_id")
+  page      Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  type      String   // hero, content, products, gallery, cta, features, contact
+  title     String?
+  content   String?  @db.LongText
+  settings  String?  @db.LongText // JSON settings
+  sortOrder Int      @default(0) @map("sort_order")
+  isVisible Boolean  @default(true) @map("is_visible")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  
+  @@map("sections")
+}
+
+// ============================================
+// PRODUCTS & CATEGORIES
+// ============================================
+
+model Category {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  name        String
+  description String?   @db.Text
+  image       String?
+  parentId    String?   @map("parent_id")
+  parent      Category? @relation("CategoryTree", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryTree")
+  sortOrder   Int       @default(0) @map("sort_order")
+  isVisible   Boolean   @default(true) @map("is_visible")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  
+  products    Product[]
+  
+  @@map("categories")
+}
+
+model Product {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  sku         String?   @unique
+  name        String
+  shortDesc   String?   @map("short_description") @db.Text
+  description String?   @db.LongText
+  features    String?   @db.LongText // JSON array
+  specs       String?   @db.LongText // JSON object
+  price       Decimal?  @db.Decimal(10, 2)
+  priceType   String?   @map("price_type") // fixed, quote, call
+  status      Status    @default(DRAFT)
+  isFeatured  Boolean   @default(false) @map("is_featured")
+  sortOrder   Int       @default(0) @map("sort_order")
+  categoryId  String?   @map("category_id")
+  category    Category? @relation(fields: [categoryId], references: [id])
+  authorId    String?   @map("author_id")
+  author      User?     @relation(fields: [authorId], references: [id])
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  
+  images      ProductImage[]
+  documents   ProductDocument[]
+  
+  @@map("products")
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String   @map("product_id")
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  alt       String?
+  caption   String?
+  isPrimary Boolean  @default(false) @map("is_primary")
+  sortOrder Int      @default(0) @map("sort_order")
+  createdAt DateTime @default(now()) @map("created_at")
+  
+  @@map("product_images")
+}
+
+model ProductDocument {
+  id        String   @id @default(cuid())
+  productId String   @map("product_id")
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  name      String
+  url       String
+  type      String   // pdf, doc, manual, datasheet
+  fileSize  Int?     @map("file_size")
+  createdAt DateTime @default(now()) @map("created_at")
+  
+  @@map("product_documents")
+}
+
+// ============================================
+// MEDIA LIBRARY
+// ============================================
+
+model Media {
+  id         String   @id @default(cuid())
+  filename   String
+  originalName String @map("original_name")
+  url        String
+  mimeType   String   @map("mime_type")
+  fileSize   Int      @map("file_size")
+  width      Int?
+  height     Int?
+  alt        String?
+  caption    String?
+  folder     String   @default("uploads")
+  createdAt  DateTime @default(now()) @map("created_at")
+  
+  @@map("media")
+}
+
+// ============================================
+// NAVIGATION
+// ============================================
+
+model Navigation {
+  id        String   @id @default(cuid())
+  location  String   // header, footer, mobile
+  label     String
+  url       String
+  target    String   @default("_self")
+  icon      String?
+  parentId  String?  @map("parent_id")
+  sortOrder Int      @default(0) @map("sort_order")
+  isVisible Boolean  @default(true) @map("is_visible")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  
+  @@map("navigation")
+}
+
+// ============================================
+// SETTINGS
+// ============================================
+
+model Setting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String @db.LongText
+  type  String @default("string") // string, number, boolean, json
+  group String @default("general")
+  
+  @@map("settings")
+}
+
+// ============================================
+// ENUMS
+// ============================================
+
+enum Status {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}

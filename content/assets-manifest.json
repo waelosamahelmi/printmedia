@@ -1,0 +1,232 @@
+{
+  "generated": "2026-01-26T10:48:34.792Z",
+  "baseUrl": "/images",
+  "assets": {
+    "logos": [
+      {
+        "original": "https://www.printmedia.fi/images/logo.svg",
+        "local": "/images/logos/logo.svg",
+        "filename": "logo.svg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/logos/docan_logo2.jpg",
+        "local": "/images/logos/docan_logo2.jpg",
+        "filename": "docan_logo2.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/logos/GCC_Logo.png",
+        "local": "/images/logos/GCC_Logo.png",
+        "filename": "GCC_Logo.png"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/logos/j-wei-logo.png",
+        "local": "/images/logos/j-wei-logo.png",
+        "filename": "j-wei-logo.png"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/logos/fayon-logo.png",
+        "local": "/images/logos/fayon-logo.png",
+        "filename": "fayon-logo.png"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/logos/jetbest_sahkoposti.jpg",
+        "local": "/images/logos/jetbest_sahkoposti.jpg",
+        "filename": "jetbest_sahkoposti.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/logos/sai-flexi-logo.png",
+        "local": "/images/logos/sai-flexi-logo.png",
+        "filename": "sai-flexi-logo.png"
+      }
+    ],
+    "images": [
+      {
+        "original": "https://www.printmedia.fi/images/xrite_logo.jpg",
+        "local": "/images/xrite_logo.jpg",
+        "filename": "xrite_logo.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tulostimien_tarvikkeet.jpg",
+        "local": "/images/tulostimien_tarvikkeet.jpg",
+        "filename": "tulostimien_tarvikkeet.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/PrintMedia_-_Hinnasto_2023_kuva.png",
+        "local": "/images/PrintMedia_-_Hinnasto_2023_kuva.png",
+        "filename": "PrintMedia_-_Hinnasto_2023_kuva.png"
+      }
+    ],
+    "rollups": [
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/spyro2.jpg",
+        "local": "/images/products/rollups/spyro2.jpg",
+        "filename": "spyro2.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/export_uusi_laukku.jpg",
+        "local": "/images/products/rollups/export_uusi_laukku.jpg",
+        "filename": "export_uusi_laukku.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/luxury_uusi_laukku.jpg",
+        "local": "/images/products/rollups/luxury_uusi_laukku.jpg",
+        "filename": "luxury_uusi_laukku.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/deluxe_1_uusi_kuva_laukku.jpg",
+        "local": "/images/products/rollups/deluxe_1_uusi_kuva_laukku.jpg",
+        "filename": "deluxe_1_uusi_kuva_laukku.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/mini_roll_up.jpg",
+        "local": "/images/products/rollups/mini_roll_up.jpg",
+        "filename": "mini_roll_up.jpg"
+      }
+    ],
+    "tables": [
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/promopyt_1_uusi_kuva_1.jpg",
+        "local": "/images/products/tables/promopyt_1_uusi_kuva_1.jpg",
+        "filename": "promopyt_1_uusi_kuva_1.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/promopyt_2_uusi_kuva_1.jpg",
+        "local": "/images/products/tables/promopyt_2_uusi_kuva_1.jpg",
+        "filename": "promopyt_2_uusi_kuva_1.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/promopyt_4.jpg",
+        "local": "/images/products/tables/promopyt_4.jpg",
+        "filename": "promopyt_4.jpg"
+      }
+    ],
+    "walls": [
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/suora_messuseina.jpg",
+        "local": "/images/products/walls/suora_messuseina.jpg",
+        "filename": "suora_messuseina.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/kaareva_280_x_230.jpg",
+        "local": "/images/products/walls/kaareva_280_x_230.jpg",
+        "filename": "kaareva_280_x_230.jpg"
+      }
+    ],
+    "accessories": [
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/turvaviivain_tersreunalla.jpg",
+        "local": "/images/products/accessories/turvaviivain_tersreunalla.jpg",
+        "filename": "turvaviivain_tersreunalla.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/turvaviivain_leikkurilla.jpg",
+        "local": "/images/products/accessories/turvaviivain_leikkurilla.jpg",
+        "filename": "turvaviivain_leikkurilla.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/bungee-ball.jpg",
+        "local": "/images/products/accessories/bungee-ball.jpg",
+        "filename": "bungee-ball.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/bungee-koukku.jpg",
+        "local": "/images/products/accessories/bungee-koukku.jpg",
+        "filename": "bungee-koukku.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/bannerclip.jpg",
+        "local": "/images/products/accessories/bannerclip.jpg",
+        "filename": "bannerclip.jpg"
+      }
+    ],
+    "devices": [
+      {
+        "original": "https://www.printmedia.fi/images/devices/docan_h3000r_m10_574x.png",
+        "local": "/images/devices/docan_h3000r_m10_574x.png",
+        "filename": "docan_h3000r_m10_574x.png"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/devices/RXII_132_400.png",
+        "local": "/images/devices/RXII_132_400.png",
+        "filename": "RXII_132_400.png"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/devices/J5-132.jpg",
+        "local": "/images/devices/J5-132.jpg",
+        "filename": "J5-132.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/fayon/fayon-1600se.png",
+        "local": "/images/devices/fayon-1600se.png",
+        "filename": "fayon-1600se.png"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/cb03ii_500px_500x.jpg",
+        "local": "/images/devices/cb03ii_500px_500x.jpg",
+        "filename": "cb03ii_500px_500x.jpg"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/tuotekuvat/tools_600px_600x.png",
+        "local": "/images/devices/tools_600px_600x.png",
+        "filename": "tools_600px_600x.png"
+      }
+    ],
+    "pdfs": [
+      {
+        "original": "https://www.printmedia.fi/images/Esitteet-hinnastot-asiakirjat/PrintMedia_-_HINNASTO_2023_V2.pdf",
+        "local": "/files/PrintMedia_-_HINNASTO_2023_V2.pdf",
+        "filename": "PrintMedia_-_HINNASTO_2023_V2.pdf"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/Esitteet-hinnastot-asiakirjat/RXII-esite.pdf",
+        "local": "/files/RXII-esite.pdf",
+        "filename": "RXII-esite.pdf"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/Esitteet-hinnastot-asiakirjat/JaguarV-esite.pdf",
+        "local": "/files/JaguarV-esite.pdf",
+        "filename": "JaguarV-esite.pdf"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/docs/Docan-esite.pdf",
+        "local": "/files/Docan-esite.pdf",
+        "filename": "Docan-esite.pdf"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/docs/CB03II-esite.pdf",
+        "local": "/files/CB03II-esite.pdf",
+        "filename": "CB03II-esite.pdf"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/docs/CB08II-esite.pdf",
+        "local": "/files/CB08II-esite.pdf",
+        "filename": "CB08II-esite.pdf"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/docs/ecosolmax_vs._jbnew-eco.pdf",
+        "local": "/files/ecosolmax_vs._jbnew-eco.pdf",
+        "filename": "ecosolmax_vs._jbnew-eco.pdf"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/docs/ss21_vs_jbss21.pdf",
+        "local": "/files/ss21_vs_jbss21.pdf",
+        "filename": "ss21_vs_jbss21.pdf"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/docs/ghs_ss21_safety_data_sheet_fi.pdf",
+        "local": "/files/ghs_ss21_safety_data_sheet_fi.pdf",
+        "filename": "ghs_ss21_safety_data_sheet_fi.pdf"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/docs/new_eco_ink_msds_fi.pdf",
+        "local": "/files/new_eco_ink_msds_fi.pdf",
+        "filename": "new_eco_ink_msds_fi.pdf"
+      },
+      {
+        "original": "https://www.printmedia.fi/images/docs/hinnasto2022-tulostusmateriaalit.pdf",
+        "local": "/files/hinnasto2022-tulostusmateriaalit.pdf",
+        "filename": "hinnasto2022-tulostusmateriaalit.pdf"
+      }
+    ]
+  }
+}

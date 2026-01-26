@@ -1,0 +1,501 @@
+{
+  "siteInfo": {
+    "name": "PrintMedia PM Solutions Oy",
+    "tagline": "Suurkuvatulostusalan tukkukauppa",
+    "description": "Valikoimastamme löydät mm. tulostusmediat, tulostusvärit, display-tuotteet sekä monet muut laadukkaat ratkaisut edullisesti juuri sinun tarpeisiin.",
+    "url": "https://www.printmedia.fi",
+    "logo": "/logo.svg"
+  },
+  "contact": {
+    "company": "PrintMedia PM Solutions Oy",
+    "businessId": "1877937-4",
+    "address": {
+      "street": "Koskueentie 7",
+      "postalCode": "19700",
+      "city": "Sysmä",
+      "country": "Finland"
+    },
+    "phone": {
+      "main": "+358 440 875 025",
+      "display": "0440 875 025"
+    },
+    "email": "myynti@printmedia.fi",
+    "website": "www.printmedia.fi"
+  },
+  "businessHours": {
+    "weekdays": "07:30 – 15:30",
+    "sameDay": "Ennen klo 13:30 tulleet tilaukset pyrimme toimittamaan Matkahuoltoon vielä samana päivänä."
+  },
+  "staff": [
+    {
+      "name": "Harri Hynynen",
+      "title": "Toimitusjohtaja",
+      "phone": "+358 440 875 020",
+      "phoneDisplay": "0440 875 020",
+      "email": "harri.hynynen@printmedia.fi"
+    }
+  ],
+  "invoicing": {
+    "ovtId": "003718779374",
+    "operator": "Ropo Capital",
+    "operatorId": "003714377140",
+    "paperInvoice": {
+      "name": "Printmedia PM Solutions Oy",
+      "id": "003718779374",
+      "address": "PL 508, 02066 DOCUSCAN"
+    }
+  },
+  "navigation": {
+    "main": [
+      {
+        "id": "tulostusvarit",
+        "title": "Tulostusvärit",
+        "href": "/tulostusvaerit",
+        "children": [
+          { "id": "jetbest", "title": "Jetbest", "href": "/tulostusvaerit/jetbest" }
+        ]
+      },
+      {
+        "id": "tulostusmateriaalit",
+        "title": "Tulostusmateriaalit",
+        "href": "/tulostusmateriaalit"
+      },
+      {
+        "id": "display-tuotteet",
+        "title": "Display-tuotteet",
+        "href": "/display-tuotteet",
+        "children": [
+          { "id": "roll-up", "title": "Roll Up", "href": "/display-tuotteet/roll-up" },
+          { "id": "messupoydat", "title": "Messupöydät", "href": "/display-tuotteet/messupoydat" },
+          { "id": "messuseinat", "title": "Messuseinät", "href": "/display-tuotteet/messuseinat" },
+          { "id": "muut", "title": "Muut", "href": "/display-tuotteet/muut" }
+        ]
+      },
+      {
+        "id": "laitteet",
+        "title": "Laitteet",
+        "href": "/laitteet",
+        "children": [
+          { "id": "docan", "title": "Docan UV-tulostimet", "href": "/laitteet/docan-uv-tulostimet" },
+          { "id": "gcc", "title": "GCC-tarraleikkurit", "href": "/laitteet/gcc-tarraleikkurit" },
+          { "id": "monitoimileikkurit", "title": "Monitoimileikkurit", "href": "/laitteet/monitoimileikkurit" },
+          { "id": "laminaattorit", "title": "Laminaattorit", "href": "/laitteet/laminaattorit" }
+        ]
+      },
+      {
+        "id": "muut-tarvikkeet",
+        "title": "Muut tarvikkeet",
+        "href": "/muut-tarvikkeet"
+      },
+      {
+        "id": "huolto-ja-tuki",
+        "title": "Huolto ja tuki",
+        "href": "/huolto-ja-tuki",
+        "children": [
+          { "id": "tulostimien-varaosat", "title": "Tulostimien varaosat", "href": "/huolto-ja-tuki/tulostimien-varaosat" },
+          { "id": "leikkureiden-varaosat", "title": "Leikkureiden varaosat", "href": "/huolto-ja-tuki/leikkureiden-varaosat" },
+          { "id": "ergosoft", "title": "Ergosoft RIP", "href": "/huolto-ja-tuki/ergosoft-rip" },
+          { "id": "flexi", "title": "SAi Flexi", "href": "/huolto-ja-tuki/flexi" }
+        ]
+      },
+      { "id": "yritys", "title": "Yritys", "href": "/" },
+      { "id": "toimitusehdot", "title": "Toimitusehdot", "href": "/toimitusehdot" },
+      { "id": "hinnasto", "title": "Hinnasto", "href": "/hinnasto" },
+      { "id": "yhteystiedot", "title": "Yhteystiedot", "href": "/yhteystiedot" }
+    ]
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "title": "PrintMedia PM Solutions Oy",
+        "subtitle": "Suurkuvatulostusalan tukkukauppa",
+        "description": "Valikoimastamme löydät mm. tulostusmediat, tulostusvärit, display-tuotteet sekä monet muut laadukkaat ratkaisut edullisesti juuri sinun tarpeisiin.",
+        "cta": {
+          "primary": { "text": "Lataa hinnasto", "href": "/hinnasto" },
+          "secondary": { "text": "Ota yhteyttä", "href": "/yhteystiedot" }
+        }
+      },
+      "productCategories": [
+        { "title": "Tulostusvärit", "href": "/tulostusvaerit" },
+        { "title": "Tulostusmateriaalit", "href": "/tulostusmateriaalit" },
+        { "title": "Display-tuotteet", "href": "/display-tuotteet" },
+        { "title": "Laitteet", "href": "/laitteet" },
+        { "title": "Tarvikkeet", "href": "/muut-tarvikkeet" }
+      ],
+      "services": {
+        "huolto": {
+          "title": "Huoltopalvelu",
+          "description": "Meille on kertynyt vuosien varrella vahva tietotaito huoltaa ja korjata eri valmistajien suurkuvatulostimia kuten Mimaki, Mutoh, Roland sekä monia muita. Kysy rohkeasti tarjousta.",
+          "note": "Yhteistyöverkostomme kautta meillä on mahdollisuus tarjota laitteiden alkuperäisosia ja laadukkaita tarvikeosia.",
+          "tagline": "Kaiken ei tarvitse olla aina kallista!",
+          "image": "/images/tulostimien_tarvikkeet.jpg"
+        },
+        "variprofiili": {
+          "title": "Väriprofiilit / Palvelut",
+          "description": "Käytössämme on myös huippputason i1Profiler ohjelmisto, osaaminen ja laitteet joilla pystymme tekemään asiakkaitamme varten väriprofiilit.",
+          "image": "/images/xrite_logo.jpg"
+        }
+      }
+    },
+    "jetbest": {
+      "title": "Jetbest tulostusvärit",
+      "logo": "/images/logos/jetbest_sahkoposti.jpg",
+      "intro": "Vuosien kokemuksella! Huippulaadukkaat eco-solvent tulostusvärit Roland, Mutoh, Mimaki tulostimiin.",
+      "description": "Alkuperäisen värin käyttäjät voivat vaihtaa laadukkaat lähes alkuperäistä vastaavat värikasetit tulostimeen ilman mitään erillisiä toimenpiteitä. Väri profiileja ei myöskään tarvitse uusia.",
+      "features": "Jetbestiltä löytyy lähes identtiset värit Roland Eco-sol Max, Max 2, Mutoh Eco-solvent Ultra ja Mimaki SS21 väreille.",
+      "documents": [
+        { "title": "Jetbest vs. Roland Eco-Sol Max ja Mutoh Eco-Sol Ultra", "url": "/files/ecosolmax_vs._jbnew-eco.pdf" },
+        { "title": "Jetbest vs. Mimaki SS21", "url": "/files/ss21_vs_jbss21.pdf" },
+        { "title": "Käyttöturvallisuustiedote SS21", "url": "/files/ghs_ss21_safety_data_sheet_fi.pdf" },
+        { "title": "Käyttöturvallisuustiedote ES3", "url": "/files/new_eco_ink_msds_fi.pdf" }
+      ]
+    },
+    "tulostusmateriaalit": {
+      "title": "Tulostusmateriaalit",
+      "description": "Varastostamme löytyy laaja valikoima erilaisia tulostusmedioita rullatavarana eri tulostimille.",
+      "types": "Tarrat, kalvot, pressut, bannerit, paperit laminaatit ja monet muut.",
+      "note": "Katso tarkempi valikoimamme hinnastosta tai kysy lisää myynnistämme! Etsimme jatkuvasti uusia tuotteita asiakkaidemme tarpeisiin.",
+      "priceList": "/files/hinnasto2022-tulostusmateriaalit.pdf"
+    },
+    "huolto": {
+      "title": "Huolto- ja tukipalvelut",
+      "description": "Meidän kauttamme osaava huolto- ja tuki monille eri suurkuvatulostimille.",
+      "brands": ["Mutoh", "Mimaki", "Roland"],
+      "support": "Tarjoamme väriasiakkaillemme laajan puhelin- ja etätuen veloituksetta. Vaikka et olisikiaan vielä meidän väriasiakas, niin älä epäröi ottaa yhteyttä ja pyytää apua.",
+      "phone": "0440 875 050",
+      "remoteSupportUrl": "https://download.teamviewer.com/download/TeamViewerQS.exe"
+    },
+    "hinnasto": {
+      "title": "Hinnastot",
+      "currentPriceList": {
+        "title": "Hinnasto 2023",
+        "url": "/files/PrintMedia_-_HINNASTO_2023_V2.pdf",
+        "thumbnail": "/images/PrintMedia_-_Hinnasto_2023_kuva.png"
+      }
+    }
+  },
+  "products": {
+    "rollups": [
+      {
+        "id": "spyro",
+        "name": "Spyro",
+        "image": "/images/products/rollups/spyro2.jpg",
+        "features": [
+          "Kevyt kantaa mukana",
+          "Puristavalla ylälistalla",
+          "Mukana kantolaukku"
+        ],
+        "sizes": ["85 cm x 200 cm / 2kg"]
+      },
+      {
+        "id": "export",
+        "name": "Export",
+        "image": "/images/products/rollups/export_uusi_laukku.jpg",
+        "description": "Suosittu perusmalli",
+        "features": [
+          "Kevyt kantaa mukana",
+          "Puristavalla ylälistalla",
+          "Pehmustettu kantolaukku"
+        ],
+        "sizes": ["85 cm x 200 cm / 2,8 kg"]
+      },
+      {
+        "id": "luxury",
+        "name": "Luxury",
+        "image": "/images/products/rollups/luxury_uusi_laukku.jpg",
+        "description": "Export mallia hieman tukevampi, paksulla tukijalalla",
+        "features": [
+          "Puristavalla ylälistalla",
+          "Pehmustettu kantolaukku"
+        ],
+        "sizes": [
+          "85 cm x 200 cm / 3,7kg",
+          "100 cm x 200 cm / 4,2kg",
+          "120 cm x 200 cm / 5,4kg"
+        ]
+      },
+      {
+        "id": "deluxe-1",
+        "name": "Deluxe-1",
+        "image": "/images/products/rollups/deluxe_1_uusi_kuva_laukku.jpg",
+        "description": "Näyttävä pisaramallin roll up kääntyvällä lisäjalalla",
+        "features": [
+          "Puristavalla ylälistalla",
+          "Pehmustettu kantolaukku"
+        ],
+        "sizes": [
+          "85 cm x 200 cm / 7kg",
+          "100 cm x 200 cm / 8kg",
+          "120 cm x 200 cm / 9kg",
+          "150 cm x 200 cm / 10kg"
+        ]
+      },
+      {
+        "id": "mini-roll-up",
+        "name": "Mini Roll Up",
+        "image": "/images/products/rollups/mini_roll_up.jpg",
+        "description": "Hauska pisaramallinen pöytä roll up",
+        "features": [
+          "Alumiinia, kromin väriset muovi päädyt",
+          "Tarra ylälistalla",
+          "Toimitetaan pakkauslaatikossa"
+        ],
+        "sizes": [
+          "21 cm x 28,5 cm / 0,3kg",
+          "30 cm x 41,5 cm / 0,5kg"
+        ]
+      }
+    ],
+    "messupoydat": [
+      {
+        "id": "promopoyta-1",
+        "name": "Promopöytä-1",
+        "productNumber": "4602",
+        "image": "/images/products/tables/promopyt_1_uusi_kuva_1.jpg",
+        "features": [
+          "Pop Up style",
+          "Välihylly",
+          "Vuodan kiinnitys magneettinauhalla (sis. hintaan)",
+          "Mukana kangaslaukku",
+          "Ei sisällä vuotaa eikä tulostusmateriaalia"
+        ],
+        "specs": {
+          "weight": "12 kg",
+          "dimensions": "L 90 cm, K 88 cm, S 40 cm",
+          "packageSize": "L 100 cm, K 18 cm, S 40 cm"
+        }
+      },
+      {
+        "id": "promopoyta-2",
+        "name": "Promopöytä-2",
+        "productNumber": "4601",
+        "image": "/images/products/tables/promopyt_2_uusi_kuva_1.jpg",
+        "features": [
+          "Pop Up style",
+          "Välihylly",
+          "Vuodan kiinnitys magneettinauhalla (sis. hintaan)",
+          "Mukana kangaslaukku",
+          "Ei sisällä vuotaa eikä tulostusmateriaalia"
+        ],
+        "specs": {
+          "weight": "16 kg",
+          "dimensions": "L 129 cm, K 88 cm, S 45 cm",
+          "packageSize": "L 100 cm, K 18 cm, S 40 cm"
+        }
+      },
+      {
+        "id": "promopoyta-4",
+        "name": "Promopöytä-4",
+        "productNumber": "4604",
+        "image": "/images/products/tables/promopyt_4.jpg",
+        "features": [
+          "Vaalea pyökki",
+          "Nopea kasta, tarranauha pohjustusmateriaalissa",
+          "Välihyllyllä",
+          "Vuodan kiinnitys teippaamalla tai tarranauhalla",
+          "Mukana kangaslaukku"
+        ],
+        "specs": {
+          "weight": "10 kg",
+          "dimensions": "L 118 cm, K 93 cm, S 40 cm",
+          "skinSize": "L 184 cm, K 90 cm",
+          "packageSize": "L 62 cm, K 42 cm, S 15 cm"
+        }
+      }
+    ],
+    "messuseinat": [
+      {
+        "id": "popup-suora",
+        "name": "Pop Up Suora",
+        "image": "/images/products/walls/suora_messuseina.jpg",
+        "features": [
+          "Sisältää: Rungon, magneettinauhan, 2 kpl valoja, sekä kuljetuslaukun",
+          "Laukusta on mahdollista tehdä promotiski",
+          "Ei sisällä vuotaa eikä tulostusmateriaalia",
+          "Vuotien kiinnitys magneettinauhalla",
+          "Seinä kasaantuu 75 cm ja päädyt 67 cm leveistä vuodista"
+        ],
+        "sizes": [
+          "n. 230cm x 230cm / 30kg",
+          "n. 230cm x 230cm / 32kg"
+        ]
+      },
+      {
+        "id": "popup-kaareva",
+        "name": "Pop Up Kaareva",
+        "image": "/images/products/walls/kaareva_280_x_230.jpg",
+        "features": [
+          "Sisältää: Rungon, magneettinauhan, 2 kpl valoja, sekä kuljetuslaukun",
+          "Laukusta on mahdollista tehdä promotiski",
+          "Ei sisällä vuotaa eikä tulostusmateriaalia",
+          "Vuotien kiinnitys magneettinauhalla",
+          "Seinä kasaantuu 70 cm ja päädyt 67 cm leveistä vuodista"
+        ],
+        "sizes": [
+          "n. 230cm x 230cm / 25kg",
+          "n. 280cm x 230cm / 30kg"
+        ]
+      }
+    ],
+    "devices": {
+      "docan": {
+        "name": "Docan UV-tasotulostimet",
+        "logo": "/images/logos/docan_logo2.jpg",
+        "image": "/images/devices/docan_h3000r_m10_574x.png",
+        "brochure": "/files/Docan-esite.pdf",
+        "videos": [
+          { "title": "M10 video", "url": "https://youtu.be/Mg0M2waN9S8?t=1m20s" },
+          { "title": "H3000R video", "url": "https://www.youtube.com/watch?v=u2x9aPQ0XTc" }
+        ],
+        "description": "Viimeistellyt Docan tulostimet omaavat luotettavan toiminnan ja uskomattoman tulostuslaadun hyödyntäen Konica Minoltan, Ricohin tai Kyoceran tulostuspäitä ja raitaisuutta estävää interweaving tekniikkaa.",
+        "features": [
+          "Laitteiden kokoonpano ja testaus ISO9001 sertifioinnin alaisena",
+          "Strategiset komponentit Japanista, Italiasta ja Englannista",
+          "Tulostimen perusversiossa neljä tulostuspäätä",
+          "Mahdollisuus lisätä tulostuspäiden määrää",
+          "Rullaominaisuus saatavilla H3000(R) malliin",
+          "Koneen alustaminen tulostuskuntoon kestää vain n. 5 minuuttia"
+        ],
+        "colorOptions": ["CMYK", "CMYKLcLm", "CMYKLcLm + White", "CMYKLcLm + White + White"],
+        "maxMaterialThickness": "100 mm"
+      },
+      "gcc": {
+        "name": "GCC Tarraleikkurit",
+        "logo": "/images/logos/GCC_Logo.png",
+        "models": [
+          {
+            "name": "RXII",
+            "description": "GCC:n lippulaiva kaikilla herkuilla vaativampaankin tuotantoon",
+            "image": "/images/devices/RXII_132_400.png",
+            "brochure": "/files/RXII-esite.pdf",
+            "includes": "GreatCut ohjelmiston, tarvittavat johdot (virtajohto, USB ja RJ45 verkkokaapeli)",
+            "sizes": ["RXII-61 61 cm (24\")", "RXII-101S 101 cm (40\")", "RXII-132S 132 cm (52\")", "RXII-183S 183 cm (72\")"]
+          },
+          {
+            "name": "Jaguar V (LX)",
+            "description": "Monipuolinen tarraleikkuri vaativampaankin käyttöön",
+            "image": "/images/devices/J5-132.jpg",
+            "brochure": "/files/JaguarV-esite.pdf",
+            "sizes": ["J5-61 61 cm (24\")", "J5-101 101 cm (40\")", "J5-132 132 cm (52\")", "J5-183 183 cm (72\")"]
+          }
+        ]
+      },
+      "monitoimileikkurit": {
+        "name": "Jingwei tasoleikkurit",
+        "image": "/images/devices/cb03ii_500px_500x.jpg",
+        "toolsImage": "/images/products/accessories/tools_600px_600x.png",
+        "description": "CB03II ja CB08II leikkureihin on saatavilla useita työkaluja/teriä erilaisia materiaaleja ja käyttötarkoituksia varten.",
+        "materials": ["Pahvit", "paperit", "kankaat", "levyt", "kennot", "kalvot", "vaahtomuovit"],
+        "brochures": [
+          { "title": "CB03II esite", "url": "/files/CB03II-esite.pdf" },
+          { "title": "CB08II esite", "url": "/files/CB08II-esite.pdf" }
+        ],
+        "video": "https://www.youtube.com/watch?v=_D_i_03xInU",
+        "models": {
+          "CB03II": [
+            "1100mm x 1300mm",
+            "1800mm x 1600mm",
+            "2500mm x 1300mm",
+            "2500mm x 1600mm"
+          ],
+          "CB08II": [
+            "2500mm x 2000mm",
+            "3000mm x 3200mm",
+            "3500mm x 2000mm"
+          ]
+        },
+        "note": "Hinta-laatusuhteensa parhaimmistoa. Jos olet etsinyt laadukasta tasoleikkuria ja hintataso on ollut liian korkea, niin tässä sinulle hyvä vaihtoehto ominaisuuksista tinkimättä."
+      },
+      "laminaattorit": {
+        "name": "Fayon laminaattorit",
+        "logo": "/images/logos/fayon-logo.png",
+        "models": [
+          {
+            "name": "FY1600 SE rullalaminaattori",
+            "image": "/images/devices/fayon-1600se.png",
+            "description": "Monipuolinen kylmä-/lämpölaminaattori pieneen tai keskikokoiseen tuotantoon.",
+            "features": [
+              "Viimeistellyissä laminaattoreissa on laminointia helpottava lämmitettävä ylärulla",
+              "Ylärulla on lämmitettävissä 125°C asti",
+              "Pneumaattinen ylärullan nostin"
+            ],
+            "specs": {
+              "maxThickness": "35mm",
+              "maxSpeed": "25m/min",
+              "maxWidth": "162cm"
+            }
+          }
+        ]
+      }
+    },
+    "accessories": {
+      "turvaviivaimet": [
+        {
+          "name": "Teräsreunalla",
+          "image": "/images/products/accessories/turvaviivain_tersreunalla.jpg",
+          "description": "Tukeva alumiini runko, jossa teräsreuna ja pohjassa liukuesteet",
+          "specs": "Profiilin mitat korkeus 44 mm, leveys 105 mm",
+          "sizes": ["80cm", "110cm", "140cm", "170cm"]
+        },
+        {
+          "name": "Leikkurilla",
+          "image": "/images/products/accessories/turvaviivain_leikkurilla.jpg",
+          "description": "Leveä alumiini runko, pohjassa liukuesteet, muovipäädyt",
+          "specs": "Profiilin mitat korkeus 55 mm, leveys 150 mm. Max leikkaus syvyys 4 mm",
+          "sizes": ["120cm", "180cm", "260cm"]
+        }
+      ],
+      "kiinnikkeet": [
+        {
+          "id": "bungee-ball",
+          "name": "Bungee ball",
+          "productNumber": "3551",
+          "image": "/images/products/accessories/bungee-ball.jpg",
+          "specs": "Kuminauhan paksuus 4 mm, pituus 150 mm. Pallon halkaisija 28 mm",
+          "packaging": "50 kpl erissä"
+        },
+        {
+          "id": "bungee-hook",
+          "name": "Bungee hook",
+          "productNumber": "3552",
+          "image": "/images/products/accessories/bungee-koukku.jpg",
+          "specs": "Kuminauhan paksuus 4 mm, pituus 150 mm",
+          "packaging": "50 kpl erissä"
+        },
+        {
+          "id": "banner-clip",
+          "name": "Banner clip",
+          "productNumber": "3553",
+          "image": "/images/products/accessories/bannerclip.jpg",
+          "features": ["Nopea asentaa", "Soveltuu eri paksuisille materiaaleille"],
+          "specs": "Kiinnikkeen leveys 35 mm",
+          "packaging": "100 kpl erissä"
+        }
+      ]
+    },
+    "software": {
+      "ergosoft": {
+        "name": "Ergosoft RIP 16",
+        "since": 2009,
+        "origin": "Sveitsi (Ergosoft AG)",
+        "description": "Ergosoft ohjelmistoilla voit ohjata useampaa rullatulostinta, UV-tasotulostinta, tarraleikkuria tai tasoleikkuria samanaikaisesti.",
+        "features": [
+          "Helppokäyttöinen ja tulostaja ystävällinen käyttöliittymä",
+          "Taustatulostustoiminto nopeuttaa tulostuksen alkamista",
+          "Automatisointi - pystyt automatisoimaan lähes kaiken",
+          "Automaattinen purjerengas-, poraus-, leikkuumerkit",
+          "Värinkorjaus, spottivärin korjaus, värienhallinta",
+          "Panelointi, marginaalit, asettelu, skaalaaminen"
+        ]
+      },
+      "flexi": {
+        "name": "SAi Flexi ja Enroute ohjelmistot",
+        "logo": "/images/logos/sai-flexi-logo.png",
+        "description": "Ei enää kallista kertainvestointia kalliiseen RIP-ohjelmistoon. Laadukkaan RIP ohjelmiston voit ostaa myös kuukausittaisena tilauspalveluna.",
+        "includes": "Flexi Design ohjelmiston töiden esivalmisteluun ja suunnitteluun",
+        "useCase": "Järkevä kokonaisuus pientuotantoon tai isommankin tulostustalon tarpeisiin",
+        "orderUrl": "http://www.thinksai.com/printmediasolutions"
+      }
+    }
+  }
+}
