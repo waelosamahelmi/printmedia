@@ -1,13 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // For Hostinger Node.js hosting
-  output: 'standalone',
-  
   images: {
     // Disable image optimization completely for Hostinger
     unoptimized: true,
-    loader: 'custom',
-    loaderFile: './src/lib/imageLoader.js',
   },
   
   // Trailing slashes for better static hosting
