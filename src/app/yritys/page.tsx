@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from '@/components/ui/Image'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { CTA } from '@/components/sections/CTA'
@@ -243,3 +243,4 @@ export default function YritysPage() {
     </div>
   )
 }
+

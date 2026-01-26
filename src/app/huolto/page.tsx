@@ -3,7 +3,7 @@ import { Container } from '@/components/ui/Container'
 import { Wrench, Phone, Mail, Clock, CheckCircle, Settings, Cpu } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from '@/components/ui/Image'
 
 export const metadata: Metadata = {
   title: 'Huolto ja tuki',
@@ -208,3 +208,4 @@ export default function HuoltoPage() {
     </div>
   )
 }
+

@@ -3,7 +3,7 @@
 import { useState, Suspense } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import Image from 'next/image'
+import Image from '@/components/ui/Image'
 import { Button } from '@/components/ui/Button'
 import { Lock, Mail, AlertCircle } from 'lucide-react'
 
@@ -154,3 +154,4 @@ export default function AdminLoginPage() {
     </Suspense>
   )
 }
+

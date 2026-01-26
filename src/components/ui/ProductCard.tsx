@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from '@/components/ui/Image'
 import { cn, getImageUrl } from '@/lib/utils'
 import { ArrowRight } from 'lucide-react'
 

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from '@/components/ui/Image'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { ArrowRight, Phone, CheckCircle } from 'lucide-react'

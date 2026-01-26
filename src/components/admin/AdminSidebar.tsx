@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import Image from 'next/image'
+import Image from '@/components/ui/Image'
 import { cn } from '@/lib/utils'
 import {
   LayoutDashboard,

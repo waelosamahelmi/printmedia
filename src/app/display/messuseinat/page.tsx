@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
+import Image from '@/components/ui/Image'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
@@ -135,3 +135,4 @@ export default function MessuseinatPage() {
     </div>
   )
 }
+

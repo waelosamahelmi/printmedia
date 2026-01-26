@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
+import Image from '@/components/ui/Image'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { FileDown, Check } from 'lucide-react'
@@ -150,3 +150,4 @@ export default function TulostusvaritPage() {
     </div>
   )
 }
+
