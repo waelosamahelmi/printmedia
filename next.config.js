@@ -1,19 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // For Hostinger Node.js hosting
-  // output: 'standalone',
-  
-  // For Hostinger shared hosting (static export)
-  // output: 'export',
+  output: 'standalone',
   
   images: {
-    // Uncomment for static export
-    // unoptimized: true,
+    // Disable image optimization for Hostinger compatibility
+    unoptimized: true,
     
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'www.printmedia.fi',
+      },
+      {
+        protocol: 'https',
+        hostname: 'peru-goose-902556.hostingersite.com',
       },
     ],
   },
