@@ -4,19 +4,10 @@ const nextConfig = {
   output: 'standalone',
   
   images: {
-    // Disable image optimization for Hostinger compatibility
+    // Disable image optimization completely for Hostinger
     unoptimized: true,
-    
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'www.printmedia.fi',
-      },
-      {
-        protocol: 'https',
-        hostname: 'peru-goose-902556.hostingersite.com',
-      },
-    ],
+    loader: 'custom',
+    loaderFile: './src/lib/imageLoader.js',
   },
   
   // Trailing slashes for better static hosting
