@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { ArrowLeft } from 'lucide-react'
+import { prisma } from '@/lib/db'
 
 export const metadata: Metadata = {
   title: 'Muut tarvikkeet | PrintMedia PM Solutions Oy',
@@ -11,45 +12,26 @@ export const metadata: Metadata = {
     'Turvaviivaimet, bungee-kiinnikkeet, bannerclipsit ja muut tarvikkeet suurkuvatulostukseen.',
 }
 
-const products = [
-  {
-    name: 'Turvaviivain teräsreunalla',
-    description: 'Tukeva alumiini runko, jossa teräsreuna ja pohjassa liukuesteet.',
-    specs: 'Profiilin mitat: korkeus 44 mm, leveys 105 mm',
-    sizes: ['80cm', '110cm', '140cm', '170cm'],
-    image: '/images/products/accessories/turvaviivain_tersreunalla.jpg',
-  },
-  {
-    name: 'Turvaviivain leikkurilla',
-    description: 'Leveä alumiini runko, pohjassa liukuesteet, muovipäädyt. Leikkurin liikkuvuutta voidaan säätää mukana tulevalla työkalulla.',
-    specs: 'Profiilin mitat: korkeus 55 mm, leveys 150 mm. Max leikkaussyvyys 4 mm',
-    sizes: ['120cm', '180cm', '260cm'],
-    image: '/images/products/accessories/turvaviivain_leikkurilla.jpg',
-  },
-  {
-    name: 'Bungee ball',
-    productNumber: '3551',
-    description: 'Kuminauhan paksuus 4 mm, pituus 150 mm. Pallon halkaisija 28 mm.',
-    packSize: 'Myydään 50 kpl erissä',
-    image: '/images/products/accessories/bungee-ball.jpg',
-  },
-  {
-    name: 'Bungee hook',
-    productNumber: '3552',
-    description: 'Kuminauhan paksuus 4 mm, pituus 150 mm.',
-    packSize: 'Myydään 50 kpl erissä',
-    image: '/images/products/accessories/bungee-koukku.jpg',
-  },
-  {
-    name: 'Banner clip',
-    productNumber: '3553',
-    description: 'Nopea asentaa. Soveltuu eri paksuisille materiaaleille. Kiinnikkeen leveys 35 mm.',
-    packSize: 'Myydään 100 kpl erissä',
-    image: '/images/products/accessories/bannerclip.jpg',
-  },
-]
+export default async function MuutTarvikkeetPage() {
+  const products = await prisma.product.findMany({
+    where: {
+      category: {
+        slug: 'muut-tarvikkeet'
+      },
+      status: 'PUBLISHED'
+    },
+    include: {
+      images: {
+        orderBy: { sortOrder: 'asc' }
+      }
+    },
+    orderBy: { sortOrder: 'asc' }
+  })
 
-export default function MuutTarvikkeetPage() {
+  // Separate turvaviivaimet and kiinnikkeet
+  const turvaviivaimet = products.filter(p => p.name.toLowerCase().includes('turvaviivain'))
+  const kiinnikkeet = products.filter(p => !p.name.toLowerCase().includes('turvaviivain'))
+
   return (
     <div className="pt-32 pb-20">
       <Container>
@@ -76,81 +58,117 @@ export default function MuutTarvikkeetPage() {
         </div>
 
         {/* Turvaviivaimet section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            Turvaviivaimet
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {products.slice(0, 2).map((product) => (
-              <div
-                key={product.name}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden"
-              >
-                <div className="bg-gray-100 p-6 flex justify-center h-64">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={400}
-                    height={200}
-                    className="object-contain"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {product.name}
-                  </h3>
-                  <p className="text-gray-600 mb-3">{product.description}</p>
-                  <p className="text-sm text-gray-500 mb-4">{product.specs}</p>
-                  <div>
-                    <span className="font-medium text-gray-900">Saatavilla pituudet: </span>
-                    <span className="text-gray-600">{product.sizes?.join(', ')}</span>
+        {turvaviivaimet.length > 0 && (
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">
+              Turvaviivaimet
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {turvaviivaimet.map((product) => {
+                const specs = product.specs ? JSON.parse(product.specs) : {}
+                const primaryImage = product.images.find(img => img.isPrimary) || product.images[0]
+
+                return (
+                  <div
+                    key={product.id}
+                    className="bg-white rounded-2xl shadow-lg overflow-hidden"
+                  >
+                    <div className="bg-gray-100 p-6 flex justify-center h-64">
+                      {primaryImage && (
+                        <Image
+                          src={primaryImage.url}
+                          alt={primaryImage.alt || product.name}
+                          width={400}
+                          height={200}
+                          className="object-contain"
+                        />
+                      )}
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">
+                        {product.name}
+                      </h3>
+                      {product.shortDescription && (
+                        <p className="text-gray-600 mb-3">{product.shortDescription}</p>
+                      )}
+                      {specs.profiilin_mitat && (
+                        <p className="text-sm text-gray-500 mb-4">{specs.profiilin_mitat}</p>
+                      )}
+                      {specs.pituudet && (
+                        <div>
+                          <span className="font-medium text-gray-900">Saatavilla pituudet: </span>
+                          <span className="text-gray-600">{specs.pituudet}</span>
+                        </div>
+                      )}
+                      <div className="mt-4">
+                        <Link href={`/tuotteet/${product.slug}`}>
+                          <Button variant="secondary" size="sm">Lisätietoja</Button>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                )
+              })}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Kiinnikkeet section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
-            Kiinnikkeet
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {products.slice(2).map((product) => (
-              <div
-                key={product.name}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden"
-              >
-                <div className="bg-gray-100 p-6 flex justify-center h-48">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={200}
-                    height={150}
-                    className="object-contain"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl font-bold text-gray-900">
-                      {product.name}
-                    </h3>
-                    {product.productNumber && (
-                      <span className="text-sm bg-gray-100 px-2 py-1 rounded text-gray-600">
-                        #{product.productNumber}
-                      </span>
-                    )}
+        {kiinnikkeet.length > 0 && (
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">
+              Kiinnikkeet
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {kiinnikkeet.map((product) => {
+                const specs = product.specs ? JSON.parse(product.specs) : {}
+                const primaryImage = product.images.find(img => img.isPrimary) || product.images[0]
+
+                return (
+                  <div
+                    key={product.id}
+                    className="bg-white rounded-2xl shadow-lg overflow-hidden"
+                  >
+                    <div className="bg-gray-100 p-6 flex justify-center h-48">
+                      {primaryImage && (
+                        <Image
+                          src={primaryImage.url}
+                          alt={primaryImage.alt || product.name}
+                          width={200}
+                          height={150}
+                          className="object-contain"
+                        />
+                      )}
+                    </div>
+                    <div className="p-6">
+                      <div className="flex justify-between items-start mb-3">
+                        <h3 className="text-xl font-bold text-gray-900">
+                          {product.name}
+                        </h3>
+                        {specs.tuotenumero && (
+                          <span className="text-sm bg-gray-100 px-2 py-1 rounded text-gray-600">
+                            #{specs.tuotenumero}
+                          </span>
+                        )}
+                      </div>
+                      {product.shortDescription && (
+                        <p className="text-gray-600 mb-3">{product.shortDescription}</p>
+                      )}
+                      {specs.pakkauskoko && (
+                        <p className="text-sm text-primary-600 font-medium">{specs.pakkauskoko}</p>
+                      )}
+                      <div className="mt-4">
+                        <Link href={`/tuotteet/${product.slug}`}>
+                          <Button variant="secondary" size="sm">Lisätietoja</Button>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-gray-600 mb-3">{product.description}</p>
-                  {product.packSize && (
-                    <p className="text-sm text-primary-600 font-medium">{product.packSize}</p>
-                  )}
-                </div>
-              </div>
-            ))}
+                )
+              })}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Download hinnasto */}
         <div className="bg-gray-50 rounded-2xl p-8 mb-12 text-center">

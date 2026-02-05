@@ -54,7 +54,7 @@ function LoginForm() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Image
-            src="/logo.svg"
+            src="/images/logos/logo.svg"
             alt="PrintMedia"
             width={180}
             height={50}

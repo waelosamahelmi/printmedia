@@ -3,7 +3,8 @@ import Image from '@/components/ui/Image'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
-import { Phone, Mail, ArrowLeft, ExternalLink } from 'lucide-react'
+import { Phone, Mail, ArrowLeft, ExternalLink, Check } from 'lucide-react'
+import { prisma } from '@/lib/db'
 
 export const metadata: Metadata = {
   title: 'Docan UV-tasotulostimet | PrintMedia PM Solutions Oy',
@@ -11,7 +12,28 @@ export const metadata: Metadata = {
     'Laadukkaat Docan UV-tasotulostimet suurkuvatulostukseen. Konica Minolta, Ricoh ja Kyocera tulostuspäillä.',
 }
 
-export default function DocanUVTulostimetPage() {
+export default async function DocanUVTulostimetPage() {
+  const products = await prisma.product.findMany({
+    where: {
+      category: {
+        slug: 'docan-uv-tulostimet'
+      },
+      status: 'PUBLISHED'
+    },
+    include: {
+      images: {
+        orderBy: { sortOrder: 'asc' }
+      }
+    },
+    orderBy: { sortOrder: 'asc' }
+  })
+
+  // Get the first/main product for display
+  const mainProduct = products[0]
+  const features = mainProduct?.features ? JSON.parse(mainProduct.features) : []
+  const specs = mainProduct?.specs ? JSON.parse(mainProduct.specs) : {}
+  const primaryImage = mainProduct?.images?.find((img: { isPrimary: boolean }) => img.isPrimary) || mainProduct?.images?.[0]
+
   return (
     <div className="pt-32 pb-20">
       <Container>
@@ -41,87 +63,103 @@ export default function DocanUVTulostimetPage() {
               UV-tasotulostimet
             </h1>
             <p className="text-xl text-gray-600">
-              Viimeistellyt Docan tulostimet omaavat luotettavan toiminnan ja uskomattoman 
-              tulostuslaadun hyödyntäen Konica Minoltan, Ricohin tai Kyoceran tulostuspäitä.
+              {mainProduct?.shortDescription || 'Viimeistellyt Docan tulostimet omaavat luotettavan toiminnan ja uskomattoman tulostuslaadun hyödyntäen Konica Minoltan, Ricohin tai Kyoceran tulostuspäitä.'}
             </p>
           </div>
         </div>
 
         {/* Main image */}
         <div className="bg-gray-100 rounded-2xl p-8 mb-12 flex justify-center">
-          <Image
-            src="/images/devices/docan_h3000r_m10_574x.png"
-            alt="Docan H3000R M10"
-            width={574}
-            height={400}
-            className="object-contain"
-          />
+          {primaryImage && (
+            <Image
+              src={primaryImage.url}
+              alt={primaryImage.alt || mainProduct?.name || 'Docan UV-tulostin'}
+              width={574}
+              height={400}
+              className="object-contain"
+            />
+          )}
         </div>
 
         {/* Content */}
         <div className="prose prose-lg max-w-none mb-12">
-          <p>
-            Laitteiden kokoonpano ja testaus tapahtuu Kiinassa ISO9001 sertifioinnin alaisena, 
-            mutta kaikki strategiset komponentit tulevat Japanista, Italiasta sekä Englannista. 
-            Esimerkiksi johteet tulevat Japanista ja UV-lamppuyksiköt Englannista.
-          </p>
+          {mainProduct?.description && (
+            <div dangerouslySetInnerHTML={{ __html: mainProduct.description.replace(/\n/g, '<br/>') }} />
+          )}
+          
+          {features.length > 0 && (
+            <>
+              <h2>Ominaisuudet</h2>
+              <ul>
+                {features.map((feature: string) => (
+                  <li key={feature}>{feature}</li>
+                ))}
+              </ul>
+            </>
+          )}
 
-          <h2>Ominaisuudet</h2>
-          <ul>
-            <li>Tulostimen perusversiossa neljä tulostuspäätä järkevään hintaan</li>
-            <li>Mahdollisuus lisätä tulostuspäiden määrää myöhemmin</li>
-            <li>H3000(R) malliin saatavilla rullaominaisuus</li>
-            <li>Koneen alustaminen tulostuskuntoon kestää vain noin 5 minuuttia</li>
-            <li>Mallisto tarjoaa ratkaisut pienestä kylttituotannosta jopa 5,1 metrisiin tulosteisiin</li>
-            <li>Interweaving tekniikka estää raitaisuutta</li>
-          </ul>
+          {specs.varikokoonpanot && (
+            <>
+              <h2>Värikokoonpanot</h2>
+              <ul>
+                {Array.isArray(specs.varikokoonpanot) 
+                  ? specs.varikokoonpanot.map((color: string) => (
+                      <li key={color}>{color}</li>
+                    ))
+                  : <li>{specs.varikokoonpanot}</li>
+                }
+              </ul>
+            </>
+          )}
 
-          <h2>Värikokoonpanot</h2>
-          <ul>
-            <li>CMYK</li>
-            <li>CMYKLcLm</li>
-            <li>CMYKLcLm + White</li>
-            <li>CMYKLcLm + White + White</li>
-          </ul>
-
-          <p>
-            <strong>Tulostusmateriaalin paksuus:</strong> maksimissaan 100 mm
-          </p>
+          {specs.max_paksuus && (
+            <p>
+              <strong>Tulostusmateriaalin paksuus:</strong> {specs.max_paksuus}
+            </p>
+          )}
         </div>
 
         {/* Links */}
-        <div className="bg-gray-50 rounded-xl p-6 mb-12">
-          <h3 className="font-semibold text-lg mb-4">Materiaalit ja videot</h3>
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="/files/Docan-esite.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-primary-600 hover:text-primary-700"
-            >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              Lataa esite (PDF)
-            </a>
-            <a
-              href="https://youtu.be/Mg0M2waN9S8?t=1m20s"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-primary-600 hover:text-primary-700"
-            >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              Katso M10 video YouTubesta
-            </a>
-            <a
-              href="https://www.youtube.com/watch?v=u2x9aPQ0XTc"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-primary-600 hover:text-primary-700"
-            >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              Katso H3000R video YouTubesta
-            </a>
+        {(specs.esite || specs.video1 || specs.video2) && (
+          <div className="bg-gray-50 rounded-xl p-6 mb-12">
+            <h3 className="font-semibold text-lg mb-4">Materiaalit ja videot</h3>
+            <div className="flex flex-wrap gap-4">
+              {specs.esite && (
+                <a
+                  href={specs.esite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-primary-600 hover:text-primary-700"
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Lataa esite (PDF)
+                </a>
+              )}
+              {specs.video1 && (
+                <a
+                  href={specs.video1}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-primary-600 hover:text-primary-700"
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Katso video YouTubesta
+                </a>
+              )}
+              {specs.video2 && (
+                <a
+                  href={specs.video2}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-primary-600 hover:text-primary-700"
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Katso lisää videoita
+                </a>
+              )}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Contact CTA */}
         <div className="bg-primary-50 rounded-2xl p-8">

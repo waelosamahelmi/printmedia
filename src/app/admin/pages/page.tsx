@@ -198,7 +198,7 @@ export default function PagesListPage() {
                           <Eye className="w-4 h-4" />
                         </Link>
                         <Link
-                          href={`/admin/pages/${page.id}`}
+                          href={`/admin/pages/${page.id}/edit`}
                           className="p-2 text-gray-400 hover:text-primary-600 hover:bg-primary-50 rounded-lg"
                           title="Muokkaa"
                         >

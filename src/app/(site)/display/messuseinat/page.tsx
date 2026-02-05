@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { ArrowLeft, Check } from 'lucide-react'
+import { prisma } from '@/lib/db'
 
 export const metadata: Metadata = {
   title: 'Messuseinät | PrintMedia PM Solutions Oy',
@@ -11,40 +12,22 @@ export const metadata: Metadata = {
     'Pop Up messuseinät näyttävään messumainontaan. Suorat ja kaarevat mallit kuljetuslaukuilla.',
 }
 
-const products = [
-  {
-    name: 'Pop Up Suora',
-    features: [
-      'Sisältää: Rungon, magneettinauhan, 2 kpl valoja, sekä kuljetuslaukun',
-      'Laukusta on mahdollista tehdä promotiski',
-      'Ei sisällä vuotaa eikä tulostusmateriaalia',
-      'Vuotien kiinnitys magneettinauhalla',
-      'Seinä kasaantuu 75 cm ja päädyt 67 cm leveistä vuodista',
-    ],
-    sizes: [
-      'n. 230cm x 230cm / 30kg',
-      'n. 230cm x 230cm / 32kg',
-    ],
-    image: '/images/products/walls/suora_messuseina.jpg',
-  },
-  {
-    name: 'Pop Up Kaareva',
-    features: [
-      'Sisältää: Rungon, magneettinauhan, 2 kpl valoja, sekä kuljetuslaukun',
-      'Laukusta on mahdollista tehdä promotiski',
-      'Ei sisällä vuotaa eikä tulostusmateriaalia',
-      'Vuotien kiinnitys magneettinauhalla',
-      'Seinä kasaantuu 70 cm ja päädyt 67 cm leveistä vuodista',
-    ],
-    sizes: [
-      'n. 230cm x 230cm / 25kg',
-      'n. 280cm x 230cm / 30kg',
-    ],
-    image: '/images/products/walls/kaareva_280_x_230.jpg',
-  },
-]
+export default async function MessuseinatPage() {
+  const products = await prisma.product.findMany({
+    where: {
+      category: {
+        slug: 'messuseinat'
+      },
+      status: 'PUBLISHED'
+    },
+    include: {
+      images: {
+        orderBy: { sortOrder: 'asc' }
+      }
+    },
+    orderBy: { sortOrder: 'asc' }
+  })
 
-export default function MessuseinatPage() {
   return (
     <div className="pt-32 pb-20">
       <Container>
@@ -72,51 +55,65 @@ export default function MessuseinatPage() {
 
         {/* Products */}
         <div className="space-y-12 mb-12">
-          {products.map((product, index) => (
-            <div
-              key={product.name}
-              className={`flex flex-col ${
-                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-              } gap-8 items-start bg-white rounded-2xl shadow-lg overflow-hidden`}
-            >
-              <div className="flex-1 bg-gray-100 p-8 flex justify-center w-full">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={500}
-                  height={400}
-                  className="object-contain"
-                />
-              </div>
-              <div className="flex-1 p-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  {product.name}
-                </h2>
-                
-                <ul className="space-y-3 mb-6">
-                  {product.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-600">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+          {products.map((product, index) => {
+            const features = product.features ? JSON.parse(product.features) : []
+            const specs = product.specs ? JSON.parse(product.specs) : {}
+            const primaryImage = product.images.find(img => img.isPrimary) || product.images[0]
 
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2">Koot:</h3>
-                  <ul className="space-y-1">
-                    {product.sizes.map((size) => (
-                      <li key={size} className="text-gray-600">{size}</li>
-                    ))}
-                  </ul>
+            return (
+              <div
+                key={product.id}
+                className={`flex flex-col ${
+                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                } gap-8 items-start bg-white rounded-2xl shadow-lg overflow-hidden`}
+              >
+                <div className="flex-1 bg-gray-100 p-8 flex justify-center w-full">
+                  {primaryImage && (
+                    <Image
+                      src={primaryImage.url}
+                      alt={primaryImage.alt || product.name}
+                      width={500}
+                      height={400}
+                      className="object-contain"
+                    />
+                  )}
                 </div>
+                <div className="flex-1 p-8">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                    {product.name}
+                  </h2>
+                  
+                  {features.length > 0 && (
+                    <ul className="space-y-3 mb-6">
+                      {features.map((feature: string) => (
+                        <li key={feature} className="flex items-start gap-3">
+                          <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-600">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
-                <p className="text-sm text-gray-500 mt-4">
-                  * Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja
-                </p>
+                  {specs.Koot && (
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <h3 className="font-semibold text-gray-900 mb-2">Koot:</h3>
+                      <p className="text-gray-600">{specs.Koot}</p>
+                    </div>
+                  )}
+
+                  <p className="text-sm text-gray-500 mt-4">
+                    * Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja
+                  </p>
+
+                  <div className="mt-4">
+                    <Link href={`/tuotteet/${product.slug}`}>
+                      <Button variant="secondary">Lisätietoja</Button>
+                    </Link>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Contact CTA */}

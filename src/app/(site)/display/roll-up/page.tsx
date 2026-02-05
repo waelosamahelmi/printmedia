@@ -3,7 +3,8 @@ import Image from '@/components/ui/Image'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Check } from 'lucide-react'
+import { prisma } from '@/lib/db'
 
 export const metadata: Metadata = {
   title: 'Roll Up rungot | PrintMedia PM Solutions Oy',
@@ -11,74 +12,23 @@ export const metadata: Metadata = {
     'Laadukkaat Roll Up rungot messu- ja tapahtumamainontaan. Spyro, Export, Luxury, Deluxe ja Mini Roll Up mallit.',
 }
 
-const products = [
-  {
-    name: 'Spyro',
-    features: [
-      'Kevyt kantaa mukana',
-      'Puristavalla ylälistalla',
-      'Mukana kantolaukku',
-      '85 cm x 200 cm / 2kg',
-    ],
-    image: '/images/products/rollups/spyro2.jpg',
-  },
-  {
-    name: 'Export',
-    features: [
-      'Suosittu perusmalli',
-      'Kevyt kantaa mukana',
-      'Puristavalla ylälistalla',
-      'Pehmustettu kantolaukku',
-      '85 cm x 200 cm / 2,8 kg',
-    ],
-    image: '/images/products/rollups/export_uusi_laukku.jpg',
-  },
-  {
-    name: 'Luxury',
-    features: [
-      'Export mallia hieman tukevampi, paksulla tukijalalla',
-      'Puristavalla ylälistalla',
-      'Pehmustettu kantolaukku',
-    ],
-    sizes: [
-      '85 cm x 200 cm / 3,7kg',
-      '100 cm x 200 cm / 4,2kg',
-      '120 cm x 200 cm / 5,4kg',
-    ],
-    image: '/images/products/rollups/luxury_uusi_laukku.jpg',
-  },
-  {
-    name: 'Deluxe-1',
-    features: [
-      'Näyttävä pisaramallin roll up kääntyvällä lisäjalalla',
-      'Puristavalla ylälistalla',
-      'Pehmustettu kantolaukku',
-    ],
-    sizes: [
-      '85 cm x 200 cm / 7kg',
-      '100 cm x 200 cm / 8kg',
-      '120 cm x 200 cm / 9kg',
-      '150 cm x 200 cm / 10kg',
-    ],
-    image: '/images/products/rollups/deluxe_1_uusi_kuva_laukku.jpg',
-  },
-  {
-    name: 'Mini Roll Up',
-    features: [
-      'Hauska pisaramallinen pöytä roll up',
-      'Alumiinia, kromin väriset muovi päädyt',
-      'Tarra ylälistalla',
-      'Toimitetaan pakkauslaatikossa',
-    ],
-    sizes: [
-      '21 cm x 28,5 cm / 0,3kg',
-      '30 cm x 41,5 cm / 0,5kg',
-    ],
-    image: '/images/products/rollups/mini_roll_up.jpg',
-  },
-]
+export default async function RollUpPage() {
+  // Fetch products from the roll-up category
+  const products = await prisma.product.findMany({
+    where: {
+      category: {
+        slug: 'roll-up'
+      },
+      status: 'PUBLISHED'
+    },
+    include: {
+      images: {
+        orderBy: { sortOrder: 'asc' }
+      }
+    },
+    orderBy: { sortOrder: 'asc' }
+  })
 
-export default function RollUpPage() {
   return (
     <div className="pt-32 pb-20">
       <Container>
@@ -106,49 +56,61 @@ export default function RollUpPage() {
 
         {/* Products grid */}
         <div className="space-y-12 mb-12">
-          {products.map((product, index) => (
-            <div
-              key={product.name}
-              className={`flex flex-col ${
-                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-              } gap-8 items-center bg-white rounded-2xl shadow-lg overflow-hidden`}
-            >
-              <div className="flex-1 bg-gray-100 p-8 flex justify-center w-full">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={300}
-                  height={400}
-                  className="object-contain max-h-[400px]"
-                />
-              </div>
-              <div className="flex-1 p-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  {product.name}
-                </h2>
-                
-                <ul className="space-y-2 mb-4">
-                  {product.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2 text-gray-600">
-                      <span className="text-primary-600">•</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+          {products.map((product, index) => {
+            const features = product.features ? JSON.parse(product.features) : []
+            const specs = product.specs ? JSON.parse(product.specs) : {}
+            const primaryImage = product.images.find(img => img.isPrimary) || product.images[0]
 
-                {product.sizes && (
-                  <div className="mt-4">
-                    <h3 className="font-semibold text-gray-900 mb-2">Saatavana koissa:</h3>
-                    <ul className="space-y-1">
-                      {product.sizes.map((size) => (
-                        <li key={size} className="text-gray-600">{size}</li>
+            return (
+              <div
+                key={product.id}
+                className={`flex flex-col ${
+                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                } gap-8 items-center bg-white rounded-2xl shadow-lg overflow-hidden`}
+              >
+                <div className="flex-1 bg-gray-100 p-8 flex justify-center w-full">
+                  {primaryImage && (
+                    <Image
+                      src={primaryImage.url}
+                      alt={primaryImage.alt || product.name}
+                      width={300}
+                      height={400}
+                      className="object-contain max-h-[400px]"
+                    />
+                  )}
+                </div>
+                <div className="flex-1 p-8">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                    {product.name}
+                  </h2>
+                  
+                  {features.length > 0 && (
+                    <ul className="space-y-2 mb-4">
+                      {features.map((feature: string) => (
+                        <li key={feature} className="flex items-start gap-2 text-gray-600">
+                          <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                          {feature}
+                        </li>
                       ))}
                     </ul>
+                  )}
+
+                  {specs.Koot && (
+                    <div className="mt-4">
+                      <h3 className="font-semibold text-gray-900 mb-2">Saatavana koissa:</h3>
+                      <p className="text-gray-600">{specs.Koot}</p>
+                    </div>
+                  )}
+
+                  <div className="mt-6">
+                    <Link href={`/tuotteet/${product.slug}`}>
+                      <Button variant="secondary">Lisätietoja</Button>
+                    </Link>
                   </div>
-                )}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Contact CTA */}
