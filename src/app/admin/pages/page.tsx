@@ -2,104 +2,72 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Plus, Search, Edit, Trash2, Eye, Package, Star } from 'lucide-react'
+import { Plus, Search, Edit, Trash2, Eye, FileText, MoreHorizontal } from 'lucide-react'
 
-interface Product {
+interface Page {
   id: string
   slug: string
-  sku: string | null
-  name: string
-  shortDesc: string | null
-  price: number | null
-  priceType: string | null
+  title: string
+  description: string | null
   status: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED'
-  isFeatured: boolean
+  template: string
   updatedAt: string
-  category: {
-    id: string
-    name: string
+  publishedAt: string | null
+  author: {
+    name: string | null
+    email: string
   } | null
-  images: { url: string; isPrimary: boolean }[]
 }
 
-interface Category {
-  id: string
-  name: string
-  slug: string
-}
-
-export default function ProductsListPage() {
-  const [products, setProducts] = useState<Product[]>([])
-  const [categories, setCategories] = useState<Category[]>([])
+export default function PagesListPage() {
+  const [pages, setPages] = useState<Page[]>([])
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState('')
-  const [categoryFilter, setCategoryFilter] = useState('')
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
-  const [productToDelete, setProductToDelete] = useState<Product | null>(null)
+  const [pageToDelete, setPageToDelete] = useState<Page | null>(null)
 
   useEffect(() => {
-    fetchData()
+    fetchPages()
   }, [])
 
-  const fetchData = async () => {
+  const fetchPages = async () => {
     try {
-      const [productsRes, categoriesRes] = await Promise.all([
-        fetch('/api/admin/products'),
-        fetch('/api/admin/categories'),
-      ])
-      
-      if (productsRes.ok) {
-        const data = await productsRes.json()
-        setProducts(data)
-      }
-      if (categoriesRes.ok) {
-        const data = await categoriesRes.json()
-        setCategories(data)
+      const res = await fetch('/api/admin/pages')
+      if (res.ok) {
+        const data = await res.json()
+        setPages(data)
       }
     } catch (error) {
-      console.error('Error fetching data:', error)
+      console.error('Error fetching pages:', error)
     } finally {
       setLoading(false)
     }
   }
 
   const handleDelete = async () => {
-    if (!productToDelete) return
+    if (!pageToDelete) return
 
     try {
-      const res = await fetch(`/api/admin/products/${productToDelete.id}`, {
+      const res = await fetch(`/api/admin/pages/${pageToDelete.id}`, {
         method: 'DELETE',
       })
       if (res.ok) {
-        setProducts(products.filter(p => p.id !== productToDelete.id))
+        setPages(pages.filter(p => p.id !== pageToDelete.id))
         setDeleteModalOpen(false)
-        setProductToDelete(null)
+        setPageToDelete(null)
       }
     } catch (error) {
-      console.error('Error deleting product:', error)
+      console.error('Error deleting page:', error)
     }
   }
 
-  const filteredProducts = products.filter(product => {
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (product.sku && product.sku.toLowerCase().includes(searchQuery.toLowerCase()))
-    const matchesStatus = !statusFilter || product.status === statusFilter
-    const matchesCategory = !categoryFilter || product.category?.id === categoryFilter
-    return matchesSearch && matchesStatus && matchesCategory
+  const filteredPages = pages.filter(page => {
+    const matchesSearch = page.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      page.slug.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesStatus = !statusFilter || page.status === statusFilter
+    return matchesSearch && matchesStatus
   })
-
-  const formatPrice = (price: number | null, priceType: string | null) => {
-    if (price) {
-      return new Intl.NumberFormat('fi-FI', {
-        style: 'currency',
-        currency: 'EUR',
-      }).format(price)
-    }
-    if (priceType === 'quote') return 'Kysy hinta'
-    if (priceType === 'call') return 'Soita'
-    return '–'
-  }
 
   if (loading) {
     return (
@@ -114,17 +82,17 @@ export default function ProductsListPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Tuotteet</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Sivut</h1>
           <p className="text-gray-600">
-            Hallitse tuotteita ({products.length} kpl)
+            Hallitse sivuja ({pages.length} kpl)
           </p>
         </div>
         <Link
-          href="/admin/products/new"
+          href="/admin/pages/new"
           className="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
         >
           <Plus className="w-5 h-5" />
-          Lisää tuote
+          Lisää sivu
         </Link>
       </div>
 
@@ -135,24 +103,12 @@ export default function ProductsListPage() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input
               type="text"
-              placeholder="Hae tuotteita..."
+              placeholder="Hae sivuja..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
             />
           </div>
-          <select
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
-          >
-            <option value="">Kaikki kategoriat</option>
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
@@ -161,24 +117,22 @@ export default function ProductsListPage() {
             <option value="">Kaikki tilat</option>
             <option value="PUBLISHED">Julkaistu</option>
             <option value="DRAFT">Luonnos</option>
+            <option value="ARCHIVED">Arkistoitu</option>
           </select>
         </div>
       </div>
 
-      {/* Products Table */}
+      {/* Pages Table */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                  Tuote
+                  Sivu
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                  Kategoria
-                </th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                  Hinta
+                  URL
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                   Tila
@@ -192,59 +146,51 @@ export default function ProductsListPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {filteredProducts.length > 0 ? (
-                filteredProducts.map((product) => (
-                  <tr key={product.id} className="hover:bg-gray-50">
+              {filteredPages.length > 0 ? (
+                filteredPages.map((page) => (
+                  <tr key={page.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
-                          {product.images[0] ? (
-                            <img
-                              src={product.images[0].url}
-                              alt={product.name}
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            <Package className="w-6 h-6 text-gray-400" />
-                          )}
+                        <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                          <FileText className="w-5 h-5 text-gray-400" />
                         </div>
                         <div>
-                          <div className="flex items-center gap-2">
-                            <span className="font-medium text-gray-900">{product.name}</span>
-                            {product.isFeatured && (
-                              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                            )}
-                          </div>
-                          <div className="text-sm text-gray-500">
-                            {product.sku || '–'}
+                          <div className="font-medium text-gray-900">{page.title}</div>
+                          <div className="text-sm text-gray-500 truncate max-w-xs">
+                            {page.description || 'Ei kuvausta'}
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-gray-600">
-                      {product.category?.name || '–'}
-                    </td>
-                    <td className="px-6 py-4 text-gray-600">
-                      {formatPrice(product.price, product.priceType)}
+                    <td className="px-6 py-4">
+                      <code className="text-sm text-gray-600 bg-gray-100 px-2 py-1 rounded">
+                        /{page.slug}
+                      </code>
                     </td>
                     <td className="px-6 py-4">
                       <span
                         className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
-                          product.status === 'PUBLISHED'
+                          page.status === 'PUBLISHED'
                             ? 'bg-green-100 text-green-700'
+                            : page.status === 'ARCHIVED'
+                            ? 'bg-gray-100 text-gray-700'
                             : 'bg-yellow-100 text-yellow-700'
                         }`}
                       >
-                        {product.status === 'PUBLISHED' ? 'Julkaistu' : 'Luonnos'}
+                        {page.status === 'PUBLISHED' 
+                          ? 'Julkaistu' 
+                          : page.status === 'ARCHIVED' 
+                          ? 'Arkistoitu' 
+                          : 'Luonnos'}
                       </span>
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-500">
-                      {new Date(product.updatedAt).toLocaleDateString('fi-FI')}
+                      {new Date(page.updatedAt).toLocaleDateString('fi-FI')}
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-2">
                         <Link
-                          href={`/tuotteet/${product.slug}`}
+                          href={`/${page.slug}`}
                           target="_blank"
                           className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
                           title="Näytä"
@@ -252,7 +198,7 @@ export default function ProductsListPage() {
                           <Eye className="w-4 h-4" />
                         </Link>
                         <Link
-                          href={`/admin/products/${product.id}`}
+                          href={`/admin/pages/${page.id}`}
                           className="p-2 text-gray-400 hover:text-primary-600 hover:bg-primary-50 rounded-lg"
                           title="Muokkaa"
                         >
@@ -260,7 +206,7 @@ export default function ProductsListPage() {
                         </Link>
                         <button
                           onClick={() => {
-                            setProductToDelete(product)
+                            setPageToDelete(page)
                             setDeleteModalOpen(true)
                           }}
                           className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg"
@@ -274,14 +220,14 @@ export default function ProductsListPage() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={6} className="px-6 py-12 text-center text-gray-500">
-                    {searchQuery || statusFilter || categoryFilter ? (
+                  <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
+                    {searchQuery || statusFilter ? (
                       'Ei tuloksia hakuehdoilla.'
                     ) : (
                       <>
-                        Ei tuotteita.{' '}
-                        <Link href="/admin/products/new" className="text-primary-600 hover:underline">
-                          Lisää ensimmäinen tuote
+                        Ei sivuja.{' '}
+                        <Link href="/admin/pages/new" className="text-primary-600 hover:underline">
+                          Lisää ensimmäinen sivu
                         </Link>
                       </>
                     )}
@@ -297,15 +243,15 @@ export default function ProductsListPage() {
       {deleteModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <div className="bg-white rounded-xl shadow-xl max-w-md w-full mx-4 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Poista tuote</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Poista sivu</h3>
             <p className="text-gray-600 mb-6">
-              Haluatko varmasti poistaa tuotteen "{productToDelete?.name}"? Tätä toimintoa ei voi peruuttaa.
+              Haluatko varmasti poistaa sivun "{pageToDelete?.title}"? Tätä toimintoa ei voi peruuttaa.
             </p>
             <div className="flex justify-end gap-3">
               <button
                 onClick={() => {
                   setDeleteModalOpen(false)
-                  setProductToDelete(null)
+                  setPageToDelete(null)
                 }}
                 className="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
               >
