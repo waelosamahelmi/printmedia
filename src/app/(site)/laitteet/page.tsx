@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { CategoryGrid } from '@/components/sections/CategoryGrid'
 import { CTA } from '@/components/sections/CTA'
+import { prisma } from '@/lib/db'
 
 export const metadata: Metadata = {
   title: 'Laitteet',
@@ -9,42 +10,32 @@ export const metadata: Metadata = {
     'Tutustu PrintMedian laitevalikoimaan: Docan UV-tulostimet, GCC-tarraleikkurit, Jingwei-monitoimileikkurit ja Fayon-laminaattorit.',
 }
 
-const deviceCategories = [
-  {
-    title: 'Docan UV-tulostimet',
-    description:
-      'Docan H3000r M10 UV-tulostin monipuoliseen tulostukseen. Flatbed ja roll-to-roll mallit.',
-    image: '/images/devices/docan_h3000r_m10_574x.png',
-    href: '/laitteet/docan-uv-tulostimet',
-    count: 1,
-  },
-  {
-    title: 'GCC Tarraleikkurit',
-    description:
-      'GCC-tarraleikkurit: RXII Professional ja Jaguar V LX. Tarkka leikkaus 1,32m leveyteen asti.',
-    image: '/images/devices/RXII_132_400.png',
-    href: '/laitteet/gcc-tarraleikkurit',
-    count: 2,
-  },
-  {
-    title: 'Monitoimileikkurit',
-    description:
-      'Jingwei CB03II ja CB08II flatbed-monitoimileikkurit. Leikkaavat kartonkia, vinyyliä, pahvia ja paljon muuta.',
-    image: '/images/devices/cb03ii_500px_500x.jpg',
-    href: '/laitteet/monitoimileikkurit',
-    count: 2,
-  },
-  {
-    title: 'Laminaattorit',
-    description:
-      'Fayon FY1600 SE pneumaattinen kylmälaminaattori. 1600mm leveys, tuplavetorullat.',
-    image: '/images/devices/fayon-1600se.png',
-    href: '/laitteet/laminaattorit',
-    count: 1,
-  },
-]
+async function getCategories() {
+  const categories = await prisma.category.findMany({
+    where: { 
+      isVisible: true,
+      parentId: null,
+      // Filter only device categories by slug
+      slug: {
+        in: ['docan-uv-tulostimet', 'gcc-tarraleikkurit', 'monitoimileikkurit', 'laminaattorit', 'suurkuvatulostimet', 'leikkurit']
+      }
+    },
+    include: { _count: { select: { products: true } } },
+    orderBy: { sortOrder: 'asc' }
+  })
 
-export default function LaitteetPage() {
+  return categories.map(cat => ({
+    title: cat.name,
+    description: cat.description || '',
+    image: cat.image || '/images/placeholder.jpg',
+    href: `/laitteet/${cat.slug}`,
+    count: cat._count.products
+  }))
+}
+
+export default async function LaitteetPage() {
+  const categories = await getCategories()
+
   return (
     <div className="pt-32">
       {/* Hero */}
@@ -64,11 +55,17 @@ export default function LaitteetPage() {
       </section>
 
       {/* Categories */}
-      <CategoryGrid
-        title="Laitekategoriat"
-        subtitle="Valitse kategoria nähdäksesi kaikki tuotteet"
-        categories={deviceCategories}
-      />
+      {categories.length > 0 ? (
+        <CategoryGrid
+          title="Laitekategoriat"
+          subtitle="Valitse kategoria nähdäksesi kaikki tuotteet"
+          categories={categories}
+        />
+      ) : (
+        <Container className="py-16">
+          <p className="text-center text-gray-500">Ei kategorioita saatavilla.</p>
+        </Container>
+      )}
 
       {/* CTA */}
       <CTA

@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { CategoryGrid } from '@/components/sections/CategoryGrid'
 import { CTA } from '@/components/sections/CTA'
+import { prisma } from '@/lib/db'
 
 export const metadata: Metadata = {
   title: 'Display-tuotteet',
@@ -9,34 +10,29 @@ export const metadata: Metadata = {
     'Roll-up telineet, messuseinät, messupöydät ja muut display-tuotteet.',
 }
 
-const displayCategories = [
-  {
-    title: 'Roll-up telineet',
-    description:
-      'Helposti kuljetettavat roll-up telineet messuille ja tapahtumiin. Spyro, Export, Luxury, Deluxe ja Mini mallit.',
-    image: '/images/products/rollups/deluxe_1_uusi_kuva_laukku.jpg',
-    href: '/display/roll-up',
-    count: 5,
-  },
-  {
-    title: 'Messuseinät',
-    description:
-      'Pop-up messuseinät suorina ja kaarevina malleina. Magneettikiinnityksellä.',
-    image: '/images/products/walls/suora_messuseina.jpg',
-    href: '/display/messuseinat',
-    count: 2,
-  },
-  {
-    title: 'Messupöydät',
-    description:
-      'Esittelypöydät ja promopöydät messuille. Sis. kuljetuslaukun.',
-    image: '/images/products/tables/promopyt_1_uusi_kuva_1.jpg',
-    href: '/display/messupoydat',
-    count: 3,
-  },
-]
+async function getDisplayCategories() {
+  const categories = await prisma.category.findMany({
+    where: { 
+      isVisible: true,
+      slug: {
+        in: ['roll-up', 'messuseinat', 'messupoydat', 'display-tuotteet']
+      }
+    },
+    include: { _count: { select: { products: true } } },
+    orderBy: { sortOrder: 'asc' }
+  })
 
-export default function DisplayPage() {
+  return categories.map(cat => ({
+    title: cat.name,
+    description: cat.description || '',
+    image: cat.image || '/images/placeholder.jpg',
+    href: `/display/${cat.slug}`,
+    count: cat._count.products
+  }))
+}
+
+export default async function DisplayPage() {
+  const categories = await getDisplayCategories()
   return (
     <div className="pt-32">
       {/* Hero */}
@@ -55,11 +51,17 @@ export default function DisplayPage() {
       </section>
 
       {/* Categories */}
-      <CategoryGrid
-        title="Display-kategoriat"
-        subtitle="Valitse tuoteryhmä"
-        categories={displayCategories}
-      />
+      {categories.length > 0 ? (
+        <CategoryGrid
+          title="Display-kategoriat"
+          subtitle="Valitse tuoteryhmä"
+          categories={categories}
+        />
+      ) : (
+        <Container className="py-16">
+          <p className="text-center text-gray-500">Ei kategorioita saatavilla.</p>
+        </Container>
+      )}
 
       {/* Features */}
       <section className="section bg-gray-50">

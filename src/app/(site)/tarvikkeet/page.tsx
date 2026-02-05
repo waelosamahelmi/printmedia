@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { CategoryGrid } from '@/components/sections/CategoryGrid'
 import { CTA } from '@/components/sections/CTA'
+import { prisma } from '@/lib/db'
 
 export const metadata: Metadata = {
   title: 'Tarvikkeet',
@@ -9,18 +10,30 @@ export const metadata: Metadata = {
     'Varaosat ja muut tarvikkeet ammattikäyttöön.',
 }
 
-const suppliesCategories = [
-  {
-    title: 'Muut tarvikkeet',
-    description:
-      'Turvaviivaimet, Bungee Ball -kiinnikkeet, Banner Clip -kiinnikkeet ja muut tarvikkeet.',
-    image: '/images/products/accessories/bannerclip.jpg',
-    href: '/tarvikkeet/muut-tarvikkeet',
-    count: 20,
-  },
-]
+async function getSuppliesCategories() {
+  const categories = await prisma.category.findMany({
+    where: { 
+      isVisible: true,
+      slug: {
+        in: ['muut-tarvikkeet', 'tarvikkeet', 'varaosat']
+      }
+    },
+    include: { _count: { select: { products: true } } },
+    orderBy: { sortOrder: 'asc' }
+  })
 
-export default function TarvikkeetPage() {
+  return categories.map(cat => ({
+    title: cat.name,
+    description: cat.description || '',
+    image: cat.image || '/images/placeholder.jpg',
+    href: `/tarvikkeet/${cat.slug}`,
+    count: cat._count.products
+  }))
+}
+
+export default async function TarvikkeetPage() {
+  const categories = await getSuppliesCategories()
+
   return (
     <div className="pt-32">
       {/* Hero */}
@@ -40,11 +53,17 @@ export default function TarvikkeetPage() {
       </section>
 
       {/* Categories */}
-      <CategoryGrid
-        title="Tarvikekategoriat"
-        subtitle="Tutustu valikoimaamme"
-        categories={suppliesCategories}
-      />
+      {categories.length > 0 ? (
+        <CategoryGrid
+          title="Tarvikekategoriat"
+          subtitle="Tutustu valikoimaamme"
+          categories={categories}
+        />
+      ) : (
+        <Container className="py-16">
+          <p className="text-center text-gray-500">Ei kategorioita saatavilla.</p>
+        </Container>
+      )}
 
       {/* Info Section */}
       <section className="section">
