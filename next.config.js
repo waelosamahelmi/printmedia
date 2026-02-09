@@ -1,16 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Standalone output for VPS/Node.js deployment
+  output: 'standalone',
+
   images: {
-    // Disable image optimization completely for Hostinger
+    // Disable image optimization for Hostinger
     unoptimized: true,
   },
-  
-  // Trailing slashes for better static hosting
-  trailingSlash: true,
-  
+
   // Disable x-powered-by header
   poweredByHeader: false,
-  
+
   // Compress responses
   compress: true,
 }

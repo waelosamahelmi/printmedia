@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
-    "start": "next start",
+    "start": "node .next/standalone/server.js",
+    "start:next": "next start",
+    "deploy": "npm run build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/static",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "db:push": "prisma db push",
