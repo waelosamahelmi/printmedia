@@ -4,7 +4,7 @@ import { prisma } from '@/lib/db'
 // GET - Fetch products (public)
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url)
+    const { searchParams } = request.nextUrl
     const categorySlug = searchParams.get('category')
     const featured = searchParams.get('featured')
     const limit = searchParams.get('limit')

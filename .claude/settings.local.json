@@ -18,7 +18,8 @@
       "Bash(sshpass:*)",
       "Bash(git add:*)",
       "Bash(git commit -m \"$\\(cat <<''EOF''\nfix: update server.js for Hostinger LiteSpeed standalone deployment\n\nHostinger''s lsnode.js expects server.js at the project root. Updated it to\nload the Next.js standalone build instead of requiring next directly.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(npm install:*)"
     ]
   }
 }

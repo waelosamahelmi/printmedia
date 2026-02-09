@@ -9,6 +9,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.printmedia.fi'),
   title: {
     default: 'PrintMedia Finland Oy - Tulostus- ja leikkausratkaisut',
     template: '%s | PrintMedia Finland Oy',

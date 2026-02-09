@@ -4,7 +4,7 @@ import { prisma } from '@/lib/db'
 // GET - Fetch navigation by location (public)
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url)
+    const { searchParams } = request.nextUrl
     const location = searchParams.get('location')
 
     const where = location 
