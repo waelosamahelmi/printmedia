@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Standalone output for VPS/Node.js deployment
-  output: 'standalone',
-
   images: {
     // Disable image optimization for Hostinger
     unoptimized: true,
