@@ -61,7 +61,7 @@ export default async function LaminaattoritPage() {
               Fayon laminaattorit
             </h1>
             <p className="text-xl text-gray-600">
-              {mainProduct?.shortDescription || 'Monipuolisia kylmä- ja lämpölaminaattoreita pieneen tai keskikokoiseen tuotantoon.'}
+              {mainProduct?.shortDesc || 'Monipuolisia kylmä- ja lämpölaminaattoreita pieneen tai keskikokoiseen tuotantoon.'}
             </p>
           </div>
         </div>

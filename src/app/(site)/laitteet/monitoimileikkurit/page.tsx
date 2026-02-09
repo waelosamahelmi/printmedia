@@ -54,7 +54,7 @@ export default async function MonitoimileikkuritPage() {
             Jingwei tasoleikkurit
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl">
-            {mainProduct?.shortDescription || 'CB03II ja CB08II leikkureihin on saatavilla useita työkaluja ja teriä erilaisia materiaaleja ja käyttötarkoituksia varten.'}
+            {mainProduct?.shortDesc || 'CB03II ja CB08II leikkureihin on saatavilla useita työkaluja ja teriä erilaisia materiaaleja ja käyttötarkoituksia varten.'}
           </p>
         </div>
 

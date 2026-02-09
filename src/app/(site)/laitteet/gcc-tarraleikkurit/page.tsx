@@ -91,8 +91,8 @@ export default async function GCCTarraleikkuritPage() {
                   <h2 className="text-3xl font-bold text-gray-900 mb-4">
                     {product.name}
                   </h2>
-                  {product.shortDescription && (
-                    <p className="text-lg text-gray-600 mb-6">{product.shortDescription}</p>
+                  {product.shortDesc && (
+                    <p className="text-lg text-gray-600 mb-6">{product.shortDesc}</p>
                   )}
                   
                   {features.length > 0 && (

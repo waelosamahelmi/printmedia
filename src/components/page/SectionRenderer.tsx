@@ -6,6 +6,17 @@ import { CategoryGrid } from '@/components/sections/CategoryGrid'
 import { ProductsShowcase } from '@/components/sections/ProductsShowcase'
 import { Container } from '@/components/ui/Container'
 import { prisma } from '@/lib/db'
+import {
+  Award, Wrench, Truck, Users, Clock, Building2, DollarSign,
+  CheckCircle, Settings, Cpu, Package, Layers, FileDown, Phone, Mail,
+  type LucideIcon,
+} from 'lucide-react'
+
+// Map string icon names from database to actual Lucide components
+const iconMap: Record<string, LucideIcon> = {
+  Award, Wrench, Truck, Users, Clock, Building2, DollarSign,
+  CheckCircle, Settings, Cpu, Package, Layers, FileDown, Phone, Mail,
+}
 import type {
   PageSection,
   HeroSettings,
@@ -23,7 +34,7 @@ interface SectionRendererProps {
 }
 
 // Parse settings JSON safely
-function parseSettings<T>(settings: string | null): T | null {
+function parseSettings<T>(settings: string | null | undefined): T | null {
   if (!settings) return null
   try {
     return JSON.parse(settings) as T
@@ -108,7 +119,30 @@ export async function SectionRenderer({ section }: SectionRendererProps) {
     case 'features': {
       const settings = parseSettings<FeaturesSettings>(settingsJson)
       if (!settings) return null
-      return <Features {...settings} />
+      return (
+        <section className="section">
+          <Container>
+            <div className="section-header">
+              <h2 className="section-title">{settings.title || 'Miksi valita PrintMedia?'}</h2>
+              {settings.subtitle && <p className="section-subtitle">{settings.subtitle}</p>}
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {settings.features.map((feature) => {
+                const Icon = iconMap[feature.icon] || Award
+                return (
+                  <div key={feature.title} className="text-center group">
+                    <div className="w-16 h-16 mx-auto mb-6 bg-primary-100 rounded-2xl flex items-center justify-center group-hover:bg-primary-600 transition-colors duration-300">
+                      <Icon className="w-8 h-8 text-primary-600 group-hover:text-white transition-colors duration-300" />
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-3">{feature.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+                  </div>
+                )
+              })}
+            </div>
+          </Container>
+        </section>
+      )
     }
 
     case 'categories': {

@@ -10,7 +10,9 @@
       "Bash(fi)",
       "Bash(done)",
       "Bash(npm run db:migrate-pages:*)",
-      "Bash(npx tsx:*)"
+      "Bash(npx tsx:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx next build:*)"
     ]
   }
 }

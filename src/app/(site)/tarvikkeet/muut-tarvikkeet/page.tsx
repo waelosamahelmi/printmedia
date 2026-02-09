@@ -88,8 +88,8 @@ export default async function MuutTarvikkeetPage() {
                       <h3 className="text-xl font-bold text-gray-900 mb-3">
                         {product.name}
                       </h3>
-                      {product.shortDescription && (
-                        <p className="text-gray-600 mb-3">{product.shortDescription}</p>
+                      {product.shortDesc && (
+                        <p className="text-gray-600 mb-3">{product.shortDesc}</p>
                       )}
                       {specs.profiilin_mitat && (
                         <p className="text-sm text-gray-500 mb-4">{specs.profiilin_mitat}</p>
@@ -151,8 +151,8 @@ export default async function MuutTarvikkeetPage() {
                           </span>
                         )}
                       </div>
-                      {product.shortDescription && (
-                        <p className="text-gray-600 mb-3">{product.shortDescription}</p>
+                      {product.shortDesc && (
+                        <p className="text-gray-600 mb-3">{product.shortDesc}</p>
                       )}
                       {specs.pakkauskoko && (
                         <p className="text-sm text-primary-600 font-medium">{specs.pakkauskoko}</p>

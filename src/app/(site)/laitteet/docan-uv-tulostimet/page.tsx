@@ -63,7 +63,7 @@ export default async function DocanUVTulostimetPage() {
               UV-tasotulostimet
             </h1>
             <p className="text-xl text-gray-600">
-              {mainProduct?.shortDescription || 'Viimeistellyt Docan tulostimet omaavat luotettavan toiminnan ja uskomattoman tulostuslaadun hyödyntäen Konica Minoltan, Ricohin tai Kyoceran tulostuspäitä.'}
+              {mainProduct?.shortDesc || 'Viimeistellyt Docan tulostimet omaavat luotettavan toiminnan ja uskomattoman tulostuslaadun hyödyntäen Konica Minoltan, Ricohin tai Kyoceran tulostuspäitä.'}
             </p>
           </div>
         </div>

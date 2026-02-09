@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/db'
 import { SectionRenderer } from '@/components/page/SectionRenderer'
+import type { PageSection } from '@/lib/sections/types'
 
 interface PageProps {
   params: Promise<{ slug: string[] }>
@@ -58,7 +59,7 @@ export default async function DynamicPage({ params }: PageProps) {
   return (
     <div className="pt-32">
       {page.sections.map((section) => (
-        <SectionRenderer key={section.id} section={section} />
+        <SectionRenderer key={section.id} section={section as PageSection} />
       ))}
     </div>
   )

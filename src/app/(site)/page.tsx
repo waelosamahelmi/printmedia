@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/db'
 import { SectionRenderer } from '@/components/page/SectionRenderer'
 import { Metadata } from 'next'
+import type { PageSection } from '@/lib/sections/types'
 
 // Fetch homepage from database (empty slug)
 async function getHomePage() {
@@ -48,7 +49,7 @@ export default async function HomePage() {
   return (
     <>
       {page.sections.map((section) => (
-        <SectionRenderer key={section.id} section={section} />
+        <SectionRenderer key={section.id} section={section as PageSection} />
       ))}
     </>
   )
