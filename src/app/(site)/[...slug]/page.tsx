@@ -1,13 +1,17 @@
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/db'
 import { SectionRenderer } from '@/components/page/SectionRenderer'
-import { Metadata } from 'next'
 
-// Fetch homepage from database (empty slug)
-async function getHomePage() {
+interface PageProps {
+  params: Promise<{ slug: string[] }>
+}
+
+// Fetch page from database
+async function getPage(slug: string) {
   const page = await prisma.page.findUnique({
     where: {
-      slug: '',
+      slug,
       status: 'PUBLISHED',
     },
     include: {
@@ -22,12 +26,15 @@ async function getHomePage() {
 }
 
 // Generate metadata for SEO
-export async function generateMetadata(): Promise<Metadata> {
-  const page = await getHomePage()
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params
+  const slugString = slug.join('/')
+
+  const page = await getPage(slugString)
 
   if (!page) {
     return {
-      title: 'PrintMedia PM Solutions',
+      title: 'Sivua ei löytynyt',
     }
   }
 
@@ -37,19 +44,22 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-// Homepage component - renders from database
-export default async function HomePage() {
-  const page = await getHomePage()
+// Dynamic page component
+export default async function DynamicPage({ params }: PageProps) {
+  const { slug } = await params
+  const slugString = slug.join('/')
+
+  const page = await getPage(slugString)
 
   if (!page) {
     notFound()
   }
 
   return (
-    <>
+    <div className="pt-32">
       {page.sections.map((section) => (
         <SectionRenderer key={section.id} section={section} />
       ))}
-    </>
+    </div>
   )
 }

@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(for page in yritys huolto yhteystiedot hinnasto tulostusmateriaalit tulostusvarit toimitusehdot display laitteet tarvikkeet)",
+      "Bash(do if [ -f \"$page/page.tsx\" ])",
+      "Bash(then mv \"$page/page.tsx\" \"$page/page.tsx.backup\")",
+      "Bash(echo:*)",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(npm run db:migrate-pages:*)",
+      "Bash(npx tsx:*)"
+    ]
+  }
+}

@@ -1,23 +1,19 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
-import Image from 'next/image'
-import { 
-  ArrowLeft, 
-  Save, 
-  Eye, 
+import {
+  ArrowLeft,
+  Save,
+  Eye,
   Settings,
-  Type,
-  ImageIcon,
-  Link as LinkIcon,
-  Bold,
-  Italic,
-  List,
   X,
-  Upload,
-  Check
+  Check,
+  Plus,
+  ChevronUp,
+  ChevronDown,
+  Trash2,
 } from 'lucide-react'
 
 interface PageData {
@@ -30,119 +26,44 @@ interface PageData {
   metaDesc: string | null
   template: string
   status: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED'
+  sections?: Section[]
 }
 
 interface Section {
   id: string
-  type: 'heading' | 'paragraph' | 'image' | 'list' | 'link'
-  content: string
-  level?: number // for headings
-  src?: string // for images
-  alt?: string // for images
-  href?: string // for links
-  items?: string[] // for lists
+  type: string
+  title?: string | null
+  content?: string | null
+  settings: string | null
+  sortOrder: number
+  isVisible: boolean
 }
 
-export default function VisualPageEditor() {
+const sectionTypes = [
+  { value: 'hero', label: 'Hero Section' },
+  { value: 'features', label: 'Features Grid' },
+  { value: 'categories', label: 'Categories Grid' },
+  { value: 'products', label: 'Products Showcase' },
+  { value: 'cta', label: 'Call to Action' },
+  { value: 'contact', label: 'Contact Form' },
+  { value: 'content', label: 'Rich Content' },
+  { value: 'custom_html', label: 'Custom HTML' },
+]
+
+export default function SectionBasedEditor() {
   const router = useRouter()
   const params = useParams()
   const pageId = params.id as string
-  
+
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const [showSettings, setShowSettings] = useState(false)
   const [editingSection, setEditingSection] = useState<string | null>(null)
-  
+
   const [pageData, setPageData] = useState<PageData | null>(null)
   const [sections, setSections] = useState<Section[]>([])
-  
-  // Parse HTML content into sections
-  const parseContentToSections = (html: string): Section[] => {
-    if (!html) return []
-    
-    const parser = new DOMParser()
-    const doc = parser.parseFromString(html, 'text/html')
-    const elements = doc.body.children
-    const parsedSections: Section[] = []
-    
-    Array.from(elements).forEach((el, index) => {
-      const tagName = el.tagName.toLowerCase()
-      
-      if (tagName.match(/^h[1-6]$/)) {
-        parsedSections.push({
-          id: `section-${index}`,
-          type: 'heading',
-          content: el.textContent || '',
-          level: parseInt(tagName[1])
-        })
-      } else if (tagName === 'p') {
-        parsedSections.push({
-          id: `section-${index}`,
-          type: 'paragraph',
-          content: el.innerHTML || ''
-        })
-      } else if (tagName === 'img') {
-        parsedSections.push({
-          id: `section-${index}`,
-          type: 'image',
-          content: '',
-          src: (el as HTMLImageElement).src,
-          alt: (el as HTMLImageElement).alt
-        })
-      } else if (tagName === 'ul' || tagName === 'ol') {
-        const items = Array.from(el.querySelectorAll('li')).map(li => li.textContent || '')
-        parsedSections.push({
-          id: `section-${index}`,
-          type: 'list',
-          content: '',
-          items
-        })
-      } else if (tagName === 'a') {
-        parsedSections.push({
-          id: `section-${index}`,
-          type: 'link',
-          content: el.textContent || '',
-          href: (el as HTMLAnchorElement).href
-        })
-      } else {
-        // Generic content
-        parsedSections.push({
-          id: `section-${index}`,
-          type: 'paragraph',
-          content: el.innerHTML || el.textContent || ''
-        })
-      }
-    })
-    
-    return parsedSections.length > 0 ? parsedSections : [{
-      id: 'section-0',
-      type: 'paragraph',
-      content: html
-    }]
-  }
-  
-  // Convert sections back to HTML
-  const sectionsToHtml = (sections: Section[]): string => {
-    return sections.map(section => {
-      switch (section.type) {
-        case 'heading':
-          return `<h${section.level || 2}>${section.content}</h${section.level || 2}>`
-        case 'paragraph':
-          return `<p>${section.content}</p>`
-        case 'image':
-          return `<img src="${section.src}" alt="${section.alt || ''}" />`
-        case 'list':
-          const items = section.items?.map(item => `<li>${item}</li>`).join('') || ''
-          return `<ul>${items}</ul>`
-        case 'link':
-          return `<a href="${section.href}">${section.content}</a>`
-        default:
-          return `<p>${section.content}</p>`
-      }
-    }).join('\n')
-  }
 
   useEffect(() => {
     fetchPage()
@@ -154,7 +75,25 @@ export default function VisualPageEditor() {
       if (res.ok) {
         const page: PageData = await res.json()
         setPageData(page)
-        setSections(parseContentToSections(page.content || ''))
+
+        // If page has sections, use them
+        if (page.sections && page.sections.length > 0) {
+          setSections(page.sections)
+        }
+        // Otherwise, if page has old content field, convert it to a content section
+        else if (page.content) {
+          setSections([{
+            id: `temp-${Date.now()}`,
+            type: 'content',
+            title: null,
+            content: null,
+            settings: JSON.stringify({ html: page.content, maxWidth: 'lg' }),
+            sortOrder: 0,
+            isVisible: true,
+          }])
+        } else {
+          setSections([])
+        }
       } else {
         setError('Sivua ei löytynyt')
       }
@@ -167,26 +106,28 @@ export default function VisualPageEditor() {
 
   const handleSave = async () => {
     if (!pageData) return
-    
+
     setSaving(true)
     setError('')
     setSuccess('')
 
     try {
-      const content = sectionsToHtml(sections)
-      
       const res = await fetch(`/api/admin/pages/${pageId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...pageData,
-          content
+          sections: sections.map((section, index) => ({
+            ...section,
+            sortOrder: index,
+          })),
         }),
       })
 
       if (res.ok) {
         setSuccess('Sivu tallennettu!')
         setTimeout(() => setSuccess(''), 3000)
+        fetchPage() // Refresh to get server-generated IDs
       } else {
         const data = await res.json()
         setError(data.error || 'Tallennus epäonnistui')
@@ -198,38 +139,57 @@ export default function VisualPageEditor() {
     }
   }
 
-  const updateSection = (sectionId: string, updates: Partial<Section>) => {
-    setSections(prev => prev.map(s => 
-      s.id === sectionId ? { ...s, ...updates } : s
-    ))
-  }
-
-  const addSection = (type: Section['type'], afterId?: string) => {
+  const addSection = (afterIndex?: number) => {
     const newSection: Section = {
-      id: `section-${Date.now()}`,
-      type,
-      content: type === 'heading' ? 'Uusi otsikko' : 'Uusi kappale',
-      level: type === 'heading' ? 2 : undefined,
-      items: type === 'list' ? ['Kohta 1', 'Kohta 2'] : undefined
+      id: `temp-${Date.now()}`,
+      type: 'content',
+      title: null,
+      content: null,
+      settings: JSON.stringify({ html: '<p>Uusi sisältö</p>' }),
+      sortOrder: sections.length,
+      isVisible: true,
     }
-    
-    if (afterId) {
-      const index = sections.findIndex(s => s.id === afterId)
-      setSections(prev => [
-        ...prev.slice(0, index + 1),
-        newSection,
-        ...prev.slice(index + 1)
-      ])
+
+    if (afterIndex !== undefined) {
+      const newSections = [...sections]
+      newSections.splice(afterIndex + 1, 0, newSection)
+      setSections(newSections)
     } else {
-      setSections(prev => [...prev, newSection])
+      setSections([...sections, newSection])
     }
-    
+
     setEditingSection(newSection.id)
   }
 
+  const updateSection = (sectionId: string, updates: Partial<Section>) => {
+    setSections((prev) =>
+      prev.map((s) => (s.id === sectionId ? { ...s, ...updates } : s))
+    )
+  }
+
   const deleteSection = (sectionId: string) => {
-    setSections(prev => prev.filter(s => s.id !== sectionId))
+    setSections((prev) => prev.filter((s) => s.id !== sectionId))
     setEditingSection(null)
+  }
+
+  const moveSectionUp = (index: number) => {
+    if (index === 0) return
+    const newSections = [...sections]
+    ;[newSections[index - 1], newSections[index]] = [
+      newSections[index],
+      newSections[index - 1],
+    ]
+    setSections(newSections)
+  }
+
+  const moveSectionDown = (index: number) => {
+    if (index === sections.length - 1) return
+    const newSections = [...sections]
+    ;[newSections[index], newSections[index + 1]] = [
+      newSections[index + 1],
+      newSections[index],
+    ]
+    setSections(newSections)
   }
 
   if (loading) {
@@ -269,7 +229,7 @@ export default function VisualPageEditor() {
             <p className="text-sm text-gray-500">/{pageData.slug}</p>
           </div>
         </div>
-        
+
         <div className="flex items-center gap-3">
           {success && (
             <span className="text-green-600 text-sm flex items-center gap-1">
@@ -277,19 +237,19 @@ export default function VisualPageEditor() {
               {success}
             </span>
           )}
-          {error && (
-            <span className="text-red-600 text-sm">{error}</span>
-          )}
-          
+          {error && <span className="text-red-600 text-sm">{error}</span>}
+
           <button
             onClick={() => setShowSettings(!showSettings)}
             className={`p-2 rounded-lg transition-colors ${
-              showSettings ? 'bg-primary-100 text-primary-600' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'
+              showSettings
+                ? 'bg-primary-100 text-primary-600'
+                : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'
             }`}
           >
             <Settings className="w-5 h-5" />
           </button>
-          
+
           <Link
             href={`/${pageData.slug}`}
             target="_blank"
@@ -298,7 +258,7 @@ export default function VisualPageEditor() {
             <Eye className="w-4 h-4" />
             Esikatsele
           </Link>
-          
+
           <button
             onClick={handleSave}
             disabled={saving}
@@ -320,251 +280,158 @@ export default function VisualPageEditor() {
               <input
                 type="text"
                 value={pageData.title}
-                onChange={(e) => setPageData(prev => prev ? { ...prev, title: e.target.value } : null)}
+                onChange={(e) =>
+                  setPageData((prev) => (prev ? { ...prev, title: e.target.value } : null))
+                }
                 className="w-full text-4xl font-bold text-gray-900 bg-transparent border-none outline-none focus:ring-0 placeholder-gray-300"
                 placeholder="Sivun otsikko"
               />
               <input
                 type="text"
                 value={pageData.description || ''}
-                onChange={(e) => setPageData(prev => prev ? { ...prev, description: e.target.value } : null)}
+                onChange={(e) =>
+                  setPageData((prev) =>
+                    prev ? { ...prev, description: e.target.value } : null
+                  )
+                }
                 className="w-full text-xl text-gray-600 bg-transparent border-none outline-none focus:ring-0 placeholder-gray-300 mt-2"
                 placeholder="Sivun kuvaus"
               />
             </div>
 
-            {/* Content Sections */}
+            {/* Add Section Button */}
+            <div className="mb-4">
+              <button
+                onClick={() => addSection()}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+              >
+                <Plus className="w-4 h-4" />
+                Lisää osio
+              </button>
+            </div>
+
+            {/* Sections */}
             <div className="space-y-4">
               {sections.map((section, index) => (
                 <div
                   key={section.id}
-                  className={`group relative bg-white rounded-lg border-2 transition-all ${
-                    editingSection === section.id 
-                      ? 'border-primary-500 shadow-lg' 
-                      : 'border-transparent hover:border-gray-200'
+                  className={`bg-white rounded-lg border-2 transition-all ${
+                    editingSection === section.id
+                      ? 'border-primary-500 shadow-lg'
+                      : 'border-gray-200'
                   }`}
                 >
-                  {/* Section Controls */}
-                  <div className={`absolute -left-12 top-2 flex flex-col gap-1 transition-opacity ${
-                    editingSection === section.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                  }`}>
-                    <button
-                      onClick={() => deleteSection(section.id)}
-                      className="p-1.5 text-red-500 hover:bg-red-50 rounded"
-                      title="Poista"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
+                  {/* Section Header */}
+                  <div className="p-4 border-b border-gray-200 flex items-center justify-between">
+                    <div className="flex items-center gap-3 flex-1">
+                      <select
+                        value={section.type}
+                        onChange={(e) =>
+                          updateSection(section.id, { type: e.target.value })
+                        }
+                        className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+                      >
+                        {sectionTypes.map((type) => (
+                          <option key={type.value} value={type.value}>
+                            {type.label}
+                          </option>
+                        ))}
+                      </select>
+
+                      <input
+                        type="text"
+                        value={section.title || ''}
+                        onChange={(e) =>
+                          updateSection(section.id, { title: e.target.value })
+                        }
+                        className="flex-1 px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+                        placeholder="Osion otsikko (valinnainen)"
+                      />
+                    </div>
+
+                    <div className="flex items-center gap-1">
+                      <button
+                        onClick={() => moveSectionUp(index)}
+                        disabled={index === 0}
+                        className="p-1.5 text-gray-400 hover:text-gray-600 disabled:opacity-30"
+                        title="Siirrä ylös"
+                      >
+                        <ChevronUp className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => moveSectionDown(index)}
+                        disabled={index === sections.length - 1}
+                        className="p-1.5 text-gray-400 hover:text-gray-600 disabled:opacity-30"
+                        title="Siirrä alas"
+                      >
+                        <ChevronDown className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() =>
+                          updateSection(section.id, { isVisible: !section.isVisible })
+                        }
+                        className={`p-1.5 ${
+                          section.isVisible
+                            ? 'text-green-600 hover:text-green-700'
+                            : 'text-gray-400 hover:text-gray-600'
+                        }`}
+                        title={section.isVisible ? 'Näkyvissä' : 'Piilotettu'}
+                      >
+                        <Eye className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => deleteSection(section.id)}
+                        className="p-1.5 text-red-500 hover:text-red-600"
+                        title="Poista"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
 
                   {/* Section Content */}
-                  <div 
-                    className="p-4 cursor-text"
-                    onClick={() => setEditingSection(section.id)}
-                  >
-                    {section.type === 'heading' && (
-                      <input
-                        type="text"
-                        value={section.content}
-                        onChange={(e) => updateSection(section.id, { content: e.target.value })}
-                        className={`w-full bg-transparent border-none outline-none focus:ring-0 font-bold ${
-                          section.level === 1 ? 'text-4xl' :
-                          section.level === 2 ? 'text-3xl' :
-                          section.level === 3 ? 'text-2xl' :
-                          'text-xl'
-                        }`}
-                        placeholder="Otsikko"
-                      />
-                    )}
-                    
-                    {section.type === 'paragraph' && (
-                      <textarea
-                        value={section.content}
-                        onChange={(e) => updateSection(section.id, { content: e.target.value })}
-                        className="w-full bg-transparent border-none outline-none focus:ring-0 resize-none text-gray-700"
-                        placeholder="Kirjoita tekstiä..."
-                        rows={Math.max(3, section.content.split('\n').length)}
-                      />
-                    )}
-                    
-                    {section.type === 'image' && (
-                      <div className="text-center">
-                        {section.src ? (
-                          <div className="relative inline-block">
-                            <img 
-                              src={section.src} 
-                              alt={section.alt || ''} 
-                              className="max-w-full h-auto rounded-lg"
-                            />
-                            <input
-                              type="text"
-                              value={section.alt || ''}
-                              onChange={(e) => updateSection(section.id, { alt: e.target.value })}
-                              className="mt-2 w-full text-center text-sm text-gray-500 bg-transparent border-none outline-none"
-                              placeholder="Kuvan kuvaus (alt)"
-                            />
-                          </div>
-                        ) : (
-                          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8">
-                            <ImageIcon className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                            <p className="text-gray-500">Lisää kuvan URL</p>
-                            <input
-                              type="text"
-                              value={section.src || ''}
-                              onChange={(e) => updateSection(section.id, { src: e.target.value })}
-                              className="mt-2 w-full text-center bg-gray-50 border border-gray-300 rounded px-3 py-2"
-                              placeholder="https://..."
-                            />
-                          </div>
-                        )}
-                      </div>
-                    )}
-                    
-                    {section.type === 'list' && (
-                      <ul className="space-y-2">
-                        {section.items?.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <span className="text-primary-600 mt-1">•</span>
-                            <input
-                              type="text"
-                              value={item}
-                              onChange={(e) => {
-                                const newItems = [...(section.items || [])]
-                                newItems[i] = e.target.value
-                                updateSection(section.id, { items: newItems })
-                              }}
-                              className="flex-1 bg-transparent border-none outline-none focus:ring-0"
-                              placeholder="Lista-kohta"
-                            />
-                          </li>
-                        ))}
-                        <button
-                          onClick={() => updateSection(section.id, { 
-                            items: [...(section.items || []), ''] 
-                          })}
-                          className="text-primary-600 text-sm hover:underline"
-                        >
-                          + Lisää kohta
-                        </button>
-                      </ul>
-                    )}
-
-                    {section.type === 'link' && (
-                      <div className="space-y-2">
-                        <input
-                          type="text"
-                          value={section.content}
-                          onChange={(e) => updateSection(section.id, { content: e.target.value })}
-                          className="w-full bg-transparent border-none outline-none focus:ring-0 text-primary-600"
-                          placeholder="Linkin teksti"
-                        />
-                        <input
-                          type="text"
-                          value={section.href || ''}
-                          onChange={(e) => updateSection(section.id, { href: e.target.value })}
-                          className="w-full text-sm text-gray-500 bg-gray-50 border border-gray-200 rounded px-2 py-1"
-                          placeholder="https://..."
-                        />
-                      </div>
-                    )}
+                  <div className="p-4">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Asetukset (JSON)
+                    </label>
+                    <textarea
+                      value={section.settings || ''}
+                      onChange={(e) =>
+                        updateSection(section.id, { settings: e.target.value })
+                      }
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+                      rows={8}
+                      placeholder='{"title": "Example", ...}'
+                    />
+                    <p className="mt-2 text-xs text-gray-500">
+                      Muokkaa osion asetuksia JSON-muodossa. Katso dokumentaatiosta
+                      esimerkkejä eri osiotyypeille.
+                    </p>
                   </div>
 
-                  {/* Add Section Button */}
-                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="flex items-center gap-1 bg-white border border-gray-200 rounded-full shadow-sm px-2 py-1">
-                      <button
-                        onClick={() => addSection('paragraph', section.id)}
-                        className="p-1 text-gray-400 hover:text-gray-600"
-                        title="Lisää teksti"
-                      >
-                        <Type className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => addSection('heading', section.id)}
-                        className="p-1 text-gray-400 hover:text-gray-600"
-                        title="Lisää otsikko"
-                      >
-                        <Bold className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => addSection('image', section.id)}
-                        className="p-1 text-gray-400 hover:text-gray-600"
-                        title="Lisää kuva"
-                      >
-                        <ImageIcon className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => addSection('list', section.id)}
-                        className="p-1 text-gray-400 hover:text-gray-600"
-                        title="Lisää lista"
-                      >
-                        <List className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => addSection('link', section.id)}
-                        className="p-1 text-gray-400 hover:text-gray-600"
-                        title="Lisää linkki"
-                      >
-                        <LinkIcon className="w-4 h-4" />
-                      </button>
-                    </div>
+                  {/* Add Section After Button */}
+                  <div className="px-4 pb-4">
+                    <button
+                      onClick={() => addSection(index)}
+                      className="text-sm text-primary-600 hover:text-primary-700 flex items-center gap-1"
+                    >
+                      <Plus className="w-3 h-3" />
+                      Lisää osio tähän väliin
+                    </button>
                   </div>
                 </div>
               ))}
 
-              {/* Add First Section if empty */}
+              {/* Empty State */}
               {sections.length === 0 && (
-                <div className="text-center py-12">
-                  <p className="text-gray-500 mb-4">Sivulla ei ole vielä sisältöä</p>
-                  <div className="flex items-center justify-center gap-2">
-                    <button
-                      onClick={() => addSection('paragraph')}
-                      className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
-                    >
-                      <Type className="w-4 h-4" />
-                      Lisää teksti
-                    </button>
-                    <button
-                      onClick={() => addSection('heading')}
-                      className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
-                    >
-                      <Bold className="w-4 h-4" />
-                      Lisää otsikko
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* Add Section at end */}
-              {sections.length > 0 && (
-                <div className="flex items-center justify-center gap-2 py-4 opacity-50 hover:opacity-100 transition-opacity">
+                <div className="text-center py-12 bg-white rounded-lg border-2 border-dashed border-gray-300">
+                  <p className="text-gray-500 mb-4">Sivulla ei ole vielä osioita</p>
                   <button
-                    onClick={() => addSection('paragraph')}
-                    className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded"
-                    title="Lisää teksti"
+                    onClick={() => addSection()}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
                   >
-                    <Type className="w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={() => addSection('heading')}
-                    className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded"
-                    title="Lisää otsikko"
-                  >
-                    <Bold className="w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={() => addSection('image')}
-                    className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded"
-                    title="Lisää kuva"
-                  >
-                    <ImageIcon className="w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={() => addSection('list')}
-                    className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded"
-                    title="Lisää lista"
-                  >
-                    <List className="w-5 h-5" />
+                    <Plus className="w-4 h-4" />
+                    Lisää ensimmäinen osio
                   </button>
                 </div>
               )}
@@ -576,7 +443,7 @@ export default function VisualPageEditor() {
         {showSettings && (
           <div className="fixed right-0 top-16 bottom-0 w-80 bg-white border-l border-gray-200 overflow-y-auto p-6">
             <h2 className="font-semibold text-gray-900 mb-6">Sivun asetukset</h2>
-            
+
             <div className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -589,19 +456,27 @@ export default function VisualPageEditor() {
                   <input
                     type="text"
                     value={pageData.slug}
-                    onChange={(e) => setPageData(prev => prev ? { ...prev, slug: e.target.value } : null)}
+                    onChange={(e) =>
+                      setPageData((prev) => (prev ? { ...prev, slug: e.target.value } : null))
+                    }
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none text-sm"
                   />
                 </div>
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Tila
                 </label>
                 <select
                   value={pageData.status}
-                  onChange={(e) => setPageData(prev => prev ? { ...prev, status: e.target.value as PageData['status'] } : null)}
+                  onChange={(e) =>
+                    setPageData((prev) =>
+                      prev
+                        ? { ...prev, status: e.target.value as PageData['status'] }
+                        : null
+                    )
+                  }
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none text-sm"
                 >
                   <option value="DRAFT">Luonnos</option>
@@ -609,14 +484,18 @@ export default function VisualPageEditor() {
                   <option value="ARCHIVED">Arkistoitu</option>
                 </select>
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Sivupohja
                 </label>
                 <select
                   value={pageData.template}
-                  onChange={(e) => setPageData(prev => prev ? { ...prev, template: e.target.value } : null)}
+                  onChange={(e) =>
+                    setPageData((prev) =>
+                      prev ? { ...prev, template: e.target.value } : null
+                    )
+                  }
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none text-sm"
                 >
                   <option value="default">Oletus</option>
@@ -624,9 +503,9 @@ export default function VisualPageEditor() {
                   <option value="landing">Laskeutumissivu</option>
                 </select>
               </div>
-              
+
               <hr className="border-gray-200" />
-              
+
               <div>
                 <h3 className="font-medium text-gray-900 mb-3">SEO</h3>
                 <div className="space-y-4">
@@ -637,7 +516,11 @@ export default function VisualPageEditor() {
                     <input
                       type="text"
                       value={pageData.metaTitle || ''}
-                      onChange={(e) => setPageData(prev => prev ? { ...prev, metaTitle: e.target.value } : null)}
+                      onChange={(e) =>
+                        setPageData((prev) =>
+                          prev ? { ...prev, metaTitle: e.target.value } : null
+                        )
+                      }
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none text-sm"
                       placeholder="SEO-otsikko"
                     />
@@ -648,7 +531,11 @@ export default function VisualPageEditor() {
                     </label>
                     <textarea
                       value={pageData.metaDesc || ''}
-                      onChange={(e) => setPageData(prev => prev ? { ...prev, metaDesc: e.target.value } : null)}
+                      onChange={(e) =>
+                        setPageData((prev) =>
+                          prev ? { ...prev, metaDesc: e.target.value } : null
+                        )
+                      }
                       rows={3}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none text-sm"
                       placeholder="SEO-kuvaus"
