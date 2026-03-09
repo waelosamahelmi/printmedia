@@ -32,6 +32,8 @@ export interface CategoriesSettings {
   subtitle?: string
   mode: 'manual' | 'auto'
   categoryIds?: string[] // if manual mode
+  includeSlugs?: string[] // optional slug whitelist in auto mode
+  excludeSlugs?: string[] // optional slug blacklist in auto mode
   limit?: number // if auto mode
 }
 

@@ -6,9 +6,11 @@ import type { PageSection } from '@/lib/sections/types'
 
 // Fetch homepage from database (empty slug)
 async function getHomePage() {
-  const page = await prisma.page.findUnique({
+  const page = await prisma.page.findFirst({
     where: {
-      slug: '',
+      slug: {
+        in: ['', 'etusivu'],
+      },
       status: 'PUBLISHED',
     },
     include: {

@@ -304,7 +304,7 @@ const pages: PageData[] = [
         settings: {
           subtitle: 'Huoltopalvelut',
           title: 'Huolto ja tuki',
-          description: 'Tarjoamme kattavat huolto- ja tukipalvelut kaikille myymillemme laitteille. Ammattitaitoiset teknikkomme palvelevat sinua nopeasti ja luotettavasti.',
+          description: 'Tarjoamme kattavasti huolto-, korjaus- ja tukipalvelut lähes kaikkiin suurkuvatulostimiin. Lisäksi meiltä saat myös kaikki tarvittavat varaosat. Ammattitaitoiset teknikkomme palvelevat sinua nopeasti ja luotettavasti. Kysy rohkeasti lisää!',
           primaryCta: { text: 'Ota yhteyttä', href: '/yhteystiedot' },
           secondaryCta: { text: 'Soita 0440 875 025', href: 'tel:+358440875025' }
         }
@@ -905,7 +905,8 @@ const pages: PageData[] = [
           title: 'Laitekategoriat',
           subtitle: 'Valitse kategoria nähdäksesi kaikki tuotteet',
           mode: 'auto',
-          limit: 6
+          includeSlugs: ['docan-uv-tulostimet', 'gcc-tarraleikkurit', 'monitoimileikkurit', 'laminaattorit'],
+          limit: 4
         }
       },
       {

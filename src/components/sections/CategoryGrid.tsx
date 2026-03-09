@@ -25,6 +25,11 @@ export function CategoryGrid({
   subtitle = 'Löydä sopiva ratkaisu tarpeisiisi laajasta valikoimastamme',
   categories,
 }: CategoryGridProps) {
+  const gridClassName =
+    categories.length === 4
+      ? 'grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8'
+      : 'grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8'
+
   return (
     <section className="section bg-gray-50">
       <Container>
@@ -38,7 +43,7 @@ export function CategoryGrid({
           <p className="section-subtitle">{subtitle}</p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className={gridClassName}>
           {categories.map((category, index) => (
             <motion.div
               key={category.title}

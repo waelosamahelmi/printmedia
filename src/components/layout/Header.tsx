@@ -32,11 +32,8 @@ const navigation = [
   { name: 'Tulostusvärit', href: '/tulostusvarit' },
   { name: 'Tulostusmateriaalit', href: '/tulostusmateriaalit' },
   { 
-    name: 'Tarvikkeet', 
-    href: '/tarvikkeet',
-    children: [
-      { name: 'Muut tarvikkeet', href: '/tarvikkeet/muut-tarvikkeet' },
-    ]
+    name: 'Varaosat', 
+    href: '/huolto/varaosat'
   },
   { 
     name: 'Display-tuotteet', 
@@ -51,8 +48,7 @@ const navigation = [
     name: 'Huolto ja tuki', 
     href: '/huolto',
     children: [
-      { name: 'Tulostimien varaosat', href: '/huolto/tulostimien-varaosat' },
-      { name: 'Leikkureiden varaosat', href: '/huolto/leikkureiden-varaosat' },
+      { name: 'Varaosat', href: '/huolto/varaosat' },
       { name: 'Ergosoft RIP', href: '/huolto/ergosoft-rip' },
       { name: 'SAi Flexi', href: '/huolto/flexi' },
     ]

@@ -58,11 +58,20 @@ async function fetchCategories(settings: CategoriesSettings) {
       orderBy: { sortOrder: 'asc' },
     })
   } else {
+    const includeSlugs = settings.includeSlugs && settings.includeSlugs.length > 0
+      ? settings.includeSlugs
+      : undefined
+    const excludeSlugs = settings.excludeSlugs && settings.excludeSlugs.length > 0
+      ? settings.excludeSlugs
+      : undefined
+
     // Auto mode - fetch all visible categories
     return await prisma.category.findMany({
       where: {
         isVisible: true,
         parentId: null, // Only top-level categories
+        ...(includeSlugs ? { slug: { in: includeSlugs } } : {}),
+        ...(excludeSlugs ? { slug: { notIn: excludeSlugs } } : {}),
       },
       include: {
         _count: { select: { products: true } },

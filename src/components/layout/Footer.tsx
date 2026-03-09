@@ -15,9 +15,8 @@ const footerNavigation = {
     { name: 'Monitoimileikkurit', href: '/laitteet/monitoimileikkurit' },
     { name: 'Laminaattorit', href: '/laitteet/laminaattorit' },
   ],
-  tarvikkeet: [
-    { name: 'Tulostusvärit', href: '/tulostusvarit' },
-    { name: 'Tulostusmateriaalit', href: '/tulostusmateriaalit' },
+  varaosat: [
+    { name: 'Varaosat', href: '/huolto/varaosat' },
     { name: 'Muut tarvikkeet', href: '/tarvikkeet/muut-tarvikkeet' },
   ],
   display: [
@@ -106,9 +105,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-4">Tarvikkeet</h3>
+            <h3 className="text-white font-semibold mb-4">Varaosat</h3>
             <ul className="space-y-3">
-              {footerNavigation.tarvikkeet.map((item) => (
+              {footerNavigation.varaosat.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
