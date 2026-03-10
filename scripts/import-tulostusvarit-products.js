@@ -9,7 +9,8 @@ const products = [
     slug: 'jetbest-es3-varikasetti-440ml',
     name: 'Jetbest ES3 - värikasetti 440 ml',
     shortDesc: 'Alkuperäistä vastaava 440 ml värikasetti Roland-, Mutoh- ja Mimaki ES3 -laitteisiin.',
-    keepImage: false,
+    imageUrl: '/images/products/inks/jetbest-es3-new.jpg',
+    keepImage: true,
   },
   {
     slug: 'jetbest-es3-tayttopullo-500ml',
@@ -28,7 +29,8 @@ const products = [
     slug: 'jetbest-i2-varikasetti-440ml',
     name: 'Jetbest I-2 - värikasetti 440 ml',
     shortDesc: 'Roland Eco-sol MAX2 -yhteensopiva 440 ml värikasetti.',
-    keepImage: false,
+    imageUrl: '/images/products/inks/jetbest-eco-i2-new.jpg',
+    keepImage: true,
   },
   {
     slug: 'jetbest-cleaning-solvent-220ml',
@@ -52,7 +54,7 @@ const products = [
     slug: 'jetbest-lus170-uv-1l',
     name: 'Jetbest LUS170 UV 1L pullo',
     shortDesc: 'UV-väri 1 litran täyttöpullossa, yhteensopiva mm. Mimaki UCJV -sarjan kanssa.',
-    imageUrl: '/images/products/inks/lus170-uv-chat.png',
+    imageUrl: '/images/products/inks/jetbest-lus170-new.jpg',
     keepImage: true,
   },
   {
@@ -65,7 +67,7 @@ const products = [
     slug: 'chromoink-uv-1000ml',
     name: 'Chromoink UV 1000 ml pullo',
     shortDesc: 'UV-väri 1 litran pullossa Konica Minolta -tulostuspäille.',
-    imageUrl: '/images/products/inks/chromoink-chat-v3.png',
+    imageUrl: '/images/products/inks/chromoink-new.jpg',
     keepImage: true,
   },
 ]

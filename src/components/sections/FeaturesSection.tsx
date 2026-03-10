@@ -9,7 +9,7 @@ const features = [
     icon: Award,
     title: 'Valtuutettu jälleenmyyjä',
     description:
-      'Olemme Mimakin, Rolandin ja GCC:n valtuutettu jälleenmyyjä Suomessa.',
+      'Olemme GCC:n valtuutettu jälleenmyyjä Suomessa.',
   },
   {
     icon: Wrench,

@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from '@/components/ui/Image'
@@ -20,6 +21,7 @@ interface HeroProps {
     href: string
   }
   image?: string
+  images?: string[]
   features?: string[]
 }
 
@@ -30,12 +32,29 @@ export function Hero({
   primaryCta = { text: 'Tutustu laitteisiin', href: '/laitteet' },
   secondaryCta = { text: 'Ota yhteyttä', href: '/yhteystiedot' },
   image = '/images/devices/hero-printer.jpg',
+  images,
   features = [
     'Nopea toimitus',
     'Ammattitaitoinen huolto',
     'Kilpailukykyiset hinnat',
   ],
 }: HeroProps) {
+  const heroImages = useMemo(() => {
+    const configured = (images || []).filter(Boolean)
+    if (configured.length > 0) return configured
+    return [image]
+  }, [images, image])
+
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+
+  useEffect(() => {
+    if (heroImages.length <= 1) return
+    const intervalId = window.setInterval(() => {
+      setActiveImageIndex((prev) => (prev + 1) % heroImages.length)
+    }, 3500)
+    return () => window.clearInterval(intervalId)
+  }, [heroImages.length])
+
   return (
     <section className="relative min-h-[90vh] flex items-center gradient-hero overflow-hidden">
       {/* Background pattern */}
@@ -142,16 +161,34 @@ export function Hero({
             className="relative"
           >
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-gray-400/20">
-              <Image
-                src={image}
-                alt="PrintMedia tulostimet"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+              {heroImages.map((heroImage, index) => (
+                <Image
+                  key={`${heroImage}-${index}`}
+                  src={heroImage}
+                  alt="PrintMedia laitteet"
+                  fill
+                  className={`object-cover transition-opacity duration-700 ${
+                    index === activeImageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  priority={index === 0}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              ))}
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-tr from-primary-900/20 to-transparent" />
+
+              {heroImages.length > 1 && (
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                  {heroImages.map((_, index) => (
+                    <span
+                      key={index}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        index === activeImageIndex ? 'w-6 bg-white' : 'w-2 bg-white/60'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Floating card */}
@@ -170,7 +207,7 @@ export function Hero({
                     Valtuutettu jälleenmyyjä
                   </div>
                   <div className="text-xs text-gray-500">
-                    Mimaki, Roland, GCC
+                    GCC
                   </div>
                 </div>
               </div>

@@ -16,7 +16,7 @@ const footerNavigation = {
     { name: 'Laminaattorit', href: '/laitteet/laminaattorit' },
   ],
   varaosat: [
-    { name: 'Varaosat', href: '/huolto/varaosat' },
+    { name: 'Varaosat ja Tarvikkeet', href: '/huolto/varaosat' },
     { name: 'Muut tarvikkeet', href: '/tarvikkeet/muut-tarvikkeet' },
   ],
   display: [
@@ -105,7 +105,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-4">Varaosat</h3>
+            <h3 className="text-white font-semibold mb-4">Varaosat ja Tarvikkeet</h3>
             <ul className="space-y-3">
               {footerNavigation.varaosat.map((item) => (
                 <li key={item.name}>

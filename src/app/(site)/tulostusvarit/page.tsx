@@ -19,7 +19,7 @@ const compatibleBrands = [
 ]
 
 async function getInkProducts() {
-  return prisma.product.findMany({
+  const products = await prisma.product.findMany({
     where: {
       status: 'PUBLISHED',
       category: {
@@ -34,6 +34,31 @@ async function getInkProducts() {
     },
     orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
   })
+
+  // Keep product cards in a logical order: cartridges together first.
+  const preferredOrder = [
+    'jetbest-es3-varikasetti-440ml',
+    'jetbest-ss21-varikasetti-440ml',
+    'jetbest-i2-varikasetti-440ml',
+    'jetbest-es3-tayttopullo-500ml',
+    'jetbest-cleaning-solvent-220ml',
+    'jetbest-cleaning-solvent-440ml',
+    'cleaning-eco-solvent-1000ml',
+    'jetbest-lus170-uv-1l',
+    'jetbest-lus170-uv-cleaning-1l',
+    'chromoink-uv-1000ml',
+  ]
+
+  const indexBySlug = new Map(preferredOrder.map((slug, index) => [slug, index]))
+
+  return products.sort((a, b) => {
+    const aIndex = indexBySlug.get(a.slug) ?? Number.MAX_SAFE_INTEGER
+    const bIndex = indexBySlug.get(b.slug) ?? Number.MAX_SAFE_INTEGER
+    if (aIndex !== bIndex) {
+      return aIndex - bIndex
+    }
+    return a.name.localeCompare(b.name, 'fi')
+  })
 }
 
 export default async function TulostusvaritPage() {
@@ -45,7 +70,9 @@ export default async function TulostusvaritPage() {
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Tulostusvärit</h1>
           <p className="text-xl text-gray-600 max-w-3xl">
-            Vuosien kokemuksella! Huippulaadukkaat eco-solvent- ja UV-värit
+            Vuosien kokemuksella! Jetbest osoittautui pitkän testijakson
+            jälkeen loistavaksi ja jopa paremmaksi kuin moni
+            alkuperäisväreistä. Huippulaadukkaat eco-solvent- ja UV-värit
             Roland-, Mutoh- ja Mimaki-tulostimiin.
           </p>
         </div>
@@ -171,7 +198,7 @@ export default async function TulostusvaritPage() {
                       <img
                         src={product.images[0].url}
                         alt={product.images[0].alt || product.name}
-                        className="w-full h-full object-contain p-4"
+                        className="w-full h-full object-contain object-center p-1 bg-white"
                       />
                     ) : (
                       <div className="w-full h-full" />

@@ -12,6 +12,7 @@ export interface HeroSettings {
   primaryCta?: CTALink
   secondaryCta?: CTALink
   image?: string
+  images?: string[]
   features?: string[]
 }
 

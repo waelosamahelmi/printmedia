@@ -47,6 +47,11 @@ const pages: PageData[] = [
           primaryCta: { text: 'Tutustu laitteisiin', href: '/laitteet' },
           secondaryCta: { text: 'Ota yhteyttä', href: '/yhteystiedot' },
           image: '/images/devices/J5-132.jpg',
+          images: [
+            '/images/devices/J5-132.jpg',
+            '/images/devices/cb03ii_500px_500x.jpg',
+            '/images/devices/RXII_132_400.png',
+          ],
           features: ['Valtuutettu jälleenmyyjä', 'Ammattitaitoinen huolto', 'Nopea toimitus']
         }
       },

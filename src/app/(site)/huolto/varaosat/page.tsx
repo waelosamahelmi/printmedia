@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button'
 import { ArrowLeft, Package, Wrench } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Varaosat | PrintMedia PM Solutions Oy',
+  title: 'Varaosat ja Tarvikkeet | PrintMedia PM Solutions Oy',
   description:
     'Varaosat ja kulutustarvikkeet tulostimiin ja leikkureihin. Alkuperais- ja tarvikeosat ammattikayttoon.',
 }
@@ -27,7 +27,7 @@ export default function VaraosatPage() {
         </nav>
 
         <div className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Varaosat</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Varaosat ja Tarvikkeet</h1>
           <p className="text-xl text-gray-600 max-w-3xl">
             Toimitamme alkuperais- ja tarvikeosia seka suurkuvatulostimiin etta
             leikkureihin. Kerro tarpeesi, niin autamme loytamaan oikeat osat.

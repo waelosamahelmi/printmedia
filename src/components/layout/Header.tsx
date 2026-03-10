@@ -32,7 +32,7 @@ const navigation = [
   { name: 'Tulostusvärit', href: '/tulostusvarit' },
   { name: 'Tulostusmateriaalit', href: '/tulostusmateriaalit' },
   { 
-    name: 'Varaosat', 
+    name: 'Varaosat ja Tarvikkeet', 
     href: '/huolto/varaosat'
   },
   { 
@@ -48,7 +48,7 @@ const navigation = [
     name: 'Huolto ja tuki', 
     href: '/huolto',
     children: [
-      { name: 'Varaosat', href: '/huolto/varaosat' },
+      { name: 'Varaosat ja Tarvikkeet', href: '/huolto/varaosat' },
       { name: 'Ergosoft RIP', href: '/huolto/ergosoft-rip' },
       { name: 'SAi Flexi', href: '/huolto/flexi' },
     ]
