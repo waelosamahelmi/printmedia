@@ -5,11 +5,12 @@ Tama tiedosto auttaa jatkamaan tyota, vaikka tietokone sammuu tai chat katoaa.
 ## Missa mennaan nyt
 
 - Kaikki tahan asti tehdyt sivu- ja sisaltomuutokset ovat paikallisesti tallessa.
+- Uusin tallennettu commit on:
+  - `3fddf19`
 - Aiemmat tallennetut commitit ovat:
   - `fd9101b`
   - `c992a50`
   - `8e47710`
-- Tallennan taman nykyisen tilanteen seuraavaksi uutena paikallisena commitina.
 - Push GitHubiin ei onnistu talla tunnuksella, koska repoon ei ole kirjoitusoikeutta.
   - Repo: `waelosamahelmi/printmedia`
   - Virhe: `403 Permission denied`
