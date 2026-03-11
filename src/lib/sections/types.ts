@@ -9,6 +9,7 @@ export interface HeroSettings {
   subtitle?: string
   title: string
   description: string
+  highlightAllTitle?: boolean
   primaryCta?: CTALink
   secondaryCta?: CTALink
   image?: string

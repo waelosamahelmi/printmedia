@@ -1,13 +1,15 @@
-# Session Handover (2026-03-10)
+# Session Handover (2026-03-11)
 
 Tama tiedosto auttaa jatkamaan tyota, vaikka tietokone sammuu tai chat katoaa.
 
 ## Missa mennaan nyt
 
-- Kaikki pyydetyt muutokset on tehty paikalliseen projektiin.
-- Muutokset on commitattu paikallisesti commitilla:
-  - `8e47710`
+- Kaikki tahan asti tehdyt sivu- ja sisaltomuutokset ovat paikallisesti tallessa.
+- Aiemmat tallennetut commitit ovat:
+  - `fd9101b`
   - `c992a50`
+  - `8e47710`
+- Tallennan taman nykyisen tilanteen seuraavaksi uutena paikallisena commitina.
 - Push GitHubiin ei onnistu talla tunnuksella, koska repoon ei ole kirjoitusoikeutta.
   - Repo: `waelosamahelmi/printmedia`
   - Virhe: `403 Permission denied`
@@ -16,12 +18,15 @@ Tama tiedosto auttaa jatkamaan tyota, vaikka tietokone sammuu tai chat katoaa.
 
 1. Avaa projekti: `c:\Printmedia paikallinen\printmedia`
 2. Avaa terminaali VS Codessa.
-3. Tarkista tila:
-   - `git log --oneline -n 3`
-  - varmista, etta `8e47710` ja `c992a50` nakyy
-4. Kun sinulle on annettu kirjoitusoikeus repoon, aja:
-   - `git push origin main`
-5. Mene Hostingeriin:
+3. Kaynnista paikallinen sivu:
+  - `npm run dev:local`
+4. Avaa selaimessa:
+  - `http://localhost:3000`
+5. Tarkista tallennettu tila:
+  - `git log --oneline -n 5`
+6. Kun sinulle on annettu kirjoitusoikeus repoon, aja:
+  - `git push origin main`
+7. Mene Hostingeriin:
    - Deployments -> Back -> Redeploy / Deploy latest
 
 ## Jos push ei viela onnistu
@@ -48,6 +53,11 @@ Tama tiedosto auttaa jatkamaan tyota, vaikka tietokone sammuu tai chat katoaa.
   - valtuutettu-jalleenmyyja tekstissa vain `GCC`
   - Hero-kuvaan vaihtuva kuvakaruselli (Docan, monitoimileikkuri, GCC)
 - Varaosat-nimi paivitetty muotoon `Varaosat ja Tarvikkeet`
+- Tulostusmateriaalit-sivulle lisatty tuotepaikkarakenne tulevaa sisaltoa varten.
+- Kelluva `Avaa hinnasto` -painike lisatty koko sivustolle.
+- Yritys-sivun hero korjattu:
+  - koko otsikko voidaan korostaa yhtenaisesti
+  - hero-kuva vaihdettu logosta parempaan laitekuvaan
 
 ## Vinkki seuraavaa kertaa varten
 

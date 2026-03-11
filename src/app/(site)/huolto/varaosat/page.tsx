@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
-import { ArrowLeft, Package, Wrench } from 'lucide-react'
+import { ArrowLeft, Package, Wrench, ChevronDown } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Varaosat ja Tarvikkeet | PrintMedia PM Solutions Oy',
@@ -11,6 +11,12 @@ export const metadata: Metadata = {
 }
 
 const printerBrands = ['Mutoh', 'Roland', 'Mimaki', 'Ja monet muut']
+
+const productSections = [
+  'Tulostimien varaosat',
+  'Leikkureiden varaosat',
+  'Tarvikkeet',
+]
 
 export default function VaraosatPage() {
   return (
@@ -66,6 +72,68 @@ export default function VaraosatPage() {
             </p>
             <Button href="/yhteystiedot">Ota yhteytta</Button>
           </div>
+        </div>
+
+        <div className="mb-12 space-y-4">
+          <h2 className="text-2xl font-bold text-gray-900">Tuotteiden lisauspaikat</h2>
+          <p className="text-gray-600">
+            Jokaisessa osa-alueessa nakyy yksi tuoterivi valmiina. Avaa lisaosio,
+            jos haluat tuoda esiin lisaa tuotteita.
+          </p>
+
+          {productSections.map((section) => (
+            <div
+              key={section}
+              className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6"
+            >
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">{section}</h3>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[1, 2, 3].map((slot) => (
+                  <div
+                    key={`${section}-${slot}`}
+                    className="bg-gray-50 border border-dashed border-gray-300 rounded-xl p-4 min-h-[120px]"
+                  >
+                    <div className="text-xs uppercase tracking-wide text-gray-500 mb-2">
+                      Tuotepaikka
+                    </div>
+                    <h4 className="font-semibold text-gray-900">
+                      {section} - Tuote {slot}
+                    </h4>
+                    <p className="text-sm text-gray-600 mt-2">
+                      Lisaa tahan myohemmin tuotteen nimi, kuvaus ja hinta pyydettaessa.
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <details className="group mt-4">
+                <summary className="list-none cursor-pointer flex items-center justify-center gap-2 rounded-lg border border-primary-200 bg-primary-50 px-6 py-3 text-sm font-semibold text-primary-700 hover:bg-primary-100 transition-colors w-full sm:w-72 mx-auto">
+                  <span>Näytä lisää</span>
+                  <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
+                </summary>
+
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                  {[4, 5, 6].map((slot) => (
+                    <div
+                      key={`${section}-${slot}`}
+                      className="bg-white border border-dashed border-gray-300 rounded-xl p-4 min-h-[120px]"
+                    >
+                      <div className="text-xs uppercase tracking-wide text-gray-500 mb-2">
+                        Lisapaikka
+                      </div>
+                      <h4 className="font-semibold text-gray-900">
+                        {section} - Tuote {slot}
+                      </h4>
+                      <p className="text-sm text-gray-600 mt-2">
+                        Lisaa tahan tarvittaessa enemman tuotteita samaan kategoriaan.
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            </div>
+          ))}
         </div>
 
         <div className="bg-gray-900 text-white rounded-2xl p-8 text-center">

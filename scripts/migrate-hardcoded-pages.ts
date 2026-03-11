@@ -125,10 +125,11 @@ const pages: PageData[] = [
         isVisible: true,
         settings: {
           title: 'Luotettava kumppanisi tulostusalalla',
+          highlightAllTitle: true,
           description: 'PrintMedia Finland Oy on vuonna 2012 perustettu suomalainen yritys, joka tarjoaa ammattitason tulostus- ja leikkausratkaisuja. Palvelemme asiakkaitamme asiantuntemuksella ja luotettavuudella.',
           primaryCta: { text: 'Ota yhteyttä', href: '/yhteystiedot' },
           secondaryCta: { text: 'Tutustu laitteisiin', href: '/laitteet' },
-          image: '/images/logos/logo.svg'
+          image: '/images/devices/J5-132.jpg'
         }
       },
       {

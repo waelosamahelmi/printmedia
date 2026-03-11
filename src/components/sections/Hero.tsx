@@ -12,6 +12,7 @@ interface HeroProps {
   title?: string
   subtitle?: string
   description?: string
+  highlightAllTitle?: boolean
   primaryCta?: {
     text: string
     href: string
@@ -29,6 +30,7 @@ export function Hero({
   title = 'Ammattitason tulostus- ja leikkausratkaisut',
   subtitle = 'PrintMedia Finland Oy',
   description = 'Tarjoamme laajan valikoiman suurkuvatulostimia, leikkureita, laminaattoreita ja tarvikkeita ammattilaisille. Luotettavaa palvelua jo vuodesta 2012.',
+  highlightAllTitle = false,
   primaryCta = { text: 'Tutustu laitteisiin', href: '/laitteet' },
   secondaryCta = { text: 'Ota yhteyttä', href: '/yhteystiedot' },
   image = '/images/devices/hero-printer.jpg',
@@ -39,6 +41,8 @@ export function Hero({
     'Kilpailukykyiset hinnat',
   ],
 }: HeroProps) {
+  const titleWords = useMemo(() => title.split(' '), [title])
+
   const heroImages = useMemo(() => {
     const configured = (images || []).filter(Boolean)
     if (configured.length > 0) return configured
@@ -94,13 +98,13 @@ export function Hero({
 
             {/* Title */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              {title.split(' ').map((word, i) => (
+              {titleWords.map((word, i) => (
                 <motion.span
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + i * 0.1 }}
-                  className={i >= title.split(' ').length - 2 ? 'gradient-text' : ''}
+                  className={highlightAllTitle || i >= titleWords.length - 2 ? 'gradient-text' : ''}
                 >
                   {word}{' '}
                 </motion.span>
