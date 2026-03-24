@@ -13,6 +13,7 @@ interface HeroProps {
   subtitle?: string
   description?: string
   highlightAllTitle?: boolean
+  imageFits?: Array<'cover' | 'contain'>
   primaryCta?: {
     text: string
     href: string
@@ -31,6 +32,7 @@ export function Hero({
   subtitle = 'PrintMedia Finland Oy',
   description = 'Tarjoamme laajan valikoiman suurkuvatulostimia, leikkureita, laminaattoreita ja tarvikkeita ammattilaisille. Luotettavaa palvelua jo vuodesta 2012.',
   highlightAllTitle = false,
+  imageFits,
   primaryCta = { text: 'Tutustu laitteisiin', href: '/laitteet' },
   secondaryCta = { text: 'Ota yhteyttä', href: '/yhteystiedot' },
   image = '/images/devices/hero-printer.jpg',
@@ -48,6 +50,11 @@ export function Hero({
     if (configured.length > 0) return configured
     return [image]
   }, [images, image])
+
+  const heroImageFits = useMemo(
+    () => heroImages.map((_, index) => imageFits?.[index] ?? 'cover'),
+    [heroImages, imageFits]
+  )
 
   const [activeImageIndex, setActiveImageIndex] = useState(0)
 
@@ -164,14 +171,14 @@ export function Hero({
             transition={{ duration: 0.7, delay: 0.3 }}
             className="relative"
           >
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-gray-400/20">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-gray-400/20 bg-white">
               {heroImages.map((heroImage, index) => (
                 <Image
                   key={`${heroImage}-${index}`}
                   src={heroImage}
                   alt="PrintMedia laitteet"
                   fill
-                  className={`object-cover transition-opacity duration-700 ${
+                  className={`${heroImageFits[index] === 'contain' ? 'object-contain p-6 md:p-8' : 'object-cover'} transition-opacity duration-700 ${
                     index === activeImageIndex ? 'opacity-100' : 'opacity-0'
                   }`}
                   priority={index === 0}
@@ -179,7 +186,9 @@ export function Hero({
                 />
               ))}
               {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary-900/20 to-transparent" />
+              {heroImageFits[activeImageIndex] !== 'contain' && (
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary-900/20 to-transparent" />
+              )}
 
               {heroImages.length > 1 && (
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">

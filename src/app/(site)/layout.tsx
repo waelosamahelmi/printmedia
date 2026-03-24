@@ -15,7 +15,7 @@ export default function SiteLayout({
 
       <Link
         href="/hinnasto"
-        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-3 rounded-full border-2 border-white bg-primary-600 px-6 py-4 text-base font-bold text-white shadow-2xl hover:bg-primary-700 transition-colors"
+        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-3 rounded-full border-2 border-white bg-accent-500 px-6 py-4 text-base font-bold text-white shadow-2xl hover:bg-accent-600 transition-colors"
         aria-label="Avaa hinnasto"
       >
         <span className="relative flex h-3 w-3">

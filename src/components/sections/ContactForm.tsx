@@ -319,7 +319,7 @@ export function ContactForm({ showMap = true }: ContactFormProps) {
           >
             <div className="rounded-2xl overflow-hidden shadow-xl h-[400px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1943.5!2d25.508!3d61.502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468e1b0a5b5b5b5b%3A0x5b5b5b5b5b5b5b5b!2sKoskueentie%207%2C%2019700%20Sysm%C3%A4!5e0!3m2!1sfi!2sfi!4v1710000000000"
+                src="https://maps.google.com/maps?q=Printmedia+PM+Solutions+Oy,+Koskueentie+7,+19700+Sysm%C3%A4,+Finland&output=embed&hl=fi"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

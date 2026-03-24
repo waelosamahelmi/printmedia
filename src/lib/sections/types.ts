@@ -10,6 +10,7 @@ export interface HeroSettings {
   title: string
   description: string
   highlightAllTitle?: boolean
+  imageFits?: Array<'cover' | 'contain'>
   primaryCta?: CTALink
   secondaryCta?: CTALink
   image?: string

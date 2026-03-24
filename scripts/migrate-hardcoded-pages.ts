@@ -47,10 +47,11 @@ const pages: PageData[] = [
           primaryCta: { text: 'Tutustu laitteisiin', href: '/laitteet' },
           secondaryCta: { text: 'Ota yhteyttä', href: '/yhteystiedot' },
           image: '/images/devices/J5-132.jpg',
+          imageFits: ['cover', 'contain', 'contain'],
           images: [
             '/images/devices/J5-132.jpg',
             '/images/devices/cb03ii_500px_500x.jpg',
-            '/images/devices/RXII_132_400.png',
+            '/images/devices/docan-m10-uv-clean.jpg',
           ],
           features: ['Valtuutettu jälleenmyyjä', 'Ammattitaitoinen huolto', 'Nopea toimitus']
         }
@@ -207,8 +208,8 @@ const pages: PageData[] = [
           <div class="w-0.5 h-full bg-gray-300 mt-2"></div>
         </div>
         <div class="pb-8">
-          <h3 class="text-xl font-bold text-gray-900 mb-1">Mimaki-edustus</h3>
-          <p class="text-gray-600">Aloitimme yhteistyön Mimakin kanssa ja saimme valtuutetun jälleenmyyjän statuksen.</p>
+          <h3 class="text-xl font-bold text-gray-900 mb-1">Mimaki, Roland ja Mutoh</h3>
+          <p class="text-gray-600">Aloitimme huolto- ja asiantuntijapalvelut Roland-, Mimaki- ja Mutoh-laitteille.</p>
         </div>
       </div>
       <div class="flex gap-6">

@@ -25,11 +25,13 @@ export default function Image({
 }: ImageProps) {
   // Handle fill mode with absolute positioning
   if (fill) {
+    const hasExplicitObjectFit = /(?:^|\s)object-(contain|cover|fill|none|scale-down)(?:\s|$)/.test(className)
+
     return (
       <img
         src={src}
         alt={alt}
-        className={`absolute inset-0 w-full h-full object-cover ${className}`}
+        className={`absolute inset-0 w-full h-full ${hasExplicitObjectFit ? '' : 'object-cover'} ${className}`.trim()}
         loading={priority ? 'eager' : 'lazy'}
         {...props}
       />
