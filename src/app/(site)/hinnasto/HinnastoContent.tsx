@@ -1,72 +1,138 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { Search, FileDown, X, ChevronDown, ChevronUp } from 'lucide-react'
-
-interface Product {
-  id: string
-  name: string
-  sku: string | null
-  price: string | null
-  priceType: string | null
-  shortDesc: string | null
-  category: {
-    id: string
-    name: string
-    slug: string
-  } | null
-}
+import { priceListSections, type PriceListSection } from './priceListData'
 
 interface CategoryGroup {
   name: string
   slug: string
-  products: Product[]
+  sections: PriceListSection[]
+}
+
+const INK_SECTION_TITLES = new Set([
+  'Jetbest ES3 - värikasetti 440 ml',
+  'Jetbest ES3 - täyttöpullo 500 ml',
+  'Jetbest SS21 – värikasetti 440 ml',
+  'Jetbest I-2 – värikasetti 440 ml',
+  'Jetbest puhdistuskasetit 220 ml',
+  'Puhdistusaineet 1 L',
+  'Jetbest LUS-170',
+  'Chromoink',
+])
+
+const DISPLAY_SECTION_TITLES = new Set([
+  'Spyro',
+  'Export',
+  'Luxury',
+  'Deluxe',
+  'Newly',
+  'Mini Roll Up',
+  'Roll up -tarvikkeet',
+  'Promopöytä-1',
+  'Promopöytä-2',
+  'Promopöytä-4',
+  'Suorat messuseinä',
+  'Kaarevat messuseinät',
+  'Lisävarusteet',
+  'Esitetelineet',
+  'Julistelistat',
+  'X Banner',
+])
+
+const TOOLS_SECTION_TITLES = new Set([
+  'Turvaviivain teräsreunalla',
+  'Turvaviivain leikkurilla',
+  'Kiinnitystarvikkeet',
+  'Leikkurinterät',
+  'Puhdistustarvikkeet',
+  'Mediaklipsit avattujen rullien kiinnittämiseen',
+])
+
+function resolveCategory(section: PriceListSection) {
+  if (INK_SECTION_TITLES.has(section.title)) {
+    return { slug: 'tulostusvarit', name: 'Tulostusvärit' }
+  }
+
+  if (DISPLAY_SECTION_TITLES.has(section.title)) {
+    return { slug: 'display-tuotteet', name: 'Display-tuotteet' }
+  }
+
+  if (TOOLS_SECTION_TITLES.has(section.title)) {
+    return { slug: 'tarvikkeet-ja-tyokalut', name: 'Tarvikkeet ja työkalut' }
+  }
+
+  return { slug: 'tulostusmateriaalit', name: 'Tulostusmateriaalit' }
+}
+
+function normalizePrice(price: string) {
+  return price.replace(/\?/g, '€').trim()
 }
 
 export default function HinnastoContent() {
-  const [products, setProducts] = useState<Product[]>([])
-  const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set())
 
-  useEffect(() => {
-    fetch('/api/products/public')
-      .then(r => r.json())
-      .then((data: Product[]) => {
-        setProducts(Array.isArray(data) ? data : [])
-        setLoading(false)
-      })
-      .catch(() => setLoading(false))
+  const sections = useMemo(() => {
+    return priceListSections.map(section => {
+      const category = resolveCategory(section)
+
+      return {
+        ...section,
+        category: category.name,
+        categorySlug: category.slug,
+        products: section.products.map(product => ({
+          ...product,
+          price: normalizePrice(product.price),
+        })),
+      }
+    })
   }, [])
 
   const categories = useMemo(() => {
     const seen = new Map<string, string>()
-    products.forEach(p => {
-      if (p.category) seen.set(p.category.slug, p.category.name)
+    sections.forEach(section => {
+      seen.set(section.categorySlug, section.category)
     })
     return Array.from(seen.entries()).map(([slug, name]) => ({ slug, name }))
-  }, [products])
+  }, [sections])
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase().trim()
-    return products.filter(p => {
-      const matchesSearch = !q ||
-        p.name.toLowerCase().includes(q) ||
-        (p.sku?.toLowerCase().includes(q) ?? false) ||
-        (p.shortDesc?.toLowerCase().includes(q) ?? false)
-      const matchesCat = selectedCategory === 'all' || p.category?.slug === selectedCategory
-      return matchesSearch && matchesCat
-    })
-  }, [products, search, selectedCategory])
+    return sections
+      .map(section => {
+        const matchesCategory = selectedCategory === 'all' || section.categorySlug === selectedCategory
+        const products = section.products.filter(product => {
+          return !q ||
+            product.name.toLowerCase().includes(q) ||
+            product.code.toLowerCase().includes(q) ||
+            product.details.toLowerCase().includes(q) ||
+            section.title.toLowerCase().includes(q) ||
+            section.description.toLowerCase().includes(q)
+        })
+
+        if (!matchesCategory || products.length === 0) {
+          return null
+        }
+
+        return {
+          ...section,
+          products,
+        }
+      })
+      .filter((section): section is PriceListSection => section !== null)
+  }, [sections, search, selectedCategory])
 
   const grouped = useMemo<CategoryGroup[]>(() => {
     const map = new Map<string, CategoryGroup>()
-    filtered.forEach(p => {
-      const key = p.category?.slug ?? 'muu'
-      const name = p.category?.name ?? 'Muut'
-      if (!map.has(key)) map.set(key, { name, slug: key, products: [] })
-      map.get(key)!.products.push(p)
+    filtered.forEach(section => {
+      const key = section.categorySlug
+      const name = section.category
+      if (!map.has(key)) {
+        map.set(key, { name, slug: key, sections: [] })
+      }
+      map.get(key)!.sections.push(section)
     })
     return Array.from(map.values())
   }, [filtered])
@@ -139,24 +205,15 @@ export default function HinnastoContent() {
       </div>
 
       {/* Results count */}
-      {(search || selectedCategory !== 'all') && !loading && (
+      {(search || selectedCategory !== 'all') && (
         <p className="text-sm text-gray-500 mb-4">
-          {filtered.length} tuotetta löytyi
+          {filtered.reduce((sum, section) => sum + section.products.length, 0)} tuotetta löytyi
           {search && <span> hakusanalla "<strong>{search}</strong>"</span>}
         </p>
       )}
 
-      {/* Loading */}
-      {loading && (
-        <div className="space-y-4">
-          {[1, 2, 3].map(i => (
-            <div key={i} className="animate-pulse bg-gray-100 rounded-xl h-32" />
-          ))}
-        </div>
-      )}
-
       {/* No results */}
-      {!loading && filtered.length === 0 && (
+      {filtered.length === 0 && (
         <div className="text-center py-16 text-gray-500">
           <Search className="w-10 h-10 mx-auto mb-3 text-gray-300" />
           <p className="font-medium">Ei tuloksia</p>
@@ -165,8 +222,10 @@ export default function HinnastoContent() {
       )}
 
       {/* Product groups */}
-      {!loading && grouped.map(group => {
+      {grouped.map(group => {
         const isCollapsed = collapsedCategories.has(group.slug)
+        const productCount = group.sections.reduce((sum, section) => sum + section.products.length, 0)
+
         return (
           <div key={group.slug} className="mb-6 border border-gray-200 rounded-xl overflow-hidden">
             {/* Category header */}
@@ -176,39 +235,50 @@ export default function HinnastoContent() {
             >
               <span className="font-semibold text-gray-800">{group.name}</span>
               <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-500 bg-gray-200 rounded-full px-2 py-0.5">{group.products.length} tuotetta</span>
+                <span className="text-xs text-gray-500 bg-gray-200 rounded-full px-2 py-0.5">{productCount} tuotetta</span>
                 {isCollapsed ? <ChevronDown className="w-4 h-4 text-gray-500" /> : <ChevronUp className="w-4 h-4 text-gray-500" />}
               </div>
             </button>
 
             {/* Products table */}
             {!isCollapsed && (
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-gray-200 bg-white">
-                      <th className="text-left px-5 py-2.5 font-medium text-gray-600 w-1/3">Tuote</th>
-                      <th className="text-left px-4 py-2.5 font-medium text-gray-600">Tuotenro</th>
-                      <th className="text-left px-4 py-2.5 font-medium text-gray-600 hidden md:table-cell">Kuvaus</th>
-                      <th className="text-right px-5 py-2.5 font-medium text-gray-600">Hinta (ALV 0%)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {group.products.map((p, i) => (
-                      <tr
-                        key={p.id}
-                        className={`border-b border-gray-100 last:border-0 hover:bg-primary-50 transition-colors ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}
-                      >
-                        <td className="px-5 py-3 font-medium text-gray-900">{p.name}</td>
-                        <td className="px-4 py-3 text-gray-500 font-mono text-xs">{p.sku ?? '—'}</td>
-                        <td className="px-4 py-3 text-gray-500 hidden md:table-cell max-w-xs truncate">{p.shortDesc ?? '—'}</td>
-                        <td className="px-5 py-3 text-right font-semibold text-gray-900">
-                          {formatPrice(p.price, p.priceType)}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div className="divide-y divide-gray-200 bg-white">
+                {group.sections.map(section => (
+                  <section key={section.id} className="p-4 sm:p-5">
+                    <div className="mb-4">
+                      <h3 className="text-lg font-semibold text-gray-900">{section.title}</h3>
+                      {section.description && (
+                        <p className="mt-1 text-sm text-gray-600">{section.description.replace(/\?/g, '€')}</p>
+                      )}
+                    </div>
+
+                    <div className="overflow-x-auto rounded-lg border border-gray-100">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b border-gray-200 bg-gray-50">
+                            <th className="text-left px-5 py-2.5 font-medium text-gray-600 w-[34%]">Tuote</th>
+                            <th className="text-left px-4 py-2.5 font-medium text-gray-600">Tuotenro</th>
+                            <th className="text-left px-4 py-2.5 font-medium text-gray-600 hidden md:table-cell">Tiedot</th>
+                            <th className="text-right px-5 py-2.5 font-medium text-gray-600">Hinta (ALV 0%)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {section.products.map((product, index) => (
+                            <tr
+                              key={`${section.id}-${product.code}-${index}`}
+                              className={`border-b border-gray-100 last:border-0 hover:bg-primary-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}
+                            >
+                              <td className="px-5 py-3 font-medium text-gray-900">{product.name.replace(/\?/g, '€')}</td>
+                              <td className="px-4 py-3 text-gray-500 font-mono text-xs">{product.code}</td>
+                              <td className="px-4 py-3 text-gray-500 hidden md:table-cell max-w-md">{product.details ? product.details.replace(/\?/g, '€') : '—'}</td>
+                              <td className="px-5 py-3 text-right font-semibold text-gray-900">{product.price}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </section>
+                ))}
               </div>
             )}
           </div>
