@@ -10,17 +10,20 @@ interface Category {
   title: string
   description: string
   image: string
+  images?: string[]
   href: string
   count?: number
 }
 
 interface CategoryGridProps {
+  sectionId?: string
   title?: string
   subtitle?: string
   categories: Category[]
 }
 
 export function CategoryGrid({
+  sectionId,
   title = 'Tuotekategoriat',
   subtitle = 'Löydä sopiva ratkaisu tarpeisiisi laajasta valikoimastamme',
   categories,
@@ -31,7 +34,7 @@ export function CategoryGrid({
       : 'grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8'
 
   return (
-    <section className="section bg-gray-50">
+    <section id={sectionId} className="section bg-gray-50">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -56,13 +59,29 @@ export function CategoryGrid({
                 <div className="card-hover h-full">
                   {/* Image */}
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={category.image}
-                      alt={category.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
+                    {category.images && category.images.length > 1 ? (
+                      <div className="grid grid-cols-3 h-full gap-1 bg-gray-200 p-1">
+                        {category.images.slice(0, 3).map((imgSrc, imgIndex) => (
+                          <div key={`${category.title}-${imgIndex}`} className="relative overflow-hidden">
+                            <Image
+                              src={imgSrc}
+                              alt={`${category.title} ${imgIndex + 1}`}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                              sizes="(max-width: 640px) 33vw, (max-width: 1024px) 16vw, 10vw"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <Image
+                        src={category.image}
+                        alt={category.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
                     
                     {/* Category count badge */}

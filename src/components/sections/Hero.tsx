@@ -6,14 +6,17 @@ import Link from 'next/link'
 import Image from '@/components/ui/Image'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
-import { ArrowRight, Phone, CheckCircle } from 'lucide-react'
+import { ArrowRight, Phone, CheckCircle, ArrowDown } from 'lucide-react'
 
 interface HeroProps {
   title?: string
   subtitle?: string
   description?: string
   highlightAllTitle?: boolean
+  centered?: boolean
   imageFits?: Array<'cover' | 'contain'>
+  scrollButton?: boolean
+  scrollTarget?: string
   primaryCta?: {
     text: string
     href: string
@@ -32,7 +35,10 @@ export function Hero({
   subtitle = 'PrintMedia Finland Oy',
   description = 'Tarjoamme laajan valikoiman suurkuvatulostimia, leikkureita, laminaattoreita ja tarvikkeita ammattilaisille. Luotettavaa palvelua jo vuodesta 2012.',
   highlightAllTitle = false,
+  centered = false,
   imageFits,
+  scrollButton = false,
+  scrollTarget = '#tuotekategoriat',
   primaryCta = { text: 'Tutustu laitteisiin', href: '/laitteet' },
   secondaryCta = { text: 'Ota yhteyttä', href: '/yhteystiedot' },
   image = '/images/devices/hero-printer.jpg',
@@ -85,12 +91,13 @@ export function Hero({
       <div className="absolute bottom-20 left-20 w-64 h-64 bg-accent-500/20 rounded-full blur-3xl" />
 
       <Container className="relative pt-32 pb-16 lg:pb-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className={centered ? 'flex flex-col items-center text-center max-w-3xl mx-auto' : 'grid lg:grid-cols-2 gap-12 lg:gap-16 items-center'}>
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className={centered ? 'w-full' : undefined}
           >
             {/* Badge */}
             <motion.div
@@ -165,6 +172,7 @@ export function Hero({
           </motion.div>
 
           {/* Image */}
+          {!centered && (
           <motion.div
             initial={{ opacity: 0, scale: 0.9, x: 50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -237,7 +245,25 @@ export function Hero({
               <div className="text-sm text-primary-100">vuotta kokemusta</div>
             </motion.div>
           </motion.div>
+          )}
         </div>
+
+        {scrollButton && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.85 }}
+            className="mt-[76px] flex justify-center"
+          >
+            <a
+              href={scrollTarget}
+              aria-label="Siirry alas"
+              className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg transition-colors hover:bg-primary-700"
+            >
+              <ArrowDown className="h-6 w-6" />
+            </a>
+          </motion.div>
+        )}
       </Container>
     </section>
   )

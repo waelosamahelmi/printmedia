@@ -44,6 +44,8 @@ const pages: PageData[] = [
           subtitle: 'PrintMedia PM Solutions Oy',
           title: 'Suurkuvatulostusalan tukkukauppa',
           description: 'Tarjoamme laajan valikoiman UV-tulostimia, leikkureita, laminaattoreita ja tarvikkeita ammattilaisille.',
+          scrollButton: true,
+          scrollTarget: '#miksi-valita-printmedia',
           primaryCta: { text: 'Tutustu laitteisiin', href: '/laitteet' },
           secondaryCta: { text: 'Ota yhteyttä', href: '/yhteystiedot' },
           image: '/images/devices/J5-132.jpg',
@@ -61,6 +63,7 @@ const pages: PageData[] = [
         sortOrder: 1,
         isVisible: true,
         settings: {
+          sectionId: 'miksi-valita-printmedia',
           title: 'Miksi valita PrintMedia?',
           subtitle: 'Olemme luotettava kumppanisi tulostusalalla',
           features: [
@@ -78,8 +81,65 @@ const pages: PageData[] = [
         settings: {
           title: 'Tuotekategoriat',
           subtitle: 'Löydä sopiva ratkaisu tarpeisiisi laajasta valikoimastamme',
-          mode: 'auto',
-          limit: 6
+          sectionId: 'tuotekategoriat',
+          mode: 'manual',
+          items: [
+            {
+              title: 'Laitteet',
+              description: 'Ammattitason tulostus- ja leikkauslaitteet yrityksille.',
+              image: '/images/devices/docan-m10-uv-clean.jpg',
+              images: [
+                '/images/devices/docan-m10-uv-clean.jpg',
+                '/images/devices/cb03ii_500px_500x.jpg',
+                '/images/devices/fayon-1600se.png',
+              ],
+              href: '/laitteet',
+            },
+            {
+              title: 'Tulostusvärit',
+              description: 'Laadukkaat musteet ja väriratkaisut eri tulostintekniikoihin.',
+              image: '/images/products/inks/jetbest-es3-varikasetti-440ml.jpg',
+              images: [
+                '/images/products/inks/jetbest-es3-varikasetti-440ml.jpg',
+                '/images/products/inks/jetbest-ss21-varikasetti-440ml.jpg',
+                '/images/products/inks/jetbest-lus170-uv-1l.jpg',
+              ],
+              href: '/tulostusvarit',
+            },
+            {
+              title: 'Tulostusmateriaalit',
+              description: 'Monipuolinen valikoima tulostusmateriaaleja eri käyttökohteisiin.',
+              image: '/images/tulostimien_tarvikkeet.jpg',
+              images: [
+                '/images/tulostimien_tarvikkeet.jpg',
+                '/images/products/accessories/bannerclip.jpg',
+                '/images/products/accessories/turvaviivain_tersreunalla.jpg',
+              ],
+              href: '/tulostusmateriaalit',
+            },
+            {
+              title: 'Varaosat ja tarvikkeet',
+              description: 'Varaosat, huoltotarvikkeet ja lisävarusteet laitteiden ylläpitoon.',
+              image: '/images/devices/tools_600px_600x.png',
+              images: [
+                '/images/devices/tools_600px_600x.png',
+                '/images/products/accessories/bungee-ball.jpg',
+                '/images/products/accessories/bungee-koukku.jpg',
+              ],
+              href: '/huolto/varaosat',
+            },
+            {
+              title: 'Display-tuotteet',
+              description: 'Roll-upit, messuseinät ja messupöydät näyttäviin esillepanoihin.',
+              image: '/images/products/rollups/spyro2.jpg',
+              images: [
+                '/images/products/rollups/spyro2.jpg',
+                '/images/products/walls/suora_messuseina.jpg',
+                '/images/products/tables/promopyt_1_uusi_kuva_1.jpg',
+              ],
+              href: '/display',
+            },
+          ],
         }
       },
       {

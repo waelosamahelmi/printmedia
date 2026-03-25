@@ -44,6 +44,24 @@ function parseSettings<T>(settings: string | null | undefined): T | null {
   }
 }
 
+function getCategoryHref(slug: string): string {
+  const routeMap: Record<string, string> = {
+    'docan-uv-tulostimet': '/laitteet/docan-uv-tulostimet',
+    'gcc-tarraleikkurit': '/laitteet/gcc-tarraleikkurit',
+    'monitoimileikkurit': '/laitteet/monitoimileikkurit',
+    laminaattorit: '/laitteet/laminaattorit',
+    tulostusvarit: '/tulostusvarit',
+    tulostusmateriaalit: '/tulostusmateriaalit',
+    tarvikkeet: '/tarvikkeet',
+    'display-tuotteet': '/display',
+    'roll-up': '/display/roll-up',
+    messuseinat: '/display/messuseinat',
+    messupoydat: '/display/messupoydat',
+  }
+
+  return routeMap[slug] || `/laitteet/${slug}`
+}
+
 // Fetch categories for categories section
 async function fetchCategories(settings: CategoriesSettings) {
   if (settings.mode === 'manual' && settings.categoryIds) {
@@ -129,7 +147,7 @@ export async function SectionRenderer({ section }: SectionRendererProps) {
       const settings = parseSettings<FeaturesSettings>(settingsJson)
       if (!settings) return null
       return (
-        <section className="section">
+        <section id={settings.sectionId} className="section scroll-mt-32">
           <Container>
             <div className="section-header">
               <h2 className="section-title">{settings.title || 'Miksi valita PrintMedia?'}</h2>
@@ -158,6 +176,17 @@ export async function SectionRenderer({ section }: SectionRendererProps) {
       const settings = parseSettings<CategoriesSettings>(settingsJson)
       if (!settings) return null
 
+      if (settings.items && settings.items.length > 0) {
+        return (
+          <CategoryGrid
+            sectionId={settings.sectionId}
+            title={settings.title}
+            subtitle={settings.subtitle}
+            categories={settings.items}
+          />
+        )
+      }
+
       const categories = await fetchCategories(settings)
 
       // Transform database categories to component format
@@ -165,12 +194,13 @@ export async function SectionRenderer({ section }: SectionRendererProps) {
         title: cat.name,
         description: cat.description || '',
         image: cat.image || '/images/placeholder.jpg',
-        href: `/laitteet/${cat.slug}`, // Add proper href for linking
+        href: getCategoryHref(cat.slug),
         count: cat._count.products,
       }))
 
       return (
         <CategoryGrid
+          sectionId={settings.sectionId}
           title={settings.title}
           subtitle={settings.subtitle}
           categories={formattedCategories}

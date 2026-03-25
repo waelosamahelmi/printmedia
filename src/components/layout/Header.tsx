@@ -19,6 +19,14 @@ import {
 
 const navigation = [
   { name: 'Etusivu', href: '/' },
+  {
+    name: 'Huolto ja tuki',
+    href: '/huolto',
+    highlight: true,
+    children: [
+      { name: 'Varaosat ja Tarvikkeet', href: '/huolto/varaosat' },
+    ]
+  },
   { 
     name: 'Laitteet', 
     href: '/laitteet',
@@ -42,14 +50,6 @@ const navigation = [
       { name: 'Roll Up', href: '/display/roll-up' },
       { name: 'Messuseinät', href: '/display/messuseinat' },
       { name: 'Messupöydät', href: '/display/messupoydat' },
-    ]
-  },
-  { 
-    name: 'Huolto ja tuki',
-    href: '/huolto',
-    highlight: true,
-    children: [
-      { name: 'Varaosat ja Tarvikkeet', href: '/huolto/varaosat' },
     ]
   },
   {
@@ -150,9 +150,9 @@ export function Header() {
                 <Link
                   href={item.href}
                   className={cn(
-                    'flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                    'flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors border border-primary-100',
                     item.highlight
-                      ? 'bg-accent-500 text-white hover:bg-accent-600'
+                      ? 'bg-accent-500 text-white hover:bg-accent-600 border-accent-600'
                       : pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
                         ? 'text-primary-600'
                         : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
@@ -196,7 +196,7 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button variant="accent" size="sm" href="/yhteystiedot">
+            <Button variant="accent" className="px-3 py-2 text-sm border border-accent-600" href="/yhteystiedot">
               Pyydä tarjous
             </Button>
           </div>

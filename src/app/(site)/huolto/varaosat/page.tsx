@@ -2,12 +2,12 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
-import { ArrowLeft, Package, Wrench, ChevronDown } from 'lucide-react'
+import { ArrowLeft, Package, Wrench, ChevronDown, ArrowDown } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Varaosat ja Tarvikkeet | PrintMedia PM Solutions Oy',
   description:
-    'Varaosat ja kulutustarvikkeet tulostimiin ja leikkureihin. Alkuperais- ja tarvikeosat ammattikayttoon.',
+    'Varaosat ja kulutustarvikkeet tulostimiin ja leikkureihin. Alkuperäis- ja tarvikesosat ammattikäyttöön.',
 }
 
 const printerBrands = ['Mutoh', 'Roland', 'Mimaki', 'Ja monet muut']
@@ -35,8 +35,8 @@ export default function VaraosatPage() {
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Varaosat ja Tarvikkeet</h1>
           <p className="text-xl text-gray-600 max-w-3xl">
-            Toimitamme alkuperais- ja tarvikeosia seka suurkuvatulostimiin etta
-            leikkureihin. Kerro tarpeesi, niin autamme loytamaan oikeat osat.
+            Toimitamme alkuperäis- ja tarvikesosia sekä suurkuvatulostimiin että
+            leikkureihin. Kerro tarpeesi, niin autamme löytämään oikeat osat.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export default function VaraosatPage() {
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Tulostimien varaosat</h2>
             <p className="text-gray-600 mb-6">
-              Varastostamme loytyy kulutusosia ja varaosia useisiin
+              Varastostamme löytyy kulutusosia ja varaosia useisiin
               suurkuvatulostimiin.
             </p>
             <h3 className="font-semibold text-gray-900 mb-3">Tuetut merkit:</h3>
@@ -67,18 +67,28 @@ export default function VaraosatPage() {
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Leikkureiden varaosat</h2>
             <p className="text-gray-600 mb-6">
-              Toimitamme myos leikkureiden kulutusosia ja varaosia ammattikayttoon.
-              Ota yhteytta, niin tarkistamme saatavuuden nopeasti.
+              Toimitamme myös leikkureiden kulutusosia ja varaosia ammattikäyttöön.
+              Tarvitsetko varaosia? Ota meihin yhteyttä niin autamme löytämään oikeat osat.
             </p>
-            <Button href="/yhteystiedot">Ota yhteytta</Button>
           </div>
         </div>
 
-        <div className="mb-12 space-y-4">
+        <div className="flex justify-center mb-12">
+          <a
+            href="#tuotteet"
+            className="inline-flex items-center gap-2 rounded-full bg-primary-600 px-5 py-3 text-white shadow-md hover:bg-primary-700 transition-colors"
+            aria-label="Siirry tuotteisiin"
+          >
+            <span className="font-semibold">Tuotteet</span>
+            <ArrowDown className="w-5 h-5" />
+          </a>
+        </div>
+
+        <div className="mb-12 space-y-4 scroll-mt-28" id="tuotteet">
           <h2 className="text-2xl font-bold text-gray-900">Tuotteiden lisauspaikat</h2>
           <p className="text-gray-600">
-            Jokaisessa osa-alueessa nakyy yksi tuoterivi valmiina. Avaa lisaosio,
-            jos haluat tuoda esiin lisaa tuotteita.
+            Jokaisessa osa-alueessa näkyy yksi tuoterivi valmiina. Avaa lisäosio,
+            jos haluat tuoda esiin lisää tuotteita.
           </p>
 
           {productSections.map((section) => (
@@ -101,7 +111,7 @@ export default function VaraosatPage() {
                       {section} - Tuote {slot}
                     </h4>
                     <p className="text-sm text-gray-600 mt-2">
-                      Lisaa tahan myohemmin tuotteen nimi, kuvaus ja hinta pyydettaessa.
+                      Lisää tähän myöhemmin tuotteen nimi, kuvaus ja hinta pyydettäessä.
                     </p>
                   </div>
                 ))}
@@ -120,13 +130,13 @@ export default function VaraosatPage() {
                       className="bg-white border border-dashed border-gray-300 rounded-xl p-4 min-h-[120px]"
                     >
                       <div className="text-xs uppercase tracking-wide text-gray-500 mb-2">
-                        Lisapaikka
+                        Lisäpaikka
                       </div>
                       <h4 className="font-semibold text-gray-900">
                         {section} - Tuote {slot}
                       </h4>
                       <p className="text-sm text-gray-600 mt-2">
-                        Lisaa tahan tarvittaessa enemman tuotteita samaan kategoriaan.
+                        Lisää tähän tarvittaessa enemmän tuotteita samaan kategoriaan.
                       </p>
                     </div>
                   ))}
@@ -139,7 +149,7 @@ export default function VaraosatPage() {
         <div className="bg-gray-900 text-white rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Tarvitsetko varaosia?</h2>
           <p className="text-gray-300 mb-6">
-            Soita tai laheta sahkopostia, niin autamme loytamaan oikeat osat.
+            Soita tai lähettä sähköpostia, niin autamme löytämään oikeat osat.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a

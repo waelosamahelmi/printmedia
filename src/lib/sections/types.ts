@@ -10,7 +10,10 @@ export interface HeroSettings {
   title: string
   description: string
   highlightAllTitle?: boolean
+  centered?: boolean
   imageFits?: Array<'cover' | 'contain'>
+  scrollButton?: boolean
+  scrollTarget?: string
   primaryCta?: CTALink
   secondaryCta?: CTALink
   image?: string
@@ -25,6 +28,7 @@ export interface Feature {
 }
 
 export interface FeaturesSettings {
+  sectionId?: string
   title: string
   subtitle?: string
   features: Feature[]
@@ -33,8 +37,16 @@ export interface FeaturesSettings {
 export interface CategoriesSettings {
   title?: string
   subtitle?: string
+  sectionId?: string
   mode: 'manual' | 'auto'
   categoryIds?: string[] // if manual mode
+  items?: Array<{
+    title: string
+    description: string
+    image: string
+    images?: string[]
+    href: string
+  }> // optional manual display cards
   includeSlugs?: string[] // optional slug whitelist in auto mode
   excludeSlugs?: string[] // optional slug blacklist in auto mode
   limit?: number // if auto mode
