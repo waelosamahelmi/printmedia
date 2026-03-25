@@ -3,6 +3,8 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { FileText } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 export default function SiteLayout({
   children,
 }: {
