@@ -31,8 +31,8 @@ const navigation = [
   },
   { name: 'Tulostusvärit', href: '/tulostusvarit' },
   { name: 'Tulostusmateriaalit', href: '/tulostusmateriaalit' },
-  { 
-    name: 'Varaosat ja Tarvikkeet', 
+  {
+    name: 'Varaosat ja Tarvikkeet',
     href: '/huolto/varaosat'
   },
   { 
@@ -45,12 +45,19 @@ const navigation = [
     ]
   },
   { 
-    name: 'Huolto ja tuki', 
+    name: 'Huolto ja tuki',
     href: '/huolto',
+    highlight: true,
     children: [
       { name: 'Varaosat ja Tarvikkeet', href: '/huolto/varaosat' },
-      { name: 'Ergosoft RIP', href: '/huolto/ergosoft-rip' },
-      { name: 'SAi Flexi', href: '/huolto/flexi' },
+    ]
+  },
+  {
+    name: 'Ohjelmistot',
+    href: '/ohjelmistot',
+    children: [
+      { name: 'Ergosoft RIP 16', href: '/ohjelmistot/ergosoft-rip' },
+      { name: 'SAi Flexi', href: '/ohjelmistot/flexi' },
     ]
   },
   { name: 'Yritys', href: '/yritys' },
@@ -144,12 +151,21 @@ export function Header() {
                   href={item.href}
                   className={cn(
                     'flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
-                    pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
-                      ? 'text-primary-600'
-                      : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                    item.highlight
+                      ? 'bg-accent-500 text-white hover:bg-accent-600'
+                      : pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+                        ? 'text-primary-600'
+                        : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
                   )}
                 >
-                  {item.name}
+                  {item.name === 'Varaosat ja Tarvikkeet' ? (
+                    <span className="leading-tight">
+                      <span className="block whitespace-nowrap">Varaosat ja</span>
+                      <span className="block">Tarvikkeet</span>
+                    </span>
+                  ) : (
+                    item.name
+                  )}
                   {item.children && <ChevronDown className="w-4 h-4" />}
                 </Link>
                 

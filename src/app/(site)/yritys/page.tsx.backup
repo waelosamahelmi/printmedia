@@ -75,9 +75,9 @@ export default function YritysPage() {
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/logos/logo.svg"
+                  src="/images/logos/printmedia-logo-blue.png"
                   alt="PrintMedia Finland"
-                  className="w-full h-full object-contain bg-white p-8"
+                  className="w-full h-full object-contain bg-white p-10"
                 />
               </div>
             </div>

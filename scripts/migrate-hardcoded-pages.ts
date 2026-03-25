@@ -294,14 +294,14 @@ const pages: PageData[] = [
   },
 
   // ──────────────────────────────────────────────────────
-  // HUOLTO (slug: 'huolto')
+  // OHJELMISTOT (slug: 'ohjelmistot')
   // ──────────────────────────────────────────────────────
   {
-    slug: 'huolto',
-    title: 'Huolto ja tuki',
-    description: 'PrintMedia PM Solutions tarjoaa kattavat huolto- ja tukipalvelut, varaosat sekä RIP-ohjelmistot.',
-    metaTitle: 'Huolto ja tuki',
-    metaDesc: 'PrintMedia PM Solutions tarjoaa kattavat huolto- ja tukipalvelut, varaosat sekä RIP-ohjelmistot.',
+    slug: 'ohjelmistot',
+    title: 'Ohjelmistot',
+    description: 'RIP-ohjelmistot ja suunnitteluohjelmistot suurkuvatulostukseen ja leikkaukseen. ErgoSoft RIP 16 ja SAi Flexi.',
+    metaTitle: 'Ohjelmistot | PrintMedia PM Solutions Oy',
+    metaDesc: 'RIP-ohjelmistot ja suunnitteluohjelmistot suurkuvatulostukseen ja leikkaukseen. ErgoSoft RIP 16 ja SAi Flexi.',
     status: 'PUBLISHED',
     sections: [
       {
@@ -309,53 +309,39 @@ const pages: PageData[] = [
         sortOrder: 0,
         isVisible: true,
         settings: {
-          subtitle: 'Huoltopalvelut',
-          title: 'Huolto ja tuki',
-          description: 'Tarjoamme kattavasti huolto-, korjaus- ja tukipalvelut lähes kaikkiin suurkuvatulostimiin. Lisäksi meiltä saat myös kaikki tarvittavat varaosat. Ammattitaitoiset teknikkomme palvelevat sinua nopeasti ja luotettavasti. Kysy rohkeasti lisää!',
+          subtitle: 'Ohjelmistot',
+          title: 'RIP- ja suunnitteluohjelmistot',
+          description: 'Tarjoamme ammattitason RIP-ohjelmistoja ja suunnittelutyökaluja suurkuvatulostukseen ja leikkaukseen. Olemme ErgoSoft- ja SAi Flexi -ohjelmistojen virallinen jälleenmyyjä.',
           primaryCta: { text: 'Ota yhteyttä', href: '/yhteystiedot' },
           secondaryCta: { text: 'Soita 0440 875 025', href: 'tel:+358440875025' }
         }
       },
       {
         type: 'custom_html',
-        title: 'Varaosat ja ohjelmistot',
+        title: 'Ohjelmistot',
         sortOrder: 1,
         isVisible: true,
         settings: {
           html: `<section class="py-16 lg:py-24">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
-      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Varaosat ja ohjelmistot</h2>
-      <p class="text-xl text-gray-600">Tarjoamme varaosat ja ohjelmistot ammattikäyttöön</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Ohjelmistot</h2>
+      <p class="text-xl text-gray-600">Virallinen jälleenmyyjä – RIP- ja suunnitteluohjelmistot ammattikäyttöön</p>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <a href="/huolto/tulostimien-varaosat" class="bg-white rounded-2xl p-6 shadow-lg shadow-gray-200/50 hover:shadow-xl transition-shadow group block">
-        <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-200 transition-colors">
-          <svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">Tulostimien varaosat</h3>
-        <p class="text-gray-600">Alkuperäiset ja yhteensopivat varaosat tulostimille. Tulostinpäät, pumput, veitset.</p>
-      </a>
-      <a href="/huolto/leikkureiden-varaosat" class="bg-white rounded-2xl p-6 shadow-lg shadow-gray-200/50 hover:shadow-xl transition-shadow group block">
-        <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-200 transition-colors">
-          <svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">Leikkureiden varaosat</h3>
-        <p class="text-gray-600">Terät, leikkualustat, merkinlukijat ja muut leikkureiden varaosat.</p>
-      </a>
+    <div class="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
       <a href="/huolto/ergosoft-rip" class="bg-white rounded-2xl p-6 shadow-lg shadow-gray-200/50 hover:shadow-xl transition-shadow group block">
         <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-200 transition-colors">
           <svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"></path></svg>
         </div>
         <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">ErgoSoft RIP 16</h3>
-        <p class="text-gray-600">Ergosoft RIP 16 on korkealaatuinen ja monipuolinen RIP-ohjelmisto ammattikäyttöön.</p>
+        <p class="text-gray-600">Korkealaatuinen ja monipuolinen RIP-ohjelmisto ammattimaiseen suurkuvatulostukseen.</p>
       </a>
       <a href="/huolto/flexi" class="bg-white rounded-2xl p-6 shadow-lg shadow-gray-200/50 hover:shadow-xl transition-shadow group block">
         <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-200 transition-colors">
           <svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"></path></svg>
         </div>
         <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">SAi Flexi</h3>
-        <p class="text-gray-600">SAi Flexi - tehokas suunnittelu-, tulostin- ja leikkuriohjelmisto.</p>
+        <p class="text-gray-600">Tehokas suunnittelu-, tulostin- ja leikkuriohjelmisto ammattilaisille.</p>
       </a>
     </div>
   </div>
@@ -387,9 +373,79 @@ const pages: PageData[] = [
         }
       },
       {
+        type: 'cta',
+        sortOrder: 3,
+        isVisible: true,
+        settings: {
+          variant: 'dark',
+          title: 'Kysy lisää ohjelmistoista',
+          description: 'Autamme sinua valitsemaan oikean ohjelmiston tarpeisiisi. Tarjoamme myös koulutuksen ja teknisen tuen.',
+          primaryCta: { text: 'Ota yhteyttä', href: '/yhteystiedot' },
+          secondaryCta: { text: 'Soita meille', href: 'tel:+358440875025' }
+        }
+      }
+    ]
+  },
+
+  // ──────────────────────────────────────────────────────
+  // HUOLTO (slug: 'huolto')
+  // ──────────────────────────────────────────────────────
+  {
+    slug: 'huolto',
+    title: 'Huolto ja tuki',
+    description: 'PrintMedia PM Solutions tarjoaa kattavat huolto- ja tukipalvelut sekä varaosat.',
+    metaTitle: 'Huolto ja tuki',
+    metaDesc: 'PrintMedia PM Solutions tarjoaa kattavat huolto- ja tukipalvelut sekä varaosat.',
+    status: 'PUBLISHED',
+    sections: [
+      {
+        type: 'hero',
+        sortOrder: 0,
+        isVisible: true,
+        settings: {
+          subtitle: 'Huoltopalvelut',
+          title: 'Huolto ja tuki',
+          description: 'Tarjoamme kattavasti huolto-, korjaus- ja tukipalvelut lähes kaikkiin suurkuvatulostimiin. Lisäksi meiltä saat myös kaikki tarvittavat varaosat. Ammattitaitoiset teknikkomme palvelevat sinua nopeasti ja luotettavasti. Kysy rohkeasti lisää!',
+          primaryCta: { text: 'Ota yhteyttä', href: '/yhteystiedot' },
+          secondaryCta: { text: 'Soita 0440 875 025', href: 'tel:+358440875025' }
+        }
+      },
+      {
+        type: 'custom_html',
+        title: 'Varaosat',
+        sortOrder: 1,
+        isVisible: true,
+        settings: {
+          html: `<section class="py-16 lg:py-24">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Varaosat</h2>
+      <p class="text-xl text-gray-600">Alkuperäiset ja yhteensopivat varaosat ammattikäyttöön</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+      <a href="/huolto/tulostimien-varaosat" class="bg-white rounded-2xl p-6 shadow-lg shadow-gray-200/50 hover:shadow-xl transition-shadow group block">
+        <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-200 transition-colors">
+          <svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">Tulostimien varaosat</h3>
+        <p class="text-gray-600">Alkuperäiset ja yhteensopivat varaosat tulostimille. Tulostinpäät, pumput, veitset.</p>
+      </a>
+      <a href="/huolto/leikkureiden-varaosat" class="bg-white rounded-2xl p-6 shadow-lg shadow-gray-200/50 hover:shadow-xl transition-shadow group block">
+        <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-200 transition-colors">
+          <svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">Leikkureiden varaosat</h3>
+        <p class="text-gray-600">Terät, leikkualustat, merkinlukijat ja muut leikkureiden varaosat.</p>
+      </a>
+    </div>
+  </div>
+</section>`
+        }
+      },
+      {
         type: 'custom_html',
         title: 'Yhteystiedot',
-        sortOrder: 3,
+        sortOrder: 2,
         isVisible: true,
         settings: {
           html: `<section class="py-16 lg:py-24 bg-gray-900 text-white">
@@ -967,7 +1023,8 @@ const pages: PageData[] = [
           title: 'Display-kategoriat',
           subtitle: 'Valitse tuoteryhmä',
           mode: 'auto',
-          limit: 6
+          includeSlugs: ['display-tuotteet', 'roll-up'],
+          limit: 2
         }
       },
       {

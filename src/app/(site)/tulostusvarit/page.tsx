@@ -63,6 +63,7 @@ async function getInkProducts() {
 
 export default async function TulostusvaritPage() {
   const products = await getInkProducts()
+  const es3PrimaryImage = products.find((product) => product.slug === 'jetbest-es3-varikasetti-440ml')?.images[0]
 
   return (
     <div className="pt-32 pb-20">
@@ -175,10 +176,11 @@ export default async function TulostusvaritPage() {
           <div className="flex justify-center">
             <a
               href="#tuotteet"
-              className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary-600 text-white shadow-md hover:bg-primary-700 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-primary-600 px-5 py-3 text-white shadow-md hover:bg-primary-700 transition-colors"
               aria-label="Siirry tuotteisiin"
             >
-              <ArrowDown className="w-6 h-6" />
+              <span className="font-semibold">Tuotteet</span>
+              <ArrowDown className="w-5 h-5" />
             </a>
           </div>
         </div>
@@ -187,33 +189,38 @@ export default async function TulostusvaritPage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Tuotteet</h2>
           {products.length > 0 ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => (
-                <Link
-                  key={product.id}
-                  href={`/tuotteet/${product.slug}`}
-                  className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
-                >
-                  <div className="aspect-video bg-gray-100 overflow-hidden">
-                    {product.images[0] ? (
-                      <img
-                        src={product.images[0].url}
-                        alt={product.images[0].alt || product.name}
-                        className="w-full h-full object-contain object-center p-1 bg-white"
-                      />
-                    ) : (
-                      <div className="w-full h-full" />
-                    )}
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors mb-2">
-                      {product.name}
-                    </h3>
-                    {product.shortDesc && (
-                      <p className="text-sm text-gray-600">{product.shortDesc}</p>
-                    )}
-                  </div>
-                </Link>
-              ))}
+              {products.map((product) => {
+                const isJetbestSs21 = product.slug === 'jetbest-ss21-varikasetti-440ml'
+                const displayImage = isJetbestSs21 && es3PrimaryImage ? es3PrimaryImage : product.images[0]
+
+                return (
+                  <Link
+                    key={product.id}
+                    href={`/tuotteet/${product.slug}`}
+                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
+                  >
+                    <div className="aspect-square bg-gray-100 overflow-hidden">
+                      {displayImage ? (
+                        <img
+                          src={displayImage.url}
+                          alt={displayImage.alt || product.name}
+                          className="w-full h-full object-contain object-center p-3 bg-white"
+                        />
+                      ) : (
+                        <div className="w-full h-full" />
+                      )}
+                    </div>
+                    <div className="p-5">
+                      <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors mb-2">
+                        {product.name}
+                      </h3>
+                      {product.shortDesc && (
+                        <p className="text-sm text-gray-600">{product.shortDesc}</p>
+                      )}
+                    </div>
+                  </Link>
+                )
+              })}
             </div>
           ) : (
             <div className="bg-gray-50 rounded-xl p-8 text-gray-600">
