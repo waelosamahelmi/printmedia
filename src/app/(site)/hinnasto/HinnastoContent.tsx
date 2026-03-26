@@ -272,8 +272,18 @@ export default function HinnastoContent() {
       {filtered.length === 0 && (
         <div className="text-center py-16 text-gray-500">
           <Search className="w-10 h-10 mx-auto mb-3 text-gray-300" />
-          <p className="font-medium">Ei tuloksia</p>
+          <p className="font-medium text-gray-800">Ei tuloksia</p>
           <p className="text-sm mt-1">Kokeile eri hakusanaa tai valitse toinen kategoria</p>
+          <div className="mt-8 inline-block bg-primary-50 border border-primary-200 rounded-xl px-6 py-4 text-left max-w-md">
+            <p className="text-sm font-semibold text-primary-800 mb-1">Etkö löydä etsimääsi?</p>
+            <p className="text-sm text-primary-700">Ei hätää — meiltä löytyy myös paljon tuotteita, joita ei näy nettisivuillamme. Kysy lisää!</p>
+            <a
+              href="/yhteystiedot?aihe=tuotetiedustelu"
+              className="inline-block mt-3 text-sm font-semibold text-primary-600 hover:text-primary-800 underline underline-offset-2"
+            >
+              Kysy myynnistä →
+            </a>
+          </div>
         </div>
       )}
 
