@@ -1,44 +1,87 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
-import { ArrowLeft, ChevronDown, Package } from 'lucide-react'
+import { Button } from '@/components/ui/Button'
+import { ArrowLeft } from 'lucide-react'
+import { prisma } from '@/lib/db'
+import TulostusmateriaalitContent from './TulostusmateriaalitContent'
+import type { MaterialGroup } from './TulostusmateriaalitContent'
 
 export const metadata: Metadata = {
   title: 'Tulostusmateriaalit | PrintMedia PM Solutions Oy',
   description:
-    'Tulostusmateriaalit ja valmiit tuoteosiot: Tarrat, Kalvot, Pressut, Bannerit, Paperit, Laminaatit ja monet muut.',
+    'Tulostusmateriaalit: Tarrat, Kalvot, Pressut, Bannerit, Paperit, Kankaat ja Laminaatit suurkuvatulostukseen.',
 }
 
-const materialGroups = [
-  'Tarrat',
-  'Kalvot',
-  'Pressut',
-  'Bannerit',
-  'Paperit',
-  'Laminaatit',
-  'Ja monet muut',
+const GROUP_DEFS: { key: string; description: string }[] = [
+  { key: 'Tarrat', description: 'Polymeeritarrat, monomeeritarrat ja erikoistarrat rullatavarana.' },
+  { key: 'Kalvot', description: 'Roll up -kalvot, pop up -kalvot ja valomainoskalvot.' },
+  { key: 'Pressut', description: 'Frontlit- ja muut banneripressut sisä- ja ulkokäyttöön.' },
+  { key: 'Bannerit', description: 'Tulostusbannerimateriaalit.' },
+  { key: 'Paperit', description: 'Valokuvapaperit, blueback-paperi, synteettinen paperi ja art canvas.' },
+  { key: 'Kankaat', description: 'Non woven vohvelikangas ja muut kankaat suurkuvatulostukseen.' },
+  { key: 'Laminaatit', description: 'Monomer- ja polymeerilaminaatit laminaattoreille.' },
+  { key: 'Muut', description: 'Muut tulostusmateriaalit.' },
 ]
 
-function ProductSlots({ prefix }: { prefix: string }) {
-  return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-      {[1, 2, 3].map((slot) => (
-        <div
-          key={slot}
-          className="bg-white border border-dashed border-gray-300 rounded-xl p-4 min-h-[130px]"
-        >
-          <div className="text-xs uppercase tracking-wide text-gray-500 mb-2">Tuotepaikka</div>
-          <h4 className="font-semibold text-gray-900">{prefix} - Tuote {slot}</h4>
-          <p className="text-sm text-gray-600 mt-2">
-            Lisaa tahan myohemmin tuotteen nimi, kuvaus ja mahdollinen tuotekuva.
-          </p>
-        </div>
-      ))}
-    </div>
-  )
+function resolveMaterialGroup(name: string, shortDesc: string | null): string {
+  const text = `${name} ${shortDesc || ''}`.toLowerCase()
+  if (text.includes('laminaat')) return 'Laminaatit'
+  if (text.includes('tarra')) return 'Tarrat'
+  if (
+    text.includes('kalvo') ||
+    text.includes('film') ||
+    text.includes('polymeer') ||
+    text.includes('monomeer') ||
+    text.includes('valomainos')
+  ) return 'Kalvot'
+  if (text.includes('pressu') || text.includes('frontlit')) return 'Pressut'
+  if (text.includes('banner')) return 'Bannerit'
+  if (
+    text.includes('paper') ||
+    text.includes('blueback') ||
+    text.includes('valokuva') ||
+    text.includes('synteettinen')
+  ) return 'Paperit'
+  if (
+    text.includes('kangas') ||
+    text.includes('canvas') ||
+    text.includes('vohvel') ||
+    text.includes('non woven')
+  ) return 'Kankaat'
+  return 'Muut'
 }
 
-export default function TulostusmateriaalitPage() {
+export default async function TulostusmateriaalitPage() {
+  const products = await prisma.product.findMany({
+    where: {
+      status: 'PUBLISHED',
+      category: { slug: 'tulostusmateriaalit' },
+    },
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      shortDesc: true,
+      description: true,
+    },
+    orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
+  })
+
+  const byGroup: Record<string, typeof products> = {}
+  for (const g of GROUP_DEFS) byGroup[g.key] = []
+  for (const p of products) {
+    const g = resolveMaterialGroup(p.name, p.shortDesc)
+    if (!byGroup[g]) byGroup[g] = []
+    byGroup[g].push(p)
+  }
+
+  const groups: MaterialGroup[] = GROUP_DEFS.map(({ key, description }) => ({
+    key,
+    description,
+    products: byGroup[key] ?? [],
+  }))
+
   return (
     <div className="pt-32 pb-20">
       <Container>
@@ -55,37 +98,19 @@ export default function TulostusmateriaalitPage() {
         <div className="mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Tulostusmateriaalit</h1>
           <p className="text-xl text-gray-600 max-w-3xl">
-            Varastostamme loytyy laaja valikoima erilaisia tulostusmedioita
-            rullatavarana eri tulostimille.
+            Varastostamme löytyy laaja valikoima erilaisia tulostusmedioita
+            rullatavarana eri tulostimille. Valitse kategoria nähdäksesi tuotteet.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {materialGroups.map((group) => (
-            <details
-              key={group}
-              className="group bg-white rounded-xl border border-gray-100 shadow-sm open:shadow-md overflow-hidden"
-            >
-              <summary className="list-none cursor-pointer p-6 flex items-center gap-4">
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Package className="w-6 h-6 text-primary-600" />
-                </div>
-                <span className="text-lg font-medium text-gray-900 flex-1">{group}</span>
-                <ChevronDown className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180" />
-              </summary>
-              <div className="px-6 pb-6 border-t border-gray-100 bg-gray-50">
-                <ProductSlots prefix={group} />
-              </div>
-            </details>
-          ))}
-        </div>
+        <TulostusmateriaalitContent groups={groups} />
 
-        <div className="bg-gray-50 rounded-2xl p-8 mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Jatkuvasti laajeneva valikoima</h2>
-          <p className="text-gray-600 mb-2">
-            Katso tarkempi valikoimamme hinnastosta tai kysy lisaa myynnistamme.
+        <div className="bg-primary-600 text-white rounded-2xl p-8 text-center mt-16">
+          <h2 className="text-2xl font-bold mb-4">Tarvitsetko tulostusmateriaaleja?</h2>
+          <p className="text-primary-100 mb-6">
+            Kysy tarjous tai lisätietoja valikoimastamme — autamme löytämään sopivan materiaalin.
           </p>
-          <p className="text-gray-600">Etsimme jatkuvasti uusia tuotteita asiakkaidemme tarpeisiin.</p>
+          <Button href="/yhteystiedot" variant="secondary">Ota yhteyttä</Button>
         </div>
       </Container>
     </div>

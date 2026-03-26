@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { ArrowLeft, Package, Wrench, ChevronDown, ArrowDown } from 'lucide-react'
+import { prisma } from '@/lib/db'
 
 export const metadata: Metadata = {
   title: 'Varaosat ja Tarvikkeet | PrintMedia PM Solutions Oy',
@@ -12,13 +13,32 @@ export const metadata: Metadata = {
 
 const printerBrands = ['Mutoh', 'Roland', 'Mimaki', 'Ja monet muut']
 
-const productSections = [
-  'Tulostimien varaosat',
-  'Leikkureiden varaosat',
-  'Tarvikkeet',
-]
+function formatPrice(price: unknown) {
+  if (!price) return 'Pyydä tarjous'
+  const value = Number(price)
+  if (!Number.isFinite(value)) return 'Pyydä tarjous'
+  return `${value.toFixed(2).replace('.', ',')} EUR`
+}
 
-export default function VaraosatPage() {
+export default async function VaraosatPage() {
+  const accessoryProducts = await prisma.product.findMany({
+    where: {
+      status: 'PUBLISHED',
+      category: {
+        slug: {
+          in: ['muut-tarvikkeet', 'tarvikkeet']
+        }
+      }
+    },
+    include: {
+      category: true
+    },
+    orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }]
+  })
+
+  const featuredAccessories = accessoryProducts.slice(0, 6)
+  const extraAccessories = accessoryProducts.slice(6)
+
   return (
     <div className="pt-32 pb-20">
       <Container>
@@ -85,65 +105,86 @@ export default function VaraosatPage() {
         </div>
 
         <div className="mb-12 space-y-4 scroll-mt-28" id="tuotteet">
-          <h2 className="text-2xl font-bold text-gray-900">Tuotteiden lisauspaikat</h2>
+          <h2 className="text-2xl font-bold text-gray-900">Tarvikkeet</h2>
           <p className="text-gray-600">
-            Jokaisessa osa-alueessa näkyy yksi tuoterivi valmiina. Avaa lisäosio,
-            jos haluat tuoda esiin lisää tuotteita.
+            Hinnaston "Muut tarvikkeet" -tuotteet on lisätty alle. Voit avata lisäosion,
+            jos haluat nähdä kaikki tuotteet.
           </p>
 
-          {productSections.map((section) => (
-            <div
-              key={section}
-              className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6"
-            >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">{section}</h3>
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Tarviketuotteet</h3>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {[1, 2, 3].map((slot) => (
-                  <div
-                    key={`${section}-${slot}`}
-                    className="bg-gray-50 border border-dashed border-gray-300 rounded-xl p-4 min-h-[120px]"
-                  >
-                    <div className="text-xs uppercase tracking-wide text-gray-500 mb-2">
-                      Tuotepaikka
-                    </div>
-                    <h4 className="font-semibold text-gray-900">
-                      {section} - Tuote {slot}
-                    </h4>
-                    <p className="text-sm text-gray-600 mt-2">
-                      Lisää tähän myöhemmin tuotteen nimi, kuvaus ja hinta pyydettäessä.
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <details className="group mt-4">
-                <summary className="list-none cursor-pointer flex items-center justify-center gap-2 rounded-lg border border-primary-200 bg-primary-50 px-6 py-3 text-sm font-semibold text-primary-700 hover:bg-primary-100 transition-colors w-full sm:w-72 mx-auto">
-                  <span>Näytä lisää</span>
-                  <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
-                </summary>
-
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                  {[4, 5, 6].map((slot) => (
-                    <div
-                      key={`${section}-${slot}`}
-                      className="bg-white border border-dashed border-gray-300 rounded-xl p-4 min-h-[120px]"
+            {accessoryProducts.length === 0 ? (
+              <p className="text-gray-600">Tarviketuotteita ei löytynyt vielä.</p>
+            ) : (
+              <>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {featuredAccessories.map((product) => (
+                    <article
+                      key={product.id}
+                      className="bg-gray-50 border border-gray-200 rounded-xl p-4 min-h-[160px]"
                     >
                       <div className="text-xs uppercase tracking-wide text-gray-500 mb-2">
-                        Lisäpaikka
+                        {product.category?.name || 'Tarvikkeet'}
                       </div>
-                      <h4 className="font-semibold text-gray-900">
-                        {section} - Tuote {slot}
-                      </h4>
-                      <p className="text-sm text-gray-600 mt-2">
-                        Lisää tähän tarvittaessa enemmän tuotteita samaan kategoriaan.
-                      </p>
-                    </div>
+                      <h4 className="font-semibold text-gray-900">{product.name}</h4>
+                      {product.shortDesc && (
+                        <p className="text-sm text-gray-600 mt-2 line-clamp-2">{product.shortDesc}</p>
+                      )}
+                      <div className="mt-3 flex items-center justify-between gap-2">
+                        <span className="text-sm font-semibold text-primary-700">
+                          {formatPrice(product.price)}
+                        </span>
+                        <Link
+                          href={`/tuotteet/${product.slug}`}
+                          className="text-sm font-medium text-primary-700 hover:text-primary-800"
+                        >
+                          Lisätiedot
+                        </Link>
+                      </div>
+                    </article>
                   ))}
                 </div>
-              </details>
-            </div>
-          ))}
+
+                {extraAccessories.length > 0 && (
+                  <details className="group mt-4">
+                    <summary className="list-none cursor-pointer flex items-center justify-center gap-2 rounded-lg border border-primary-200 bg-primary-50 px-6 py-3 text-sm font-semibold text-primary-700 hover:bg-primary-100 transition-colors w-full sm:w-72 mx-auto">
+                      <span>Näytä lisää</span>
+                      <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
+                    </summary>
+
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                      {extraAccessories.map((product) => (
+                        <article
+                          key={product.id}
+                          className="bg-white border border-gray-200 rounded-xl p-4 min-h-[160px]"
+                        >
+                          <div className="text-xs uppercase tracking-wide text-gray-500 mb-2">
+                            {product.category?.name || 'Tarvikkeet'}
+                          </div>
+                          <h4 className="font-semibold text-gray-900">{product.name}</h4>
+                          {product.shortDesc && (
+                            <p className="text-sm text-gray-600 mt-2 line-clamp-2">{product.shortDesc}</p>
+                          )}
+                          <div className="mt-3 flex items-center justify-between gap-2">
+                            <span className="text-sm font-semibold text-primary-700">
+                              {formatPrice(product.price)}
+                            </span>
+                            <Link
+                              href={`/tuotteet/${product.slug}`}
+                              className="text-sm font-medium text-primary-700 hover:text-primary-800"
+                            >
+                              Lisätiedot
+                            </Link>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </details>
+                )}
+              </>
+            )}
+          </div>
         </div>
 
         <div className="bg-gray-900 text-white rounded-2xl p-8 text-center">

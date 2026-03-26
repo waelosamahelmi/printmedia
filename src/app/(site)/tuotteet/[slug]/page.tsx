@@ -4,7 +4,7 @@ import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { CTA } from '@/components/sections/CTA'
 import { prisma } from '@/lib/db'
-import { ArrowLeft, Package, Tag, Info, FileText } from 'lucide-react'
+import { ArrowLeft, Package, Tag, Info, FileText, ListOrdered } from 'lucide-react'
 import Link from 'next/link'
 
 interface ProductPageProps {
@@ -118,23 +118,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </p>
               )}
 
-              {product.price && (
-                <div className="mb-6">
-                  <span className="text-3xl font-bold text-primary-600">
-                    {new Intl.NumberFormat('fi-FI', { 
-                      style: 'currency', 
-                      currency: 'EUR' 
-                    }).format(Number(product.price))}
-                  </span>
-                </div>
-              )}
 
-              {/* Price Type */}
-              {product.priceType === 'quote' && (
-                <div className="flex items-center gap-2 mb-6">
-                  <span className="text-lg text-gray-600">Pyydä tarjous</span>
-                </div>
-              )}
 
               {/* SKU */}
               {product.sku && (
@@ -145,9 +129,22 @@ export default async function ProductPage({ params }: ProductPageProps) {
               )}
 
               <div className="flex flex-wrap gap-4 mb-8">
-                <Button variant="primary" size="lg" href="/yhteystiedot">
-                  Pyydä tarjous
+                <Button
+                  variant="primary"
+                  size="lg"
+                  href={`/hinnasto?hae=${encodeURIComponent(product.sku || product.name)}`}
+                >
+                  <span className="inline-flex items-center gap-2">
+                    <ListOrdered className="w-4 h-4" />
+                    Katso hinnastosta
+                  </span>
                 </Button>
+                <Link
+                  href="/yhteystiedot"
+                  className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm font-medium text-gray-700 hover:border-primary-400 hover:text-primary-700 transition-colors"
+                >
+                  Pyydä tarjous
+                </Link>
                 <Button variant="secondary" size="lg" href="tel:+358440875025">
                   Soita meille
                 </Button>

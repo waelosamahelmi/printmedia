@@ -1,6 +1,7 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { Search, FileDown, X, ChevronDown, ChevronUp } from 'lucide-react'
 import { priceListSections, type PriceListSection } from './priceListData'
 
@@ -69,9 +70,32 @@ function normalizePrice(price: string) {
   return price.replace(/\?/g, '€').trim()
 }
 
+function normalizeText(text: string) {
+  return text
+    .replace(/K\?\?ntyv\?/g, 'Kääntyvä')
+    .replace(/k\?\?ntyv\?/g, 'kääntyvä')
+    .replace(/kiilt\?v\?/g, 'kiiltävä')
+    .replace(/k\?sittely\?/g, 'käsittelyä')
+    .replace(/ehk\?isee/g, 'ehkäisee')
+    .replace(/Neli\?hinta/g, 'Neliöhinta')
+    .replace(/pitk\?/g, 'pitkä')
+    .replace(/leve\?/g, 'leveä')
+    .replace(/k\?rki/g, 'kärki')
+    .replace(/([A-Za-zÅÄÖåäö])€([A-Za-zÅÄÖåäö])/g, '$1ä$2')
+    .replace(/([A-Za-zÅÄÖåäö])\?([A-Za-zÅÄÖåäö])/g, '$1ä$2')
+}
+
 export default function HinnastoContent() {
-  const [search, setSearch] = useState('')
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const [search, setSearch] = useState(() => searchParams.get('hae') ?? '')
   const [selectedCategory, setSelectedCategory] = useState('all')
+
+  useEffect(() => {
+    const q = searchParams.get('hae')
+    if (q) setSearch(q)
+  }, [searchParams])
   const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set())
 
   const sections = useMemo(() => {
@@ -146,6 +170,12 @@ export default function HinnastoContent() {
     })
   }
 
+  const clearFilters = () => {
+    setSearch('')
+    setSelectedCategory('all')
+    router.replace(pathname, { scroll: false })
+  }
+
   const formatPrice = (price: string | null, priceType: string | null) => {
     if (priceType === 'quote' || priceType === 'call') return 'Kysy hinta'
     if (!price) return '—'
@@ -159,7 +189,7 @@ export default function HinnastoContent() {
       <div className="bg-primary-50 border border-primary-200 rounded-xl p-4 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <p className="font-medium text-primary-900">Hinnasto on saatavilla myös PDF-muodossa</p>
-          <p className="text-sm text-primary-700">Hinnasto 2023 — kaikki tuotteet yhdessä tiedostossa</p>
+          <p className="text-sm text-primary-700">Hinnasto — kaikki tuotteet yhdessä tiedostossa</p>
         </div>
         <a
           href="/files/PrintMedia_-_HINNASTO_2023_V2.pdf"
@@ -185,7 +215,7 @@ export default function HinnastoContent() {
           />
           {search && (
             <button
-              onClick={() => setSearch('')}
+              onClick={clearFilters}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
             >
               <X className="w-4 h-4" />
@@ -203,6 +233,20 @@ export default function HinnastoContent() {
           ))}
         </select>
       </div>
+
+      {(search || selectedCategory !== 'all') && (
+        <div className="mb-4 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <p className="text-sm text-amber-900">
+            Suodatus on päällä. Näytät vain hakutuloksia, et koko hinnastoa.
+          </p>
+          <button
+            onClick={clearFilters}
+            className="inline-flex items-center justify-center rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 transition-colors"
+          >
+            Näytä koko hinnasto
+          </button>
+        </div>
+      )}
 
       {/* Results count */}
       {(search || selectedCategory !== 'all') && (
@@ -248,7 +292,7 @@ export default function HinnastoContent() {
                     <div className="mb-4">
                       <h3 className="text-lg font-semibold text-gray-900">{section.title}</h3>
                       {section.description && (
-                        <p className="mt-1 text-sm text-gray-600">{section.description.replace(/\?/g, '€')}</p>
+                        <p className="mt-1 text-sm text-gray-600">{normalizeText(section.description)}</p>
                       )}
                     </div>
 
@@ -268,9 +312,9 @@ export default function HinnastoContent() {
                               key={`${section.id}-${product.code}-${index}`}
                               className={`border-b border-gray-100 last:border-0 hover:bg-primary-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}
                             >
-                              <td className="px-5 py-3 font-medium text-gray-900">{product.name.replace(/\?/g, '€')}</td>
+                              <td className="px-5 py-3 font-medium text-gray-900">{normalizeText(product.name)}</td>
                               <td className="px-4 py-3 text-gray-500 font-mono text-xs">{product.code}</td>
-                              <td className="px-4 py-3 text-gray-500 hidden md:table-cell max-w-md">{product.details ? product.details.replace(/\?/g, '€') : '—'}</td>
+                              <td className="px-4 py-3 text-gray-500 hidden md:table-cell max-w-md">{product.details ? normalizeText(product.details) : '—'}</td>
                               <td className="px-5 py-3 text-right font-semibold text-gray-900">{product.price}</td>
                             </tr>
                           ))}

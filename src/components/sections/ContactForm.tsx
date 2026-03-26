@@ -40,12 +40,12 @@ export function ContactForm({ showMap = true }: ContactFormProps) {
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.error || 'Viestin lahetys epaonnistui')
+        throw new Error(data.error || 'Viestin lähetys epäonnistui')
       }
 
       setIsSubmitted(true)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Viestin lahetys epaonnistui. Yrita myohemmin uudelleen.')
+      setError(err instanceof Error ? err.message : 'Viestin lähetys epäonnistui. Yritä myöhemmin uudelleen.')
     } finally {
       setIsSubmitting(false)
     }
@@ -184,7 +184,7 @@ export function ContactForm({ showMap = true }: ContactFormProps) {
           >
             <div className="bg-white rounded-2xl shadow-xl p-8">
               <h3 className="text-xl font-bold text-gray-900 mb-6">
-                Laheta viesti
+                Lähetä viesti
               </h3>
 
               {error && (
