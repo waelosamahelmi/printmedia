@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
@@ -11,6 +12,7 @@ interface ContactFormProps {
 }
 
 export function ContactForm({ showMap = true }: ContactFormProps) {
+  const searchParams = useSearchParams()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [formData, setFormData] = useState({
@@ -22,6 +24,29 @@ export function ContactForm({ showMap = true }: ContactFormProps) {
     message: '',
   })
   const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const aihe = searchParams.get('aihe')
+    const tuote = searchParams.get('tuote')
+    const koodi = searchParams.get('koodi')
+    const maara = searchParams.get('maara')
+    if (!aihe && !tuote) return
+    const updates: Partial<typeof formData> = {}
+    if (aihe) updates.subject = aihe
+    if (tuote) {
+      const lines = [
+        'Tilaus / tarjouspyyntö hinnastosta:',
+        '',
+        `Tuote: ${tuote}`,
+        koodi ? `Tuotenro: ${koodi}` : '',
+        maara ? `Määrä: ${maara} kpl` : '',
+        '',
+        'Lisätiedot:',
+      ].filter((l, i) => i < 3 || l !== '')
+      updates.message = lines.join('\n')
+    }
+    setFormData(prev => ({ ...prev, ...updates }))
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

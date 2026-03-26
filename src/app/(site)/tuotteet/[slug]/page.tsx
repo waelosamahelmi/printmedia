@@ -15,12 +15,41 @@ async function getProduct(slug: string) {
   const product = await prisma.product.findUnique({
     where: { slug, status: 'PUBLISHED' },
     include: {
-      category: true,
+      category: {
+        include: {
+          parent: {
+            select: {
+              slug: true,
+            },
+          },
+        },
+      },
       images: { orderBy: { sortOrder: 'asc' } },
       documents: true
     }
   })
   return product
+}
+
+function getCategoryHref(product: NonNullable<Awaited<ReturnType<typeof getProduct>>>) {
+  if (!product.category) return '/laitteet'
+
+  const category = product.category
+  const parentSlug = category.parent?.slug
+
+  if (parentSlug === 'tulostimien-varaosat') {
+    return `/huolto/varaosat?section=printer&group=${category.id}`
+  }
+
+  if (parentSlug === 'leikkureiden-varaosat') {
+    return `/huolto/varaosat?section=cutter&group=${category.id}`
+  }
+
+  if (category.slug === 'muut-tarvikkeet' || parentSlug === 'muut-tarvikkeet') {
+    return '/huolto/varaosat?section=accessories'
+  }
+
+  return `/laitteet/${category.slug}`
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
@@ -45,6 +74,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound()
   }
 
+  const categoryHref = getCategoryHref(product)
+
   return (
     <div className="pt-32">
       {/* Breadcrumb */}
@@ -55,7 +86,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <span>/</span>
             {product.category && (
               <>
-                <Link href={`/laitteet/${product.category.slug}`} className="hover:text-primary-600">
+                <Link href={categoryHref} className="hover:text-primary-600">
                   {product.category.name}
                 </Link>
                 <span>/</span>
@@ -217,7 +248,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <section className="pb-8">
         <Container>
           <Link 
-            href={product.category ? `/laitteet/${product.category.slug}` : '/laitteet'}
+            href={categoryHref}
             className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700"
           >
             <ArrowLeft className="w-4 h-4" />

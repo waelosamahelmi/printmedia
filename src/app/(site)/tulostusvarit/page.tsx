@@ -19,7 +19,7 @@ const compatibleBrands = [
 ]
 
 async function getInkProducts() {
-  const products = await prisma.product.findMany({
+  return prisma.product.findMany({
     where: {
       status: 'PUBLISHED',
       category: {
@@ -34,36 +34,120 @@ async function getInkProducts() {
     },
     orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
   })
+}
 
-  // Keep product cards in a logical order: cartridges together first.
-  const preferredOrder = [
-    'jetbest-es3-varikasetti-440ml',
-    'jetbest-ss21-varikasetti-440ml',
-    'jetbest-i2-varikasetti-440ml',
-    'jetbest-es3-tayttopullo-500ml',
-    'jetbest-cleaning-solvent-220ml',
-    'jetbest-cleaning-solvent-440ml',
-    'cleaning-eco-solvent-1000ml',
-    'jetbest-lus170-uv-1l',
-    'jetbest-lus170-uv-cleaning-1l',
-    'chromoink-uv-1000ml',
-  ]
+type InkProduct = Awaited<ReturnType<typeof getInkProducts>>[number]
 
-  const indexBySlug = new Map(preferredOrder.map((slug, index) => [slug, index]))
+type InkCard = {
+  id: string
+  slug: string
+  name: string
+  shortDesc: string | null
+  image: InkProduct['images'][number] | undefined
+}
 
-  return products.sort((a, b) => {
-    const aIndex = indexBySlug.get(a.slug) ?? Number.MAX_SAFE_INTEGER
-    const bIndex = indexBySlug.get(b.slug) ?? Number.MAX_SAFE_INTEGER
-    if (aIndex !== bIndex) {
-      return aIndex - bIndex
+function extractColorCode(name: string) {
+  if (/light cyan|\blc\b/i.test(name)) return 'LC'
+  if (/light magenta|\blm\b/i.test(name)) return 'LM'
+  if (/light black/i.test(name)) return 'LK'
+  if (/\bcyan\b|,\s*c$/i.test(name)) return 'C'
+  if (/\bmagenta\b|,\s*m$/i.test(name)) return 'M'
+  if (/\byellow\b|,\s*y$/i.test(name)) return 'Y'
+  if (/\bblack\b|,\s*k$/i.test(name)) return 'K'
+  if (/\bwhite\b|,\s*w$/i.test(name)) return 'W'
+  if (/\borange\b/i.test(name)) return 'O'
+  return null
+}
+
+function buildInkCards(products: InkProduct[]) {
+  const bySlug = new Map(products.map((product) => [product.slug, product]))
+
+  const findByPrefix = (prefix: string) => products.filter((product) => product.slug.startsWith(prefix))
+  const findByPrefixes = (prefixes: string[]) => prefixes.flatMap(findByPrefix)
+
+  const createVariantCard = ({
+    primarySlug,
+    variantProducts,
+    fallbackImageSlug,
+  }: {
+    primarySlug: string
+    variantProducts: InkProduct[]
+    fallbackImageSlug?: string
+  }): InkCard | null => {
+    const primary = bySlug.get(primarySlug)
+    if (!primary) return null
+
+    const codes = Array.from(
+      new Set(
+        variantProducts
+          .map((product) => extractColorCode(product.name))
+          .filter((code) => code !== null)
+      )
+    )
+
+    const image = primary.images[0] || (fallbackImageSlug ? bySlug.get(fallbackImageSlug)?.images[0] : undefined)
+
+    return {
+      id: primary.id,
+      slug: primary.slug,
+      name: codes.length > 0 ? `${primary.name} (${codes.join(', ')})` : primary.name,
+      shortDesc: primary.shortDesc,
+      image,
     }
-    return a.name.localeCompare(b.name, 'fi')
-  })
+  }
+
+  const createSingleCard = (slug: string): InkCard | null => {
+    const product = bySlug.get(slug)
+    if (!product) return null
+    return {
+      id: product.id,
+      slug: product.slug,
+      name: product.name,
+      shortDesc: product.shortDesc,
+      image: product.images[0],
+    }
+  }
+
+  return [
+    createVariantCard({
+      primarySlug: 'jetbest-es3-varikasetti-440ml',
+      variantProducts: findByPrefixes(['1141', '1142', '1143', '1144', '1145', '1146']),
+    }),
+    createVariantCard({
+      primarySlug: 'jetbest-es3-tayttopullo-500ml',
+      variantProducts: findByPrefixes(['1148', '1149', '1150', '1151', '1152', '1153']),
+    }),
+    createVariantCard({
+      primarySlug: 'jetbest-ss21-varikasetti-440ml',
+      variantProducts: findByPrefixes(['1155', '1156', '1157', '1158', '1159', '1168', '1169', '1179']),
+      fallbackImageSlug: 'jetbest-es3-varikasetti-440ml',
+    }),
+    createVariantCard({
+      primarySlug: 'jetbest-i2-varikasetti-440ml',
+      variantProducts: findByPrefixes(['1160', '1161', '1162', '1163', '1164', '1165', '1166']),
+      fallbackImageSlug: 'jetbest-es3-varikasetti-440ml',
+    }),
+    createSingleCard('jetbest-cleaning-solvent-220ml'),
+    createSingleCard('jetbest-cleaning-solvent-440ml'),
+    createSingleCard('cleaning-eco-solvent-1000ml'),
+    createVariantCard({
+      primarySlug: 'jetbest-lus170-uv-1l',
+      variantProducts: findByPrefixes(['1541', '1542', '1543', '1544', '1545', '1546', '1547']),
+    }),
+    createSingleCard('jetbest-lus170-uv-cleaning-1l'),
+    createVariantCard({
+      primarySlug: 'chromoink-uv-1000ml',
+      variantProducts: findByPrefixes(['1501', '1502', '1503', '1504', '1505', '1506', '1507']),
+    }),
+    createSingleCard('1511-chromoink-uv-1000-ml-pullo-coating-liquid-sti'),
+    createSingleCard('1512-chromoink-uv-1000-ml-pullo-coating-liquid-dil'),
+    createSingleCard('1513-chromoink-uv-1000-ml-pullo-uv-cleaner'),
+  ].filter((card): card is InkCard => Boolean(card))
 }
 
 export default async function TulostusvaritPage() {
   const products = await getInkProducts()
-  const es3PrimaryImage = products.find((product) => product.slug === 'jetbest-es3-varikasetti-440ml')?.images[0]
+  const productCards = buildInkCards(products)
 
   return (
     <div className="pt-32 pb-20">
@@ -176,10 +260,10 @@ export default async function TulostusvaritPage() {
           <div className="flex justify-center">
             <a
               href="#tuotteet"
-              className="inline-flex items-center gap-2 rounded-full bg-primary-600 px-5 py-3 text-white shadow-md hover:bg-primary-700 transition-colors"
+              className="inline-flex items-center gap-3 rounded-2xl bg-primary-600 px-7 py-4 text-white shadow-lg ring-4 ring-primary-100 hover:bg-primary-700 hover:shadow-xl transition-all"
               aria-label="Siirry tuotteisiin"
             >
-              <span className="font-semibold">Tuotteet</span>
+              <span className="text-base font-semibold">Tuotteet</span>
               <ArrowDown className="w-5 h-5" />
             </a>
           </div>
@@ -187,12 +271,9 @@ export default async function TulostusvaritPage() {
 
         <div id="tuotteet" className="mb-12 scroll-mt-28">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Tuotteet</h2>
-          {products.length > 0 ? (
+          {productCards.length > 0 ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => {
-                const isJetbestSs21 = product.slug === 'jetbest-ss21-varikasetti-440ml'
-                const displayImage = isJetbestSs21 && es3PrimaryImage ? es3PrimaryImage : product.images[0]
-
+              {productCards.map((product) => {
                 return (
                   <Link
                     key={product.id}
@@ -200,10 +281,10 @@ export default async function TulostusvaritPage() {
                     className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
                   >
                     <div className="aspect-square bg-gray-100 overflow-hidden">
-                      {displayImage ? (
+                      {product.image ? (
                         <img
-                          src={displayImage.url}
-                          alt={displayImage.alt || product.name}
+                          src={product.image.url}
+                          alt={product.image.alt || product.name}
                           className="w-full h-full object-contain object-center p-3 bg-white"
                         />
                       ) : (

@@ -146,6 +146,12 @@ export async function SectionRenderer({ section }: SectionRendererProps) {
     case 'features': {
       const settings = parseSettings<FeaturesSettings>(settingsJson)
       if (!settings) return null
+
+      const featureGridClass =
+        settings.features.length === 3
+          ? 'grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto'
+          : 'grid sm:grid-cols-2 lg:grid-cols-4 gap-8'
+
       return (
         <section id={settings.sectionId} className="section scroll-mt-32">
           <Container>
@@ -153,7 +159,7 @@ export async function SectionRenderer({ section }: SectionRendererProps) {
               <h2 className="section-title">{settings.title || 'Miksi valita PrintMedia?'}</h2>
               {settings.subtitle && <p className="section-subtitle">{settings.subtitle}</p>}
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className={featureGridClass}>
               {settings.features.map((feature) => {
                 const Icon = iconMap[feature.icon] || Award
                 return (

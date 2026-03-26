@@ -2,7 +2,8 @@
 
 import { useMemo, useState, useEffect } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { Search, FileDown, X, ChevronDown, ChevronUp } from 'lucide-react'
+import Link from 'next/link'
+import { Search, FileDown, X, ChevronDown, ChevronUp, ShoppingCart } from 'lucide-react'
 import { priceListSections, type PriceListSection } from './priceListData'
 
 interface CategoryGroup {
@@ -85,12 +86,23 @@ function normalizeText(text: string) {
     .replace(/([A-Za-zÅÄÖåäö])\?([A-Za-zÅÄÖåäö])/g, '$1ä$2')
 }
 
+function buildOrderUrl(productName: string, code: string, qty: number) {
+  const params = new URLSearchParams({
+    aihe: 'tarjouspyynto',
+    tuote: productName,
+    koodi: code,
+    maara: String(qty),
+  })
+  return `/yhteystiedot?${params.toString()}`
+}
+
 export default function HinnastoContent() {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const [search, setSearch] = useState(() => searchParams.get('hae') ?? '')
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [quantities, setQuantities] = useState<Record<string, number>>({})
 
   useEffect(() => {
     const q = searchParams.get('hae')
@@ -300,10 +312,11 @@ export default function HinnastoContent() {
                       <table className="w-full text-sm">
                         <thead>
                           <tr className="border-b border-gray-200 bg-gray-50">
-                            <th className="text-left px-5 py-2.5 font-medium text-gray-600 w-[34%]">Tuote</th>
+                            <th className="text-left px-5 py-2.5 font-medium text-gray-600 w-[30%]">Tuote</th>
                             <th className="text-left px-4 py-2.5 font-medium text-gray-600">Tuotenro</th>
                             <th className="text-left px-4 py-2.5 font-medium text-gray-600 hidden md:table-cell">Tiedot</th>
                             <th className="text-right px-5 py-2.5 font-medium text-gray-600">Hinta (ALV 0%)</th>
+                            <th className="text-right px-4 py-2.5 font-medium text-gray-600">Tilaa</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -316,6 +329,32 @@ export default function HinnastoContent() {
                               <td className="px-4 py-3 text-gray-500 font-mono text-xs">{product.code}</td>
                               <td className="px-4 py-3 text-gray-500 hidden md:table-cell max-w-md">{product.details ? normalizeText(product.details) : '—'}</td>
                               <td className="px-5 py-3 text-right font-semibold text-gray-900">{product.price}</td>
+                              <td className="px-4 py-3 text-right">
+                                <div className="flex items-center justify-end gap-1.5">
+                                  <input
+                                    type="number"
+                                    min="1"
+                                    value={quantities[`${section.id}-${product.code}`] ?? 1}
+                                    onChange={(e) => {
+                                      const val = Math.max(1, parseInt(e.target.value) || 1)
+                                      setQuantities(prev => ({ ...prev, [`${section.id}-${product.code}`]: val }))
+                                    }}
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="w-14 text-center border border-gray-300 rounded py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
+                                  />
+                                  <Link
+                                    href={buildOrderUrl(
+                                      normalizeText(product.name),
+                                      product.code,
+                                      quantities[`${section.id}-${product.code}`] ?? 1
+                                    )}
+                                    className="inline-flex items-center gap-1 bg-primary-600 text-white text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-primary-700 transition-colors whitespace-nowrap"
+                                  >
+                                    <ShoppingCart className="w-3 h-3" />
+                                    Pyydä tarjous
+                                  </Link>
+                                </div>
+                              </td>
                             </tr>
                           ))}
                         </tbody>

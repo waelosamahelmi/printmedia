@@ -24,6 +24,7 @@ const navigation = [
     href: '/huolto',
     highlight: true,
     children: [
+      { name: 'Varaa huolto', href: '/yhteystiedot?aihe=huolto' },
       { name: 'Varaosat ja Tarvikkeet', href: '/huolto/varaosat' },
     ]
   },
@@ -41,7 +42,12 @@ const navigation = [
   { name: 'Tulostusmateriaalit', href: '/tulostusmateriaalit' },
   {
     name: 'Varaosat ja Tarvikkeet',
-    href: '/huolto/varaosat'
+    href: '/huolto/varaosat',
+    children: [
+      { name: 'Tulostimien varaosat', href: '/huolto/varaosat?section=printer' },
+      { name: 'Leikkureiden varaosat', href: '/huolto/varaosat?section=cutter' },
+      { name: 'Tarvikkeet', href: '/huolto/varaosat?section=accessories' },
+    ]
   },
   { 
     name: 'Display-tuotteet', 

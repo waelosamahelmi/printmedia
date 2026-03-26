@@ -253,14 +253,14 @@ export function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.85 }}
-            className="mt-[76px] flex justify-center"
+            className="mt-[170px] flex justify-center"
           >
             <a
               href={scrollTarget}
               aria-label="Siirry alas"
-              className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg transition-colors hover:bg-primary-700"
+              className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg transition-colors hover:bg-primary-700"
             >
-              <ArrowDown className="h-6 w-6" />
+              <ArrowDown className="h-7 w-7" />
             </a>
           </motion.div>
         )}
