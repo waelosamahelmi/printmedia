@@ -238,21 +238,29 @@ export function Header() {
                   <div key={item.name}>
                     {item.children ? (
                       <>
-                        <button
-                          onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
-                          className={cn(
-                            'flex items-center justify-between w-full px-4 py-3 rounded-lg font-medium transition-colors',
-                            pathname.startsWith(item.href)
-                              ? 'text-primary-600 bg-primary-50'
-                              : 'text-gray-700 hover:bg-gray-50'
-                          )}
-                        >
-                          {item.name}
-                          <ChevronDown className={cn(
-                            'w-4 h-4 transition-transform',
-                            openDropdown === item.name && 'rotate-180'
-                          )} />
-                        </button>
+                        <div className={cn(
+                          'flex items-center rounded-lg transition-colors',
+                          pathname.startsWith(item.href)
+                            ? 'text-primary-600 bg-primary-50'
+                            : 'text-gray-700 hover:bg-gray-50'
+                        )}>
+                          <Link
+                            href={item.href}
+                            className="flex-1 px-4 py-3 font-medium"
+                          >
+                            {item.name}
+                          </Link>
+                          <button
+                            onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
+                            className="px-3 py-3 border-l border-gray-200"
+                            aria-label="Avaa alavalikko"
+                          >
+                            <ChevronDown className={cn(
+                              'w-4 h-4 transition-transform',
+                              openDropdown === item.name && 'rotate-180'
+                            )} />
+                          </button>
+                        </div>
                         <AnimatePresence>
                           {openDropdown === item.name && (
                             <motion.div

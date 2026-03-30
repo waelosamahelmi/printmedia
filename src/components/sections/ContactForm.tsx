@@ -27,24 +27,30 @@ export function ContactForm({ showMap = true }: ContactFormProps) {
 
   useEffect(() => {
     const aihe = searchParams.get('aihe')
-    const tuote = searchParams.get('tuote')
-    const koodi = searchParams.get('koodi')
-    const maara = searchParams.get('maara')
-    if (!aihe && !tuote) return
+    const tuotteet = searchParams.getAll('tuote')
+    const koodit = searchParams.getAll('koodi')
+    const maarat = searchParams.getAll('maara')
+    if (!aihe && tuotteet.length === 0) return
+
     const updates: Partial<typeof formData> = {}
     if (aihe) updates.subject = aihe
-    if (tuote) {
-      const lines = [
-        'Tilaus / tarjouspyyntö hinnastosta:',
-        '',
-        `Tuote: ${tuote}`,
-        koodi ? `Tuotenro: ${koodi}` : '',
-        maara ? `Määrä: ${maara} kpl` : '',
-        '',
-        'Lisätiedot:',
-      ].filter((l, i) => i < 3 || l !== '')
+
+    if (tuotteet.length > 0) {
+      const lines = ['Tilaus / tarjouspyyntö hinnastosta:', '']
+
+      tuotteet.forEach((tuote, index) => {
+        const koodi = koodit[index] ?? ''
+        const maara = maarat[index] ?? ''
+        lines.push(`${index + 1}. Tuote: ${tuote}`)
+        if (koodi) lines.push(`   Tuotenro: ${koodi}`)
+        if (maara) lines.push(`   Määrä: ${maara} kpl`)
+        lines.push('')
+      })
+
+      lines.push('Lisätiedot:')
       updates.message = lines.join('\n')
     }
+
     setFormData(prev => ({ ...prev, ...updates }))
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
