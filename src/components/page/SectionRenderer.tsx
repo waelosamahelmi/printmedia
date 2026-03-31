@@ -72,6 +72,16 @@ async function fetchCategories(settings: CategoriesSettings) {
       },
       include: {
         _count: { select: { products: true } },
+        products: {
+          where: { status: 'PUBLISHED' },
+          take: 3,
+          include: {
+            images: {
+              where: { isPrimary: true },
+              take: 1,
+            },
+          },
+        },
       },
       orderBy: { sortOrder: 'asc' },
     })
@@ -93,6 +103,16 @@ async function fetchCategories(settings: CategoriesSettings) {
       },
       include: {
         _count: { select: { products: true } },
+        products: {
+          where: { status: 'PUBLISHED' },
+          take: 3,
+          include: {
+            images: {
+              where: { isPrimary: true },
+              take: 1,
+            },
+          },
+        },
       },
       orderBy: { sortOrder: 'asc' },
       take: settings.limit || 6,
@@ -196,13 +216,21 @@ export async function SectionRenderer({ section }: SectionRendererProps) {
       const categories = await fetchCategories(settings)
 
       // Transform database categories to component format
-      const formattedCategories = categories.map((cat) => ({
-        title: cat.name,
-        description: cat.description || '',
-        image: cat.image || '/images/placeholder.jpg',
-        href: getCategoryHref(cat.slug),
-        count: cat._count.products,
-      }))
+      const formattedCategories = categories.map((cat) => {
+        // Get product images (max 3)
+        const productImages = cat.products
+          .flatMap(product => product.images.map(img => img.url))
+          .slice(0, 3)
+
+        return {
+          title: cat.name,
+          description: cat.description || '',
+          image: cat.image || '/images/placeholder.jpg',
+          images: productImages.length > 0 ? productImages : undefined,
+          href: getCategoryHref(cat.slug),
+          count: cat._count.products,
+        }
+      })
 
       return (
         <CategoryGrid

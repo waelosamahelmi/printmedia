@@ -38,6 +38,7 @@ const navigation = [
     children: [
       { name: 'Kaikki tuotteet', href: '/admin/products' },
       { name: 'Kategoriat', href: '/admin/products/categories' },
+      { name: 'Galleriat', href: '/admin/galleries' },
     ],
   },
   {

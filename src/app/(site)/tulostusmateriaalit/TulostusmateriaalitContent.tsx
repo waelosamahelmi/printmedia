@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
+import Image from '@/components/ui/Image'
 
 export type MaterialProduct = {
   id: string
@@ -10,6 +11,10 @@ export type MaterialProduct = {
   name: string
   shortDesc: string | null
   description: string | null
+  images: Array<{
+    url: string
+    alt: string | null
+  }>
 }
 
 export type MaterialGroup = {
@@ -62,20 +67,38 @@ export default function TulostusmateriaalitContent({ groups }: { groups: Materia
             {current.products.map((product) => (
               <article
                 key={product.id}
-                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col"
+                className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow"
               >
-                <h3 className="text-base font-bold text-gray-900 mb-2 leading-snug">
-                  {product.name}
-                </h3>
-                {product.shortDesc && (
-                  <p className="text-sm text-gray-600 flex-1 mb-4">{product.shortDesc}</p>
+                {/* Product image */}
+                {product.images && product.images.length > 0 ? (
+                  <div className="relative w-full h-48 bg-gray-100">
+                    <Image
+                      src={product.images[0].url}
+                      alt={product.images[0].alt || product.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200" />
                 )}
-                <div className="mt-auto pt-4 border-t border-gray-100">
-                  <Link href={`/tuotteet/${product.slug}`}>
-                    <Button variant="secondary" size="sm">
-                      Lisätietoja
-                    </Button>
-                  </Link>
+                
+                {/* Text content */}
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-base font-bold text-gray-900 mb-2 leading-snug">
+                    {product.name}
+                  </h3>
+                  {product.shortDesc && (
+                    <p className="text-sm text-gray-600 flex-1 mb-4">{product.shortDesc}</p>
+                  )}
+                  <div className="mt-auto pt-4 border-t border-gray-100">
+                    <Link href={`/tuotteet/${product.slug}`}>
+                      <Button variant="secondary" size="sm">
+                        Lisätietoja
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}

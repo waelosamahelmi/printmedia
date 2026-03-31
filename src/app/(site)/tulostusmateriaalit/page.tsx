@@ -64,6 +64,14 @@ export default async function TulostusmateriaalitPage() {
       name: true,
       shortDesc: true,
       description: true,
+      images: {
+        select: {
+          url: true,
+          alt: true,
+        },
+        orderBy: { sortOrder: 'asc' },
+        take: 1,
+      },
     },
     orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
   })
