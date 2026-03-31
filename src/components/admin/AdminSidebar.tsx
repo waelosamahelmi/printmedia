@@ -8,6 +8,7 @@ import {
   LayoutDashboard,
   FileText,
   Package,
+  Boxes,
   FolderTree,
   Image as ImageIcon,
   Settings,
@@ -38,6 +39,11 @@ const navigation = [
       { name: 'Kaikki tuotteet', href: '/admin/products' },
       { name: 'Kategoriat', href: '/admin/products/categories' },
     ],
+  },
+  {
+    name: 'Varasto',
+    href: '/admin/inventory',
+    icon: Boxes,
   },
   {
     name: 'Media',

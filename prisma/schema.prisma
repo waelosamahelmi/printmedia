@@ -28,6 +28,7 @@ model User {
   sessions      Session[]
   pages         Page[]
   products      Product[]
+  inventoryTransactions InventoryTransaction[]
   
   @@map("users")
 }
@@ -137,8 +138,56 @@ model Product {
   
   images      ProductImage[]
   documents   ProductDocument[]
+  inventory   InventoryStock?
   
   @@map("products")
+}
+
+model InventoryLocation {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  name        String
+  description String?  @db.Text
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  stocks      InventoryStock[]
+
+  @@map("inventory_locations")
+}
+
+model InventoryStock {
+  id           String   @id @default(cuid())
+  productId    String   @unique @map("product_id")
+  locationId   String?  @map("location_id")
+  quantity     Int      @default(0)
+  minQuantity  Int      @default(0) @map("min_quantity")
+  notes        String?  @db.Text
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  product      Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  location     InventoryLocation? @relation(fields: [locationId], references: [id], onDelete: SetNull)
+  transactions InventoryTransaction[]
+
+  @@map("inventory_stocks")
+}
+
+model InventoryTransaction {
+  id             String                   @id @default(cuid())
+  stockId        String                   @map("stock_id")
+  userId         String?                  @map("user_id")
+  type           InventoryTransactionType @default(ADJUSTMENT)
+  quantityChange Int                      @map("quantity_change")
+  quantityAfter  Int                      @map("quantity_after")
+  note           String?                  @db.Text
+  createdAt      DateTime                 @default(now()) @map("created_at")
+
+  stock          InventoryStock           @relation(fields: [stockId], references: [id], onDelete: Cascade)
+  user           User?                    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("inventory_transactions")
 }
 
 model ProductImage {
@@ -231,4 +280,10 @@ enum Status {
   DRAFT
   PUBLISHED
   ARCHIVED
+}
+
+enum InventoryTransactionType {
+  ADJUSTMENT
+  RECEIVE
+  REMOVE
 }

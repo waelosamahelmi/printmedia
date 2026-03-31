@@ -3,6 +3,7 @@ import { prisma } from '@/lib/db'
 import {
   FileText,
   Package,
+  Boxes,
   Image as ImageIcon,
   Users,
   Eye,
@@ -243,6 +244,13 @@ export default async function AdminDashboard() {
           >
             <ImageIcon className="w-5 h-5 text-primary-600" />
             <span className="font-medium">Lataa media</span>
+          </Link>
+          <Link
+            href="/admin/inventory"
+            className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            <Boxes className="w-5 h-5 text-primary-600" />
+            <span className="font-medium">Avaa varasto</span>
           </Link>
           <Link
             href="/"
