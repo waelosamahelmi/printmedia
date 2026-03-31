@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+import { unlink } from 'fs/promises'
+import path from 'path'
 
 // DELETE - Delete image
 export async function DELETE(
@@ -45,6 +47,12 @@ export async function DELETE(
     await prisma.productImage.delete({
       where: { id: params.imageId },
     })
+
+    // Delete file from disk (ignore errors if file doesn't exist)
+    if (image.url.startsWith('/uploads/')) {
+      const filePath = path.join(process.cwd(), 'public', image.url)
+      unlink(filePath).catch(() => {/* file may not exist */})
+    }
 
     return NextResponse.json({ success: true })
   } catch (error) {

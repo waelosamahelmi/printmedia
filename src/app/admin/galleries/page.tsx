@@ -1,18 +1,17 @@
-'use client'
+﻿'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { Upload, Trash2, Image as ImageIcon, Loader, Check } from 'lucide-react'
-import { Button } from '@/components/ui/Button'
+import { Upload, Trash2, Image as ImageIcon, Loader, Check, Search, ChevronDown, ChevronUp, Star } from 'lucide-react'
 import { AdminHeader } from '@/components/admin/AdminHeader'
 import { AdminSidebar } from '@/components/admin/AdminSidebar'
 
 interface ProductImage {
   id: string
   url: string
-  alt?: string
-  caption?: string
+  alt: string | null
+  caption: string | null
   isPrimary: boolean
   sortOrder: number
 }
@@ -21,23 +20,25 @@ interface Product {
   id: string
   name: string
   slug: string
+  category: { name: string } | null
   images: ProductImage[]
 }
 
 export default function GalleriesPage() {
-  const { data: session, status } = useSession()
+  const { status } = useSession()
   const router = useRouter()
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState<string | null>(null)
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null)
+  const [search, setSearch] = useState('')
+  const [expanded, setExpanded] = useState<Set<string>>(new Set())
+  const [dragOver, setDragOver] = useState<string | null>(null)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
+  const fileInputRefs = useRef<Record<string, HTMLInputElement | null>>({})
 
   useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/admin-login')
-    }
+    if (status === 'unauthenticated') router.push('/admin-login')
   }, [status, router])
 
   useEffect(() => {
@@ -48,30 +49,38 @@ export default function GalleriesPage() {
     try {
       setLoading(true)
       const res = await fetch('/api/admin/products')
-      if (!res.ok) throw new Error('Failed to fetch products')
-      
+      if (!res.ok) throw new Error('Tuotteiden haku epÃ¤onnistui')
       const data = await res.json()
-      // Filter to show only products with images
-      const withImages = data.filter((p: Product) => p.images?.length > 0)
-      setProducts(withImages)
+      setProducts(data)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load products')
+      setError(err instanceof Error ? err.message : 'Virhe')
     } finally {
       setLoading(false)
     }
   }
 
-  const handleImageUpload = async (productId: string, files: FileList) => {
-    if (files.length === 0) return
+  const toggleExpand = (productId: string) => {
+    setExpanded(prev => {
+      const next = new Set(prev)
+      if (next.has(productId)) next.delete(productId)
+      else next.add(productId)
+      return next
+    })
+  }
+
+  const notify = (msg: string, isError = false) => {
+    if (isError) { setError(msg); setTimeout(() => setError(''), 4000) }
+    else { setSuccess(msg); setTimeout(() => setSuccess(''), 3000) }
+  }
+
+  const handleUpload = useCallback(async (productId: string, files: FileList) => {
+    if (!files.length) return
+    setUploading(productId)
 
     try {
-      setUploading(productId)
-      setError('')
-
       for (let i = 0; i < files.length; i++) {
-        const file = files[i]
         const formData = new FormData()
-        formData.append('file', file)
+        formData.append('file', files[i])
         formData.append('alt', '')
 
         const res = await fetch(`/api/admin/products/${productId}/images`, {
@@ -81,40 +90,42 @@ export default function GalleriesPage() {
 
         if (!res.ok) {
           const data = await res.json()
-          throw new Error(data.error || 'Upload failed')
+          throw new Error(data.error || 'Lataus epÃ¤onnistui')
         }
       }
 
-      // Refresh products
       await fetchProducts()
-      setSuccess(`${files.length} kuva(t) ladattu onnistuksella!`)
-      setTimeout(() => setSuccess(''), 3000)
+      // Auto-expand after upload
+      setExpanded(prev => new Set(prev).add(productId))
+      notify(`${files.length} kuva${files.length > 1 ? 'a' : ''} ladattu!`)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Upload failed')
+      notify(err instanceof Error ? err.message : 'Virhe', true)
     } finally {
       setUploading(null)
     }
-  }
+  }, [])
 
-  const handleDeleteImage = async (productId: string, imageId: string) => {
-    if (!confirm('Poista kuva?')) return
+  const handleDrop = useCallback((e: React.DragEvent, productId: string) => {
+    e.preventDefault()
+    setDragOver(null)
+    if (e.dataTransfer.files.length) handleUpload(productId, e.dataTransfer.files)
+  }, [handleUpload])
 
+  const handleDelete = async (productId: string, imageId: string) => {
+    if (!confirm('Poistetaanko kuva?')) return
     try {
       const res = await fetch(`/api/admin/products/${productId}/images/${imageId}`, {
         method: 'DELETE',
       })
-
-      if (!res.ok) throw new Error('Delete failed')
-
-      setProducts(products.map(p =>
+      if (!res.ok) throw new Error('Poisto epÃ¤onnistui')
+      setProducts(prev => prev.map(p =>
         p.id === productId
           ? { ...p, images: p.images.filter(img => img.id !== imageId) }
           : p
       ))
-      setSuccess('Kuva poistettu')
-      setTimeout(() => setSuccess(''), 3000)
+      notify('Kuva poistettu')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Delete failed')
+      notify(err instanceof Error ? err.message : 'Virhe', true)
     }
   }
 
@@ -123,27 +134,22 @@ export default function GalleriesPage() {
       const res = await fetch(`/api/admin/products/${productId}/images/${imageId}`, {
         method: 'POST',
       })
-
-      if (!res.ok) throw new Error('Failed')
-
-      setProducts(products.map(p =>
+      if (!res.ok) throw new Error('EpÃ¤onnistui')
+      setProducts(prev => prev.map(p =>
         p.id === productId
-          ? {
-              ...p,
-              images: p.images.map(img =>
-                img.id === imageId
-                  ? { ...img, isPrimary: true }
-                  : { ...img, isPrimary: false }
-              ),
-            }
+          ? { ...p, images: p.images.map(img => ({ ...img, isPrimary: img.id === imageId })) }
           : p
       ))
-      setSuccess('Pääkuva asetettu')
-      setTimeout(() => setSuccess(''), 3000)
+      notify('PÃ¤Ã¤kuva asetettu')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed')
+      notify(err instanceof Error ? err.message : 'Virhe', true)
     }
   }
+
+  const filteredProducts = products.filter(p =>
+    p.name.toLowerCase().includes(search.toLowerCase()) ||
+    (p.category?.name || '').toLowerCase().includes(search.toLowerCase())
+  )
 
   if (status === 'loading' || loading) {
     return (
@@ -167,110 +173,191 @@ export default function GalleriesPage() {
         <AdminHeader />
 
         <div className="flex-1 overflow-auto">
-          <div className="max-w-7xl mx-auto p-6 space-y-6">
+          <div className="max-w-5xl mx-auto p-6 space-y-4">
+
+            {/* Title */}
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">Tuotekuvat</h1>
+              <p className="text-gray-600 text-sm mt-1">
+                Lataa ja hallinnoi tuotekuvia. PÃ¤Ã¤kuva nÃ¤kyy tuotelistauksissa.
+              </p>
+            </div>
+
+            {/* Notifications */}
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 text-sm">
                 {error}
               </div>
             )}
             {success && (
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-green-700">
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-green-700 text-sm">
                 {success}
               </div>
             )}
 
-            {products.length === 0 ? (
-              <div className="bg-gray-50 rounded-lg p-12 text-center">
-                <ImageIcon className="w-12 h-12 mx-auto text-gray-400 mb-4" />
-                <p className="text-gray-600">Ei tuotteita kuvilla</p>
-              </div>
-            ) : (
-              <div className="grid gap-6">
-                {products.map(product => (
-                  <div key={product.id} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-                    {/* Product header */}
-                    <div className="border-b border-gray-200 p-6 flex justify-between items-center">
-                      <div>
-                        <h3 className="text-lg font-bold text-gray-900">{product.name}</h3>
-                        <p className="text-sm text-gray-600">{product.images.length} kuva(a)</p>
-                      </div>
-                      <input
-                        id={`file-input-${product.id}`}
-                        type="file"
-                        multiple
-                        accept="image/*"
-                        onChange={(e) => e.target.files && handleImageUpload(product.id, e.target.files)}
-                        disabled={uploading === product.id}
-                        className="hidden"
-                      />
-                      <Button
-                        variant="primary"
-                        disabled={uploading === product.id}
-                        onClick={() => document.getElementById(`file-input-${product.id}`)?.click()}
-                        className={uploading === product.id ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
-                      >
-                        {uploading === product.id ? (
-                          <>
-                            <Loader className="w-4 h-4 mr-2 animate-spin" />
-                            Ladataan...
-                          </>
-                        ) : (
-                          <>
-                            <Upload className="w-4 h-4 mr-2" />
-                            Lataa kuvia
-                          </>
-                        )}
-                      </Button>
-                    </div>
+            {/* Search */}
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Hae tuotetta tai kategoriaa..."
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                className="w-full pl-9 pr-4 py-2 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-primary-600 focus:border-transparent outline-none"
+              />
+            </div>
 
-                    {/* Images grid */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 p-6">
-                      {product.images.sort((a, b) => a.sortOrder - b.sortOrder).map(image => (
-                        <div
-                          key={image.id}
-                          className="relative group rounded-lg overflow-hidden bg-gray-100 hover:ring-2 hover:ring-primary-600 transition-all"
-                        >
+            {/* Products list */}
+            <div className="space-y-2">
+              {filteredProducts.map(product => {
+                const isExpanded = expanded.has(product.id)
+                const isUploading = uploading === product.id
+                const isDragTarget = dragOver === product.id
+
+                return (
+                  <div
+                    key={product.id}
+                    className={`bg-white rounded-xl border-2 transition-colors ${
+                      isDragTarget ? 'border-primary-400 bg-primary-50' : 'border-gray-200'
+                    }`}
+                    onDragOver={e => { e.preventDefault(); setDragOver(product.id) }}
+                    onDragLeave={() => setDragOver(null)}
+                    onDrop={e => handleDrop(e, product.id)}
+                  >
+                    {/* Product header row */}
+                    <div className="flex items-center gap-4 p-4">
+                      {/* Thumbnail */}
+                      <div className="w-14 h-14 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
+                        {product.images.length > 0 ? (
                           <img
-                            src={image.url}
-                            alt={image.alt || 'Product'}
-                            className="w-full h-40 object-cover"
+                            src={product.images.find(i => i.isPrimary)?.url || product.images[0].url}
+                            alt={product.name}
+                            className="w-full h-full object-cover"
                           />
-
-                          {image.isPrimary && (
-                            <div className="absolute top-2 left-2 bg-primary-600 text-white text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
-                              <Check className="w-3 h-3" />
-                              Pää
-                            </div>
-                          )}
-
-                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                            {!image.isPrimary && (
-                              <button
-                                onClick={() => handleSetPrimary(product.id, image.id)}
-                                title="Aseta pääkuvaksi"
-                                className="bg-primary-600 hover:bg-primary-700 text-white p-2 rounded-lg transition-colors"
-                              >
-                                <ImageIcon className="w-4 h-4" />
-                              </button>
-                            )}
-                            <button
-                              onClick={() => handleDeleteImage(product.id, image.id)}
-                              title="Poista kuva"
-                              className="bg-red-600 hover:bg-red-700 text-white p-2 rounded-lg transition-colors"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <ImageIcon className="w-6 h-6 text-gray-300" />
                           </div>
-                        </div>
-                      ))}
+                        )}
+                      </div>
+
+                      {/* Name & info */}
+                      <div className="flex-1 min-w-0">
+                        <p className="font-semibold text-gray-900 truncate">{product.name}</p>
+                        <p className="text-xs text-gray-500 mt-0.5">
+                          {product.category?.name || 'â€”'} &middot;{' '}
+                          {product.images.length === 0
+                            ? <span className="text-orange-500">Ei kuvia</span>
+                            : <span className="text-green-600">{product.images.length} kuva{product.images.length !== 1 ? 'a' : ''}</span>
+                          }
+                        </p>
+                      </div>
+
+                      {/* Upload button */}
+                      <div>
+                        <input
+                          ref={el => { fileInputRefs.current[product.id] = el }}
+                          type="file"
+                          multiple
+                          accept="image/jpeg,image/png,image/webp"
+                          onChange={e => e.target.files && handleUpload(product.id, e.target.files)}
+                          className="hidden"
+                        />
+                        <button
+                          onClick={() => fileInputRefs.current[product.id]?.click()}
+                          disabled={isUploading}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                        >
+                          {isUploading
+                            ? <><Loader className="w-3.5 h-3.5 animate-spin" /> Ladataan...</>
+                            : <><Upload className="w-3.5 h-3.5" /> Lataa</>
+                          }
+                        </button>
+                      </div>
+
+                      {/* Expand toggle */}
+                      {product.images.length > 0 && (
+                        <button
+                          onClick={() => toggleExpand(product.id)}
+                          className="p-1.5 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors"
+                        >
+                          {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                        </button>
+                      )}
                     </div>
+
+                    {/* Drag hint */}
+                    {isDragTarget && (
+                      <div className="px-4 pb-3 text-sm text-primary-600 font-medium">
+                        Pudota kuvat tÃ¤hÃ¤n...
+                      </div>
+                    )}
+
+                    {/* Expanded images */}
+                    {isExpanded && product.images.length > 0 && (
+                      <div className="border-t border-gray-100 p-4">
+                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
+                          {product.images
+                            .slice()
+                            .sort((a, b) => a.sortOrder - b.sortOrder)
+                            .map(image => (
+                              <div
+                                key={image.id}
+                                className="relative group rounded-lg overflow-hidden bg-gray-100 aspect-square"
+                              >
+                                <img
+                                  src={image.url}
+                                  alt={image.alt || product.name}
+                                  className="w-full h-full object-cover"
+                                />
+
+                                {/* Primary badge */}
+                                {image.isPrimary && (
+                                  <div className="absolute top-1 left-1 bg-primary-600 text-white rounded p-0.5">
+                                    <Star className="w-3 h-3 fill-white" />
+                                  </div>
+                                )}
+
+                                {/* Hover overlay */}
+                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5">
+                                  {!image.isPrimary && (
+                                    <button
+                                      onClick={() => handleSetPrimary(product.id, image.id)}
+                                      title="Aseta pÃ¤Ã¤kuvaksi"
+                                      className="bg-primary-600 hover:bg-primary-700 text-white p-1.5 rounded transition-colors"
+                                    >
+                                      <Star className="w-3.5 h-3.5" />
+                                    </button>
+                                  )}
+                                  <button
+                                    onClick={() => handleDelete(product.id, image.id)}
+                                    title="Poista"
+                                    className="bg-red-600 hover:bg-red-700 text-white p-1.5 rounded transition-colors"
+                                  >
+                                    <Trash2 className="w-3.5 h-3.5" />
+                                  </button>
+                                </div>
+                              </div>
+                            ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                ))}
-              </div>
-            )}
+                )
+              })}
+
+              {filteredProducts.length === 0 && (
+                <div className="bg-white rounded-xl border border-gray-200 p-12 text-center">
+                  <ImageIcon className="w-10 h-10 mx-auto text-gray-300 mb-3" />
+                  <p className="text-gray-500">Ei tuotteita hakusanalla "{search}"</p>
+                </div>
+              )}
+            </div>
+
           </div>
         </div>
       </div>
     </div>
   )
 }
+

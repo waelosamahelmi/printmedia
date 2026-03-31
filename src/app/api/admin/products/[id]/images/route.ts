@@ -2,10 +2,17 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/db'
+import { writeFile, mkdir } from 'fs/promises'
+import path from 'path'
 
-// Simulated file storage (in production, use S3 or similar)
-const mockUpload = (filename: string) => {
-  return `/uploads/${filename}`
+const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
+const MAX_SIZE = 5 * 1024 * 1024 // 5MB
+
+function sanitizeFilename(name: string) {
+  return name
+    .replace(/[^a-zA-Z0-9._-]/g, '-')
+    .replace(/-+/g, '-')
+    .toLowerCase()
 }
 
 // POST - Upload image for product
@@ -20,22 +27,20 @@ export async function POST(
     }
 
     const formData = await request.formData()
-    const file = formData.get('file') as File
-    const alt = formData.get('alt') as string
-    const caption = formData.get('caption') as string
+    const file = formData.get('file') as File | null
+    const alt = formData.get('alt') as string | null
+    const caption = formData.get('caption') as string | null
 
     if (!file) {
       return NextResponse.json({ error: 'No file provided' }, { status: 400 })
     }
 
-    // Validate file type
-    if (!file.type.startsWith('image/')) {
-      return NextResponse.json({ error: 'File must be an image' }, { status: 400 })
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      return NextResponse.json({ error: 'File must be JPEG, PNG, WebP or GIF' }, { status: 400 })
     }
 
-    // Validate file size (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      return NextResponse.json({ error: 'File size must be less than 5MB' }, { status: 400 })
+    if (file.size > MAX_SIZE) {
+      return NextResponse.json({ error: 'File size must be under 5MB' }, { status: 400 })
     }
 
     // Check product exists
@@ -47,17 +52,25 @@ export async function POST(
       return NextResponse.json({ error: 'Product not found' }, { status: 404 })
     }
 
-    // In production, upload file to S3/storage
-    // For now, simulate URL generation
-    const filename = `${Date.now()}_${file.name}`
-    const url = mockUpload(filename)
+    // Save file to disk
+    const ext = path.extname(file.name) || '.jpg'
+    const safeName = sanitizeFilename(path.basename(file.name, ext))
+    const filename = `${Date.now()}-${safeName}${ext}`
+    const folder = `products/${product.slug}`
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads', folder)
 
-    // Get current image count to set sortOrder
+    await mkdir(uploadDir, { recursive: true })
+
+    const bytes = await file.arrayBuffer()
+    await writeFile(path.join(uploadDir, filename), Buffer.from(bytes))
+
+    const url = `/uploads/${folder}/${filename}`
+
+    // Get current image count to set sortOrder and isPrimary
     const imageCount = await prisma.productImage.count({
       where: { productId: params.id },
     })
 
-    // Create image record
     const image = await prisma.productImage.create({
       data: {
         productId: params.id,
@@ -65,7 +78,7 @@ export async function POST(
         alt: alt || null,
         caption: caption || null,
         sortOrder: imageCount,
-        isPrimary: imageCount === 0, // First image is primary
+        isPrimary: imageCount === 0,
       },
     })
 
