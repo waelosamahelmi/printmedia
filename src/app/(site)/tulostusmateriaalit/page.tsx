@@ -7,6 +7,7 @@ import { prisma } from '@/lib/db'
 import TulostusmateriaalitContent from './TulostusmateriaalitContent'
 import type { MaterialGroup, MaterialProduct } from './TulostusmateriaalitContent'
 import { priceListSections } from '../hinnasto/priceListData'
+import catalogSnapshot from '@/lib/fallback/catalogSnapshot.json'
 
 export const metadata: Metadata = {
   title: 'Tulostusmateriaalit | PrintMedia PM Solutions Oy',
@@ -96,7 +97,10 @@ export default async function TulostusmateriaalitPage() {
     console.error('Failed to fetch material products:', error)
   }
 
-  const products: MaterialProduct[] = dbProducts.length > 0 ? dbProducts : fallbackProducts
+  const snapshotProducts = catalogSnapshot.materials as MaterialProduct[]
+  const products: MaterialProduct[] = process.env.NODE_ENV === 'production'
+    ? snapshotProducts
+    : (dbProducts.length > 0 ? dbProducts : fallbackProducts)
 
   const byGroup: Record<string, MaterialProduct[]> = {}
   for (const g of GROUP_DEFS) byGroup[g.key] = []

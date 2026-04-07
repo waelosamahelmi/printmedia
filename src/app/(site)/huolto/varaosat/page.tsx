@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button'
 import { ArrowLeft } from 'lucide-react'
 import { prisma } from '@/lib/db'
 import VaraosatContent from './VaraosatContent'
+import catalogSnapshot from '@/lib/fallback/catalogSnapshot.json'
 
 export const metadata: Metadata = {
   title: 'Varaosat ja Tarvikkeet | PrintMedia PM Solutions Oy',
@@ -177,15 +178,21 @@ export default async function VaraosatPage() {
     printerGroups.some((group) => group.products.length > 0) ||
     cutterGroups.some((group) => group.products.length > 0)
 
-  const resolvedPrinterGroups = hasPrimarySparePartGroups
-    ? printerGroups
-    : (loosePrinterGroups.length > 0 ? loosePrinterGroups : fallbackPrinterGroups)
+  const resolvedPrinterGroups = process.env.NODE_ENV === 'production'
+    ? catalogSnapshot.printerGroups
+    : (hasPrimarySparePartGroups
+      ? printerGroups
+      : (loosePrinterGroups.length > 0 ? loosePrinterGroups : fallbackPrinterGroups))
 
-  const resolvedCutterGroups = hasPrimarySparePartGroups
-    ? cutterGroups
-    : (looseCutterGroups.length > 0 ? looseCutterGroups : fallbackCutterGroups)
+  const resolvedCutterGroups = process.env.NODE_ENV === 'production'
+    ? catalogSnapshot.cutterGroups
+    : (hasPrimarySparePartGroups
+      ? cutterGroups
+      : (looseCutterGroups.length > 0 ? looseCutterGroups : fallbackCutterGroups))
 
-  const resolvedAccessories = accessoryProducts.length > 0 ? accessoryProducts : fallbackAccessories
+  const resolvedAccessories = process.env.NODE_ENV === 'production'
+    ? catalogSnapshot.accessories
+    : (accessoryProducts.length > 0 ? accessoryProducts : fallbackAccessories)
 
   return (
     <div className="pt-32 pb-20">

@@ -37,7 +37,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const slugString = slug.join('/')
 
-  const page = (await getPage(slugString)) || getFallbackPageBySlug(slugString)
+  const page = process.env.NODE_ENV === 'production' && slugString === 'yritys'
+    ? getFallbackPageBySlug(slugString)
+    : (await getPage(slugString)) || getFallbackPageBySlug(slugString)
 
   if (!page) {
     return {
@@ -56,7 +58,9 @@ export default async function DynamicPage({ params }: PageProps) {
   const { slug } = await params
   const slugString = slug.join('/')
 
-  const page = (await getPage(slugString)) || getFallbackPageBySlug(slugString)
+  const page = process.env.NODE_ENV === 'production' && slugString === 'yritys'
+    ? getFallbackPageBySlug(slugString)
+    : (await getPage(slugString)) || getFallbackPageBySlug(slugString)
 
   if (!page) {
     notFound()
