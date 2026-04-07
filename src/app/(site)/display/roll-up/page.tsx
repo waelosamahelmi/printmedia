@@ -29,8 +29,6 @@ export default async function RollUpPage() {
     orderBy: { sortOrder: 'asc' }
   })
 
-  const hasProducts = products.length > 0
-
   return (
     <div className="pt-32 pb-20">
       <Container>
@@ -114,12 +112,6 @@ export default async function RollUpPage() {
             )
           })}
         </div>
-
-        {!hasProducts && (
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-8 mb-12 text-center text-gray-700">
-            Roll up -tuotteiden tarkempi sisalto paivittyy tuotantoon vaiheittain. Katso hinnasto tai pyydä tarjous myynnistamme.
-          </div>
-        )}
 
         {/* Contact CTA */}
         <div className="bg-primary-50 rounded-2xl p-8 text-center">

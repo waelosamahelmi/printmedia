@@ -33,7 +33,6 @@ export default async function DocanUVTulostimetPage() {
   const features = mainProduct?.features ? JSON.parse(mainProduct.features) : []
   const specs = mainProduct?.specs ? JSON.parse(mainProduct.specs) : {}
   const primaryImage = mainProduct?.images?.find((img: { isPrimary: boolean }) => img.isPrimary) || mainProduct?.images?.[0]
-  const hasProducts = products.length > 0
 
   return (
     <div className="pt-32 pb-20">
@@ -81,12 +80,6 @@ export default async function DocanUVTulostimetPage() {
             />
           )}
         </div>
-
-        {!hasProducts && (
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-8 mb-12 text-gray-700">
-            Tuotekohtainen Docan-sisalto paivittyy tuotantoon vaiheittain. Ota yhteytta myyntiin, niin toimitamme tarkemmat mallitiedot, esitteet ja tarjoukset.
-          </div>
-        )}
 
         {/* Content */}
         <div className="prose prose-lg max-w-none mb-12">
