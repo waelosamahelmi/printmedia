@@ -38,13 +38,112 @@ async function getInkProducts() {
 
 type InkProduct = Awaited<ReturnType<typeof getInkProducts>>[number]
 
+type InkCardImage = {
+  url: string
+  alt: string | null
+}
+
 type InkCard = {
   id: string
   slug: string
   name: string
   shortDesc: string | null
-  image: InkProduct['images'][number] | undefined
+  image: InkCardImage | undefined
 }
+
+const canonicalInkCards: InkCard[] = [
+  {
+    id: 'fallback-jetbest-es3-varikasetti-440ml',
+    slug: 'jetbest-es3-varikasetti-440ml',
+    name: 'Jetbest ES3 - varikasetti 440 ml (C, M, Y, K, LC, LM)',
+    shortDesc: 'Alkuperaista vastaava 440 ml varikasetti Roland-, Mutoh- ja Mimaki ES3 -laitteisiin.',
+    image: { url: '/images/products/inks/jetbest-es3-varikasetti-440ml.jpg', alt: 'Jetbest ES3 - varikasetti 440 ml' },
+  },
+  {
+    id: 'fallback-jetbest-es3-tayttopullo-500ml',
+    slug: 'jetbest-es3-tayttopullo-500ml',
+    name: 'Jetbest ES3 - tayttopullo 500 ml (C, M, Y, K, LC, LM)',
+    shortDesc: '500 ml tayttopullo Jetbest tayttojarjestelmalle, eco-solvent-kayttoon.',
+    image: { url: '/images/products/inks/jetbest-es3-tayttopullo-500ml.jpg', alt: 'Jetbest ES3 - tayttopullo 500 ml' },
+  },
+  {
+    id: 'fallback-jetbest-ss21-varikasetti-440ml',
+    slug: 'jetbest-ss21-varikasetti-440ml',
+    name: 'Jetbest SS21 - varikasetti 440 ml (C, M, Y, K, LC, LM, W, O)',
+    shortDesc: 'Mimaki SS21 -yhteensopiva 440 ml varikasetti useisiin JV/CJV-sarjoihin.',
+    image: { url: '/images/products/inks/jetbest-ss21-varikasetti-440ml.jpg', alt: 'Jetbest SS21 - varikasetti 440 ml' },
+  },
+  {
+    id: 'fallback-jetbest-i2-varikasetti-440ml',
+    slug: 'jetbest-i2-varikasetti-440ml',
+    name: 'Jetbest I-2 - varikasetti 440 ml (C, M, Y, K, LC, LM, LK)',
+    shortDesc: 'Roland Eco-sol MAX2 -yhteensopiva 440 ml varikasetti.',
+    image: { url: '/images/products/inks/jetbest-i2-varikasetti-440ml.jpg', alt: 'Jetbest I-2 - varikasetti 440 ml' },
+  },
+  {
+    id: 'fallback-jetbest-cleaning-solvent-220ml',
+    slug: 'jetbest-cleaning-solvent-220ml',
+    name: 'Jetbest Cleaning Solvent 220 ml',
+    shortDesc: 'Puhdistusneste eco-solvent- ja mild-solvent-vareille.',
+    image: { url: '/images/products/inks/jetbest-cleaning-solvent-220ml.jpg', alt: 'Jetbest Cleaning Solvent 220 ml' },
+  },
+  {
+    id: 'fallback-jetbest-cleaning-solvent-440ml',
+    slug: 'jetbest-cleaning-solvent-440ml',
+    name: 'Jetbest Cleaning Solvent 440 ml',
+    shortDesc: 'Puhdistusneste 440 ml varikokoon, eco-solvent- ja mild-solvent-kayttoon.',
+    image: { url: '/images/products/inks/jetbest-cleaning-solvent-440ml.jpg', alt: 'Jetbest Cleaning Solvent 440 ml' },
+  },
+  {
+    id: 'fallback-cleaning-eco-solvent-1000ml',
+    slug: 'cleaning-eco-solvent-1000ml',
+    name: 'Cleaning Eco-Solvent 1000 ml pullo',
+    shortDesc: '1 litran puhdistusaine eco-solvent-, mild-solvent- ja solvent-vareille.',
+    image: { url: '/images/products/inks/cleaning-eco-solvent-1000ml.png', alt: 'Cleaning Eco-Solvent 1000 ml pullo' },
+  },
+  {
+    id: 'fallback-jetbest-lus170-uv-1l',
+    slug: 'jetbest-lus170-uv-1l',
+    name: 'Jetbest LUS170 UV 1L pullo (C, M, Y, K, W, V, CL)',
+    shortDesc: 'UV-vari 1 litran tayttopullossa, yhteensopiva mm. Mimaki UCJV -sarjan kanssa.',
+    image: { url: '/images/products/inks/jetbest-lus170-uv-1l.jpg', alt: 'Jetbest LUS170 UV 1L pullo' },
+  },
+  {
+    id: 'fallback-jetbest-lus170-uv-cleaning-1l',
+    slug: 'jetbest-lus170-uv-cleaning-1l',
+    name: 'Jetbest LUS170 UV Cleaning 1L pullo',
+    shortDesc: 'Jetbest LUS170 UV -sarjan puhdistusaine 1 litran pullossa.',
+    image: { url: '/images/products/inks/jetbest-lus170-uv-cleaning-1l.jpg', alt: 'Jetbest LUS170 UV Cleaning 1L pullo' },
+  },
+  {
+    id: 'fallback-chromoink-uv-1000ml',
+    slug: 'chromoink-uv-1000ml',
+    name: 'Chromoink UV 1000 ml pullo (C, M, Y, K, LC, LM, W)',
+    shortDesc: 'UV-vari 1 litran pullossa Konica Minolta -tulostuspaille.',
+    image: { url: '/images/products/inks/chromoink-uv-1000ml.jpg', alt: 'Chromoink UV 1000 ml pullo' },
+  },
+  {
+    id: 'fallback-1511-chromoink-uv-1000ml-pullo-coating-liquid-sti',
+    slug: '1511-chromoink-uv-1000-ml-pullo-coating-liquid-sti',
+    name: 'Chromoink UV coating liquid STI 1000 ml',
+    shortDesc: 'Chromoink UV -sarjan coating liquid STI.',
+    image: { url: '/images/products/inks/chromoink-uv-1000ml.jpg', alt: 'Chromoink UV coating liquid STI' },
+  },
+  {
+    id: 'fallback-1512-chromoink-uv-1000ml-pullo-coating-liquid-dil',
+    slug: '1512-chromoink-uv-1000-ml-pullo-coating-liquid-dil',
+    name: 'Chromoink UV coating liquid DIL 1000 ml',
+    shortDesc: 'Chromoink UV -sarjan coating liquid DIL.',
+    image: { url: '/images/products/inks/chromoink-uv-1000ml.jpg', alt: 'Chromoink UV coating liquid DIL' },
+  },
+  {
+    id: 'fallback-1513-chromoink-uv-1000ml-pullo-uv-cleaner',
+    slug: '1513-chromoink-uv-1000-ml-pullo-uv-cleaner',
+    name: 'Chromoink UV cleaner 1000 ml',
+    shortDesc: 'Chromoink UV -sarjan puhdistusaine.',
+    image: { url: '/images/products/inks/chromoink-uv-1000ml.jpg', alt: 'Chromoink UV cleaner 1000 ml' },
+  },
+]
 
 function extractColorCode(name: string) {
   if (/light cyan|\blc\b/i.test(name)) return 'LC'
@@ -145,9 +244,19 @@ function buildInkCards(products: InkProduct[]) {
   ].filter((card): card is InkCard => Boolean(card))
 }
 
+function buildCanonicalInkCards(products: InkProduct[]) {
+  const availableSlugs = new Set(products.map((product) => product.slug))
+
+  return canonicalInkCards.map((card) => ({
+    ...card,
+    slug: availableSlugs.has(card.slug) ? card.slug : '',
+  }))
+}
+
 export default async function TulostusvaritPage() {
   const products = await getInkProducts()
-  const productCards = buildInkCards(products)
+  const dbProductCards = buildInkCards(products)
+  const productCards = dbProductCards.length > 0 ? buildCanonicalInkCards(products) : canonicalInkCards
 
   return (
     <div className="pt-32 pb-20">
@@ -274,12 +383,9 @@ export default async function TulostusvaritPage() {
           {productCards.length > 0 ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {productCards.map((product) => {
-                return (
-                  <Link
-                    key={product.id}
-                    href={`/tuotteet/${product.slug}`}
-                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
-                  >
+                const cardClassName = 'bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group'
+                const cardContent = (
+                  <>
                     <div className="aspect-square bg-gray-100 overflow-hidden">
                       {product.image ? (
                         <img
@@ -299,7 +405,25 @@ export default async function TulostusvaritPage() {
                         <p className="text-sm text-gray-600">{product.shortDesc}</p>
                       )}
                     </div>
-                  </Link>
+                  </>
+                )
+
+                if (product.slug) {
+                  return (
+                    <Link
+                      key={product.id}
+                      href={`/tuotteet/${product.slug}`}
+                      className={cardClassName}
+                    >
+                      {cardContent}
+                    </Link>
+                  )
+                }
+
+                return (
+                  <article key={product.id} className={cardClassName}>
+                    {cardContent}
+                  </article>
                 )
               })}
             </div>

@@ -47,41 +47,49 @@ export function CategoryGrid({
         </motion.div>
 
         <div className={gridClassName}>
-          {categories.map((category, index) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Link href={category.href} className="group block">
-                <div className="card-hover h-full">
-                  {/* Image */}
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    {category.images && category.images.length > 1 ? (
-                      <div className="grid grid-cols-3 h-full gap-1 bg-gray-200 p-1">
-                        {category.images.slice(0, 3).map((imgSrc, imgIndex) => (
-                          <div key={`${category.title}-${imgIndex}`} className="relative overflow-hidden">
-                            <Image
-                              src={imgSrc}
-                              alt={`${category.title} ${imgIndex + 1}`}
-                              fill
-                              className="object-cover transition-transform duration-500 group-hover:scale-105"
-                              sizes="(max-width: 640px) 33vw, (max-width: 1024px) 16vw, 10vw"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <Image
-                        src={category.image}
-                        alt={category.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    )}
+          {categories.map((category, index) => {
+            const uniqueImages = Array.from(new Set((category.images || []).filter(Boolean))).slice(0, 3)
+            const showCollage = uniqueImages.length >= 3
+            const heroImage = uniqueImages[0] || category.image
+            const preferContain = category.href.includes('docan-uv-tulostimet')
+
+            return (
+              <motion.div
+                key={category.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Link href={category.href} className="group block">
+                  <div className="card-hover h-full">
+                    {/* Image */}
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      {showCollage ? (
+                        <div className="grid grid-cols-3 h-full gap-1 bg-gray-200 p-1">
+                          {uniqueImages.map((imgSrc, imgIndex) => (
+                            <div key={`${category.title}-${imgIndex}`} className="relative overflow-hidden">
+                              <Image
+                                src={imgSrc}
+                                alt={`${category.title} ${imgIndex + 1}`}
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                sizes="(max-width: 640px) 33vw, (max-width: 1024px) 16vw, 10vw"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <Image
+                          src={heroImage}
+                          alt={category.title}
+                          fill
+                          className={preferContain
+                            ? 'object-contain p-2 transition-transform duration-500 bg-gray-100'
+                            : 'object-cover transition-transform duration-500 group-hover:scale-110'}
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                      )}
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
                     
                     {/* Category count badge */}
@@ -106,7 +114,8 @@ export function CategoryGrid({
                 </div>
               </Link>
             </motion.div>
-          ))}
+            )
+          })}
         </div>
       </Container>
     </section>

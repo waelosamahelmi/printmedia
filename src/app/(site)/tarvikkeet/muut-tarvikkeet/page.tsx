@@ -31,6 +31,7 @@ export default async function MuutTarvikkeetPage() {
   // Separate turvaviivaimet and kiinnikkeet
   const turvaviivaimet = products.filter(p => p.name.toLowerCase().includes('turvaviivain'))
   const kiinnikkeet = products.filter(p => !p.name.toLowerCase().includes('turvaviivain'))
+  const hasProducts = products.length > 0
 
   return (
     <div className="pt-32 pb-20">
@@ -167,6 +168,12 @@ export default async function MuutTarvikkeetPage() {
                 )
               })}
             </div>
+          </div>
+        )}
+
+        {!hasProducts && (
+          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-8 mb-12 text-center text-gray-700">
+            Tarvikkeiden tuotekohtainen sisalto paivittyy tuotantoon vaiheittain. Hinnasto ja myynti auttavat oikeiden tuotteiden valinnassa jo nyt.
           </div>
         )}
 
