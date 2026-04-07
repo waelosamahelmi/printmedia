@@ -316,13 +316,32 @@ export async function SectionRenderer({ section }: SectionRendererProps) {
 
     case 'custom_html': {
       const settings = parseSettings<CustomHTMLSettings>(settingsJson)
-      if (!settings) return null
+      let html = settings?.html
+
+      // Some fallback strings were serialized as invalid JSON; recover the html payload.
+      if (!html && settingsJson) {
+        const match = settingsJson.match(/"html":"([\s\S]*)"\s*}\s*$/)
+        if (match && match[1]) {
+          html = match[1]
+            .replace(/\\n/g, '\n')
+            .replace(/\\r/g, '\r')
+            .replace(/\\t/g, '\t')
+            .replace(/\\"/g, '"')
+            .replace(/\\\\/g, '\\')
+        }
+      }
+
+      if (!html && section.content) {
+        html = section.content
+      }
+
+      if (!html) return null
 
       // WARNING: This allows raw HTML injection
       // Only use for trusted admin content
       return (
         <div
-          dangerouslySetInnerHTML={{ __html: settings.html }}
+          dangerouslySetInnerHTML={{ __html: html }}
         />
       )
     }

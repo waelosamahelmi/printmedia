@@ -3,6 +3,7 @@ import { Container } from '@/components/ui/Container'
 import { CategoryGrid } from '@/components/sections/CategoryGrid'
 import { CTA } from '@/components/sections/CTA'
 import { prisma } from '@/lib/db'
+import { Award, Truck, BadgeEuro } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Display-tuotteet',
@@ -69,7 +70,7 @@ export default async function DisplayPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-8 text-center shadow-lg">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">Laatu</span>
+                <Award className="w-7 h-7 text-primary-700" aria-hidden="true" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Korkea laatu</h3>
               <p className="text-gray-600">
@@ -79,7 +80,7 @@ export default async function DisplayPage() {
             </div>
             <div className="bg-white rounded-2xl p-8 text-center shadow-lg">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">Toimitus</span>
+                <Truck className="w-7 h-7 text-primary-700" aria-hidden="true" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Nopea toimitus</h3>
               <p className="text-gray-600">
@@ -89,7 +90,7 @@ export default async function DisplayPage() {
             </div>
             <div className="bg-white rounded-2xl p-8 text-center shadow-lg">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">Hinta</span>
+                <BadgeEuro className="w-7 h-7 text-primary-700" aria-hidden="true" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Kilpailukykyiset hinnat</h3>
               <p className="text-gray-600">
