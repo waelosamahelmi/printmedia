@@ -31,7 +31,6 @@ export default async function LaminaattoritPage() {
   const mainProduct = products[0]
   const features = mainProduct?.features ? JSON.parse(mainProduct.features) : []
   const primaryImage = mainProduct?.images?.find((img: { isPrimary: boolean }) => img.isPrimary) || mainProduct?.images?.[0]
-  const hasProducts = products.length > 0
 
   return (
     <div className="pt-32 pb-20">
@@ -113,12 +112,6 @@ export default async function LaminaattoritPage() {
                 </div>
               </div>
             </div>
-          </div>
-        )}
-
-        {!hasProducts && (
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-8 mb-12 text-gray-700">
-            Laminaattorien tuotekohtainen sisalto paivittyy tuotantoon vaiheittain. Ota yhteytta myyntiin, niin autamme sopivan mallin valinnassa jo nyt.
           </div>
         )}
 

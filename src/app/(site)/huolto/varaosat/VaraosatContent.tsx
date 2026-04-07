@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button'
 
 export type SparePartProduct = {
   id: string
-  slug?: string
+  slug: string
   name: string
   shortDesc: string | null
 }
@@ -20,7 +20,7 @@ export type SparePartGroup = {
 
 export type AccessoryProduct = {
   id: string
-  slug?: string
+  slug: string
   name: string
   shortDesc: string | null
   category: { name: string } | null
@@ -117,20 +117,6 @@ export default function VaraosatContent({ printerGroups, cutterGroups, accessori
   const currentGroups = section === 'printer' ? nonEmptyPrinter : nonEmptyCutter
   const currentGroup = currentGroups.find((g) => g.id === activeGroup)
 
-  const renderCardAction = (slug?: string) => {
-    if (!slug) return null
-
-    return (
-      <div className="mt-auto pt-4 border-t border-gray-100">
-        <Link href={`/tuotteet/${slug}`}>
-          <Button variant="secondary" size="sm">
-            Lisätietoja
-          </Button>
-        </Link>
-      </div>
-    )
-  }
-
   return (
     <div>
       {/* Top section selector */}
@@ -202,7 +188,13 @@ export default function VaraosatContent({ printerGroups, cutterGroups, accessori
                         {product.shortDesc && (
                           <p className="text-sm text-gray-600 flex-1 mb-4">{product.shortDesc}</p>
                         )}
-                        {renderCardAction(product.slug)}
+                        <div className="mt-auto pt-4 border-t border-gray-100">
+                          <Link href={`/tuotteet/${product.slug}`}>
+                            <Button variant="secondary" size="sm">
+                              Lisätietoja
+                            </Button>
+                          </Link>
+                        </div>
                       </article>
                     ))}
                   </div>
@@ -264,7 +256,13 @@ export default function VaraosatContent({ printerGroups, cutterGroups, accessori
                           {product.shortDesc && (
                             <p className="text-sm text-gray-600 flex-1 mb-4">{product.shortDesc}</p>
                           )}
-                          {renderCardAction(product.slug)}
+                          <div className="mt-auto pt-4 border-t border-gray-100">
+                            <Link href={`/tuotteet/${product.slug}`}>
+                              <Button variant="secondary" size="sm">
+                                Lisätietoja
+                              </Button>
+                            </Link>
+                          </div>
                         </article>
                       ))}
                     </div>

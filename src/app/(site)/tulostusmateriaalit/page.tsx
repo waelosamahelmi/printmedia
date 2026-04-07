@@ -5,8 +5,7 @@ import { Button } from '@/components/ui/Button'
 import { ArrowLeft } from 'lucide-react'
 import { prisma } from '@/lib/db'
 import TulostusmateriaalitContent from './TulostusmateriaalitContent'
-import type { MaterialGroup, MaterialProduct } from './TulostusmateriaalitContent'
-import { priceListSections } from '../hinnasto/priceListData'
+import type { MaterialGroup } from './TulostusmateriaalitContent'
 
 export const metadata: Metadata = {
   title: 'Tulostusmateriaalit | PrintMedia PM Solutions Oy',
@@ -54,7 +53,7 @@ function resolveMaterialGroup(name: string, shortDesc: string | null): string {
 }
 
 export default async function TulostusmateriaalitPage() {
-  const dbProducts = await prisma.product.findMany({
+  const products = await prisma.product.findMany({
     where: {
       status: 'PUBLISHED',
       category: { slug: 'tulostusmateriaalit' },
@@ -77,22 +76,7 @@ export default async function TulostusmateriaalitPage() {
     orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
   })
 
-  const fallbackProducts: MaterialProduct[] = priceListSections
-    .filter((section) => section.categorySlug === 'tulostusmateriaalit')
-    .flatMap((section) =>
-      section.products.map((product) => ({
-        id: `${section.id}-${product.code}`,
-        slug: undefined,
-        name: product.name,
-        shortDesc: product.details || section.description,
-        description: section.description,
-        images: [],
-      }))
-    )
-
-  const products: MaterialProduct[] = dbProducts.length > 0 ? dbProducts : fallbackProducts
-
-  const byGroup: Record<string, MaterialProduct[]> = {}
+  const byGroup: Record<string, typeof products> = {}
   for (const g of GROUP_DEFS) byGroup[g.key] = []
   for (const p of products) {
     const g = resolveMaterialGroup(p.name, p.shortDesc)
