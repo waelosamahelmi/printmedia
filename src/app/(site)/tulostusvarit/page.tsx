@@ -254,9 +254,15 @@ function buildCanonicalInkCards(products: InkProduct[]) {
 }
 
 export default async function TulostusvaritPage() {
-  const products = await getInkProducts()
-  const dbProductCards = buildInkCards(products)
-  const productCards = dbProductCards.length > 0 ? buildCanonicalInkCards(products) : canonicalInkCards
+  let productCards = canonicalInkCards
+
+  try {
+    const products = await getInkProducts()
+    const dbProductCards = buildInkCards(products)
+    productCards = dbProductCards.length > 0 ? buildCanonicalInkCards(products) : canonicalInkCards
+  } catch (error) {
+    console.error('Failed to fetch ink products:', error)
+  }
 
   return (
     <div className="pt-32 pb-20">

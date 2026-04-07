@@ -3,30 +3,36 @@ import { prisma } from '@/lib/db'
 import { SectionRenderer } from '@/components/page/SectionRenderer'
 import { Metadata } from 'next'
 import type { PageSection } from '@/lib/sections/types'
+import { fallbackHomePage } from '@/lib/fallback/sitePages'
 
 // Fetch homepage from database (empty slug)
 async function getHomePage() {
-  const page = await prisma.page.findFirst({
-    where: {
-      slug: {
-        in: ['', 'etusivu'],
+  try {
+    const page = await prisma.page.findFirst({
+      where: {
+        slug: {
+          in: ['', 'etusivu'],
+        },
+        status: 'PUBLISHED',
       },
-      status: 'PUBLISHED',
-    },
-    include: {
-      sections: {
-        where: { isVisible: true },
-        orderBy: { sortOrder: 'asc' },
+      include: {
+        sections: {
+          where: { isVisible: true },
+          orderBy: { sortOrder: 'asc' },
+        },
       },
-    },
-  })
+    })
 
-  return page
+    return page
+  } catch (error) {
+    console.error('Failed to fetch homepage from database:', error)
+    return null
+  }
 }
 
 // Generate metadata for SEO
 export async function generateMetadata(): Promise<Metadata> {
-  const page = await getHomePage()
+  const page = (await getHomePage()) || fallbackHomePage
 
   if (!page) {
     return {
@@ -42,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 // Homepage component - renders from database
 export default async function HomePage() {
-  const page = await getHomePage()
+  const page = (await getHomePage()) || fallbackHomePage
 
   if (!page) {
     notFound()

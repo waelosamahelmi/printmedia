@@ -54,29 +54,6 @@ function resolveMaterialGroup(name: string, shortDesc: string | null): string {
 }
 
 export default async function TulostusmateriaalitPage() {
-  const dbProducts = await prisma.product.findMany({
-    where: {
-      status: 'PUBLISHED',
-      category: { slug: 'tulostusmateriaalit' },
-    },
-    select: {
-      id: true,
-      slug: true,
-      name: true,
-      shortDesc: true,
-      description: true,
-      images: {
-        select: {
-          url: true,
-          alt: true,
-        },
-        orderBy: { sortOrder: 'asc' },
-        take: 1,
-      },
-    },
-    orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
-  })
-
   const fallbackProducts: MaterialProduct[] = priceListSections
     .filter((section) => section.categorySlug === 'tulostusmateriaalit')
     .flatMap((section) =>
@@ -89,6 +66,35 @@ export default async function TulostusmateriaalitPage() {
         images: [],
       }))
     )
+
+  let dbProducts: MaterialProduct[] = []
+
+  try {
+    dbProducts = await prisma.product.findMany({
+      where: {
+        status: 'PUBLISHED',
+        category: { slug: 'tulostusmateriaalit' },
+      },
+      select: {
+        id: true,
+        slug: true,
+        name: true,
+        shortDesc: true,
+        description: true,
+        images: {
+          select: {
+            url: true,
+            alt: true,
+          },
+          orderBy: { sortOrder: 'asc' },
+          take: 1,
+        },
+      },
+      orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
+    })
+  } catch (error) {
+    console.error('Failed to fetch material products:', error)
+  }
 
   const products: MaterialProduct[] = dbProducts.length > 0 ? dbProducts : fallbackProducts
 

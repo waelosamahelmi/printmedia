@@ -64,28 +64,30 @@ function getCategoryHref(slug: string): string {
 
 // Fetch categories for categories section
 async function fetchCategories(settings: CategoriesSettings) {
-  if (settings.mode === 'manual' && settings.categoryIds) {
-    return await prisma.category.findMany({
-      where: {
-        id: { in: settings.categoryIds },
-        isVisible: true,
-      },
-      include: {
-        _count: { select: { products: true } },
-        products: {
-          where: { status: 'PUBLISHED' },
-          take: 3,
-          include: {
-            images: {
-              where: { isPrimary: true },
-              take: 1,
+  try {
+    if (settings.mode === 'manual' && settings.categoryIds) {
+      return await prisma.category.findMany({
+        where: {
+          id: { in: settings.categoryIds },
+          isVisible: true,
+        },
+        include: {
+          _count: { select: { products: true } },
+          products: {
+            where: { status: 'PUBLISHED' },
+            take: 3,
+            include: {
+              images: {
+                where: { isPrimary: true },
+                take: 1,
+              },
             },
           },
         },
-      },
-      orderBy: { sortOrder: 'asc' },
-    })
-  } else {
+        orderBy: { sortOrder: 'asc' },
+      })
+    }
+
     const includeSlugs = settings.includeSlugs && settings.includeSlugs.length > 0
       ? settings.includeSlugs
       : undefined
@@ -93,11 +95,10 @@ async function fetchCategories(settings: CategoriesSettings) {
       ? settings.excludeSlugs
       : undefined
 
-    // Auto mode - fetch all visible categories
     return await prisma.category.findMany({
       where: {
         isVisible: true,
-        parentId: null, // Only top-level categories
+        parentId: null,
         ...(includeSlugs ? { slug: { in: includeSlugs } } : {}),
         ...(excludeSlugs ? { slug: { notIn: excludeSlugs } } : {}),
       },
@@ -117,35 +118,43 @@ async function fetchCategories(settings: CategoriesSettings) {
       orderBy: { sortOrder: 'asc' },
       take: settings.limit || 6,
     })
+  } catch (error) {
+    console.error('Failed to fetch categories for section:', error)
+    return []
   }
 }
 
 // Fetch products for products section
 async function fetchProducts(settings: ProductsSettings) {
-  const whereClause: any = {
-    status: 'PUBLISHED',
-  }
+  try {
+    const whereClause: any = {
+      status: 'PUBLISHED',
+    }
 
-  if (settings.mode === 'manual' && settings.productIds) {
-    whereClause.id = { in: settings.productIds }
-  } else if (settings.mode === 'featured') {
-    whereClause.isFeatured = true
-  } else if (settings.mode === 'category' && settings.categoryId) {
-    whereClause.categoryId = settings.categoryId
-  }
+    if (settings.mode === 'manual' && settings.productIds) {
+      whereClause.id = { in: settings.productIds }
+    } else if (settings.mode === 'featured') {
+      whereClause.isFeatured = true
+    } else if (settings.mode === 'category' && settings.categoryId) {
+      whereClause.categoryId = settings.categoryId
+    }
 
-  return await prisma.product.findMany({
-    where: whereClause,
-    include: {
-      category: true,
-      images: {
-        orderBy: { sortOrder: 'asc' },
-        take: 1,
+    return await prisma.product.findMany({
+      where: whereClause,
+      include: {
+        category: true,
+        images: {
+          orderBy: { sortOrder: 'asc' },
+          take: 1,
+        },
       },
-    },
-    orderBy: { sortOrder: 'asc' },
-    take: settings.limit || 4,
-  })
+      orderBy: { sortOrder: 'asc' },
+      take: settings.limit || 4,
+    })
+  } catch (error) {
+    console.error('Failed to fetch products for section:', error)
+    return []
+  }
 }
 
 export async function SectionRenderer({ section }: SectionRendererProps) {

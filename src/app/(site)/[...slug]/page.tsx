@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/db'
 import { SectionRenderer } from '@/components/page/SectionRenderer'
 import type { PageSection } from '@/lib/sections/types'
+import { getFallbackPageBySlug } from '@/lib/fallback/sitePages'
 
 interface PageProps {
   params: Promise<{ slug: string[] }>
@@ -10,20 +11,25 @@ interface PageProps {
 
 // Fetch page from database
 async function getPage(slug: string) {
-  const page = await prisma.page.findUnique({
-    where: {
-      slug,
-      status: 'PUBLISHED',
-    },
-    include: {
-      sections: {
-        where: { isVisible: true },
-        orderBy: { sortOrder: 'asc' },
+  try {
+    const page = await prisma.page.findUnique({
+      where: {
+        slug,
+        status: 'PUBLISHED',
       },
-    },
-  })
+      include: {
+        sections: {
+          where: { isVisible: true },
+          orderBy: { sortOrder: 'asc' },
+        },
+      },
+    })
 
-  return page
+    return page
+  } catch (error) {
+    console.error(`Failed to fetch page for slug ${slug}:`, error)
+    return null
+  }
 }
 
 // Generate metadata for SEO
@@ -31,7 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const slugString = slug.join('/')
 
-  const page = await getPage(slugString)
+  const page = (await getPage(slugString)) || getFallbackPageBySlug(slugString)
 
   if (!page) {
     return {
@@ -50,7 +56,7 @@ export default async function DynamicPage({ params }: PageProps) {
   const { slug } = await params
   const slugString = slug.join('/')
 
-  const page = await getPage(slugString)
+  const page = (await getPage(slugString)) || getFallbackPageBySlug(slugString)
 
   if (!page) {
     notFound()

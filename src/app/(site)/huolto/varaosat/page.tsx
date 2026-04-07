@@ -80,59 +80,76 @@ const fallbackAccessories = [
 ]
 
 export default async function VaraosatPage() {
-  const sparePartRoots = await prisma.category.findMany({
-    where: { slug: { in: ['tulostimien-varaosat', 'leikkureiden-varaosat'] } },
-    select: { id: true, slug: true },
-  })
+  let sparePartRoots: Array<{ id: string; slug: string }> = []
+  let sparePartCategories: Array<{ id: string; slug: string; name: string; parentId: string | null; products: Array<{ id: string; name: string; slug: string; shortDesc: string | null }> }> = []
+  let looseSparePartCategories: typeof sparePartCategories = []
+  let accessoryProducts: Array<{ id: string; slug: string; name: string; shortDesc: string | null; category: { name: string } | null }> = []
+
+  try {
+    sparePartRoots = await prisma.category.findMany({
+      where: { slug: { in: ['tulostimien-varaosat', 'leikkureiden-varaosat'] } },
+      select: { id: true, slug: true },
+    })
+
+    sparePartCategories = await prisma.category.findMany({
+      where: {
+        parentId: { in: sparePartRoots.map((r) => r.id) },
+        isVisible: true,
+      },
+      select: {
+        id: true,
+        slug: true,
+        name: true,
+        parentId: true,
+        products: {
+          where: { status: 'PUBLISHED' },
+          select: { id: true, name: true, slug: true, shortDesc: true },
+          orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
+        },
+      },
+      orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
+    })
+
+    looseSparePartCategories = await prisma.category.findMany({
+      where: {
+        isVisible: true,
+        products: {
+          some: { status: 'PUBLISHED' },
+        },
+      },
+      select: {
+        id: true,
+        slug: true,
+        name: true,
+        parentId: true,
+        products: {
+          where: { status: 'PUBLISHED' },
+          select: { id: true, name: true, slug: true, shortDesc: true },
+          orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
+        },
+      },
+      orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
+    })
+
+    accessoryProducts = await prisma.product.findMany({
+      where: {
+        status: 'PUBLISHED',
+        category: { slug: { in: ['muut-tarvikkeet', 'tarvikkeet'] } },
+      },
+      select: {
+        id: true,
+        slug: true,
+        name: true,
+        shortDesc: true,
+        category: { select: { name: true } },
+      },
+      orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
+    })
+  } catch (error) {
+    console.error('Failed to fetch spare parts data:', error)
+  }
 
   const rootBySlug = new Map(sparePartRoots.map((r) => [r.slug, r.id]))
-
-  const sparePartCategories = await prisma.category.findMany({
-    where: {
-      parentId: { in: sparePartRoots.map((r) => r.id) },
-      isVisible: true,
-    },
-    include: {
-      products: {
-        where: { status: 'PUBLISHED' },
-        select: { id: true, name: true, slug: true, shortDesc: true },
-        orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
-      },
-    },
-    orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
-  })
-
-  const looseSparePartCategories = await prisma.category.findMany({
-    where: {
-      isVisible: true,
-      products: {
-        some: { status: 'PUBLISHED' },
-      },
-    },
-    include: {
-      products: {
-        where: { status: 'PUBLISHED' },
-        select: { id: true, name: true, slug: true, shortDesc: true },
-        orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
-      },
-    },
-    orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
-  })
-
-  const accessoryProducts = await prisma.product.findMany({
-    where: {
-      status: 'PUBLISHED',
-      category: { slug: { in: ['muut-tarvikkeet', 'tarvikkeet'] } },
-    },
-    select: {
-      id: true,
-      slug: true,
-      name: true,
-      shortDesc: true,
-      category: { select: { name: true } },
-    },
-    orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
-  })
 
   const printerGroups = sparePartCategories
     .filter((c) => c.parentId === rootBySlug.get('tulostimien-varaosat'))
