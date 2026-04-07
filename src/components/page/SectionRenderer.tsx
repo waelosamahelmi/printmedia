@@ -218,9 +218,9 @@ export async function SectionRenderer({ section }: SectionRendererProps) {
       // Transform database categories to component format
       const formattedCategories = categories.map((cat) => {
         // Get product images (max 3)
-        const productImages = cat.products
-          .flatMap(product => product.images.map(img => img.url))
-          .slice(0, 3)
+        const productImages = Array.from(
+          new Set(cat.products.flatMap(product => product.images.map(img => img.url)))
+        ).slice(0, 3)
 
         return {
           title: cat.name,

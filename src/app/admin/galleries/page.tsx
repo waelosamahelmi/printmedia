@@ -1,11 +1,7 @@
 ﻿'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
-import { Upload, Trash2, Image as ImageIcon, Loader, Check, Search, ChevronDown, ChevronUp, Star } from 'lucide-react'
-import { AdminHeader } from '@/components/admin/AdminHeader'
-import { AdminSidebar } from '@/components/admin/AdminSidebar'
+import { Upload, Trash2, Image as ImageIcon, Loader, Search, ChevronDown, ChevronUp, Star, X, ZoomIn } from 'lucide-react'
 
 interface ProductImage {
   id: string
@@ -25,8 +21,6 @@ interface Product {
 }
 
 export default function GalleriesPage() {
-  const { status } = useSession()
-  const router = useRouter()
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState<string | null>(null)
@@ -35,11 +29,8 @@ export default function GalleriesPage() {
   const [dragOver, setDragOver] = useState<string | null>(null)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
+  const [lightbox, setLightbox] = useState<{ url: string; alt: string } | null>(null)
   const fileInputRefs = useRef<Record<string, HTMLInputElement | null>>({})
-
-  useEffect(() => {
-    if (status === 'unauthenticated') router.push('/admin-login')
-  }, [status, router])
 
   useEffect(() => {
     fetchProducts()
@@ -151,29 +142,16 @@ export default function GalleriesPage() {
     (p.category?.name || '').toLowerCase().includes(search.toLowerCase())
   )
 
-  if (status === 'loading' || loading) {
+  if (loading) {
     return (
-      <div className="flex h-screen bg-gray-100">
-        <AdminSidebar />
-        <div className="flex-1 flex flex-col">
-          <AdminHeader />
-          <div className="flex-1 flex items-center justify-center">
-            <Loader className="w-8 h-8 animate-spin text-primary-600" />
-          </div>
-        </div>
+      <div className="flex items-center justify-center h-64">
+        <Loader className="w-8 h-8 animate-spin text-primary-600" />
       </div>
     )
   }
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      <AdminSidebar />
-
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <AdminHeader />
-
-        <div className="flex-1 overflow-auto">
-          <div className="max-w-5xl mx-auto p-6 space-y-4">
+    <div className="max-w-5xl mx-auto space-y-4">
 
             {/* Title */}
             <div>
@@ -311,15 +289,24 @@ export default function GalleriesPage() {
                                   className="w-full h-full object-cover"
                                 />
 
+                                {/* Zoom button */}
+                                <button
+                                  onClick={e => { e.stopPropagation(); setLightbox({ url: image.url, alt: image.alt || product.name }) }}
+                                  className="absolute top-1 right-1 z-20 bg-black/50 hover:bg-black/80 text-white p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                                  title="Suurenna"
+                                >
+                                  <ZoomIn className="w-3 h-3" />
+                                </button>
+
                                 {/* Primary badge */}
                                 {image.isPrimary && (
-                                  <div className="absolute top-1 left-1 bg-primary-600 text-white rounded p-0.5">
+                                  <div className="absolute top-1 left-1 z-20 bg-primary-600 text-white rounded p-0.5">
                                     <Star className="w-3 h-3 fill-white" />
                                   </div>
                                 )}
 
                                 {/* Hover overlay */}
-                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5">
+                                <div className="absolute inset-0 z-10 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5">
                                   {!image.isPrimary && (
                                     <button
                                       onClick={() => handleSetPrimary(product.id, image.id)}
@@ -354,9 +341,25 @@ export default function GalleriesPage() {
               )}
             </div>
 
-          </div>
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            onClick={() => setLightbox(null)}
+            className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 text-white rounded-full p-2 transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <img
+            src={lightbox.url}
+            alt={lightbox.alt}
+            className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            onClick={e => e.stopPropagation()}
+          />
         </div>
-      </div>
+      )}
     </div>
   )
 }

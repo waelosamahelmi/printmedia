@@ -13,6 +13,72 @@ export const metadata: Metadata = {
     'Varaosat ja kulutustarvikkeet tulostimiin ja leikkureihin. Alkuperäis- ja tarvikesosat ammattikäyttöön.',
 }
 
+const fallbackPrinterGroups = [
+  {
+    id: 'printer-fallback',
+    name: 'Tulostimien varaosat',
+    products: [
+      {
+        id: 'printer-fallback-card',
+        name: 'Tulostimien tarvikkeet ja varaosat',
+        shortDesc:
+          'Pystymme toimittamaan niin alkuperais- kuin tarvikeosiakin moniin suurkuvatulostimiin. Varastostamme loytyy myos kulutusosia eri tulostimiin, esimerkiksi Mutoh-, Roland- ja Mimaki-laitteisiin.',
+      },
+    ],
+  },
+]
+
+const fallbackCutterGroups = [
+  {
+    id: 'cutter-fallback',
+    name: 'Leikkureiden varaosat',
+    products: [
+      {
+        id: 'cutter-fallback-card',
+        name: 'Leikkureiden varaosat',
+        shortDesc:
+          'Toimitamme leikkureihin teraa, kulutusosia ja muita varaosia ammattikayttoon. Kerro laitemalli ja tarpeesi, niin etsimme sopivat osat nopeasti.',
+      },
+    ],
+  },
+]
+
+const fallbackAccessories = [
+  {
+    id: 'turvaviivain-tersreunalla',
+    name: 'Turvaviivain terasreunalla',
+    shortDesc: 'Tukeva alumiinirunko, terasreuna ja liukuesteet. Saatavilla pituudet 80 cm, 110 cm, 140 cm ja 170 cm.',
+    category: { name: 'Turvaviivaimet' },
+  },
+  {
+    id: 'turvaviivain-leikkurilla',
+    name: 'Turvaviivain leikkurilla',
+    shortDesc: 'Levea alumiinirunko, liukuesteet ja muovipaadyt. Saatavilla pituudet 120 cm, 180 cm ja 260 cm.',
+    category: { name: 'Turvaviivaimet' },
+  },
+  {
+    id: 'bungee-ball',
+    slug: 'bungee-ball',
+    name: 'Bungee ball',
+    shortDesc: 'Kuminauhan paksuus 4 mm, pituus 150 mm. Pallon halkaisija 28 mm. Myydaan 50 kpl erissa.',
+    category: { name: 'Banner-tarvikkeet' },
+  },
+  {
+    id: 'bungee-hook',
+    slug: 'bungee-hook',
+    name: 'Bungee hook',
+    shortDesc: 'Kuminauhan paksuus 4 mm, pituus 150 mm. Myydaan 50 kpl erissa.',
+    category: { name: 'Banner-tarvikkeet' },
+  },
+  {
+    id: 'banner-clip',
+    slug: 'banner-clip',
+    name: 'Banner clip',
+    shortDesc: 'Nopea asentaa ja soveltuu eri paksuisille materiaaleille. Kiinnikkeen leveys 35 mm. Myydaan 100 kpl erissa.',
+    category: { name: 'Banner-tarvikkeet' },
+  },
+]
+
 export default async function VaraosatPage() {
   const sparePartRoots = await prisma.category.findMany({
     where: { slug: { in: ['tulostimien-varaosat', 'leikkureiden-varaosat'] } },
@@ -25,6 +91,23 @@ export default async function VaraosatPage() {
     where: {
       parentId: { in: sparePartRoots.map((r) => r.id) },
       isVisible: true,
+    },
+    include: {
+      products: {
+        where: { status: 'PUBLISHED' },
+        select: { id: true, name: true, slug: true, shortDesc: true },
+        orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
+      },
+    },
+    orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
+  })
+
+  const looseSparePartCategories = await prisma.category.findMany({
+    where: {
+      isVisible: true,
+      products: {
+        some: { status: 'PUBLISHED' },
+      },
     },
     include: {
       products: {
@@ -59,6 +142,34 @@ export default async function VaraosatPage() {
     .filter((c) => c.parentId === rootBySlug.get('leikkureiden-varaosat'))
     .map(({ id, name, products }) => ({ id, name, products }))
 
+  const sparePartKeywordRegex = /(capping|damper|enkood|huoltosarja|kaapeli|liitin|mekaan|moottor|o-?rengas|pidike|piirikortti|pumppu|rulla|sensori|sulake|suodatin|tulostuspa|wiper|letku|varaosa|printhead|head)/i
+
+  const looseGroups = looseSparePartCategories
+    .filter((category) => sparePartKeywordRegex.test(`${category.slug} ${category.name}`))
+    .map(({ id, name, products }) => ({ id, name, products }))
+
+  const loosePrinterGroups = looseGroups.filter(
+    (group) => !/leikkuri|plotteri|cutter/i.test(group.name)
+  )
+
+  const looseCutterGroups = looseGroups.filter(
+    (group) => /leikkuri|plotteri|cutter/i.test(group.name)
+  )
+
+  const hasPrimarySparePartGroups =
+    printerGroups.some((group) => group.products.length > 0) ||
+    cutterGroups.some((group) => group.products.length > 0)
+
+  const resolvedPrinterGroups = hasPrimarySparePartGroups
+    ? printerGroups
+    : (loosePrinterGroups.length > 0 ? loosePrinterGroups : fallbackPrinterGroups)
+
+  const resolvedCutterGroups = hasPrimarySparePartGroups
+    ? cutterGroups
+    : (looseCutterGroups.length > 0 ? looseCutterGroups : fallbackCutterGroups)
+
+  const resolvedAccessories = accessoryProducts.length > 0 ? accessoryProducts : fallbackAccessories
+
   return (
     <div className="pt-32 pb-20">
       <Container>
@@ -82,9 +193,9 @@ export default async function VaraosatPage() {
 
         <Suspense fallback={null}>
           <VaraosatContent
-            printerGroups={printerGroups}
-            cutterGroups={cutterGroups}
-            accessories={accessoryProducts}
+            printerGroups={resolvedPrinterGroups}
+            cutterGroups={resolvedCutterGroups}
+            accessories={resolvedAccessories}
           />
         </Suspense>
 
