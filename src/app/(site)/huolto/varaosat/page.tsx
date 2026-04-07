@@ -13,6 +13,72 @@ export const metadata: Metadata = {
     'Varaosat ja kulutustarvikkeet tulostimiin ja leikkureihin. Alkuperäis- ja tarvikesosat ammattikäyttöön.',
 }
 
+const fallbackPrinterGroups = [
+  {
+    id: 'printer-fallback',
+    name: 'Tulostimien varaosat',
+    products: [
+      {
+        id: 'printer-fallback-card',
+        name: 'Tulostimien tarvikkeet ja varaosat',
+        shortDesc:
+          'Pystymme toimittamaan niin alkuperais- kuin tarvikeosiakin moniin suurkuvatulostimiin. Varastostamme loytyy myos kulutusosia eri tulostimiin, esimerkiksi Mutoh-, Roland- ja Mimaki-laitteisiin.',
+      },
+    ],
+  },
+]
+
+const fallbackCutterGroups = [
+  {
+    id: 'cutter-fallback',
+    name: 'Leikkureiden varaosat',
+    products: [
+      {
+        id: 'cutter-fallback-card',
+        name: 'Leikkureiden varaosat',
+        shortDesc:
+          'Toimitamme leikkureihin teraa, kulutusosia ja muita varaosia ammattikayttoon. Kerro laitemalli ja tarpeesi, niin etsimme sopivat osat nopeasti.',
+      },
+    ],
+  },
+]
+
+const fallbackAccessories = [
+  {
+    id: 'turvaviivain-tersreunalla',
+    name: 'Turvaviivain terasreunalla',
+    shortDesc: 'Tukeva alumiinirunko, terasreuna ja liukuesteet. Saatavilla pituudet 80 cm, 110 cm, 140 cm ja 170 cm.',
+    category: { name: 'Turvaviivaimet' },
+  },
+  {
+    id: 'turvaviivain-leikkurilla',
+    name: 'Turvaviivain leikkurilla',
+    shortDesc: 'Levea alumiinirunko, liukuesteet ja muovipaadyt. Saatavilla pituudet 120 cm, 180 cm ja 260 cm.',
+    category: { name: 'Turvaviivaimet' },
+  },
+  {
+    id: 'bungee-ball',
+    slug: 'bungee-ball',
+    name: 'Bungee ball',
+    shortDesc: 'Kuminauhan paksuus 4 mm, pituus 150 mm. Pallon halkaisija 28 mm. Myydaan 50 kpl erissa.',
+    category: { name: 'Banner-tarvikkeet' },
+  },
+  {
+    id: 'bungee-hook',
+    slug: 'bungee-hook',
+    name: 'Bungee hook',
+    shortDesc: 'Kuminauhan paksuus 4 mm, pituus 150 mm. Myydaan 50 kpl erissa.',
+    category: { name: 'Banner-tarvikkeet' },
+  },
+  {
+    id: 'banner-clip',
+    slug: 'banner-clip',
+    name: 'Banner clip',
+    shortDesc: 'Nopea asentaa ja soveltuu eri paksuisille materiaaleille. Kiinnikkeen leveys 35 mm. Myydaan 100 kpl erissa.',
+    category: { name: 'Banner-tarvikkeet' },
+  },
+]
+
 export default async function VaraosatPage() {
   const sparePartRoots = await prisma.category.findMany({
     where: { slug: { in: ['tulostimien-varaosat', 'leikkureiden-varaosat'] } },
@@ -64,6 +130,10 @@ export default async function VaraosatPage() {
     cutterGroups.some((group) => group.products.length > 0) ||
     accessoryProducts.length > 0
 
+  const resolvedPrinterGroups = hasContent ? printerGroups : fallbackPrinterGroups
+  const resolvedCutterGroups = hasContent ? cutterGroups : fallbackCutterGroups
+  const resolvedAccessories = hasContent ? accessoryProducts : fallbackAccessories
+
   return (
     <div className="pt-32 pb-20">
       <Container>
@@ -85,19 +155,13 @@ export default async function VaraosatPage() {
           </p>
         </div>
 
-        {hasContent ? (
-          <Suspense fallback={null}>
-            <VaraosatContent
-              printerGroups={printerGroups}
-              cutterGroups={cutterGroups}
-              accessories={accessoryProducts}
-            />
-          </Suspense>
-        ) : (
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-8 text-center text-gray-700">
-            Varaosa- ja tarvikesisaltoa tuodaan tuotantoon vaiheittain. Ota yhteytta, niin autamme oikeiden osien valinnassa jo nyt.
-          </div>
-        )}
+        <Suspense fallback={null}>
+          <VaraosatContent
+            printerGroups={resolvedPrinterGroups}
+            cutterGroups={resolvedCutterGroups}
+            accessories={resolvedAccessories}
+          />
+        </Suspense>
 
         <div className="bg-primary-600 text-white rounded-2xl p-8 text-center mt-16">
           <h2 className="text-2xl font-bold mb-4">Tarvitsetko varaosia?</h2>
