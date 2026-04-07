@@ -59,6 +59,11 @@ export default async function VaraosatPage() {
     .filter((c) => c.parentId === rootBySlug.get('leikkureiden-varaosat'))
     .map(({ id, name, products }) => ({ id, name, products }))
 
+  const hasContent =
+    printerGroups.some((group) => group.products.length > 0) ||
+    cutterGroups.some((group) => group.products.length > 0) ||
+    accessoryProducts.length > 0
+
   return (
     <div className="pt-32 pb-20">
       <Container>
@@ -80,13 +85,19 @@ export default async function VaraosatPage() {
           </p>
         </div>
 
-        <Suspense fallback={null}>
-          <VaraosatContent
-            printerGroups={printerGroups}
-            cutterGroups={cutterGroups}
-            accessories={accessoryProducts}
-          />
-        </Suspense>
+        {hasContent ? (
+          <Suspense fallback={null}>
+            <VaraosatContent
+              printerGroups={printerGroups}
+              cutterGroups={cutterGroups}
+              accessories={accessoryProducts}
+            />
+          </Suspense>
+        ) : (
+          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-8 text-center text-gray-700">
+            Varaosa- ja tarvikesisaltoa tuodaan tuotantoon vaiheittain. Ota yhteytta, niin autamme oikeiden osien valinnassa jo nyt.
+          </div>
+        )}
 
         <div className="bg-primary-600 text-white rounded-2xl p-8 text-center mt-16">
           <h2 className="text-2xl font-bold mb-4">Tarvitsetko varaosia?</h2>
