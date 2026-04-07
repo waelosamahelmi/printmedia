@@ -7,7 +7,7 @@ import Image from '@/components/ui/Image'
 
 export type MaterialProduct = {
   id: string
-  slug: string
+  slug?: string
   name: string
   shortDesc: string | null
   description: string | null
@@ -91,13 +91,15 @@ export default function TulostusmateriaalitContent({ groups }: { groups: Materia
                     {product.shortDesc && (
                       <p className="text-sm text-gray-600 flex-1 mb-4">{product.shortDesc}</p>
                     )}
-                    <div className="mt-auto pt-4 border-t border-gray-100">
-                      <Link href={`/tuotteet/${product.slug}`}>
-                        <Button variant="secondary" size="sm">
-                          Lisätietoja
-                        </Button>
-                      </Link>
-                    </div>
+                    {product.slug && (
+                      <div className="mt-auto pt-4 border-t border-gray-100">
+                        <Link href={`/tuotteet/${product.slug}`}>
+                          <Button variant="secondary" size="sm">
+                            Lisätietoja
+                          </Button>
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 </article>
               ))}

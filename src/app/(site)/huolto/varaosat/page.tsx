@@ -102,6 +102,23 @@ export default async function VaraosatPage() {
     orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
   })
 
+  const looseSparePartCategories = await prisma.category.findMany({
+    where: {
+      isVisible: true,
+      products: {
+        some: { status: 'PUBLISHED' },
+      },
+    },
+    include: {
+      products: {
+        where: { status: 'PUBLISHED' },
+        select: { id: true, name: true, slug: true, shortDesc: true },
+        orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
+      },
+    },
+    orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
+  })
+
   const accessoryProducts = await prisma.product.findMany({
     where: {
       status: 'PUBLISHED',
@@ -125,14 +142,33 @@ export default async function VaraosatPage() {
     .filter((c) => c.parentId === rootBySlug.get('leikkureiden-varaosat'))
     .map(({ id, name, products }) => ({ id, name, products }))
 
-  const hasContent =
-    printerGroups.some((group) => group.products.length > 0) ||
-    cutterGroups.some((group) => group.products.length > 0) ||
-    accessoryProducts.length > 0
+  const sparePartKeywordRegex = /(capping|damper|enkood|huoltosarja|kaapeli|liitin|mekaan|moottor|o-?rengas|pidike|piirikortti|pumppu|rulla|sensori|sulake|suodatin|tulostuspa|wiper|letku|varaosa|printhead|head)/i
 
-  const resolvedPrinterGroups = hasContent ? printerGroups : fallbackPrinterGroups
-  const resolvedCutterGroups = hasContent ? cutterGroups : fallbackCutterGroups
-  const resolvedAccessories = hasContent ? accessoryProducts : fallbackAccessories
+  const looseGroups = looseSparePartCategories
+    .filter((category) => sparePartKeywordRegex.test(`${category.slug} ${category.name}`))
+    .map(({ id, name, products }) => ({ id, name, products }))
+
+  const loosePrinterGroups = looseGroups.filter(
+    (group) => !/leikkuri|plotteri|cutter/i.test(group.name)
+  )
+
+  const looseCutterGroups = looseGroups.filter(
+    (group) => /leikkuri|plotteri|cutter/i.test(group.name)
+  )
+
+  const hasPrimarySparePartGroups =
+    printerGroups.some((group) => group.products.length > 0) ||
+    cutterGroups.some((group) => group.products.length > 0)
+
+  const resolvedPrinterGroups = hasPrimarySparePartGroups
+    ? printerGroups
+    : (loosePrinterGroups.length > 0 ? loosePrinterGroups : fallbackPrinterGroups)
+
+  const resolvedCutterGroups = hasPrimarySparePartGroups
+    ? cutterGroups
+    : (looseCutterGroups.length > 0 ? looseCutterGroups : fallbackCutterGroups)
+
+  const resolvedAccessories = accessoryProducts.length > 0 ? accessoryProducts : fallbackAccessories
 
   return (
     <div className="pt-32 pb-20">
