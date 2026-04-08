@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
+import Image from '@/components/ui/Image'
 import { CTA } from '@/components/sections/CTA'
 import { prisma } from '@/lib/db'
 import { ArrowLeft, Package, Grid3X3 } from 'lucide-react'
@@ -77,15 +78,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 </p>
               )}
             </div>
-            {category.image && (
-              <div className="aspect-video bg-gray-100 rounded-2xl overflow-hidden">
-                <img
-                  src={category.image}
-                  alt={category.name}
-                  className="w-full h-full object-contain p-4"
-                />
-              </div>
-            )}
+            <div className="aspect-video bg-gray-100 rounded-2xl overflow-hidden">
+              <Image
+                src={category.image}
+                alt={category.name}
+                width={1280}
+                height={720}
+                className="w-full h-full object-contain p-4"
+              />
+            </div>
           </div>
         </Container>
       </section>
@@ -105,15 +106,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                   href={`/laitteet/${child.slug}`}
                   className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow group"
                 >
-                  {child.image && (
-                    <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-4">
-                      <img
-                        src={child.image}
-                        alt={child.name}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  )}
+                  <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-4">
+                    <Image
+                      src={child.image}
+                      alt={child.name}
+                      width={960}
+                      height={540}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
                   <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
                     {child.name}
                   </h3>
@@ -144,17 +145,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                   className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
                 >
                   <div className="aspect-square bg-gray-100 overflow-hidden">
-                    {product.images[0] ? (
-                      <img
-                        src={product.images[0].url}
-                        alt={product.images[0].alt || product.name}
-                        className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-400">
-                        <Package className="w-16 h-16" />
-                      </div>
-                    )}
+                    <Image
+                      src={product.images[0]?.url}
+                      alt={product.images[0]?.alt || product.name}
+                      width={800}
+                      height={800}
+                      className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform"
+                    />
                   </div>
                   <div className="p-4">
                     <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors mb-1">

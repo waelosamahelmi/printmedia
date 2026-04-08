@@ -37,7 +37,7 @@ export function formatDate(date: string | Date): string {
 }
 
 export function getImageUrl(path: string | null | undefined): string {
-  if (!path) return '/images/placeholder.jpg'
+  if (!path) return ''
   if (path.startsWith('http')) return path
   return path.startsWith('/') ? path : `/${path}`
 }

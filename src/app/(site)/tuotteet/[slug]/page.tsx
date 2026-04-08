@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
+import Image from '@/components/ui/Image'
 import { CTA } from '@/components/sections/CTA'
 import { prisma } from '@/lib/db'
 import { ArrowLeft, Package, Tag, Info, FileText, ListOrdered } from 'lucide-react'
@@ -144,25 +145,23 @@ export default async function ProductPage({ params }: ProductPageProps) {
             {/* Images */}
             <div>
               <div className="aspect-square bg-gray-100 rounded-2xl overflow-hidden mb-4">
-                {product.images[0] ? (
-                  <img
-                    src={product.images[0].url}
-                    alt={product.images[0].alt || product.name}
-                    className="w-full h-full object-contain p-4"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-400">
-                    <Package className="w-24 h-24" />
-                  </div>
-                )}
+                <Image
+                  src={product.images[0]?.url}
+                  alt={product.images[0]?.alt || product.name}
+                  width={1200}
+                  height={1200}
+                  className="w-full h-full object-contain p-4"
+                />
               </div>
               {product.images.length > 1 && (
                 <div className="grid grid-cols-4 gap-2">
                   {product.images.slice(1, 5).map((image: { url: string; alt: string | null }, idx: number) => (
                     <div key={idx} className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
-                      <img
+                      <Image
                         src={image.url}
                         alt={image.alt || `${product.name} ${idx + 2}`}
+                        width={400}
+                        height={400}
                         className="w-full h-full object-cover"
                       />
                     </div>

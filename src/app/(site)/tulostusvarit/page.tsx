@@ -394,13 +394,17 @@ export default async function TulostusvaritPage() {
                   <>
                     <div className="aspect-square bg-gray-100 overflow-hidden">
                       {product.image ? (
-                        <img
+                        <Image
                           src={product.image.url}
                           alt={product.image.alt || product.name}
+                          width={640}
+                          height={640}
                           className="w-full h-full object-contain object-center p-3 bg-white"
                         />
                       ) : (
-                        <div className="w-full h-full" />
+                        <div className="w-full h-full bg-white">
+                          <Image src="" alt={product.name} width={640} height={640} className="w-full h-full" />
+                        </div>
                       )}
                     </div>
                     <div className="p-5">
