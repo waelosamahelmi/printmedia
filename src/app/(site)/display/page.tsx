@@ -26,7 +26,7 @@ async function getDisplayCategories() {
   return categories.map((cat) => ({
     title: cat.name,
     description: cat.description || '',
-    image: cat.image || '/images/placeholder.jpg',
+    image: cat.image || '',
     href: `/display/${cat.slug}`,
     count: cat._count.products,
   }))

@@ -24,6 +24,7 @@ const fallbackPrinterGroups = [
         name: 'Tulostimien tarvikkeet ja varaosat',
         shortDesc:
           'Pystymme toimittamaan niin alkuperais- kuin tarvikeosiakin moniin suurkuvatulostimiin. Varastostamme loytyy myos kulutusosia eri tulostimiin, esimerkiksi Mutoh-, Roland- ja Mimaki-laitteisiin.',
+        images: [],
       },
     ],
   },
@@ -39,6 +40,7 @@ const fallbackCutterGroups = [
         name: 'Leikkureiden varaosat',
         shortDesc:
           'Toimitamme leikkureihin teraa, kulutusosia ja muita varaosia ammattikayttoon. Kerro laitemalli ja tarpeesi, niin etsimme sopivat osat nopeasti.',
+        images: [],
       },
     ],
   },
@@ -50,12 +52,14 @@ const fallbackAccessories = [
     name: 'Turvaviivain terasreunalla',
     shortDesc: 'Tukeva alumiinirunko, terasreuna ja liukuesteet. Saatavilla pituudet 80 cm, 110 cm, 140 cm ja 170 cm.',
     category: { name: 'Turvaviivaimet' },
+    images: [],
   },
   {
     id: 'turvaviivain-leikkurilla',
     name: 'Turvaviivain leikkurilla',
     shortDesc: 'Levea alumiinirunko, liukuesteet ja muovipaadyt. Saatavilla pituudet 120 cm, 180 cm ja 260 cm.',
     category: { name: 'Turvaviivaimet' },
+    images: [],
   },
   {
     id: 'bungee-ball',
@@ -63,6 +67,7 @@ const fallbackAccessories = [
     name: 'Bungee ball',
     shortDesc: 'Kuminauhan paksuus 4 mm, pituus 150 mm. Pallon halkaisija 28 mm. Myydaan 50 kpl erissa.',
     category: { name: 'Banner-tarvikkeet' },
+    images: [],
   },
   {
     id: 'bungee-hook',
@@ -70,6 +75,7 @@ const fallbackAccessories = [
     name: 'Bungee hook',
     shortDesc: 'Kuminauhan paksuus 4 mm, pituus 150 mm. Myydaan 50 kpl erissa.',
     category: { name: 'Banner-tarvikkeet' },
+    images: [],
   },
   {
     id: 'banner-clip',
@@ -77,14 +83,15 @@ const fallbackAccessories = [
     name: 'Banner clip',
     shortDesc: 'Nopea asentaa ja soveltuu eri paksuisille materiaaleille. Kiinnikkeen leveys 35 mm. Myydaan 100 kpl erissa.',
     category: { name: 'Banner-tarvikkeet' },
+    images: [],
   },
 ]
 
 export default async function VaraosatPage() {
   let sparePartRoots: Array<{ id: string; slug: string }> = []
-  let sparePartCategories: Array<{ id: string; slug: string; name: string; parentId: string | null; products: Array<{ id: string; name: string; slug: string; shortDesc: string | null }> }> = []
+  let sparePartCategories: Array<{ id: string; slug: string; name: string; parentId: string | null; products: Array<{ id: string; name: string; slug: string; shortDesc: string | null; images: Array<{ url: string; alt: string | null }> }> }> = []
   let looseSparePartCategories: typeof sparePartCategories = []
-  let accessoryProducts: Array<{ id: string; slug: string; name: string; shortDesc: string | null; category: { name: string } | null }> = []
+  let accessoryProducts: Array<{ id: string; slug: string; name: string; shortDesc: string | null; category: { name: string } | null; images: Array<{ url: string; alt: string | null }> }> = []
 
   try {
     sparePartRoots = await prisma.category.findMany({
@@ -104,7 +111,17 @@ export default async function VaraosatPage() {
         parentId: true,
         products: {
           where: { status: 'PUBLISHED' },
-          select: { id: true, name: true, slug: true, shortDesc: true },
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            shortDesc: true,
+            images: {
+              select: { url: true, alt: true },
+              orderBy: { sortOrder: 'asc' },
+              take: 1,
+            },
+          },
           orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
         },
       },
@@ -125,7 +142,17 @@ export default async function VaraosatPage() {
         parentId: true,
         products: {
           where: { status: 'PUBLISHED' },
-          select: { id: true, name: true, slug: true, shortDesc: true },
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            shortDesc: true,
+            images: {
+              select: { url: true, alt: true },
+              orderBy: { sortOrder: 'asc' },
+              take: 1,
+            },
+          },
           orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
         },
       },
@@ -143,6 +170,11 @@ export default async function VaraosatPage() {
         name: true,
         shortDesc: true,
         category: { select: { name: true } },
+        images: {
+          select: { url: true, alt: true },
+          orderBy: { sortOrder: 'asc' },
+          take: 1,
+        },
       },
       orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
     })

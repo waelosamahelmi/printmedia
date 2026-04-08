@@ -234,7 +234,7 @@ export async function SectionRenderer({ section }: SectionRendererProps) {
         return {
           title: cat.name,
           description: cat.description || '',
-          image: cat.image || '/images/placeholder.jpg',
+          image: cat.image || '',
           images: productImages.length > 0 ? productImages : undefined,
           href: getCategoryHref(cat.slug),
           count: cat._count.products,
@@ -262,7 +262,7 @@ export async function SectionRenderer({ section }: SectionRendererProps) {
         id: product.id,
         name: product.name,
         shortDesc: product.shortDesc || '',
-        image: product.images[0]?.url || '/images/placeholder.jpg',
+        image: product.images[0]?.url || '',
         href: `/tuotteet/${product.slug}`, // Add proper href for linking
         badge: product.isFeatured ? 'Suosittu' : undefined,
         price: product.price ? `${product.price} €` : undefined,

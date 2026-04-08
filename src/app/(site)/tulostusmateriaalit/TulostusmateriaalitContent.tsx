@@ -80,7 +80,15 @@ export default function TulostusmateriaalitContent({ groups }: { groups: Materia
                       />
                     </div>
                   ) : (
-                    <div className="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200" />
+                    <div className="w-full h-48 bg-white">
+                      <Image
+                        src=""
+                        alt={product.name}
+                        width={800}
+                        height={600}
+                        className="w-full h-full"
+                      />
+                    </div>
                   )}
                   
                   {/* Text content */}

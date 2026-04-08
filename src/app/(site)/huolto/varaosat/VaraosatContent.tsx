@@ -4,12 +4,14 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
+import Image from '@/components/ui/Image'
 
 export type SparePartProduct = {
   id: string
   slug?: string
   name: string
   shortDesc: string | null
+  images?: Array<{ url: string; alt: string | null }>
 }
 
 export type SparePartGroup = {
@@ -24,6 +26,7 @@ export type AccessoryProduct = {
   name: string
   shortDesc: string | null
   category: { name: string } | null
+  images?: Array<{ url: string; alt: string | null }>
 }
 
 type Props = {
@@ -194,8 +197,18 @@ export default function VaraosatContent({ printerGroups, cutterGroups, accessori
                     {currentGroup.products.map((product) => (
                       <article
                         key={product.id}
-                        className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col"
+                        className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col"
                       >
+                        <div className="h-48 bg-white border-b border-gray-100">
+                          <Image
+                            src={product.images?.[0]?.url}
+                            alt={product.images?.[0]?.alt || product.name}
+                            width={800}
+                            height={600}
+                            className="w-full h-full object-contain p-4"
+                          />
+                        </div>
+                        <div className="p-6 flex flex-col flex-1">
                         <h3 className="text-base font-bold text-gray-900 mb-2 leading-snug">
                           {product.name}
                         </h3>
@@ -203,6 +216,7 @@ export default function VaraosatContent({ printerGroups, cutterGroups, accessori
                           <p className="text-sm text-gray-600 flex-1 mb-4">{product.shortDesc}</p>
                         )}
                         {renderCardAction(product.slug)}
+                        </div>
                       </article>
                     ))}
                   </div>
@@ -256,8 +270,18 @@ export default function VaraosatContent({ printerGroups, cutterGroups, accessori
                       {currentAccessoryGroup.products.map((product) => (
                         <article
                           key={product.id}
-                          className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col"
+                          className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col"
                         >
+                          <div className="h-48 bg-white border-b border-gray-100">
+                            <Image
+                              src={product.images?.[0]?.url}
+                              alt={product.images?.[0]?.alt || product.name}
+                              width={800}
+                              height={600}
+                              className="w-full h-full object-contain p-4"
+                            />
+                          </div>
+                          <div className="p-6 flex flex-col flex-1">
                           <h3 className="text-base font-bold text-gray-900 mb-2 leading-snug">
                             {product.name}
                           </h3>
@@ -265,6 +289,7 @@ export default function VaraosatContent({ printerGroups, cutterGroups, accessori
                             <p className="text-sm text-gray-600 flex-1 mb-4">{product.shortDesc}</p>
                           )}
                           {renderCardAction(product.slug)}
+                          </div>
                         </article>
                       ))}
                     </div>
