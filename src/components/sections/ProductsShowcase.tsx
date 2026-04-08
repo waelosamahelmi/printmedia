@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from '@/components/ui/Image'
 import { Container } from '@/components/ui/Container'
+import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 import { Button } from '@/components/ui/Button'
 import { ArrowRight } from 'lucide-react'
 
@@ -69,13 +70,17 @@ export function ProductsShowcase({
                 <div className="card-hover h-full flex flex-col">
                   {/* Image */}
                   <div className="relative aspect-square overflow-hidden bg-gray-100">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    />
+                    {!product.image || product.image.trim() === '' ? (
+                      <ImagePlaceholder className="w-full h-full" />
+                    ) : (
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                    )}
                     {product.badge && (
                       <div className="absolute top-3 left-3 bg-accent-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
                         {product.badge}

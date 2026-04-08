@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from '@/components/ui/Image'
 import { Container } from '@/components/ui/Container'
+import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 import { ArrowRight } from 'lucide-react'
 
 interface Category {
@@ -52,6 +53,7 @@ export function CategoryGrid({
             const showCollage = uniqueImages.length >= 3
             const heroImage = uniqueImages[0] || category.image
             const preferContain = category.href.includes('docan-uv-tulostimet')
+            const hasImage = heroImage && heroImage.trim() !== ''
 
             return (
               <motion.div
@@ -65,7 +67,9 @@ export function CategoryGrid({
                   <div className="card-hover h-full">
                     {/* Image */}
                     <div className="relative aspect-[4/3] overflow-hidden">
-                      {showCollage ? (
+                      {!hasImage ? (
+                        <ImagePlaceholder className="w-full h-full" />
+                      ) : showCollage ? (
                         <div className="grid grid-cols-3 h-full gap-1 bg-gray-200 p-1">
                           {uniqueImages.map((imgSrc, imgIndex) => (
                             <div key={`${category.title}-${imgIndex}`} className="relative overflow-hidden">

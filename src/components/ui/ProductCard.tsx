@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from '@/components/ui/Image'
+import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 import { cn, getImageUrl } from '@/lib/utils'
 import { ArrowRight } from 'lucide-react'
 
@@ -44,13 +45,17 @@ export function ProductCard({
         className={cn('group flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors', className)}
       >
         <div className="relative w-16 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-          <Image
-            src={imageUrl}
-            alt={primaryImage?.alt || product.name}
-            fill
-            className="object-contain p-2"
-            sizes="64px"
-          />
+          {!imageUrl || imageUrl.trim() === '' ? (
+            <ImagePlaceholder className="w-full h-full" />
+          ) : (
+            <Image
+              src={imageUrl}
+              alt={primaryImage?.alt || product.name}
+              fill
+              className="object-contain p-2"
+              sizes="64px"
+            />
+          )}
         </div>
         <div className="flex-grow min-w-0">
           <h4 className="font-medium text-gray-900 truncate group-hover:text-primary-600 transition-colors">
@@ -73,13 +78,17 @@ export function ProductCard({
         <div className="card-hover h-full flex flex-col lg:flex-row">
           {/* Image */}
           <div className="relative aspect-square lg:aspect-auto lg:w-1/2 bg-gray-100 overflow-hidden">
-            <Image
-              src={imageUrl}
-              alt={primaryImage?.alt || product.name}
-              fill
-              className="object-contain p-8 transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+            {!imageUrl || imageUrl.trim() === '' ? (
+              <ImagePlaceholder className="w-full h-full" />
+            ) : (
+              <Image
+                src={imageUrl}
+                alt={primaryImage?.alt || product.name}
+                fill
+                className="object-contain p-8 transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            )}
           </div>
 
           {/* Content */}
@@ -119,13 +128,17 @@ export function ProductCard({
       <div className="card-hover h-full flex flex-col">
         {/* Image */}
         <div className="relative aspect-square bg-gray-100 overflow-hidden">
-          <Image
-            src={imageUrl}
-            alt={primaryImage?.alt || product.name}
-            fill
-            className="object-contain p-6 transition-transform duration-300 group-hover:scale-105"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          />
+          {!imageUrl || imageUrl.trim() === '' ? (
+            <ImagePlaceholder className="w-full h-full" />
+          ) : (
+            <Image
+              src={imageUrl}
+              alt={primaryImage?.alt || product.name}
+              fill
+              className="object-contain p-6 transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            />
+          )}
         </div>
 
         {/* Content */}
