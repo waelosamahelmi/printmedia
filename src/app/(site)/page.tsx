@@ -32,7 +32,9 @@ async function getHomePage() {
 
 // Generate metadata for SEO
 export async function generateMetadata(): Promise<Metadata> {
-  const page = (await getHomePage()) || fallbackHomePage
+  const page = process.env.NODE_ENV === 'production'
+    ? fallbackHomePage
+    : (await getHomePage()) || fallbackHomePage
 
   if (!page) {
     return {
@@ -48,7 +50,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 // Homepage component - renders from database
 export default async function HomePage() {
-  const page = (await getHomePage()) || fallbackHomePage
+  const page = process.env.NODE_ENV === 'production'
+    ? fallbackHomePage
+    : (await getHomePage()) || fallbackHomePage
 
   if (!page) {
     notFound()
