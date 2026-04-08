@@ -3,7 +3,7 @@
 import { ImgHTMLAttributes, SyntheticEvent, useEffect, useState } from 'react'
 import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 
-interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+interface ImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'src'> {
   src?: string | null
   alt: string
   width?: number
