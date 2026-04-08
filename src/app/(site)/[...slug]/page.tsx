@@ -10,13 +10,30 @@ interface PageProps {
 }
 
 function sanitizeLaitteetPageForProduction<T extends { sections: Array<{ type: string; settings: string | null }> }>(page: T): T {
+  const allowedCategorySlugs = new Set([
+    'docan-uv-tulostimet',
+    'gcc-tarraleikkurit',
+    'monitoimileikkurit',
+    'laminaattorit',
+  ])
+
   const blockedCategorySlugs = new Set([
     'display',
     'display-tuotteet',
     'roll-up',
     'messuseinat',
     'messupoydat',
+    'tarvikkeet',
+    'muut-tarvikkeet',
   ])
+
+  const allowedTitleTokens = ['docan', 'gcc', 'monitoimi', 'laminaattor']
+
+  const extractSlugFromHref = (href: string): string | null => {
+    const cleaned = href.trim().toLowerCase()
+    if (!cleaned.startsWith('/laitteet/')) return null
+    return cleaned.replace('/laitteet/', '').split('?')[0].split('#')[0] || null
+  }
 
   const sections = page.sections.map((section) => {
     if (section.type !== 'categories' || !section.settings) {
@@ -33,20 +50,24 @@ function sanitizeLaitteetPageForProduction<T extends { sections: Array<{ type: s
       if (Array.isArray(parsed.items)) {
         parsed.items = parsed.items.filter((item) => {
           const title = (item.title || '').toLowerCase()
-          const href = (item.href || '').toLowerCase()
-          return !title.includes('display')
-            && !title.includes('roll-up')
-            && !title.includes('messusein')
-            && !title.includes('messupoy')
-            && !href.startsWith('/display')
+          const href = (item.href || '')
+          const slugFromHref = href ? extractSlugFromHref(href) : null
+
+          if (slugFromHref) {
+            return allowedCategorySlugs.has(slugFromHref)
+          }
+
+          return allowedTitleTokens.some((token) => title.includes(token))
         })
       }
 
-      if (Array.isArray(parsed.includeSlugs)) {
-        parsed.includeSlugs = parsed.includeSlugs.filter((slug) => {
-          return !blockedCategorySlugs.has(slug.toLowerCase())
-        })
-      }
+      const existingIncludeSlugs = Array.isArray(parsed.includeSlugs)
+        ? parsed.includeSlugs.map((slug) => slug.toLowerCase())
+        : []
+
+      parsed.includeSlugs = existingIncludeSlugs.length > 0
+        ? existingIncludeSlugs.filter((slug) => allowedCategorySlugs.has(slug))
+        : Array.from(allowedCategorySlugs)
 
       if (Array.isArray(parsed.excludeSlugs)) {
         parsed.excludeSlugs = Array.from(new Set([
