@@ -39,12 +39,13 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
   const pathname = usePathname()
   const hideDisplayColumn = pathname.startsWith('/laitteet')
+  const hideAccessoriesColumn = pathname.startsWith('/laitteet')
 
   return (
     <footer className="bg-gray-900 text-gray-300">
       {/* Main footer content */}
       <Container className="py-16">
-        <div className={`grid grid-cols-1 md:grid-cols-2 ${hideDisplayColumn ? 'lg:grid-cols-5' : 'lg:grid-cols-6'} gap-12 lg:gap-8`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${(hideDisplayColumn || hideAccessoriesColumn) ? 'lg:grid-cols-4' : 'lg:grid-cols-6'} gap-12 lg:gap-8`}>
           {/* Company info */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6">
@@ -109,21 +110,23 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-white font-semibold mb-4">Varaosat ja Tarvikkeet</h3>
-            <ul className="space-y-3">
-              {footerNavigation.varaosat.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {!hideAccessoriesColumn && (
+            <div>
+              <h3 className="text-white font-semibold mb-4">Varaosat ja Tarvikkeet</h3>
+              <ul className="space-y-3">
+                {footerNavigation.varaosat.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {!hideDisplayColumn && (
             <div>
