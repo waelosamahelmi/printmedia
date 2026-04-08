@@ -50,6 +50,15 @@ const navigation = [
     ]
   },
   {
+    name: 'Display-tuotteet',
+    href: '/display',
+    children: [
+      { name: 'Roll Up', href: '/display/roll-up' },
+      { name: 'Messuseinät', href: '/display/messuseinat' },
+      { name: 'Messupöydät', href: '/display/messupoydat' },
+    ]
+  },
+  {
     name: 'Ohjelmistot',
     href: '/ohjelmistot',
     children: [

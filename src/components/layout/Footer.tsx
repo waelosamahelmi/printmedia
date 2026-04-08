@@ -19,6 +19,11 @@ const footerNavigation = {
     { name: 'Varaosat ja Tarvikkeet', href: '/huolto/varaosat' },
     { name: 'Muut tarvikkeet', href: '/tarvikkeet/muut-tarvikkeet' },
   ],
+  display: [
+    { name: 'Roll Up', href: '/display/roll-up' },
+    { name: 'Messuseinät', href: '/display/messuseinat' },
+    { name: 'Messupöydät', href: '/display/messupoydat' },
+  ],
   palvelut: [
     { name: 'Huolto ja tuki', href: '/huolto' },
     { name: 'Hinnasto', href: '/hinnasto' },
@@ -34,7 +39,7 @@ export function Footer() {
     <footer className="bg-gray-900 text-gray-300">
       {/* Main footer content */}
       <Container className="py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
           {/* Company info */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6">
@@ -48,7 +53,7 @@ export function Footer() {
             </Link>
             <p className="text-gray-400 mb-6 max-w-sm">
               Suurkuvatulostusalan tukkukauppa. Valikoimastamme löydät tulostusmediat, 
-              tulostusvärit sekä monet muut laadukkaat ratkaisut.
+              tulostusvärit, display-tuotteet sekä monet muut laadukkaat ratkaisut.
             </p>
 
             {/* Contact info */}
@@ -103,6 +108,22 @@ export function Footer() {
             <h3 className="text-white font-semibold mb-4">Varaosat ja Tarvikkeet</h3>
             <ul className="space-y-3">
               {footerNavigation.varaosat.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold mb-4">Display</h3>
+            <ul className="space-y-3">
+              {footerNavigation.display.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
