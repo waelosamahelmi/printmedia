@@ -10,6 +10,14 @@ interface PageProps {
 }
 
 function sanitizeLaitteetPageForProduction<T extends { sections: Array<{ type: string; settings: string | null }> }>(page: T): T {
+  const blockedCategorySlugs = new Set([
+    'display',
+    'display-tuotteet',
+    'roll-up',
+    'messuseinat',
+    'messupoydat',
+  ])
+
   const sections = page.sections.map((section) => {
     if (section.type !== 'categories' || !section.settings) {
       return section
@@ -28,25 +36,25 @@ function sanitizeLaitteetPageForProduction<T extends { sections: Array<{ type: s
           const href = (item.href || '').toLowerCase()
           return !title.includes('display')
             && !title.includes('roll-up')
+            && !title.includes('messusein')
+            && !title.includes('messupoy')
             && !href.startsWith('/display')
         })
       }
 
       if (Array.isArray(parsed.includeSlugs)) {
         parsed.includeSlugs = parsed.includeSlugs.filter((slug) => {
-          const s = slug.toLowerCase()
-          return s !== 'display-tuotteet' && s !== 'roll-up'
+          return !blockedCategorySlugs.has(slug.toLowerCase())
         })
       }
 
       if (Array.isArray(parsed.excludeSlugs)) {
         parsed.excludeSlugs = Array.from(new Set([
           ...parsed.excludeSlugs,
-          'display-tuotteet',
-          'roll-up',
+          ...Array.from(blockedCategorySlugs),
         ]))
       } else {
-        parsed.excludeSlugs = ['display-tuotteet', 'roll-up']
+        parsed.excludeSlugs = Array.from(blockedCategorySlugs)
       }
 
       return {
