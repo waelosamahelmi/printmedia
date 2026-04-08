@@ -1,0 +1,4709 @@
+[
+  {
+    "id": "cmn7bu1fp002j7264b0r7lm1m",
+    "slug": "akseli-mimaki-jv3-jv33-jv5",
+    "name": "Akseli, Mimaki JV3/JV33/JV5",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ce0017726495ulo0qo",
+      "name": "Mekaaniset osat",
+      "slug": "tulostin-mechanical-parts",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x680024kc72dexou40z",
+    "slug": "banner-clip",
+    "name": "Banner clip",
+    "shortDesc": "Nopea bannerin kiinnike",
+    "description": "<p>Nopea asentaa. Soveltuu eri paksuisille materiaaleille. Kiinnikkeen leveys 35 mm.</p>",
+    "specs": "{\"Tuotenumero\":\"3553\",\"Pakkauskoko\":\"100 kpl\",\"Leveys\":\"35mm\"}",
+    "sku": "TAR-BANNER",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/accessories/bannerclip.jpg",
+        "alt": "Banner clip"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1fb002d7264dg43onpw",
+    "slug": "board-cable-mutoh",
+    "name": "Board cable (Mutoh)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ab000572648t7tstc3",
+      "name": "Kaapelit",
+      "slug": "tulostin-cables",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x610020kc72pyu2k4tz",
+    "slug": "bungee-ball",
+    "name": "Bungee ball",
+    "shortDesc": "Kuminauhakiinnike pallolla",
+    "description": "<p>Kuminauhan paksuus 4 mm, pituus 150 mm. Pallon halkaisija 28 mm.</p>",
+    "specs": "{\"Tuotenumero\":\"3551\",\"Pakkauskoko\":\"50 kpl\"}",
+    "sku": "TAR-BUNGEE-B",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/accessories/bungee-ball.jpg",
+        "alt": "Bungee ball"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x650022kc72j15h2hnt",
+    "slug": "bungee-hook",
+    "name": "Bungee hook",
+    "shortDesc": "Kuminauhakiinnike koukulla",
+    "description": "<p>Kuminauhan paksuus 4 mm, pituus 150 mm.</p>",
+    "specs": "{\"Tuotenumero\":\"3552\",\"Pakkauskoko\":\"50 kpl\"}",
+    "sku": "TAR-BUNGEE-H",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/accessories/bungee-koukku.jpg",
+        "alt": "Bungee hook"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1f3002972641q976vf4",
+    "slug": "cap-tension-spring-mimaki",
+    "name": "Cap tension spring (Mimaki)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1bg000p7264gqext94h",
+      "name": "Kiinnikkeet",
+      "slug": "tulostin-fasteners",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1l6004p7264q2snu7l7",
+    "slug": "capping-assy-dx4-solvent-kumi",
+    "name": "Capping assy DX4 solvent kumi",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ai00077264ic7ezlqd",
+      "name": "Capping-yksiköt",
+      "slug": "tulostin-cappings",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1np005p72645wu3r0wo",
+    "slug": "capping-assy-jousi",
+    "name": "Capping assy jousi",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ai00077264ic7ezlqd",
+      "name": "Capping-yksiköt",
+      "slug": "tulostin-cappings",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1lc004r7264tiot8de2",
+    "slug": "capping-assy-ritila",
+    "name": "Capping assy ritilä",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ai00077264ic7ezlqd",
+      "name": "Capping-yksiköt",
+      "slug": "tulostin-cappings",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1ii003n7264ax5zvcun",
+    "slug": "chip-resetter-hp-designjet-5000-5500",
+    "name": "Chip resetter HP DesignJet 5000/5500",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1b5000j7264q011ez9h",
+      "name": "Elektroniikka",
+      "slug": "tulostin-electronics",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1ie003l72646it2yiwt",
+    "slug": "chip-resetter-hp-deskjet-2510-60",
+    "name": "Chip resetter HP Deskjet 2510/60",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1b5000j7264q011ez9h",
+      "name": "Elektroniikka",
+      "slug": "tulostin-electronics",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1i9003j7264z7un0i0j",
+    "slug": "chipit-uv-dye-latex-hp-designjet-hp-latex",
+    "name": "Chipit UV / DYE / LATEX (HP DesignJet/HP Latex)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1b5000j7264q011ez9h",
+      "name": "Elektroniikka",
+      "slug": "tulostin-electronics",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1i4003h7264qp7ljmla",
+    "slug": "chipit-colorspan",
+    "name": "Chipit, ColorSpan",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1b5000j7264q011ez9h",
+      "name": "Elektroniikka",
+      "slug": "tulostin-electronics",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1hq003b7264y0y8s9bv",
+    "slug": "chipit-mimaki-jv3-series",
+    "name": "Chipit, Mimaki JV3 series",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1b5000j7264q011ez9h",
+      "name": "Elektroniikka",
+      "slug": "tulostin-electronics",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1in003p7264iydjdc7x",
+    "slug": "chipit-mimaki-jv5-series",
+    "name": "Chipit, Mimaki JV5 series",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1b5000j7264q011ez9h",
+      "name": "Elektroniikka",
+      "slug": "tulostin-electronics",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1hv003d7264fhwhckny",
+    "slug": "chipit-mutoh-xpf-graphtec-x-finition",
+    "name": "Chipit, Mutoh XPF / Graphtec X-Finition",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1b5000j7264q011ez9h",
+      "name": "Elektroniikka",
+      "slug": "tulostin-electronics",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568w7002nwz43n28dic61",
+    "slug": "2307-cowron-pv700-80g-polymeeritarra-80-mic-kiiltv-1370-mm-x-50-m",
+    "name": "Cowron PV700-80G polymeeritarra, 80 mic, kiiltävä, 1370 mm x 50 m",
+    "shortDesc": "Harmaa liima. Sol / Eco-Sol 3+. 160 g taustapaperi helpottaa käsittelyä ja ehkäisee taipumista.",
+    "description": "Kestävä tarramateriaali joka soveltuu pitkäkestoisten ja keskipitkään tarkoitettuihin käyttötarkoituksiin. Paksu 160 g taustapaperi helpottaa tarran käsittelytä ja ehkäisee tarra taipumista tulostuksen jälkeen. Harmaa liimaiset peittävät liimattavan taustamateriaalin sävyerot päälle teippauksessa.\n\nTuotetiedot: Harmaa liima. Sol / Eco-Sol 3?. 160 g taustapaperi helpottaa käsittelyä ja ehkäisee taipumista.",
+    "specs": null,
+    "sku": "2307",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1nv005r7264e6kp5d4e",
+    "slug": "damper-dx3",
+    "name": "Damper DX3",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1nz005t7264sot3d0zo",
+    "slug": "damper-dx4-solvent",
+    "name": "Damper DX4 solvent",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1m900537264o1k7cf20",
+    "slug": "damper-dx4-solvent-iso-oranssi-punainen-omega",
+    "name": "Damper DX4 solvent ISO, oranssi/punainen (Omega)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1m0004z72643d1q9i72",
+    "slug": "damper-dx4-solvent-iso-valkoinen-mutoh-omega",
+    "name": "Damper DX4 solvent ISO, valkoinen (Mutoh/Omega)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1g8002r7264kg24tpq7",
+    "slug": "damper-dx5-solvent-liitin-mimaki-jv33-cap-pad-spa-0161",
+    "name": "Damper DX5 solvent -liitin, Mimaki JV33 (CAP Pad SPA-0161)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1gl002x7264mvt7o0d4",
+    "slug": "damper-dx5-solvent-yleismalli",
+    "name": "Damper DX5 solvent (yleismalli)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1gq002z7264qbyxn9jv",
+    "slug": "damper-dx5-solvent-eco-mimaki-dx5-original",
+    "name": "Damper DX5 solvent ECO, Mimaki DX5 original",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1gh002v7264xlmf02oa",
+    "slug": "damper-dx5-solvent-mimaki-dx5-plastic-body",
+    "name": "Damper DX5 solvent, Mimaki DX5 plastic body",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1gd002t72649js33rtx",
+    "slug": "damper-dx5-solvent-mutoh-dx5-original",
+    "name": "Damper DX5 solvent, Mutoh DX5 original",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1n6005h7264alwh5oqe",
+    "slug": "damper-epson-stylus-pro-7600-9600",
+    "name": "Damper Epson Stylus Pro 7600/9600",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1m400517264pb4vnski",
+    "slug": "damper-mutoh-spitfire-omega",
+    "name": "Damper Mutoh Spitfire (Omega)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x2g000ykc721dz35v15",
+    "slug": "docan-h3000r-m10",
+    "name": "Docan H3000r M10",
+    "shortDesc": "UV-tulostin 10-värisellä päällä",
+    "description": "<p>Viimeistellyt Docan tulostimet omaavat luotettavan toiminnan ja uskomattoman tulostuslaadun hyödyntäen Konica Minoltan, Ricohin tai Kyoceran tulostuspäitä.</p>\n<p>Laitteiden kokoonpano ja testaus tapahtuu Kiinassa ISO9001 sertifioinnin alaisena, mutta kaikki strategiset komponentit tulevat Japanista, Italiasta sekä Englannista. Esimerkiksi johteet tulevat Japanista ja UV-lamppuyksiköt Englannista.</p>\n<h3>Ominaisuudet</h3>\n<ul>\n<li>Tulostimen perusversiossa neljä tulostuspäätä järkevään hintaan</li>\n<li>Mahdollisuus lisätä tulostuspäiden määrää myöhemmin</li>\n<li>H3000(R) malliin saatavilla rullaominaisuus</li>\n<li>Koneen alustaminen tulostuskuntoon kestää vain noin 5 minuuttia</li>\n<li>Mallisto tarjoaa ratkaisut pienestä kylttituotannosta jopa 5,1 metrisiin tulosteisiin</li>\n<li>Interweaving tekniikka estää raitaisuutta</li>\n</ul>\n<h3>Värikokoonpanot</h3>\n<ul>\n<li>CMYK</li>\n<li>CMYKLcLm</li>\n<li>CMYKLcLm + White</li>\n<li>CMYKLcLm + White + White</li>\n</ul>\n<p><strong>Tulostusmateriaalin paksuus:</strong> maksimissaan 100 mm</p>",
+    "specs": "{\"Tulostusleveys\":\"3000 mm\",\"Resoluutio\":\"1440 dpi\",\"Materiaalin paksuus\":\"max 100 mm\"}",
+    "sku": "DOC-H3000R-M10",
+    "category": {
+      "id": "cmmj17wzq0001kc725hkrxemo",
+      "name": "Docan UV-tulostimet",
+      "slug": "docan-uv-tulostimet",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/devices/docan_h3000r_m10_574x.png",
+        "alt": "Docan H3000r M10 UV-tulostin"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1li004t7264vketrvsj",
+    "slug": "dx4-large-damper-pdaep10001",
+    "name": "DX4 large damper (PDAEP10001)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1l1004n7264rt6n5fy8",
+    "slug": "dx4-small-damper-2-mm-pdaep10002",
+    "name": "DX4 small damper 2 mm (PDAEP10002)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ay000f72644wdlm7wt",
+      "name": "Damperit",
+      "slug": "tulostin-dampers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7c1k9600036in7wmtkgbyk",
+    "slug": "dx4s-tulostuspaa",
+    "name": "DX4S tulostuspää",
+    "shortDesc": "Suurkuvatulostimen tulostuspää. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1d6001j72640riq6zpe",
+      "name": "Tulostuspäät",
+      "slug": "tulostin-printheads",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7c1k9b00056in7y6bmwzkf",
+    "slug": "dx5-tulostuspaa",
+    "name": "DX5 tulostuspää",
+    "shortDesc": "Suurkuvatulostimen tulostuspää. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1d6001j72640riq6zpe",
+      "name": "Tulostuspäät",
+      "slug": "tulostin-printheads",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1g3002p7264w4hdvpap",
+    "slug": "dx5-6-wiper-mutoh-mimaki-roland-pwmimjvj001",
+    "name": "DX5/6 wiper, Mutoh/Mimaki/Roland (PWMIMJVJ001)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1e6001z7264dojmtp55",
+      "name": "Wiper-kumit",
+      "slug": "tulostin-wipers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1f7002b7264a1awhpvt",
+    "slug": "encoder-board-sensor-roland-sp-sol",
+    "name": "Encoder board (sensor), Roland SP/Sol",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1b9000l7264s66m4jtc",
+      "name": "Enkooderit",
+      "slug": "tulostin-encoders",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75695q0079wz43ch48z72j",
+    "slug": "5201-esiteteline-1",
+    "name": "Esiteteline-1",
+    "shortDesc": "A4 lokeroita 5 kpl, L 30 cm x K 143 cm x S 47 cm. Kääntyvä tukijalka. Toimitetaan laatikossa. Paino 3 kg.",
+    "description": "Kääntyvä tukijalka. Toimitetaan laatikossa. Paino 3 kg\n\nTuotetiedot: A4 lokeroita 5 kpl, L 30 cm x K 143 cm x S 47 cm. Kääntyvä tukijalka. Toimitetaan laatikossa. Paino 3 kg.",
+    "specs": null,
+    "sku": "5201",
+    "category": {
+      "id": "cmmj17x080005kc72sjl00ynj",
+      "name": "Display-tuotteet",
+      "slug": "display-tuotteet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x4b0018kc72on64kltz",
+    "slug": "fayon-fy1600-se",
+    "name": "Fayon FY1600 SE",
+    "shortDesc": "Pneumaattinen kylmälaminaattori 1600mm",
+    "description": "<p>Monipuolinen kylmä-/lämpölaminaattori pieneen tai keskikokoiseen tuotantoon. Viimeistellyissä laminaattoreissa on laminointia helpottava lämmitettävä ylärulla.</p>",
+    "specs": "{\"Laminointileveys\":\"1600 mm\",\"Nopeus\":\"max 25 m/min\",\"Lämpötila\":\"max 125°C\",\"Paksuus\":\"max 35mm\"}",
+    "sku": "FAY-1600SE",
+    "category": {
+      "id": "cmmj17x040004kc72b37vneug",
+      "name": "Laminaattorit",
+      "slug": "laminaattorit",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/devices/fayon-1600se.png",
+        "alt": "Fayon FY1600 SE laminaattori"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x2x0012kc72jopkjie8",
+    "slug": "gcc-jaguar-v-lx",
+    "name": "GCC Jaguar V LX",
+    "shortDesc": "Monipuolinen tarraleikkuri vaativampaankin käyttöön",
+    "description": "<p>Monipuolinen tarraleikkuri vaativampaankin käyttöön.</p>",
+    "specs": "{\"Saatavana\":\"J5-61 (24\\\"), J5-101 (40\\\"), J5-132 (52\\\"), J5-183 (72\\\")\"}",
+    "sku": "GCC-JAG-VLX",
+    "category": {
+      "id": "cmmj17wzv0002kc726ej1buxo",
+      "name": "GCC Tarraleikkurit",
+      "slug": "gcc-tarraleikkurit",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/devices/J5-132.jpg",
+        "alt": "GCC Jaguar V LX"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x2t0010kc7241oidya5",
+    "slug": "gcc-rxii-132",
+    "name": "GCC RXII 132",
+    "shortDesc": "Professional tarkkuusleikkuri 1320mm",
+    "description": "<p>GCC:n lippulaiva kaikilla herkuilla vaativampaankin tuotantoon.</p>\n<p>Sisältää GreatCut ohjelmiston, USB ja RJ45 verkkokaapeli mukana.</p>",
+    "specs": "{\"Leikkuuleveys\":\"1320 mm (52\\\")\",\"Nopeus\":\"1530 mm/s\",\"Saatavana\":\"RXII-61, RXII-101S, RXII-132S, RXII-183S\"}",
+    "sku": "GCC-RXII-132",
+    "category": {
+      "id": "cmmj17wzv0002kc726ej1buxo",
+      "name": "GCC Tarraleikkurit",
+      "slug": "gcc-tarraleikkurit",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/devices/RXII_132_400.png",
+        "alt": "GCC RXII 132 tarkkuusleikkuri"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1pa00677264jesm0h76",
+    "slug": "harmaa-o-rengas",
+    "name": "Harmaa O-rengas",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1cp001d7264q1ga2z6c",
+      "name": "O-renkaat",
+      "slug": "tulostin-o-rings",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1jq00437264t8sm3h8n",
+    "slug": "injektioruisku-20-ml",
+    "name": "Injektioruisku 20 ml",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1c500137264lbduzohp",
+      "name": "Huoltosarjat",
+      "slug": "tulostin-maintenance-kits",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x5r001ukc721qybzan5",
+    "slug": "jetbest-eco-solvent-musteet",
+    "name": "JetBest Eco-solvent musteet",
+    "shortDesc": "Korkealaatuiset musteet Mimaki-tulostimille",
+    "description": "<p>JetBest eco-solventtimusteet Mimaki-tulostimille. Erinomainen värintoisto ja kestävyys.</p>",
+    "specs": null,
+    "sku": "JB-ECO-SOL",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/logos/jetbest_sahkoposti.jpg",
+        "alt": "JetBest Eco-solvent musteet"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x330014kc72i2ne9d3u",
+    "slug": "jingwei-cb03ii",
+    "name": "Jingwei CB03II",
+    "shortDesc": "Flatbed-monitoimileikkuri useilla pöytäko'oilla",
+    "description": "<p>CB03II ja CB08II leikkureihin on saatavilla useita työkaluja ja teriä erilaisia materiaaleja ja käyttötarkoituksia varten.</p>\n<h3>Soveltuvat materiaalit</h3>\n<ul>\n<li>Pahvit</li>\n<li>Paperit</li>\n<li>Kankaat</li>\n<li>Levyt</li>\n<li>Kennot</li>\n<li>Kalvot</li>\n<li>Vaahtomuovit</li>\n<li>Ja monet muut</li>\n</ul>\n<p>Jos olet etsinyt laadukasta tasoleikkuria ja hintataso on ollut liian korkea, niin tässä sinulle hyvä vaihtoehto ominaisuuksista tinkimättä.</p>",
+    "specs": "{\"Pöytäkoot\":\"1100x1300mm, 1800x1600mm, 2500x1300mm, 2500x1600mm\",\"Materiaalin paksuus\":\"max 50mm\"}",
+    "sku": "JW-CB03II",
+    "category": {
+      "id": "cmmj17wzy0003kc72kmfhjcri",
+      "name": "Monitoimileikkurit",
+      "slug": "monitoimileikkurit",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/devices/cb03ii_500px_500x.jpg",
+        "alt": "Jingwei CB03II monitoimileikkuri"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x380016kc72drvlwmqo",
+    "slug": "jingwei-cb08ii",
+    "name": "Jingwei CB08II",
+    "shortDesc": "Tehokas flatbed-monitoimileikkuri suurille töille",
+    "description": "<p>Jingwei CB08II on tehokas flatbed-monitoimileikkuri vaativaan tuotantoon suuremmilla pöytäko'oilla.</p>",
+    "specs": "{\"Pöytäkoot\":\"2500x2000mm, 3000x3200mm, 3500x2000mm\"}",
+    "sku": "JW-CB08II",
+    "category": {
+      "id": "cmmj17wzy0003kc72kmfhjcri",
+      "name": "Monitoimileikkurit",
+      "slug": "monitoimileikkurit",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/devices/cb03ii_500px_500x.jpg",
+        "alt": "Jingwei CB08II monitoimileikkuri"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1n2005f72649hs2izfq",
+    "slug": "lampo-ja-kosteusmittari",
+    "name": "Lämpö- ja kosteusmittari",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1c500137264lbduzohp",
+      "name": "Huoltosarjat",
+      "slug": "tulostin-maintenance-kits",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1kh004f72640og40lg3",
+    "slug": "leikkurintera-mimaki-spb-000",
+    "name": "Leikkurinterä, Mimaki SPB-000",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1eh00217264yq44m38r",
+      "name": "Tulostimien leikkuriosat",
+      "slug": "tulostin-leikkuriosat",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1kc004d726459deu0pg",
+    "slug": "leikkurintera-roland-0-25-mm",
+    "name": "Leikkurinterä, Roland 0,25 mm",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1eh00217264yq44m38r",
+      "name": "Tulostimien leikkuriosat",
+      "slug": "tulostin-leikkuriosat",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1km004h7264qx2n5fqf",
+    "slug": "leikkurintera-roland-zec-u1005",
+    "name": "Leikkurinterä, Roland ZEC-U1005",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1eh00217264yq44m38r",
+      "name": "Tulostimien leikkuriosat",
+      "slug": "tulostin-leikkuriosat",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1h300357264nyeavocg",
+    "slug": "linear-encoder-nauha-roland",
+    "name": "Lineaarinen enkooderinauha, Roland",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1b9000l7264s66m4jtc",
+      "name": "Enkooderit",
+      "slug": "tulostin-encoders",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1jf003z7264d9m04p8t",
+    "slug": "main-board-mimaki-jv3",
+    "name": "Main board, Mimaki JV3",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1a600037264mawyqfq0",
+      "name": "Piirikortit",
+      "slug": "tulostin-boards",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1jl00417264uowpmont",
+    "slug": "main-board-mimaki-jv5",
+    "name": "Main board, Mimaki JV5",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1a600037264mawyqfq0",
+      "name": "Piirikortit",
+      "slug": "tulostin-boards",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1hf00397264wt7izh2y",
+    "slug": "media-plate-mimaki-jv3-series",
+    "name": "Media plate, Mimaki JV3 series",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ch00197264trcmv26q",
+      "name": "Median keräyslaitteen osat",
+      "slug": "tulostin-media-take-up-parts",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1ha003772647dd4i8kl",
+    "slug": "media-plate-roland-sj-series",
+    "name": "Media plate, Roland SJ series",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ch00197264trcmv26q",
+      "name": "Median keräyslaitteen osat",
+      "slug": "tulostin-media-take-up-parts",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1k400497264z93zw96y",
+    "slug": "mediankatkaisutera-roland",
+    "name": "Mediankatkaisuterä, Roland",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1eh00217264yq44m38r",
+      "name": "Tulostimien leikkuriosat",
+      "slug": "tulostin-leikkuriosat",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1fh002f7264s7xol599",
+    "slug": "mimaki-moottori-jv3-jv33-jv5",
+    "name": "Mimaki moottori JV3/JV33/JV5",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1cl001b72647e2e0cpa",
+      "name": "Moottorit",
+      "slug": "tulostin-motors",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x51001ikc72123ro7ec",
+    "slug": "roll-up-mini",
+    "name": "Mini Roll-Up",
+    "shortDesc": "Hauska pisaramallinen pöytä roll-up",
+    "description": "<p>Hauska pisaramallinen pöytä roll up.</p>",
+    "specs": "{\"Koot\":\"21x28,5cm (0,3kg), 30x41,5cm (0,5kg)\"}",
+    "sku": "RUP-MINI",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/rollups/mini_roll_up.jpg",
+        "alt": "Mini Roll-Up"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1oe005z72648k3ms9q4",
+    "slug": "musta-iso-o-rengas",
+    "name": "Musta iso O-rengas",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1cp001d7264q1ga2z6c",
+      "name": "O-renkaat",
+      "slug": "tulostin-o-rings",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1oi00617264k2s725hl",
+    "slug": "musta-pieni-o-rengas",
+    "name": "Musta pieni O-rengas",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1cp001d7264q1ga2z6c",
+      "name": "O-renkaat",
+      "slug": "tulostin-o-rings",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1ex00277264uz61ql3v",
+    "slug": "ink-leak-sensor-pcb-mimaki",
+    "name": "Mustevuodon anturipiirikortti (Mimaki)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1dv001t7264irv18l9f",
+      "name": "Sensorit",
+      "slug": "tulostin-sensors",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1o4005v72647c2dfly0",
+    "slug": "ovaali-sihti",
+    "name": "Ovaali sihti",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1bk000r7264tqyq3io5",
+      "name": "Suodattimet",
+      "slug": "tulostin-filters",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1nc005j726414oakwz6",
+    "slug": "paper-sensor",
+    "name": "Paper sensor",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1dv001t7264irv18l9f",
+      "name": "Sensorit",
+      "slug": "tulostin-sensors",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x5d001mkc72550k14tx",
+    "slug": "messuseina-kaareva",
+    "name": "Pop Up Kaareva",
+    "shortDesc": "Kaareva pop-up messuseinä",
+    "description": "<p>Pop-up messuseinä kaarevana mallina.</p>",
+    "specs": "{\"Koot\":\"n. 230cm x 230cm (25kg), n. 280cm x 230cm (30kg)\"}",
+    "sku": "MES-KAAREVA",
+    "category": {
+      "id": "cmmj17x0h0007kc72jovarmt5",
+      "name": "Messuseinät",
+      "slug": "messuseinat",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/walls/kaareva_280_x_230.jpg",
+        "alt": "Pop Up Kaareva messuseinä"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x59001kkc72vycdinli",
+    "slug": "messuseina-suora",
+    "name": "Pop Up Suora",
+    "shortDesc": "Suora pop-up messuseinä",
+    "description": "<p>Pop-up messuseinä suorana mallina.</p>",
+    "specs": "{\"Koot\":\"n. 230cm x 230cm (30kg), n. 230cm x 230cm (32kg)\"}",
+    "sku": "MES-SUORA",
+    "category": {
+      "id": "cmmj17x0h0007kc72jovarmt5",
+      "name": "Messuseinät",
+      "slug": "messuseinat",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/walls/suora_messuseina.jpg",
+        "alt": "Pop Up Suora messuseinä"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1mn00597264ixv9yvdi",
+    "slug": "pressure-arm-roller-mutoh-rockhopper-ii",
+    "name": "Pressure arm / roller, Mutoh Rockhopper II",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1dr001r7264eq0pdak8",
+      "name": "Rullat",
+      "slug": "tulostin-rollers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1fl002h7264l73wtabz",
+    "slug": "printer-board-mutoh-roland-mimaki",
+    "name": "Printer board, Mutoh/Roland/Mimaki",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1a600037264mawyqfq0",
+      "name": "Piirikortit",
+      "slug": "tulostin-boards",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x5h001okc72vbysodbn",
+    "slug": "promopoyta-1",
+    "name": "Promopöytä-1",
+    "shortDesc": "Pop Up style messupöytä",
+    "description": "<p>Pop Up style messupöytä välihyllyllä.</p>",
+    "specs": "{\"Paino\":\"12 kg\",\"Mitat\":\"L 90 cm, K 88 cm, S 40 cm\",\"Pakkaus\":\"L 100 cm, K 18 cm, S 40 cm\",\"Tuotenumero\":\"4602\"}",
+    "sku": "MES-PROMO1",
+    "category": {
+      "id": "cmmj17x0l0008kc72dz7kk21s",
+      "name": "Messupöydät",
+      "slug": "messupoydat",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/tables/promopyt_1_uusi_kuva_1.jpg",
+        "alt": "Promopöytä-1"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x5k001qkc7278bf36pl",
+    "slug": "promopoyta-2",
+    "name": "Promopöytä-2",
+    "shortDesc": "Suurempi Pop Up style messupöytä",
+    "description": "<p>Pop Up style messupöytä välihyllyllä, suurempi koko.</p>",
+    "specs": "{\"Paino\":\"16 kg\",\"Mitat\":\"L 129 cm, K 88 cm, S 45 cm\",\"Pakkaus\":\"L 100 cm, K 18 cm, S 40 cm\",\"Tuotenumero\":\"4601\"}",
+    "sku": "MES-PROMO2",
+    "category": {
+      "id": "cmmj17x0l0008kc72dz7kk21s",
+      "name": "Messupöydät",
+      "slug": "messupoydat",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/tables/promopyt_2_uusi_kuva_1.jpg",
+        "alt": "Promopöytä-2"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x5o001skc7205v5jbdu",
+    "slug": "promopoyta-4",
+    "name": "Promopöytä-4",
+    "shortDesc": "Vaalea pyökki -messupöytä",
+    "description": "<p>Vaalea pyökki messupöytä nopealla kasauksella.</p>",
+    "specs": "{\"Paino\":\"10 kg\",\"Mitat\":\"L 118 cm, K 93 cm, S 40 cm\",\"Pakkaus\":\"L 62 cm, K 42 cm, S 15 cm\",\"Tuotenumero\":\"4604\"}",
+    "sku": "MES-PROMO4",
+    "category": {
+      "id": "cmmj17x0l0008kc72dz7kk21s",
+      "name": "Messupöydät",
+      "slug": "messupoydat",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/tables/promopyt_4.jpg",
+        "alt": "Promopöytä-4"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1my005d7264zw3xv31q",
+    "slug": "pumppu-iso",
+    "name": "Pumppu, iso",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1do001p7264xbmsl5gm",
+      "name": "Pumput",
+      "slug": "tulostin-pumps",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1ms005b7264ss2ycg9c",
+    "slug": "pumppu-pieni",
+    "name": "Pumppu, pieni",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1do001p7264xbmsl5gm",
+      "name": "Pumput",
+      "slug": "tulostin-pumps",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1oz00657264d586l2s5",
+    "slug": "punainen-pieni-o-rengas",
+    "name": "Punainen pieni O-rengas",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1cp001d7264q1ga2z6c",
+      "name": "O-renkaat",
+      "slug": "tulostin-o-rings",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1o9005x7264e7ohf06r",
+    "slug": "pyorea-sihti",
+    "name": "Pyöreä sihti",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1bk000r7264tqyq3io5",
+      "name": "Suodattimet",
+      "slug": "tulostin-filters",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1kv004l7264hh17s1ys",
+    "slug": "roland-dx4-capping-assy-huovalla-pca012317",
+    "name": "Roland DX4 capping assy huovalla (PCA012317)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ai00077264ic7ezlqd",
+      "name": "Capping-yksiköt",
+      "slug": "tulostin-cappings",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1j2003t726442930atd",
+    "slug": "roland-eco-max-2-440-ml-chip",
+    "name": "Roland Eco Max 2 440 ml chip",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1b5000j7264q011ez9h",
+      "name": "Elektroniikka",
+      "slug": "tulostin-electronics",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1i0003f72643ghlfvx1",
+    "slug": "roland-eco-max-440-ml-chip",
+    "name": "Roland Eco Max 440 ml chip",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1b5000j7264q011ez9h",
+      "name": "Elektroniikka",
+      "slug": "tulostin-electronics",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1kr004j72649jwykmwl",
+    "slug": "roland-oem-capping-dx4",
+    "name": "Roland OEM capping DX4",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ai00077264ic7ezlqd",
+      "name": "Capping-yksiköt",
+      "slug": "tulostin-cappings",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1ju0045726498oz0g6e",
+    "slug": "roland-special-guard-strip",
+    "name": "Roland special guard strip",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1eh00217264yq44m38r",
+      "name": "Tulostimien leikkuriosat",
+      "slug": "tulostin-leikkuriosat",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x4v001gkc728ieh43zs",
+    "slug": "roll-up-deluxe",
+    "name": "Roll-Up Deluxe-1",
+    "shortDesc": "Näyttävä pisaramallin roll-up",
+    "description": "<p>Näyttävä pisaramallin roll-up kääntyvällä lisäjalalla.</p>",
+    "specs": "{\"Koot\":\"85x200cm (7kg), 100x200cm (8kg), 120x200cm (9kg), 150x200cm (10kg)\"}",
+    "sku": "RUP-DELUXE",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/rollups/deluxe_1_uusi_kuva_laukku.jpg",
+        "alt": "Roll-Up Deluxe"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x4n001ckc72fnihu5i0",
+    "slug": "roll-up-export",
+    "name": "Roll-Up Export",
+    "shortDesc": "Suosittu perusmalli",
+    "description": "<p>Export-mallin roll-up teline on suosittu perusmalli edulliseen hintaan.</p>",
+    "specs": "{\"Koko\":\"85 cm x 200 cm\",\"Paino\":\"2,8 kg\"}",
+    "sku": "RUP-EXPORT",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/rollups/export_uusi_laukku.jpg",
+        "alt": "Roll-Up Export"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x4r001ekc72haxqawyl",
+    "slug": "roll-up-luxury",
+    "name": "Roll-Up Luxury",
+    "shortDesc": "Tukevampi malli paksulla tukijalalla",
+    "description": "<p>Export mallia hieman tukevampi roll-up teline paksulla tukijalalla.</p>",
+    "specs": "{\"Koot\":\"85x200cm (3,7kg), 100x200cm (4,2kg), 120x200cm (5,4kg)\"}",
+    "sku": "RUP-LUXURY",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/rollups/luxury_uusi_laukku.jpg",
+        "alt": "Roll-Up Luxury"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x4h001akc72413cderm",
+    "slug": "roll-up-spyro",
+    "name": "Roll-Up Spyro",
+    "shortDesc": "Kevyt roll-up teline messuille",
+    "description": "<p>Laadukas ja kevyt Spyro roll-up teline messuille ja tapahtumiin.</p>",
+    "specs": "{\"Koko\":\"85 cm x 200 cm\",\"Paino\":\"2 kg\"}",
+    "sku": "RUP-SPYRO",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/rollups/spyro2.jpg",
+        "alt": "Roll-Up Spyro"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1on006372644w1z2y0x",
+    "slug": "sininen-pieni-o-rengas",
+    "name": "Sininen pieni O-rengas",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1cp001d7264q1ga2z6c",
+      "name": "O-renkaat",
+      "slug": "tulostin-o-rings",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1ix003r7264cfmi1lg3",
+    "slug": "sulakkeet-eri-mallit",
+    "name": "Sulakkeet (eri mallit)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1bn000t7264aag1ljcm",
+      "name": "Sulakkeet",
+      "slug": "tulostin-fuses",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1me00557264kfm7wz70",
+    "slug": "tayttokasetin-korkki",
+    "name": "Täyttökasetin korkki",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1al00097264yzqfshj9",
+      "name": "Liittimet",
+      "slug": "tulostin-connectors",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1j7003v7264q6f98ezt",
+    "slug": "tool-carriage-kaapeli-mimaki-jv3",
+    "name": "Tool carriage kaapeli, Mimaki JV3",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ab000572648t7tstc3",
+      "name": "Kaapelit",
+      "slug": "tulostin-cables",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1jb003x7264o4nqi96j",
+    "slug": "tool-carriage-kaapeli-mimaki-jv5",
+    "name": "Tool carriage kaapeli, Mimaki JV5",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1ab000572648t7tstc3",
+      "name": "Kaapelit",
+      "slug": "tulostin-cables",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1nh005l7264j9g1lp9b",
+    "slug": "printhead-adapter",
+    "name": "Tulostuspääadapteri",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1d6001j72640riq6zpe",
+      "name": "Tulostuspäät",
+      "slug": "tulostin-printheads",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1es00257264d08kc88m",
+    "slug": "head-memory-pcb-assy-mimaki",
+    "name": "Tulostuspään muistipiirikortti (Mimaki)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1d6001j72640riq6zpe",
+      "name": "Tulostuspäät",
+      "slug": "tulostin-printheads",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1en00237264ucealk32",
+    "slug": "head-relay-pcb-assy-mimaki",
+    "name": "Tulostuspään relepiirikortti (Mimaki)",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1d6001j72640riq6zpe",
+      "name": "Tulostuspäät",
+      "slug": "tulostin-printheads",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1k8004b7264jx6jybix",
+    "slug": "turvaviivaimen-tera-10-kpl-pkt",
+    "name": "Turvaviivaimen terä, 10 kpl/pkt",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x5y001ykc72686qft0j",
+    "slug": "turvaviivain-leikkurilla",
+    "name": "Turvaviivain leikkurilla",
+    "shortDesc": "Leveä turvaviivain säädettävällä leikkurilla",
+    "description": "<p>Leveä alumiini runko, pohjassa liukuesteet, muovipäädyt. Leikkurin liikkuvuutta voidaan säätää mukana tulevalla työkalulla.</p>",
+    "specs": "{\"Koot\":\"120cm, 180cm, 260cm\",\"Profiili\":\"K 55mm, L 150mm\",\"Max leikkaus\":\"4mm\"}",
+    "sku": "TAR-TURVA2",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/accessories/turvaviivain_leikkurilla.jpg",
+        "alt": "Turvaviivain leikkurilla"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj17x5u001wkc72wrgm7nq3",
+    "slug": "turvaviivain-terasreunalla",
+    "name": "Turvaviivain teräsreunalla",
+    "shortDesc": "Tukeva alumiinirunkoinen turvaviivain",
+    "description": "<p>Tukeva alumiini runko, jossa teräsreuna ja pohjassa liukuesteet.</p>",
+    "specs": "{\"Koot\":\"80cm, 110cm, 140cm, 170cm\",\"Profiili\":\"K 44mm, L 105mm\"}",
+    "sku": "TAR-TURVA1",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/accessories/turvaviivain_tersreunalla.jpg",
+        "alt": "Turvaviivain teräsreunalla"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1nl005n726425zlnffe",
+    "slug": "tygon-solvent-letku",
+    "name": "Tygon solvent letku",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1dy001v7264cq0dvdcn",
+      "name": "Letkut",
+      "slug": "tulostin-tubing",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1jy00477264arsr6nd8",
+    "slug": "wash-head-spareparts-tarvikkeet",
+    "name": "Wash head spareparts - tarvikkeet",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1c500137264lbduzohp",
+      "name": "Huoltosarjat",
+      "slug": "tulostin-maintenance-kits",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1mj005772640lg851ob",
+    "slug": "wiper-koteloon-mimaki-jv3",
+    "name": "Wiper koteloon, Mimaki JV3",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1e6001z7264dojmtp55",
+      "name": "Wiper-kumit",
+      "slug": "tulostin-wipers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1gz00337264vhylo6im",
+    "slug": "wiper-kumi-mimaki-jv3",
+    "name": "Wiper-kumi, Mimaki JV3",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1e6001z7264dojmtp55",
+      "name": "Wiper-kumit",
+      "slug": "tulostin-wipers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1gv00317264mbzue5mg",
+    "slug": "wiper-kumi-mimaki-jv33-jv5-mutoh",
+    "name": "Wiper-kumi, Mimaki JV33/JV5/Mutoh",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1e6001z7264dojmtp55",
+      "name": "Wiper-kumit",
+      "slug": "tulostin-wipers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1ln004v7264b9tsx17k",
+    "slug": "wiper-kumi-mimaki-roland",
+    "name": "Wiper-kumi, Mimaki/Roland",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1e6001z7264dojmtp55",
+      "name": "Wiper-kumit",
+      "slug": "tulostin-wipers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1lu004x7264r3yishyi",
+    "slug": "wiper-kumi-mutoh",
+    "name": "Wiper-kumi, Mutoh",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1e6001z7264dojmtp55",
+      "name": "Wiper-kumit",
+      "slug": "tulostin-wipers",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1fz002n7264whukpav5",
+    "slug": "wiper-kumin-pidin-mimaki-jv3",
+    "name": "Wiper-kumin pidin, Mimaki JV3",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1by000z7264jb5miyzb",
+      "name": "Pidikkeet",
+      "slug": "tulostin-holders",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7bu1fu002l7264odzk6ofg",
+    "slug": "wiper-kumin-pidin-mimaki-jv33-jv5-mutoh",
+    "name": "Wiper-kumin pidin, Mimaki JV33/JV5/Mutoh",
+    "shortDesc": "Suurkuvatulostimen tai leikkurin varaosa. Kysy yhteensopivuus laitemallin mukaan.",
+    "description": null,
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmn7bu1by000z7264jb5miyzb",
+      "name": "Pidikkeet",
+      "slug": "tulostin-holders",
+      "parent": {
+        "slug": "tulostimien-varaosat"
+      }
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568wb002pwz43ybwpdh4j",
+    "slug": "2337-cowron-pv700-60g-polymeeritarra-60-mic-kiiltv-1370-mm-x-50-m",
+    "name": "Cowron PV700-60G polymeeritarra, 60 mic, kiiltävä, 1370 mm x 50 m",
+    "shortDesc": "Kirkas liima. Sol / Eco-Sol 3+. 160 g taustapaperi helpottaa käsittelyä ja ehkäisee taipumista.",
+    "description": "Kestävä tarramateriaali joka soveltuu pitkäkestoisten ja keskipitkään tarkoitettuihin käyttötarkoituksiin. Paksu 160 g taustapaperi helpottaa tarran käsittelytä ja ehkäisee tarra taipumista tulostuksen jälkeen. Harmaa liimaiset peittävät liimattavan taustamateriaalin sävyerot päälle teippauksessa.\n\nTuotetiedot: Kirkas liima. Sol / Eco-Sol 3?. 160 g taustapaperi helpottaa käsittelyä ja ehkäisee taipumista.",
+    "specs": null,
+    "sku": "2337",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75695u007bwz439zg9psr0",
+    "slug": "5204-esiteteline-3",
+    "name": "Esiteteline-3",
+    "shortDesc": "A4 lokeroita 4 kpl, L 26 cm x K 157 cm x S 30 cm. Kasaan taittuva. Kangaslaukku. Paino laukun kanssa 5 kg.",
+    "description": "Kääntyvä tukijalka. Toimitetaan laatikossa. Paino 3 kg\n\nTuotetiedot: A4 lokeroita 4 kpl, L 26 cm x K 157 cm x S 30 cm. Kasaan taittuva. Kangaslaukku. Paino laukun kanssa 5 kg.",
+    "specs": null,
+    "sku": "5204",
+    "category": {
+      "id": "cmmj17x080005kc72sjl00ynj",
+      "name": "Display-tuotteet",
+      "slug": "display-tuotteet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568xk0037wz437sjz7ybl",
+    "slug": "2655-mcsign-em-banr-120-roll-up-kalvo-matta-914-mm-x-50-m",
+    "name": "McSign EM-BANR 120 roll up kalvo matta 914 mm x 50 m",
+    "shortDesc": "Kuvioitu matta harmaa tausta, 250 mic, 330 g. Sol / Eco-Sol 3+. Neliöhinta 4,95 €/m².",
+    "description": "Kuvioitu matta harm. tausta 250 mic, 330 g Sol / Eco-Sol 3\" 914 mm x 50 m Neliöhinta: 4,95€/m2 Roll up kalvo matta 914mm x 50m EM-BANR120\n\nTuotetiedot: Kuvioitu matta harmaa tausta, 250 mic, 330 g. Sol / Eco-Sol 3?. Neliöhinta 4,95 ?/m?.",
+    "specs": null,
+    "sku": "2655",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568xu003dwz4310r90i36",
+    "slug": "2665-mcsign-em-banr-250-pop-up-film-matta-914-mm-x-30-m",
+    "name": "McSign EM-BANR 250 pop up film matta 914 mm x 30 m",
+    "shortDesc": "Crystal finish harm. 400 mic, 530 g. Sol / Eco-Sol 3+.",
+    "description": "Kuvioitu matta harm. tausta 400mic, 530g Sol / Eco-Sol 3\" 914 mm x 30 m Pop up film matta 914mm x 30m crystal finish harm EM-BANR250\n\nTuotetiedot: Crystal finish harm. 400 mic, 530 g. Sol / Eco-Sol 3?.",
+    "specs": null,
+    "sku": "2665",
+    "category": {
+      "id": "cmmj17x0h0007kc72jovarmt5",
+      "name": "Messuseinät",
+      "slug": "messuseinat",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75696k007pwz43zb2s9761",
+    "slug": "3451-turvaviivain-terasreunalla-80cm-12-kg",
+    "name": "Turvaviivain teräsreunalla 80cm , 1,2 kg",
+    "shortDesc": "X Banner",
+    "description": "Purjerengas kiinnitys. Tilava kangas laukku. Telineen paino laukun kanssa 1,5 kg. Tuotteen mukana ei toimiteta kasaus ohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "3451",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568wi002rwz43h49okea8",
+    "slug": "2338-cowron-pv700-60c-polymeeritarra-60-mic-kiiltv-1370-mm-x-50-m",
+    "name": "Cowron PV700-60C polymeeritarra, 60 mic, kiiltävä, 1370 mm x 50 m",
+    "shortDesc": "Harmaa liima. Sol / Eco-Sol 3+. 160 g taustapaperi helpottaa käsittelyä ja ehkäisee taipumista.",
+    "description": "Kestävä tarramateriaali joka soveltuu pitkäkestoisten ja keskipitkään tarkoitettuihin käyttötarkoituksiin. Paksu 160 g taustapaperi helpottaa tarran käsittelytä ja ehkäisee tarra taipumista tulostuksen jälkeen. Harmaa liimaiset peittävät liimattavan taustamateriaalin sävyerot päälle teippauksessa.\n\nTuotetiedot: Harmaa liima. Sol / Eco-Sol 3?. 160 g taustapaperi helpottaa käsittelyä ja ehkäisee taipumista.",
+    "specs": null,
+    "sku": "2338",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75695y007dwz433h5dq7cv",
+    "slug": "5205-esiteteline-4",
+    "name": "Esiteteline-4",
+    "shortDesc": "A4 lokeroita 5 kpl. L 28 cm x K 148 cm x S 35 cm. Kasaan taittuva. Kangaslaukku. Paino laukun kanssa 8 kg.",
+    "description": "Kääntyvä tukijalka. Toimitetaan laatikossa. Paino 3 kg\n\nTuotetiedot: A4 lokeroita 5 kpl. L 28 cm x K 148 cm x S 35 cm. Kasaan taittuva. Kangaslaukku. Paino laukun kanssa 8 kg.",
+    "specs": null,
+    "sku": "5205",
+    "category": {
+      "id": "cmmj17x080005kc72sjl00ynj",
+      "name": "Display-tuotteet",
+      "slug": "display-tuotteet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568xn0039wz43qpb4g5gl",
+    "slug": "2656-mcsign-em-banr-120-roll-up-kalvo-matta-1270-mm-x-50-m",
+    "name": "McSign EM-BANR 120 roll up kalvo matta 1270 mm x 50 m",
+    "shortDesc": "Kuvioitu matta harmaa tausta, 250 mic, 330 g. Sol / Eco-Sol 3+.",
+    "description": "Kuvioitu matta harm. tausta 250 mic, 330 g Sol / Eco-Sol 3\" 914 mm x 50 m Neliöhinta: 4,95€/m2 Roll up kalvo matta 914mm x 50m EM-BANR120\n\nTuotetiedot: Kuvioitu matta harmaa tausta, 250 mic, 330 g. Sol / Eco-Sol 3?.",
+    "specs": null,
+    "sku": "2656",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568xy003fwz43p0ax11pa",
+    "slug": "2666-mcsign-em-banr-250-pop-up-film-matta-1270-mm-x-30-m",
+    "name": "McSign EM-BANR 250 pop up film matta 1270 mm x 30 m",
+    "shortDesc": "Crystal finish harm. 400 mic, 530 g. Sol / Eco-Sol 3+.",
+    "description": "Kuvioitu matta harm. tausta 400mic, 530g Sol / Eco-Sol 3\" 914 mm x 30 m Pop up film matta 914mm x 30m crystal finish harm EM-BANR250\n\nTuotetiedot: Crystal finish harm. 400 mic, 530 g. Sol / Eco-Sol 3?.",
+    "specs": null,
+    "sku": "2666",
+    "category": {
+      "id": "cmmj17x0h0007kc72jovarmt5",
+      "name": "Messuseinät",
+      "slug": "messuseinat",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75696n007rwz43fta0kk2o",
+    "slug": "3452-turvaviivain-terasreunalla-110cm-16-kg",
+    "name": "Turvaviivain teräsreunalla 110cm , 1,6 kg",
+    "shortDesc": "X Banner",
+    "description": "Purjerengas kiinnitys. Tilava kangas laukku. Telineen paino laukun kanssa 1,5 kg. Tuotteen mukana ei toimiteta kasaus ohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "3452",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756962007fwz4315d76dpj",
+    "slug": "4515-julistelista-60-cm-pari",
+    "name": "Julistelista 60 cm, pari",
+    "shortDesc": "Julistelistat",
+    "description": "Alumiinia, siistit muovipäädyt. Listan takana koukut asennusta varten. Profiilin mitat S 13 mm, K 35 mm. Listan paino 100 g - 220 g, riippuen listan leveydestä. Pakkaus: suojamuovi",
+    "specs": null,
+    "sku": "4515",
+    "category": {
+      "id": "cmmj17x080005kc72sjl00ynj",
+      "name": "Display-tuotteet",
+      "slug": "display-tuotteet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568xr003bwz4351tgh53q",
+    "slug": "2657-mcsign-em-banr-120-roll-up-kalvo-matta-1520-mm-x-50-m",
+    "name": "McSign EM-BANR 120 roll up kalvo matta 1520 mm x 50 m",
+    "shortDesc": "Kuvioitu matta harmaa tausta, 250 mic, 330 g. Sol / Eco-Sol 3+.",
+    "description": "Kuvioitu matta harm. tausta 250 mic, 330 g Sol / Eco-Sol 3\" 914 mm x 50 m Neliöhinta: 4,95€/m2 Roll up kalvo matta 914mm x 50m EM-BANR120\n\nTuotetiedot: Kuvioitu matta harmaa tausta, 250 mic, 330 g. Sol / Eco-Sol 3?.",
+    "specs": null,
+    "sku": "2657",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568wm002twz43hxipx36d",
+    "slug": "2310-mcsign-em-vinyl-2pe-kuvioitu-matta-monomer-1065-mm-x-50-m",
+    "name": "McSign EM-VINYL-2PE kuvioitu matta monomer, 1065 mm x 50 m",
+    "shortDesc": "120 mic, 220 g. Sol / Eco-Sol 3+. Harmaa liima.",
+    "description": "Edullinen ratkaisu lyhempikestoiseen käyttöön jossa tarra ei altistu UV -säteilylle.\n\nTuotetiedot: 120 mic, 220 g. Sol / Eco-Sol 3?. Harmaa liima.",
+    "specs": null,
+    "sku": "2310",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568y2003hwz43jo06tvsh",
+    "slug": "2670-roll-up-kalvo-914-mm-x-50-m",
+    "name": "Roll up kalvo 914 mm x 50 m",
+    "shortDesc": "ES-BANR 150.",
+    "description": "Kuvioitu matta harm. tausta 400mic, 530g Sol / Eco-Sol 3\" 914 mm x 30 m Pop up film matta 914mm x 30m crystal finish harm EM-BANR250\n\nTuotetiedot: ES-BANR 150.",
+    "specs": null,
+    "sku": "2670",
+    "category": {
+      "id": "cmmj17x0h0007kc72jovarmt5",
+      "name": "Messuseinät",
+      "slug": "messuseinat",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75696r007twz43eqaksshu",
+    "slug": "3453-turvaviivain-terasreunalla-140cm-20-kg",
+    "name": "Turvaviivain teräsreunalla 140cm , 2,0 kg",
+    "shortDesc": "X Banner",
+    "description": "Purjerengas kiinnitys. Tilava kangas laukku. Telineen paino laukun kanssa 1,5 kg. Tuotteen mukana ei toimiteta kasaus ohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "3453",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756965007hwz43ffcity3h",
+    "slug": "4516-julistelista-80-cm-pari",
+    "name": "Julistelista 80 cm, pari",
+    "shortDesc": "Julistelistat",
+    "description": "Alumiinia, siistit muovipäädyt. Listan takana koukut asennusta varten. Profiilin mitat S 13 mm, K 35 mm. Listan paino 100 g - 220 g, riippuen listan leveydestä. Pakkaus: suojamuovi",
+    "specs": null,
+    "sku": "4516",
+    "category": {
+      "id": "cmmj17x080005kc72sjl00ynj",
+      "name": "Display-tuotteet",
+      "slug": "display-tuotteet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568wq002vwz43hev514wb",
+    "slug": "2311-mcsign-em-vinyl-2pe-kuvioitu-matta-monomer-1370-mm-x-50-m",
+    "name": "McSign EM-VINYL-2PE kuvioitu matta monomer, 1370 mm x 50 m",
+    "shortDesc": "120 mic, 220 g. Sol / Eco-Sol 3+. Harmaa liima.",
+    "description": "Edullinen ratkaisu lyhempikestoiseen käyttöön jossa tarra ei altistu UV -säteilylle.\n\nTuotetiedot: 120 mic, 220 g. Sol / Eco-Sol 3?. Harmaa liima.",
+    "specs": null,
+    "sku": "2311",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75692b005pwz43g74xqlcn",
+    "slug": "2643-naisi-valomainoskalvo-ctf-210m-naisi-roll-up-kalvo-tf-200mb",
+    "name": "Naisi Valomainoskalvo CTF -210M Naisi Roll up kalvo TF-200MB",
+    "shortDesc": "Pigment 2\" Pigment 2\" harmaa tausta 1520 mm x 30 m 200mic, 255g",
+    "description": "Tuotetiedot: Pigment 2\" Pigment 2\" harmaa tausta 1520 mm x 30 m 200mic, 255g",
+    "specs": null,
+    "sku": "2643",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568y6003jwz4363kd04bm",
+    "slug": "2684-roll-up-kalvo-2-puoleinen-914-mm-x-50-m",
+    "name": "Roll up kalvo 2-puoleinen 914 mm x 50 m",
+    "shortDesc": "VP-DSG.",
+    "description": "Kuvioitu matta harm. tausta 400mic, 530g Sol / Eco-Sol 3\" 914 mm x 30 m Pop up film matta 914mm x 30m crystal finish harm EM-BANR250\n\nTuotetiedot: VP-DSG.",
+    "specs": null,
+    "sku": "2684",
+    "category": {
+      "id": "cmmj17x0h0007kc72jovarmt5",
+      "name": "Messuseinät",
+      "slug": "messuseinat",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75696v007vwz43warp25os",
+    "slug": "3454-turvaviivain-terasreunalla-170cm-25-kg",
+    "name": "Turvaviivain teräsreunalla 170cm , 2,5 kg",
+    "shortDesc": "X Banner",
+    "description": "Purjerengas kiinnitys. Tilava kangas laukku. Telineen paino laukun kanssa 1,5 kg. Tuotteen mukana ei toimiteta kasaus ohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "3454",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756969007jwz43un8hpk1i",
+    "slug": "4517-julistelista-85-cm-pari",
+    "name": "Julistelista 85 cm, pari",
+    "shortDesc": "Julistelistat",
+    "description": "Alumiinia, siistit muovipäädyt. Listan takana koukut asennusta varten. Profiilin mitat S 13 mm, K 35 mm. Listan paino 100 g - 220 g, riippuen listan leveydestä. Pakkaus: suojamuovi",
+    "specs": null,
+    "sku": "4517",
+    "category": {
+      "id": "cmmj17x080005kc72sjl00ynj",
+      "name": "Display-tuotteet",
+      "slug": "display-tuotteet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568wu002xwz43chliruq2",
+    "slug": "2312-mcsign-em-vinyl-2pe-kuvioitu-matta-monomer-1520-mm-x-50-m",
+    "name": "McSign EM-VINYL-2PE kuvioitu matta monomer, 1520 mm x 50 m",
+    "shortDesc": "Harmaa liima.",
+    "description": "Edullinen ratkaisu lyhempikestoiseen käyttöön jossa tarra ei altistu UV -säteilylle.\n\nTuotetiedot: Harmaa liima.",
+    "specs": null,
+    "sku": "2312",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568yh003lwz434gt1l9c7",
+    "slug": "2688-pop-up-kalvo-914-mm-x-30-m",
+    "name": "Pop up kalvo 914 mm x 30 m",
+    "shortDesc": "RV-340M.",
+    "description": "Kuvioitu matta harm. tausta 400mic, 530g Sol / Eco-Sol 3\" 914 mm x 30 m Pop up film matta 914mm x 30m crystal finish harm EM-BANR250\n\nTuotetiedot: RV-340M.",
+    "specs": null,
+    "sku": "2688",
+    "category": {
+      "id": "cmmj17x0h0007kc72jovarmt5",
+      "name": "Messuseinät",
+      "slug": "messuseinat",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75692i005twz43k4fe7szh",
+    "slug": "4030-roll-up-spyro-85cm-x-200cm",
+    "name": "Roll Up Spyro 85cm x 200cm",
+    "shortDesc": "Spyro",
+    "description": "Puristavalla ylälistalla. Sisältää kantolaukun. Paino laukun kanssa n. 2 kg. Valaisin saatavana lisävarusteena Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4030",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75696y007xwz43oh3lrur2",
+    "slug": "3460-turvaviivain-leikkurilla-120cm-32-kg",
+    "name": "Turvaviivain leikkurilla 120cm , 3,2 kg",
+    "shortDesc": "Turvaviivain leikkurilla",
+    "description": "Leveä alumiini runko, pohjassa liukuesteet, muovipäädyt. Profiilin mitat korkeus 55 mm, leveys 150 mm. Leikkurin liikkuvuutta voidaan säätää mukana, tulevalla työkalulla. Max leikkaus syvyys 4 mm",
+    "specs": null,
+    "sku": "3460",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568wx002zwz43j9nb0lt6",
+    "slug": "2314-emc-vinyl-mattatarra-monomer-1065-mm-x-50-m",
+    "name": "EMC-VINYL mattatarra monomer, 1065 mm x 50 m",
+    "shortDesc": "Valkoinen liima.",
+    "description": "Edullinen ratkaisu lyhempikestoiseen käyttöön jossa tarra ei altistu UV -säteilylle.\n\nTuotetiedot: Valkoinen liima.",
+    "specs": null,
+    "sku": "2314",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75696d007lwz43jwhp9vle",
+    "slug": "4519-julistelista-100-cm-pari",
+    "name": "Julistelista 100 cm, pari",
+    "shortDesc": "Julistelistat",
+    "description": "Alumiinia, siistit muovipäädyt. Listan takana koukut asennusta varten. Profiilin mitat S 13 mm, K 35 mm. Listan paino 100 g - 220 g, riippuen listan leveydestä. Pakkaus: suojamuovi",
+    "specs": null,
+    "sku": "4519",
+    "category": {
+      "id": "cmmj17x080005kc72sjl00ynj",
+      "name": "Display-tuotteet",
+      "slug": "display-tuotteet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75692n005vwz43ax9en78e",
+    "slug": "4042-roll-up-export-85-cm-x-200-cm",
+    "name": "Roll Up Export 85 cm x 200 cm",
+    "shortDesc": "Export",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Paino (85 cm x 200 cm) laukun kanssa n. 2 kg. Valaisin tilattavissa lisävarusteena. Tuotteen mukana ei toimiteta kasaus ohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4042",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568yl003nwz43r72718j7",
+    "slug": "2696-roll-up-kalvo-pigment-914-mm-x-30-m",
+    "name": "Roll up kalvo pigment 914 mm x 30 m",
+    "shortDesc": "TF-200MB.",
+    "description": "Kuvioitu matta harm. tausta 400mic, 530g Sol / Eco-Sol 3\" 914 mm x 30 m Pop up film matta 914mm x 30m crystal finish harm EM-BANR250\n\nTuotetiedot: TF-200MB.",
+    "specs": null,
+    "sku": "2696",
+    "category": {
+      "id": "cmmj17x0h0007kc72jovarmt5",
+      "name": "Messuseinät",
+      "slug": "messuseinat",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756971007zwz43lwz4ftx5",
+    "slug": "3461-turvaviivain-leikkurilla-180cm-47-kg",
+    "name": "Turvaviivain leikkurilla 180cm , 4,7 kg",
+    "shortDesc": "Turvaviivain leikkurilla",
+    "description": "Leveä alumiini runko, pohjassa liukuesteet, muovipäädyt. Profiilin mitat korkeus 55 mm, leveys 150 mm. Leikkurin liikkuvuutta voidaan säätää mukana, tulevalla työkalulla. Max leikkaus syvyys 4 mm",
+    "specs": null,
+    "sku": "3461",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568x90031wz437qvi0p6l",
+    "slug": "2315-emc-vinyl-mattatarra-monomer-1270-mm-x-50-m",
+    "name": "EMC-VINYL mattatarra monomer, 1270 mm x 50 m",
+    "shortDesc": "Valkoinen liima.",
+    "description": "Edullinen ratkaisu lyhempikestoiseen käyttöön jossa tarra ei altistu UV -säteilylle.\n\nTuotetiedot: Valkoinen liima.",
+    "specs": null,
+    "sku": "2315",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75692r005xwz43i7amntlp",
+    "slug": "4063-roll-up-export-100-cm-x-220-cm",
+    "name": "Roll Up Export 100 cm x 220 cm",
+    "shortDesc": "Export",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Paino (85 cm x 200 cm) laukun kanssa n. 2 kg. Valaisin tilattavissa lisävarusteena. Tuotteen mukana ei toimiteta kasaus ohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4063",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568yp003pwz43x23kqbev",
+    "slug": "2698-roll-up-kalvo-pp-914-mm-x-40-m",
+    "name": "Roll up kalvo PP 914 mm x 40 m",
+    "shortDesc": "SI 134.",
+    "description": "Kuvioitu matta harm. tausta 400mic, 530g Sol / Eco-Sol 3\" 914 mm x 30 m Pop up film matta 914mm x 30m crystal finish harm EM-BANR250\n\nTuotetiedot: SI 134.",
+    "specs": null,
+    "sku": "2698",
+    "category": {
+      "id": "cmmj17x0h0007kc72jovarmt5",
+      "name": "Messuseinät",
+      "slug": "messuseinat",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7569740081wz43erkfr0nt",
+    "slug": "3462-turvaviivain-leikkurilla-260cm-67-kg",
+    "name": "Turvaviivain leikkurilla 260cm , 6,7 kg",
+    "shortDesc": "Turvaviivain leikkurilla",
+    "description": "Leveä alumiini runko, pohjassa liukuesteet, muovipäädyt. Profiilin mitat korkeus 55 mm, leveys 150 mm. Leikkurin liikkuvuutta voidaan säätää mukana, tulevalla työkalulla. Max leikkaus syvyys 4 mm",
+    "specs": null,
+    "sku": "3462",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75696g007nwz439ctxbupi",
+    "slug": "4304-x-banner-60cm-x-160cm",
+    "name": "X Banner 60cm x 160cm",
+    "shortDesc": "X Banner",
+    "description": "Purjerengas kiinnitys. Tilava kangas laukku. Telineen paino laukun kanssa 1,5 kg. Tuotteen mukana ei toimiteta kasaus ohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4304",
+    "category": {
+      "id": "cmmj17x080005kc72sjl00ynj",
+      "name": "Display-tuotteet",
+      "slug": "display-tuotteet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7569790083wz43a3ydbgqp",
+    "slug": "3551-bungee-ball-50-kpl-pkt",
+    "name": "Bungee ball 50 kpl / pkt",
+    "shortDesc": "Pituus 150 mm, pallon halkaisija 28 mm, 4 mm kuminauha.",
+    "description": "4 mm kuminauha\n\nTuotetiedot: Pituus 150 mm, pallon halkaisija 28 mm, 4 mm kuminauha.",
+    "specs": null,
+    "sku": "3551",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568xc0033wz436sdbfs3o",
+    "slug": "2324-cowron-pv380-monomeeritarra-kiiltv-1070-mm-x-50-m",
+    "name": "Cowron PV380 monomeeritarra, kiiltävä, 1070 mm x 50 m",
+    "shortDesc": "Sol / Eco-Sol 3+. Harmaa liima.",
+    "description": "Edullinen ratkaisu lyhempikestoiseen käyttöön jossa tarra ei altistu UV -säteilylle.\n\nTuotetiedot: Sol / Eco-Sol 3?. Harmaa liima.",
+    "specs": null,
+    "sku": "2324",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75692u005zwz436lj0i0pg",
+    "slug": "4024-roll-up-luxury-80cm-x-200cm",
+    "name": "Roll Up Luxury 80cm x 200cm",
+    "shortDesc": "Luxury",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Paino (85 cm x 200 cm) laukun kanssa n. 3 kg. Valaisin tilattavissa lisävarusteena. Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4024",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75697c0085wz43r2ws6a2p",
+    "slug": "3552-bungee-hook-50-kpl-pkt",
+    "name": "Bungee hook 50 kpl / pkt",
+    "shortDesc": "Pituus 150 mm, 4 mm kuminauha.",
+    "description": "4 mm kuminauha\n\nTuotetiedot: Pituus 150 mm, 4 mm kuminauha.",
+    "specs": null,
+    "sku": "3552",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568xg0035wz43w2c0wftz",
+    "slug": "2326-cowron-pv350-monomeeritarra-kiiltv-1370-mm-x-50-m",
+    "name": "Cowron PV350 monomeeritarra, kiiltävä, 1370 mm x 50 m",
+    "shortDesc": "95 mic, 160 g taustapaperilla. Sol / Eco-Sol 3+. Harmaa liima.",
+    "description": "Edullinen ratkaisu lyhempikestoiseen käyttöön jossa tarra ei altistu UV -säteilylle.\n\nTuotetiedot: 95 mic, 160 g taustapaperilla. Sol / Eco-Sol 3?. Harmaa liima.",
+    "specs": null,
+    "sku": "2326",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7569300061wz432cvsxkfw",
+    "slug": "4043-roll-up-luxury-85cm-x-200cm",
+    "name": "Roll Up Luxury 85cm x 200cm",
+    "shortDesc": "Luxury",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Paino (85 cm x 200 cm) laukun kanssa n. 3 kg. Valaisin tilattavissa lisävarusteena. Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4043",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75697g0087wz43lt4887vv",
+    "slug": "3553-banner-clip-vaalea-100-kpl-pkt",
+    "name": "Banner clip vaalea 100 kpl / pkt",
+    "shortDesc": "Kiinnikkeen leveys 35 mm. Helppo asentaa ja soveltuu erilaisille materiaaleille.",
+    "description": "4 mm kuminauha\n\nTuotetiedot: Kiinnikkeen leveys 35 mm. Helppo asentaa ja soveltuu erilaisille materiaaleille.",
+    "specs": null,
+    "sku": "3553",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7569340063wz43mc4h0pwr",
+    "slug": "4062-roll-up-luxury-100cm-x-200cm",
+    "name": "Roll Up Luxury 100cm x 200cm",
+    "shortDesc": "Luxury",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Paino (85 cm x 200 cm) laukun kanssa n. 3 kg. Valaisin tilattavissa lisävarusteena. Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4062",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568yt003rwz43u5muxm7i",
+    "slug": "2632-valomainoskalvo-1070-mm-x-30-m",
+    "name": "Valomainoskalvo 1070 mm x 30 m",
+    "shortDesc": "FB-210M.",
+    "description": "FB-210M\n\nTuotetiedot: FB-210M.",
+    "specs": null,
+    "sku": "2632",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75697j0089wz43kat3bgjq",
+    "slug": "8011-banner-double-kaksipuoleinen-lujaliimainen-teippi",
+    "name": "Banner Double kaksipuoleinen lujaliimainen teippi",
+    "shortDesc": "Sopii esimerkiksi pressujen saumaamiseen, 20 mm x 50 m.",
+    "description": "4 mm kuminauha\n\nTuotetiedot: Sopii esimerkiksi pressujen saumaamiseen, 20 mm x 50 m.",
+    "specs": null,
+    "sku": "8011",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7569370065wz43lqg5qttt",
+    "slug": "4084-roll-up-luxury-120cm-x-200cm",
+    "name": "Roll Up Luxury 120cm x 200cm",
+    "shortDesc": "Luxury",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Paino (85 cm x 200 cm) laukun kanssa n. 3 kg. Valaisin tilattavissa lisävarusteena. Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4084",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568yx003twz43dqtte3c7",
+    "slug": "2634-valomainoskalvo-1270-mm-x-30-m",
+    "name": "Valomainoskalvo 1270 mm x 30 m",
+    "shortDesc": "FB-210M.",
+    "description": "FB-210M\n\nTuotetiedot: FB-210M.",
+    "specs": null,
+    "sku": "2634",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75697n008bwz43xpqr7kmd",
+    "slug": "3402-puhdistuspuikko-14-mm-50-kpl-pkt",
+    "name": "Puhdistuspuikko 14 mm, 50 kpl / pkt",
+    "shortDesc": "125 mm pitkä ja 14 mm leveä puhdistuskärki.",
+    "description": "puhdituskärki\n\nTuotetiedot: 125 mm pitkä ja 14 mm leveä puhdistuskärki.",
+    "specs": null,
+    "sku": "3402",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75693a0067wz43itvpno36",
+    "slug": "4040-roll-up-deluxe-1-85-cm-x-200-cm",
+    "name": "Roll Up Deluxe-1, 85 cm x 200 cm",
+    "shortDesc": "Deluxe",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Paino (85cm x 200cm) laukun kanssa 7 kg. Valaisin saatavana lisävarusteena. Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4040",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568z0003vwz43jknh0pte",
+    "slug": "2635-valomainoskalvo-635-mm-x-30-m",
+    "name": "Valomainoskalvo 635 mm x 30 m",
+    "shortDesc": "FB-210M.",
+    "description": "FB-210M\n\nTuotetiedot: FB-210M.",
+    "specs": null,
+    "sku": "2635",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75697r008dwz43g84y5clh",
+    "slug": "3426-puhdistusliina-150-kpl-pkt",
+    "name": "Puhdistusliina 150 kpl / pkt",
+    "shortDesc": "Laserleikattu nukkaamaton puhdistusliina, 15 x 15 cm.",
+    "description": "puhdituskärki\n\nTuotetiedot: Laserleikattu nukkaamaton puhdistusliina, 15 x 15 cm.",
+    "specs": null,
+    "sku": "3426",
+    "category": {
+      "id": "cmmj17x0u000akc724uva3kyq",
+      "name": "Muut tarvikkeet",
+      "slug": "muut-tarvikkeet",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75693e0069wz43506eg8a0",
+    "slug": "4064-roll-up-deluxe-1-100-cm-x-200-cm",
+    "name": "Roll Up Deluxe-1, 100 cm x 200 cm",
+    "shortDesc": "Deluxe",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Paino (85cm x 200cm) laukun kanssa 7 kg. Valaisin saatavana lisävarusteena. Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4064",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568z3003xwz43o3k7mf9r",
+    "slug": "2636-valomainoskalvo-1520-mm-x-30-m",
+    "name": "Valomainoskalvo 1520 mm x 30 m",
+    "shortDesc": "FB-210M.",
+    "description": "FB-210M\n\nTuotetiedot: FB-210M.",
+    "specs": null,
+    "sku": "2636",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568z6003zwz43bkruq9dg",
+    "slug": "2639-filmikalvo-914-mm-x-30-m",
+    "name": "Filmikalvo 914 mm x 30 m",
+    "shortDesc": "EG-CLR.",
+    "description": "FB-210M\n\nTuotetiedot: EG-CLR.",
+    "specs": null,
+    "sku": "2639",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75693h006bwz43lvdw8cr3",
+    "slug": "4080-roll-up-deluxe-1-120-cm-x-200-cm",
+    "name": "Roll Up Deluxe-1, 120 cm x 200 cm",
+    "shortDesc": "Deluxe",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Paino (85cm x 200cm) laukun kanssa 7 kg. Valaisin saatavana lisävarusteena. Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4080",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568za0041wz433fop5qm1",
+    "slug": "2660-mcsign-et-backlit-valomainoskalvo-1065-mm-x-50-m",
+    "name": "McSign ET-BACKLIT valomainoskalvo 1065 mm x 50 m",
+    "shortDesc": "250 mic, 320 g. Sol / Eco-Sol 3+.",
+    "description": "FB-210M\n\nTuotetiedot: 250 mic, 320 g. Sol / Eco-Sol 3?.",
+    "specs": null,
+    "sku": "2660",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75693l006dwz43vv1kshe5",
+    "slug": "4087-roll-up-deluxe-1-150-cm-x-200-cm",
+    "name": "Roll Up Deluxe 1, 150 cm x 200 cm",
+    "shortDesc": "Deluxe",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Paino (85cm x 200cm) laukun kanssa 7 kg. Valaisin saatavana lisävarusteena. Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4087",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568ze0043wz43amz1dr49",
+    "slug": "2661-mcsign-et-backlit-valomainoskalvo-1270-mm-x-50-m",
+    "name": "McSign ET-BACKLIT valomainoskalvo 1270 mm x 50 m",
+    "shortDesc": "250 mic, 320 g. Sol / Eco-Sol 3+.",
+    "description": "FB-210M\n\nTuotetiedot: 250 mic, 320 g. Sol / Eco-Sol 3?.",
+    "specs": null,
+    "sku": "2661",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75693o006fwz431q64ow83",
+    "slug": "4010-roll-up-xgy1-6b-newly-85cm-x-200cm",
+    "name": "Roll Up XGY1-6B Newly 85cm x 200cm",
+    "shortDesc": "Newly",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Valaisin saatavana lisävarusteena. Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4010",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568zh0045wz43wshwsbcz",
+    "slug": "2662-mcsign-et-backlit-valomainoskalvo-1520-mm-x-50-m",
+    "name": "McSign ET-BACKLIT valomainoskalvo 1520 mm x 50 m",
+    "shortDesc": "250 mic, 320 g. Sol / Eco-Sol 3+.",
+    "description": "FB-210M\n\nTuotetiedot: 250 mic, 320 g. Sol / Eco-Sol 3?.",
+    "specs": null,
+    "sku": "2662",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75693s006hwz43vdc8qyiq",
+    "slug": "4011-roll-up-xgy1-6b-newly-100cm-x-200cm",
+    "name": "Roll Up XGY1-6B Newly 100cm x 200cm",
+    "shortDesc": "Newly",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Valaisin saatavana lisävarusteena. Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4011",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568zl0047wz43jy8t34yd",
+    "slug": "2545-huifeng-frontlit-440g-huifeng-frontlit-440g",
+    "name": "Huifeng Frontlit 440g Huifeng Frontlit 440g",
+    "shortDesc": "300D X 500D / 18X12 300D X 500D / 18X12 Matta 440g harm. tausta Matta 440g harm. taust a Sol / Eco -Sol 3\" Sol / Eco -Sol 3\" 1370 mm x 50 m 1600 mm x 50 m",
+    "description": "Tuotetiedot: 300D X 500D / 18X12 300D X 500D / 18X12 Matta 440g harm. tausta Matta 440g harm. taust a Sol / Eco -Sol 3\" Sol / Eco -Sol 3\" 1370 mm x 50 m 1600 mm x 50 m",
+    "specs": null,
+    "sku": "2545",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75693w006jwz43ozkmxvzk",
+    "slug": "4012-roll-up-xgy1-6b-newly-120cm-x-200cm",
+    "name": "Roll Up XGY1-6B Newly 120cm x 200cm",
+    "shortDesc": "Newly",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Valaisin saatavana lisävarusteena. Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4012",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568zo0049wz43aa8z9c8c",
+    "slug": "2547-huifeng-frontlit-440g-huifeng-frontlit-600g",
+    "name": "Huifeng Frontlit 440g Huifeng Frontlit 600g",
+    "shortDesc": "300D X 500D / 18X12 840D X 840D / 9X9 Matta 440g harm. tausta Matta 600g harm. tausta Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 3200 mm x 50 m 1600 mm x 50 m",
+    "description": "Tuotetiedot: 300D X 500D / 18X12 840D X 840D / 9X9 Matta 440g harm. tausta Matta 600g harm. tausta Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 3200 mm x 50 m 1600 mm x 50 m",
+    "specs": null,
+    "sku": "2547",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756940006lwz43n9mhqfro",
+    "slug": "4013-roll-up-xgy1-6b-newly-150cm-x-200cm",
+    "name": "Roll Up XGY1-6B Newly 150cm x 200cm",
+    "shortDesc": "Newly",
+    "description": "Puristavalla ylälistalla. Sisältää tilavan kantolaukun. Valaisin saatavana lisävarusteena. Tuotteen mukana ei toimiteta kasausohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4013",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568zs004bwz43ag14gv4l",
+    "slug": "2556-huifeng-frontlit-600g-huifeng-frontlit-610g",
+    "name": "Huifeng Frontlit 600g Huifeng Frontlit 610g",
+    "shortDesc": "840D X 840D / 9X9 1000D X 1000D / 9X9 Matta 600g harm. tausta Matta 610g valk. tausta Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 3200 mm x 50 m 1600 mm x 50 m",
+    "description": "Tuotetiedot: 840D X 840D / 9X9 1000D X 1000D / 9X9 Matta 600g harm. tausta Matta 610g valk. tausta Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 3200 mm x 50 m 1600 mm x 50 m",
+    "specs": null,
+    "sku": "2556",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756944006nwz43c8uiyz3c",
+    "slug": "4001-mini-roll-up-a4-210-cm-x-285-cm",
+    "name": "Mini Roll Up A4, 21,0 cm x 28,5 cm",
+    "shortDesc": "Mini Roll Up",
+    "description": "Pisara mallinen. Tarra ylälistalla. Runko alumiinia. Kromin väriset päädyt. Paino noin 0,5 kg. Toimitetaan pakkauslaatikossa. Tuotteen mukana ei toimiteta kasaus ohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4001",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568zv004dwz43ewpxflvz",
+    "slug": "2558-huifeng-frontlit-610g-xusen-coat-mesh-reikabanneri",
+    "name": "Huifeng Frontlit 610g Xusen coat Mesh reikäbanneri",
+    "shortDesc": "1000D X 1000D / 9X9 Kiiltävä 370g taustakalvolla Matta 610g valk. tausta HM909 Sol / Eco-Sol 3\" 360 mic, 260 g 3200 mm x 50 m Sol / Eco-Sol 3\"",
+    "description": "Tuotetiedot: 1000D X 1000D / 9X9 Kiiltävä 370g taustakalvolla Matta 610g valk. tausta HM909 Sol / Eco-Sol 3\" 360 mic, 260 g 3200 mm x 50 m Sol / Eco-Sol 3\"",
+    "specs": null,
+    "sku": "2558",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756947006pwz43aiv1wl1g",
+    "slug": "4002-mini-roll-up-a3-300-cm-x-415-cm",
+    "name": "Mini Roll Up A3, 30,0 cm x 41,5 cm",
+    "shortDesc": "Mini Roll Up",
+    "description": "Pisara mallinen. Tarra ylälistalla. Runko alumiinia. Kromin väriset päädyt. Paino noin 0,5 kg. Toimitetaan pakkauslaatikossa. Tuotteen mukana ei toimiteta kasaus ohjeita, eikä vuodan mittoja.",
+    "specs": null,
+    "sku": "4002",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568zz004fwz43qbt4p9l9",
+    "slug": "2080-naisi-pp-paperi-bs-180qm-naisi-pp-paperi-bs-180qm",
+    "name": "Naisi PP paperi BS-180QM Naisi PP paperi BS-180QM",
+    "shortDesc": "180 mic, 130 g 180 mic, 130 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1070 mm x 50 m 1270 mm x 50 m",
+    "description": "Tuotetiedot: 180 mic, 130 g 180 mic, 130 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1070 mm x 50 m 1270 mm x 50 m",
+    "specs": null,
+    "sku": "2080",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75694b006rwz43a2xudjvm",
+    "slug": "5103-spot-light-decostar-35w",
+    "name": "Spot light Decostar 35W",
+    "shortDesc": "Roll up -tarvikkeet",
+    "description": "Spot light decostar -valaisin Soveltuu seuraaviin Roll up telineisiin: Spyro, Export, Luxury ja Deluxe • Muuntaja • Lamppu MR 11, 12 V, 35W • Paino 0,2kg",
+    "specs": null,
+    "sku": "5103",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756902004hwz4331d1vrkf",
+    "slug": "2083-naisi-pp-paperi-bs-180qm-cowron-pp-paperi-200",
+    "name": "Naisi PP paperi BS-180QM Cowron PP paperi 200",
+    "shortDesc": "180 mic, 130 g 200 mic, 130 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1520 mm x 50 m 1070 mm x 50 m",
+    "description": "Tuotetiedot: 180 mic, 130 g 200 mic, 130 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1520 mm x 50 m 1070 mm x 50 m",
+    "specs": null,
+    "sku": "2083",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75694f006twz43a89ihqlo",
+    "slug": "5105-varalamppu-decostar-mr11-12-v-35-w",
+    "name": "Varalamppu Decostar, MR11, 12 V, 35 W",
+    "shortDesc": "Roll up -tarvikkeet",
+    "description": "Spot light decostar -valaisin Soveltuu seuraaviin Roll up telineisiin: Spyro, Export, Luxury ja Deluxe • Muuntaja • Lamppu MR 11, 12 V, 35W • Paino 0,2kg",
+    "specs": null,
+    "sku": "5105",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756905004jwz43z0l7si88",
+    "slug": "2086-cowron-pp-paperi-200-cowron-pp-paperi-200",
+    "name": "Cowron PP paperi 200 Cowron PP paperi 200",
+    "shortDesc": "200 mic, 130 g 200 mic, 130 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1270 mm x 50 m 1520 mm x 50 m",
+    "description": "Tuotetiedot: 200 mic, 130 g 200 mic, 130 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1270 mm x 50 m 1520 mm x 50 m",
+    "specs": null,
+    "sku": "2086",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75694w006vwz4362pm3ymp",
+    "slug": "4604-promopoyta-4-valihyllylla",
+    "name": "Promopöytä-4 välihyllyllä",
+    "shortDesc": "Roll up -tarvikkeet",
+    "description": "Spot light decostar -valaisin Soveltuu seuraaviin Roll up telineisiin: Spyro, Export, Luxury ja Deluxe • Muuntaja • Lamppu MR 11, 12 V, 35W • Paino 0,2kg",
+    "specs": null,
+    "sku": "4604",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756909004lwz439pxwri0d",
+    "slug": "2087-cowron-pp-paperi-250-cowron-pp-paperi-250",
+    "name": "Cowron PP paperi 250 Cowron PP paperi 250",
+    "shortDesc": "250 mic, 180 g 250 mic, 180 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1270 mm x 50 m 1520 mm x 50 m",
+    "description": "Tuotetiedot: 250 mic, 180 g 250 mic, 180 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1270 mm x 50 m 1520 mm x 50 m",
+    "specs": null,
+    "sku": "2087",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756952006xwz43kbyzrydo",
+    "slug": "4202-messuseina-suora-3x3-ruutua-yksipuoleinen-runko-l-230-x-k-230-cm",
+    "name": "Messuseinä suora 3x3 ruutua, yksipuoleinen , runko L 230 x K 230 cm",
+    "shortDesc": "Roll up -tarvikkeet",
+    "description": "Spot light decostar -valaisin Soveltuu seuraaviin Roll up telineisiin: Spyro, Export, Luxury ja Deluxe • Muuntaja • Lamppu MR 11, 12 V, 35W • Paino 0,2kg",
+    "specs": null,
+    "sku": "4202",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756956006zwz43fi3llgfh",
+    "slug": "4203-messuseina-suora-4x3-ruutua-yksipuoleinen-runko-l-300-x-k-230-cm",
+    "name": "Messuseinä suora 4x3 ruutua, yksipuoleinen, runko L 300 x K 230 cm",
+    "shortDesc": "Roll up -tarvikkeet",
+    "description": "Spot light decostar -valaisin Soveltuu seuraaviin Roll up telineisiin: Spyro, Export, Luxury ja Deluxe • Muuntaja • Lamppu MR 11, 12 V, 35W • Paino 0,2kg",
+    "specs": null,
+    "sku": "4203",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75690c004nwz436eukapzv",
+    "slug": "2090-naisi-satiini-photo-paperi-ph-150qm-naisi-satiini-photo-paperi-ph-150qm",
+    "name": "Naisi Satiini photo paperi PH -150QM Naisi Satiini photo paperi PH -150QM",
+    "shortDesc": "190 mic, 175 g 190 mic, 175 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1070 mm x 50 m 1270 mm x 50 m",
+    "description": "Tuotetiedot: 190 mic, 175 g 190 mic, 175 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1070 mm x 50 m 1270 mm x 50 m",
+    "specs": null,
+    "sku": "2090",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75695b0071wz439rfu4mbi",
+    "slug": "4206-messuseina-kaareva-3x3-ruutua-runko-l-230-x-k-230-cm",
+    "name": "Messuseinä kaareva 3x3 ruutua, runko L 230 x K 230 cm",
+    "shortDesc": "Roll up -tarvikkeet",
+    "description": "Spot light decostar -valaisin Soveltuu seuraaviin Roll up telineisiin: Spyro, Export, Luxury ja Deluxe • Muuntaja • Lamppu MR 11, 12 V, 35W • Paino 0,2kg",
+    "specs": null,
+    "sku": "4206",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75690g004pwz438xekdpox",
+    "slug": "2092-naisi-satiini-photo-paperi-ph-150qm-naisi-satiini-photo-paperi-ph-220qm",
+    "name": "Naisi Satiini photo paperi PH -150QM Naisi Satiini photo paperi PH -220QM",
+    "shortDesc": "190 mic, 175 g 220 mic, 225 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1520 mm x 50 m 1520 mm x 50 m",
+    "description": "Tuotetiedot: 190 mic, 175 g 220 mic, 225 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1520 mm x 50 m 1520 mm x 50 m",
+    "specs": null,
+    "sku": "2092",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75695f0073wz43z0bs431u",
+    "slug": "4207-messuseina-kaareva-4x3-ruutua-runko-l-280-x-230-cm",
+    "name": "Messuseinä kaareva 4x3 ruutua, runko L 280 x 230 cm",
+    "shortDesc": "Roll up -tarvikkeet",
+    "description": "Spot light decostar -valaisin Soveltuu seuraaviin Roll up telineisiin: Spyro, Export, Luxury ja Deluxe • Muuntaja • Lamppu MR 11, 12 V, 35W • Paino 0,2kg",
+    "specs": null,
+    "sku": "4207",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75690j004rwz436dvd1wmz",
+    "slug": "2150-naisi-blue-back-paper-i",
+    "name": "Naisi Blue back paper i",
+    "shortDesc": "120 mic, 110 g Sol / Eco-Sol 3\" 1270 mm x 50 m",
+    "description": "Tuotetiedot: 120 mic, 110 g Sol / Eco-Sol 3\" 1270 mm x 50 m",
+    "specs": null,
+    "sku": "2150",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75695j0075wz43eluozkbt",
+    "slug": "4208-magneettinauha-tarralla-14m",
+    "name": "Magneettinauha tarralla 14m",
+    "shortDesc": "Roll up -tarvikkeet",
+    "description": "Spot light decostar -valaisin Soveltuu seuraaviin Roll up telineisiin: Spyro, Export, Luxury ja Deluxe • Muuntaja • Lamppu MR 11, 12 V, 35W • Paino 0,2kg",
+    "specs": null,
+    "sku": "4208",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75690p004twz43la979ih2",
+    "slug": "2709-ningbo-art-canvas-600d-x-600d-ningbo-art-canvas-600d-x-600d",
+    "name": "Ningbo Art Canvas 600D x 600D Ningbo Art Canvas 600D x 600D",
+    "shortDesc": "350 mic, 225 g 350 mic, 225 g Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1070 mm x 30 m 1270 mm x 30 m",
+    "description": "Tuotetiedot: 350 mic, 225 g 350 mic, 225 g Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1070 mm x 30 m 1270 mm x 30 m",
+    "specs": null,
+    "sku": "2709",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75690s004vwz432lomk4nu",
+    "slug": "2711-ningbo-art-canvas-600d-x-600d",
+    "name": "Ningbo Art Canvas 600D x 600D",
+    "shortDesc": "350 mic, 225 g Pigment / Sol / Eco-Sol 3\" 1520 mm x 30 m",
+    "description": "Tuotetiedot: 350 mic, 225 g Pigment / Sol / Eco-Sol 3\" 1520 mm x 30 m",
+    "specs": null,
+    "sku": "2711",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75695m0077wz43h0dsfayr",
+    "slug": "4209-pm-magneettinauha-ilman-tarraa-3x3",
+    "name": "PM Magneettinauha ilman tarraa 3x3",
+    "shortDesc": "Roll up -tarvikkeet",
+    "description": "Spot light decostar -valaisin Soveltuu seuraaviin Roll up telineisiin: Spyro, Export, Luxury ja Deluxe • Muuntaja • Lamppu MR 11, 12 V, 35W • Paino 0,2kg",
+    "specs": null,
+    "sku": "4209",
+    "category": {
+      "id": "cmmj17x0d0006kc7246gpopu8",
+      "name": "Roll-up telineet",
+      "slug": "roll-up",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75690w004xwz43bhr2s3a7",
+    "slug": "2770-naisi-non-woven-rich-inkjet-non-woven",
+    "name": "Naisi Non Woven Rich Inkjet Non Woven",
+    "shortDesc": "PP-150VM 450 mic, 145 g Pigment / Sol / Eco-Sol 2\" Pigment / Sol / Eco-Sol 2\" 1270 mm x 18 m 1520 mm x 50 m",
+    "description": "Tuotetiedot: PP-150VM 450 mic, 145 g Pigment / Sol / Eco-Sol 2\" Pigment / Sol / Eco-Sol 2\" 1270 mm x 18 m 1520 mm x 50 m",
+    "specs": null,
+    "sku": "2770",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75690z004zwz43qwmqv4ue",
+    "slug": "2720-banner-matta-kangas-banner-matta-kangas",
+    "name": "Banner matta kangas Banner matta kangas",
+    "shortDesc": "WP-150BFM WP-150BFM Sol / Eco-Sol 2\" Sol / Eco-Sol 2\" 914 mm x 50 m 1270 mm x 50 m",
+    "description": "Tuotetiedot: WP-150BFM WP-150BFM Sol / Eco-Sol 2\" Sol / Eco-Sol 2\" 914 mm x 50 m 1270 mm x 50 m",
+    "specs": null,
+    "sku": "2720",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7569120051wz43yqaflrbe",
+    "slug": "2864-cowron-matta-laminaatti-monomer-cowron-matta-laminaatti-monomer",
+    "name": "Cowron matta laminaatti monomer Cowron matta laminaatti monomer",
+    "shortDesc": "100mic, 160g 100mic, 160g Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1070 mm x 50 m 1370 mm x 50 m",
+    "description": "Tuotetiedot: 100mic, 160g 100mic, 160g Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1070 mm x 50 m 1370 mm x 50 m",
+    "specs": null,
+    "sku": "2864",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7569160053wz43fck8fudl",
+    "slug": "2866-cowron-matta-laminaatti-monomer-cowron-kiiltava-laminaatti-monomer",
+    "name": "Cowron matta laminaatti monomer Cowron kiiltävä laminaatti monomer",
+    "shortDesc": "100mic, 160g 90mic, 160g Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1520 mm x 50 m 1070 mm x 50 m",
+    "description": "Tuotetiedot: 100mic, 160g 90mic, 160g Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1520 mm x 50 m 1070 mm x 50 m",
+    "specs": null,
+    "sku": "2866",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75691a0055wz43logg7wov",
+    "slug": "2861-cowron-kiiltava-laminaatti-monomer-cowron-kiiltava-laminaatti-monomer",
+    "name": "Cowron kiiltävä laminaatti monomer Cowron kiiltävä laminaatti monomer",
+    "shortDesc": "90mic, 160g 90mic, 160g Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1370 mm x 50 m 1520 mm x 50 m",
+    "description": "Tuotetiedot: 90mic, 160g 90mic, 160g Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1370 mm x 50 m 1520 mm x 50 m",
+    "specs": null,
+    "sku": "2861",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75691d0057wz43ezbb3tnw",
+    "slug": "2868-cowron-matta-laminaatti-polymer-cowron-matta-laminaatti-polymer",
+    "name": "Cowron matta laminaatti polymer Cowron matta laminaatti polymer",
+    "shortDesc": "100mic 100mic Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1070 mm x 50 m 1370 mm x 50 m",
+    "description": "Tuotetiedot: 100mic 100mic Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1070 mm x 50 m 1370 mm x 50 m",
+    "specs": null,
+    "sku": "2868",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75691g0059wz43mbsmij88",
+    "slug": "2870-cowron-matta-laminaatti-polymer-cowron-kiiltava-laminaatti-polymer",
+    "name": "Cowron matta laminaatti polymer Cowron kiiltävä laminaatti polymer",
+    "shortDesc": "100mic, 160g 100mic Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1520 mm x 50 m 1070 mm x 50 m",
+    "description": "Tuotetiedot: 100mic, 160g 100mic Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1520 mm x 50 m 1070 mm x 50 m",
+    "specs": null,
+    "sku": "2870",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75691k005bwz43u9dhreik",
+    "slug": "2881-cowron-kiiltava-laminaatti-polymer-cowron-kiiltava-laminaatti-polymer",
+    "name": "Cowron kiiltävä laminaatti polymer Cowron kiiltävä laminaatti polymer",
+    "shortDesc": "100mic 100mic Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1370 mm x 50 m 1520 mm x 50 m",
+    "description": "Tuotetiedot: 100mic 100mic Pigment / Sol / Eco-Sol 3\" Pigment / Sol / Eco-Sol 3\" 1370 mm x 50 m 1520 mm x 50 m",
+    "specs": null,
+    "sku": "2881",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75691o005dwz43slmx325p",
+    "slug": "2106-rich-matta-valokuva-paperi-280-rich-pp-paperi-matta",
+    "name": "Rich matta valokuva paperi 280 Rich PP-paperi matta",
+    "shortDesc": "280mic, 225g 200mic, 200g Pigment 2” Sol / Eco-Sol 3\" 1070 mm x 50 m 1070 mm x 50 m",
+    "description": "Tuotetiedot: 280mic, 225g 200mic, 200g Pigment 2” Sol / Eco-Sol 3\" 1070 mm x 50 m 1070 mm x 50 m",
+    "specs": null,
+    "sku": "2106",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75691s005fwz433nohh23u",
+    "slug": "2088-rich-pp-paperi-matta-naisi-pp-paperi-bs-180vm",
+    "name": "Rich PP-paperi matta Naisi PP paperi BS-180VM",
+    "shortDesc": "200mic, 200g 180 mic, 110 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1270 mm x 50 m 1520 mm x 50 m",
+    "description": "Tuotetiedot: 200mic, 200g 180 mic, 110 g Sol / Eco-Sol 3\" Sol / Eco-Sol 3\" 1270 mm x 50 m 1520 mm x 50 m",
+    "specs": null,
+    "sku": "2088",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75691w005hwz43q7yf7si1",
+    "slug": "2022-cowron-pp-paperi-180-matta-cowron-pp-paperi-180-matta",
+    "name": "Cowron PP paperi 180 matta Cowron PP paperi 180 matta",
+    "shortDesc": "180mic, 100g 180mic, 100g Pigment 2” Pigment 2” 1270 mm x 50 m 1520 mm x 50 m",
+    "description": "Tuotetiedot: 180mic, 100g 180mic, 100g Pigment 2” Pigment 2” 1270 mm x 50 m 1520 mm x 50 m",
+    "specs": null,
+    "sku": "2022",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756920005jwz43f5tynm7m",
+    "slug": "2211-cowron-synteettinen-mattatarra-cowron-synteettinen-mattatarra",
+    "name": "Cowron synteettinen mattatarra Cowron synteettinen mattatarra",
+    "shortDesc": "130 mic, 100 g 130 mic, 100 g Pigment 2\" Pigment 2\" 1070 mm x 50 m 1520 mm x 50 m",
+    "description": "Tuotetiedot: 130 mic, 100 g 130 mic, 100 g Pigment 2\" Pigment 2\" 1070 mm x 50 m 1520 mm x 50 m",
+    "specs": null,
+    "sku": "2211",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756924005lwz43oln1c1vf",
+    "slug": "2295-cowron-hiekkapuhallustarra-jaljitelma-bubble-xusen-coat-polymer-glossytarra-pm2000",
+    "name": "Cowron hiekkapuhallustarra jäljitelmä bubble Xusen Coat Polymer Glossytarra PM2000",
+    "shortDesc": "free Kirkas liima 100 mic Sol / Eco-Sol\" Sol / Eco-Sol, Latex 3\" 1060 mm x 50 m",
+    "description": "Tuotetiedot: free Kirkas liima 100 mic Sol / Eco-Sol\" Sol / Eco-Sol, Latex 3\" 1060 mm x 50 m",
+    "specs": null,
+    "sku": "2295",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn756927005nwz43w1iifavf",
+    "slug": "2641-naisi-valomainoskalvo-ctf-210m-naisi-valomainoskalvo-ctf-210m",
+    "name": "Naisi Valomainoskalvo CTF -210M Naisi Valomainoskalvo CTF -210M",
+    "shortDesc": "Pigment 2\" Pigment 2\" 1070 mm x 30 m 1270 mm x 30 m",
+    "description": "Tuotetiedot: Pigment 2\" Pigment 2\" 1070 mm x 30 m 1270 mm x 30 m",
+    "specs": null,
+    "sku": "2641",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn75692e005rwz43jz23vslc",
+    "slug": "2701-century-star-matta-kangas-cs-2201-century-star-matta-kangas-cs-2201",
+    "name": "Century star matta kangas CS-2201 Century star matta kangas CS-2201",
+    "shortDesc": "Pigment 2\" Pigment 2\" 200mic, 110g 200mic, 110g 1270 mm x 50 m 1520 mm x 50 m",
+    "description": "Tuotetiedot: Pigment 2\" Pigment 2\" 200mic, 110g 200mic, 110g 1270 mm x 50 m 1520 mm x 50 m",
+    "specs": null,
+    "sku": "2701",
+    "category": {
+      "id": "cmmj17x0y000bkc72ddln18se",
+      "name": "Tulostusmateriaalit",
+      "slug": "tulostusmateriaalit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj3vz7400015gpxfqofx52r",
+    "slug": "jetbest-es3-varikasetti-440ml",
+    "name": "Jetbest ES3 - värikasetti 440 ml",
+    "shortDesc": "Alkuperäistä vastaava 440 ml värikasetti Roland-, Mutoh- ja Mimaki ES3 -laitteisiin.",
+    "description": "<p>Alkuperaista vastaava 440 ml varikasetti Roland, Mutoh ja Mimaki ES3 -laitteisiin.</p>",
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/inks/jetbest-es3-new.jpg",
+        "alt": "Jetbest ES3 - värikasetti 440 ml"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj3vz7g00055gpxahmcsijo",
+    "slug": "jetbest-es3-tayttopullo-500ml",
+    "name": "Jetbest ES3 - täyttöpullo 500 ml",
+    "shortDesc": "500 ml täyttöpullo Jetbest täyttöjärjestelmälle, eco-solvent-käyttöön.",
+    "description": "<p>500 ml tayttopullo Jetbest tayttojarjestelmalle, eco-solvent-kayttoon.</p>",
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj3vz7o00095gpx6hhki67m",
+    "slug": "jetbest-ss21-varikasetti-440ml",
+    "name": "Jetbest SS21 - värikasetti 440 ml",
+    "shortDesc": "Mimaki SS21 -yhteensopiva 440 ml värikasetti useisiin JV/CJV-sarjoihin.",
+    "description": "<p>Mimaki SS21 -yhteensopiva 440 ml varikasetti useisiin JV/CJV-sarjoihin.</p>",
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/inks/ss21-chat.png",
+        "alt": "Jetbest SS21 - värikasetti 440 ml"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj3vz7y000d5gpxyrfo4hg6",
+    "slug": "jetbest-i2-varikasetti-440ml",
+    "name": "Jetbest I-2 - värikasetti 440 ml",
+    "shortDesc": "Roland Eco-sol MAX2 -yhteensopiva 440 ml värikasetti.",
+    "description": "<p>Roland Eco-sol MAX2 -yhteensopiva 440 ml varikasetti.</p>",
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/inks/jetbest-eco-i2-new.jpg",
+        "alt": "Jetbest I-2 - värikasetti 440 ml"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj3vz88000h5gpxrjs4eji3",
+    "slug": "jetbest-cleaning-solvent-220ml",
+    "name": "Jetbest Cleaning Solvent 220 ml",
+    "shortDesc": "Puhdistusneste eco-solvent- ja mild-solvent-väreille.",
+    "description": "<p>Puhdistusneste eco-solvent- ja mild-solvent-vareille.</p>",
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj3vz8g000l5gpxvzwfvd5s",
+    "slug": "jetbest-cleaning-solvent-440ml",
+    "name": "Jetbest Cleaning Solvent 440 ml",
+    "shortDesc": "Puhdistusneste 440 ml värikokoon, eco-solvent- ja mild-solvent-käyttöön.",
+    "description": "<p>Puhdistusneste 440 ml varikoon, eco-solvent- ja mild-solvent-kayttoon.</p>",
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj3vz8o000p5gpxltud2hzf",
+    "slug": "cleaning-eco-solvent-1000ml",
+    "name": "Cleaning Eco-Solvent 1000 ml pullo",
+    "shortDesc": "1 litran puhdistusaine eco-solvent-, mild-solvent- ja solvent-väreille.",
+    "description": "<p>1 litran puhdistusaine eco-solvent, mild-solvent ja solvent-vareille.</p>",
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj3vz8y000t5gpxjep869oo",
+    "slug": "jetbest-lus170-uv-1l",
+    "name": "Jetbest LUS170 UV 1L pullo",
+    "shortDesc": "UV-väri 1 litran täyttöpullossa, yhteensopiva mm. Mimaki UCJV -sarjan kanssa.",
+    "description": "<p>UV-vari 1 litran tayttopullossa, yhteensopiva mm. Mimaki UCJV -sarjan kanssa.</p>",
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/inks/jetbest-lus170-new.jpg",
+        "alt": "Jetbest LUS170 UV 1L pullo"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmmj3vz9c000x5gpxvenjp5fs",
+    "slug": "jetbest-lus170-uv-cleaning-1l",
+    "name": "Jetbest LUS170 UV Cleaning 1L pullo",
+    "shortDesc": "Jetbest LUS170 UV -sarjan puhdistusaine 1 litran pullossa.",
+    "description": "<p>Jetbest LUS170 UV -sarjan puhdistusaine 1 litran pullossa.</p>",
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmmj3vz9k00115gpxrzgumn9t",
+    "slug": "chromoink-uv-1000ml",
+    "name": "Chromoink UV 1000 ml pullo",
+    "shortDesc": "UV-väri 1 litran pullossa Konica Minolta -tulostuspäille.",
+    "description": "<p>UV-vari 1 litran pullossa Konica Minolta -tulostuspaille.</p>",
+    "specs": null,
+    "sku": null,
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [
+      {
+        "url": "/images/products/inks/chromoink-new.jpg",
+        "alt": "Chromoink UV 1000 ml pullo"
+      }
+    ],
+    "documents": []
+  },
+  {
+    "id": "cmn7568q80001wz43qumc7nu1",
+    "slug": "1141-jetbest-es3-440-ml-cyan",
+    "name": "Jetbest ES3 440 ml Cyan",
+    "shortDesc": "Jetbest ES3 - värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Roland eco-sol Max, Mutoh eco solvent ultra tai Mimaki ES3 korvaajaksi.",
+    "specs": null,
+    "sku": "1141",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568qj0003wz43c7b9hxeo",
+    "slug": "1142-jetbest-es3-440-ml-magenta",
+    "name": "Jetbest ES3 440 ml Magenta",
+    "shortDesc": "Jetbest ES3 - värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Roland eco-sol Max, Mutoh eco solvent ultra tai Mimaki ES3 korvaajaksi.",
+    "specs": null,
+    "sku": "1142",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568qn0005wz43peom7r3n",
+    "slug": "1143-jetbest-es3-440-ml-yellow",
+    "name": "Jetbest ES3 440 ml Yellow",
+    "shortDesc": "Jetbest ES3 - värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Roland eco-sol Max, Mutoh eco solvent ultra tai Mimaki ES3 korvaajaksi.",
+    "specs": null,
+    "sku": "1143",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568qq0007wz43aez9qviq",
+    "slug": "1144-jetbest-es3-440-ml-black",
+    "name": "Jetbest ES3 440 ml Black",
+    "shortDesc": "Jetbest ES3 - värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Roland eco-sol Max, Mutoh eco solvent ultra tai Mimaki ES3 korvaajaksi.",
+    "specs": null,
+    "sku": "1144",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568qt0009wz43g6z46bl7",
+    "slug": "1145-jetbest-es3-440-ml-light-cyan",
+    "name": "Jetbest ES3 440 ml Light Cyan",
+    "shortDesc": "Jetbest ES3 - värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Roland eco-sol Max, Mutoh eco solvent ultra tai Mimaki ES3 korvaajaksi.",
+    "specs": null,
+    "sku": "1145",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568qx000bwz43ycfi2zbs",
+    "slug": "1146-jetbest-es3-440-ml-light-magenta",
+    "name": "Jetbest ES3 440 ml Light Magenta",
+    "shortDesc": "Jetbest ES3 - värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Roland eco-sol Max, Mutoh eco solvent ultra tai Mimaki ES3 korvaajaksi.",
+    "specs": null,
+    "sku": "1146",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568r3000dwz43v1fm54cn",
+    "slug": "1148-jetbest-es3-500-ml-cyan",
+    "name": "Jetbest ES3 500 ml Cyan",
+    "shortDesc": "Jetbest ES3 - täyttöpullo 500 ml",
+    "description": "Kätevässä 500 ml täyttöpullossa Jetbest täyttöjärjestelmälle. Soveltuu Roland eco-sol Max, Mutoh eco solvent ultra tai Mimaki ES3 korvaavaksi.",
+    "specs": null,
+    "sku": "1148",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568r7000fwz43vuhwgm2a",
+    "slug": "1149-jetbest-es3-500-ml-magenta",
+    "name": "Jetbest ES3 500 ml Magenta",
+    "shortDesc": "Jetbest ES3 - täyttöpullo 500 ml",
+    "description": "Kätevässä 500 ml täyttöpullossa Jetbest täyttöjärjestelmälle. Soveltuu Roland eco-sol Max, Mutoh eco solvent ultra tai Mimaki ES3 korvaavaksi.",
+    "specs": null,
+    "sku": "1149",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568ra000hwz435f63el55",
+    "slug": "1150-jetbest-es3-500-ml-yellow",
+    "name": "Jetbest ES3 500 ml Yellow",
+    "shortDesc": "Jetbest ES3 - täyttöpullo 500 ml",
+    "description": "Kätevässä 500 ml täyttöpullossa Jetbest täyttöjärjestelmälle. Soveltuu Roland eco-sol Max, Mutoh eco solvent ultra tai Mimaki ES3 korvaavaksi.",
+    "specs": null,
+    "sku": "1150",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568rk000jwz432kou6f30",
+    "slug": "1151-jetbest-es3-500-ml-black",
+    "name": "Jetbest ES3 500 ml Black",
+    "shortDesc": "Jetbest ES3 - täyttöpullo 500 ml",
+    "description": "Kätevässä 500 ml täyttöpullossa Jetbest täyttöjärjestelmälle. Soveltuu Roland eco-sol Max, Mutoh eco solvent ultra tai Mimaki ES3 korvaavaksi.",
+    "specs": null,
+    "sku": "1151",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568rv000lwz43je4ag2kq",
+    "slug": "1152-jetbest-es3-500-ml-light-cyan",
+    "name": "Jetbest ES3 500 ml Light Cyan",
+    "shortDesc": "Jetbest ES3 - täyttöpullo 500 ml",
+    "description": "Kätevässä 500 ml täyttöpullossa Jetbest täyttöjärjestelmälle. Soveltuu Roland eco-sol Max, Mutoh eco solvent ultra tai Mimaki ES3 korvaavaksi.",
+    "specs": null,
+    "sku": "1152",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568rz000nwz43e7pof0jx",
+    "slug": "1153-jetbest-es3-500-ml-light-magenta",
+    "name": "Jetbest ES3 500 ml Light Magenta",
+    "shortDesc": "Jetbest ES3 - täyttöpullo 500 ml",
+    "description": "Kätevässä 500 ml täyttöpullossa Jetbest täyttöjärjestelmälle. Soveltuu Roland eco-sol Max, Mutoh eco solvent ultra tai Mimaki ES3 korvaavaksi.",
+    "specs": null,
+    "sku": "1153",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568s3000pwz43zq676ag7",
+    "slug": "1155-jetbest-ss21-440-ml-cyan",
+    "name": "Jetbest SS21 440 ml Cyan",
+    "shortDesc": "Jetbest SS21 – värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Mimaki JV33, CJV30, JV5, JV150, CJV150, JV300 ja CJV300 -malleihin.",
+    "specs": null,
+    "sku": "1155",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568s6000rwz43q880zue8",
+    "slug": "1156-jetbest-ss21-440-ml-magenta",
+    "name": "Jetbest SS21 440 ml Magenta",
+    "shortDesc": "Jetbest SS21 – värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Mimaki JV33, CJV30, JV5, JV150, CJV150, JV300 ja CJV300 -malleihin.",
+    "specs": null,
+    "sku": "1156",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568sa000twz43aoewxh92",
+    "slug": "1157-jetbest-ss21-440-ml-yellow",
+    "name": "Jetbest SS21 440 ml Yellow",
+    "shortDesc": "Jetbest SS21 – värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Mimaki JV33, CJV30, JV5, JV150, CJV150, JV300 ja CJV300 -malleihin.",
+    "specs": null,
+    "sku": "1157",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568sf000vwz43q65boc9z",
+    "slug": "1158-jetbest-ss21-440-ml-black",
+    "name": "Jetbest SS21 440 ml Black",
+    "shortDesc": "Jetbest SS21 – värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Mimaki JV33, CJV30, JV5, JV150, CJV150, JV300 ja CJV300 -malleihin.",
+    "specs": null,
+    "sku": "1158",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568si000xwz43qkpaitnh",
+    "slug": "1159-jetbest-ss21-440-ml-light-black",
+    "name": "Jetbest SS21 440 ml Light Black",
+    "shortDesc": "Jetbest SS21 – värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Mimaki JV33, CJV30, JV5, JV150, CJV150, JV300 ja CJV300 -malleihin.",
+    "specs": null,
+    "sku": "1159",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568sm000zwz439sg2m0iu",
+    "slug": "1168-jetbest-ss21-440-ml-light-cyan",
+    "name": "Jetbest SS21 440 ml Light Cyan",
+    "shortDesc": "Jetbest SS21 – värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Mimaki JV33, CJV30, JV5, JV150, CJV150, JV300 ja CJV300 -malleihin.",
+    "specs": null,
+    "sku": "1168",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568sp0011wz43fjbd2137",
+    "slug": "1169-jetbest-ss21-440-ml-light-magenta",
+    "name": "Jetbest SS21 440 ml Light Magenta",
+    "shortDesc": "Jetbest SS21 – värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Mimaki JV33, CJV30, JV5, JV150, CJV150, JV300 ja CJV300 -malleihin.",
+    "specs": null,
+    "sku": "1169",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568sz0013wz43f6pm28c1",
+    "slug": "1179-jetbest-ss21-440-ml-orange",
+    "name": "Jetbest SS21 440 ml Orange",
+    "shortDesc": "Jetbest SS21 – värikasetti 440 ml",
+    "description": "Alkuperäistä vastaava värikasetti 440 ml. Soveltuu Mimaki JV33, CJV30, JV5, JV150, CJV150, JV300 ja CJV300 -malleihin.",
+    "specs": null,
+    "sku": "1179",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568t30015wz43ojpg8ou3",
+    "slug": "1160-jetbest-eco-max-2-new-1-2-440-ml-cyan",
+    "name": "Jetbest Eco Max 2 new 1-2 440 ml Cyan",
+    "shortDesc": "Jetbest I-2 – värikasetti 440 ml",
+    "description": "Roland eco-sol MAX2 vastaava 440 ml värikasetti.",
+    "specs": null,
+    "sku": "1160",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568t70017wz43sed1zaqo",
+    "slug": "1161-jetbest-eco-max-2-new-1-2-440-ml-magenta",
+    "name": "Jetbest Eco Max 2 new 1-2 440 ml Magenta",
+    "shortDesc": "Jetbest I-2 – värikasetti 440 ml",
+    "description": "Roland eco-sol MAX2 vastaava 440 ml värikasetti.",
+    "specs": null,
+    "sku": "1161",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568tc0019wz43pnt7mr13",
+    "slug": "1162-jetbest-eco-max-2-new-1-2-440-ml-yellow",
+    "name": "Jetbest Eco Max 2 new 1-2 440 ml Yellow",
+    "shortDesc": "Jetbest I-2 – värikasetti 440 ml",
+    "description": "Roland eco-sol MAX2 vastaava 440 ml värikasetti.",
+    "specs": null,
+    "sku": "1162",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568th001bwz435pt21r19",
+    "slug": "1163-jetbest-eco-max-2-new-1-2-440-ml-black",
+    "name": "Jetbest Eco Max 2 new 1-2 440 ml Black",
+    "shortDesc": "Jetbest I-2 – värikasetti 440 ml",
+    "description": "Roland eco-sol MAX2 vastaava 440 ml värikasetti.",
+    "specs": null,
+    "sku": "1163",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568tl001dwz43u1iuilrg",
+    "slug": "1164-jetbest-eco-max-2-new-1-2-440-ml-light-cyan",
+    "name": "Jetbest Eco Max 2 new 1-2 440 ml Light Cyan",
+    "shortDesc": "Jetbest I-2 – värikasetti 440 ml",
+    "description": "Roland eco-sol MAX2 vastaava 440 ml värikasetti.",
+    "specs": null,
+    "sku": "1164",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568tp001fwz43ala20cbb",
+    "slug": "1165-jetbest-eco-max-2-new-1-2-440-ml-light-magenta",
+    "name": "Jetbest Eco Max 2 new 1-2 440 ml Light Magenta",
+    "shortDesc": "Jetbest I-2 – värikasetti 440 ml",
+    "description": "Roland eco-sol MAX2 vastaava 440 ml värikasetti.",
+    "specs": null,
+    "sku": "1165",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568tu001hwz43ku5d08pe",
+    "slug": "1166-jetbest-eco-max-2-new-1-2-440-ml-light-black",
+    "name": "Jetbest Eco Max 2 new 1-2 440 ml Light Black",
+    "shortDesc": "Jetbest I-2 – värikasetti 440 ml",
+    "description": "Roland eco-sol MAX2 vastaava 440 ml värikasetti.",
+    "specs": null,
+    "sku": "1166",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568ty001jwz43qf3u37hz",
+    "slug": "1603-jetbest-cleaning-solvent-220ml",
+    "name": "Jetbest Cleaning solvent 220ml",
+    "shortDesc": "Jetbest puhdistuskasetit 220 ml",
+    "description": "Eco-solvent ja Mild solvent väreille",
+    "specs": null,
+    "sku": "1603",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568u1001lwz43dq838dor",
+    "slug": "1604-jetbest-cleaning-solvent-440ml",
+    "name": "Jetbest Cleaning solvent 440ml",
+    "shortDesc": "Jetbest puhdistuskasetit 220 ml",
+    "description": "Eco-solvent ja Mild solvent väreille",
+    "specs": null,
+    "sku": "1604",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568u5001nwz43ax3mz8es",
+    "slug": "1602-cleaning-solvent-1000-ml-pullo",
+    "name": "Cleaning solvent 1000 ml pullo",
+    "shortDesc": "Puhdistusaineet 1 L",
+    "description": "Eco-solvent, Mild solvent ja Solvent väreille",
+    "specs": null,
+    "sku": "1602",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568ua001pwz43exlm0w5v",
+    "slug": "1541-jetbest-lus170-uv-1l-pullo-cyan",
+    "name": "Jetbest LUS170 UV 1L pullo Cyan",
+    "shortDesc": "Jetbest LUS-170",
+    "description": "Alkuperäistä vastaava 1 L täyttöpullo ja chippi. Esim. Mimaki UCJV sarjan tulostimille",
+    "specs": null,
+    "sku": "1541",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568ue001rwz43ag5d1kwi",
+    "slug": "1542-jetbest-lus170-uv-1l-pullo-magenta",
+    "name": "Jetbest LUS170 UV 1L pullo Magenta",
+    "shortDesc": "Jetbest LUS-170",
+    "description": "Alkuperäistä vastaava 1 L täyttöpullo ja chippi. Esim. Mimaki UCJV sarjan tulostimille",
+    "specs": null,
+    "sku": "1542",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568ui001twz4330elhz18",
+    "slug": "1543-jetbest-lus170-uv-1l-pullo-yellow",
+    "name": "Jetbest LUS170 UV 1L pullo Yellow",
+    "shortDesc": "Jetbest LUS-170",
+    "description": "Alkuperäistä vastaava 1 L täyttöpullo ja chippi. Esim. Mimaki UCJV sarjan tulostimille",
+    "specs": null,
+    "sku": "1543",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568un001vwz43nb6j9rp8",
+    "slug": "1544-jetbest-lus170-uv-1l-pullo-black",
+    "name": "Jetbest LUS170 UV 1L pullo Black",
+    "shortDesc": "Jetbest LUS-170",
+    "description": "Alkuperäistä vastaava 1 L täyttöpullo ja chippi. Esim. Mimaki UCJV sarjan tulostimille",
+    "specs": null,
+    "sku": "1544",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568ur001xwz43ccxsl9k0",
+    "slug": "1545-jetbest-lus170-uv-1l-pullo-white",
+    "name": "Jetbest LUS170 UV 1L pullo White",
+    "shortDesc": "Jetbest LUS-170",
+    "description": "Alkuperäistä vastaava 1 L täyttöpullo ja chippi. Esim. Mimaki UCJV sarjan tulostimille",
+    "specs": null,
+    "sku": "1545",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568uv001zwz43phk4y4z8",
+    "slug": "1546-jetbest-lus170-uv-1l-pullo-lc",
+    "name": "Jetbest LUS170 UV 1L pullo LC",
+    "shortDesc": "Jetbest LUS-170",
+    "description": "Alkuperäistä vastaava 1 L täyttöpullo ja chippi. Esim. Mimaki UCJV sarjan tulostimille",
+    "specs": null,
+    "sku": "1546",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568uz0021wz43n76zaofh",
+    "slug": "1547-jetbest-lus170-uv-1l-pullo-lm",
+    "name": "Jetbest LUS170 UV 1L pullo LM",
+    "shortDesc": "Jetbest LUS-170",
+    "description": "Alkuperäistä vastaava 1 L täyttöpullo ja chippi. Esim. Mimaki UCJV sarjan tulostimille",
+    "specs": null,
+    "sku": "1547",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568v20023wz43u10ybfph",
+    "slug": "1501-chromoink-uv-1000-ml-pullo-cyan-c",
+    "name": "Chromoink UV 1000 ml pullo Cyan , C",
+    "shortDesc": "Chromoink",
+    "description": "1 L täyttöpullossa loistavasti toimiva UV -väri Konica Minolta tulostuspäille",
+    "specs": null,
+    "sku": "1501",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568v60025wz43niarryat",
+    "slug": "1502-chromoink-uv-1000-ml-pullo-magenta-m",
+    "name": "Chromoink UV 1000 ml pullo Magenta , M",
+    "shortDesc": "Chromoink",
+    "description": "1 L täyttöpullossa loistavasti toimiva UV -väri Konica Minolta tulostuspäille",
+    "specs": null,
+    "sku": "1502",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568va0027wz43apl4aa2s",
+    "slug": "1503-chromoink-uv-1000-ml-pullo-yellow-y",
+    "name": "Chromoink UV 1000 ml pullo Yellow , Y",
+    "shortDesc": "Chromoink",
+    "description": "1 L täyttöpullossa loistavasti toimiva UV -väri Konica Minolta tulostuspäille",
+    "specs": null,
+    "sku": "1503",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568vd0029wz43wcxinplv",
+    "slug": "1504-chromoink-uv-1000-ml-pullo-black-k",
+    "name": "Chromoink UV 1000 ml pullo Black , K",
+    "shortDesc": "Chromoink",
+    "description": "1 L täyttöpullossa loistavasti toimiva UV -väri Konica Minolta tulostuspäille",
+    "specs": null,
+    "sku": "1504",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568vh002bwz43qv1jevsi",
+    "slug": "1505-chromoink-uv-1000-ml-pullo-white-w",
+    "name": "Chromoink UV 1000 ml pullo White , W",
+    "shortDesc": "Chromoink",
+    "description": "1 L täyttöpullossa loistavasti toimiva UV -väri Konica Minolta tulostuspäille",
+    "specs": null,
+    "sku": "1505",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568vl002dwz43s4j5nfjx",
+    "slug": "1506-chromoink-uv-1000-ml-pullo-light-cyan-lc",
+    "name": "Chromoink UV 1000 ml pullo Light Cyan , LC",
+    "shortDesc": "Chromoink",
+    "description": "1 L täyttöpullossa loistavasti toimiva UV -väri Konica Minolta tulostuspäille",
+    "specs": null,
+    "sku": "1506",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568vp002fwz434ykyda3l",
+    "slug": "1507-chromoink-uv-1000-ml-pullo-light-magenta-lm",
+    "name": "Chromoink UV 1000 ml pullo Light Magenta , LM",
+    "shortDesc": "Chromoink",
+    "description": "1 L täyttöpullossa loistavasti toimiva UV -väri Konica Minolta tulostuspäille",
+    "specs": null,
+    "sku": "1507",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568vs002hwz431tou4k53",
+    "slug": "1511-chromoink-uv-1000-ml-pullo-coating-liquid-sti",
+    "name": "Chromoink UV 1000 ml pullo Coating liquid STI",
+    "shortDesc": "Chromoink",
+    "description": "1 L täyttöpullossa loistavasti toimiva UV -väri Konica Minolta tulostuspäille",
+    "specs": null,
+    "sku": "1511",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568vw002jwz43h05nsb0n",
+    "slug": "1512-chromoink-uv-1000-ml-pullo-coating-liquid-dil",
+    "name": "Chromoink UV 1000 ml pullo Coating liquid DIL",
+    "shortDesc": "Chromoink",
+    "description": "1 L täyttöpullossa loistavasti toimiva UV -väri Konica Minolta tulostuspäille",
+    "specs": null,
+    "sku": "1512",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cmn7568w2002lwz43nzp55ele",
+    "slug": "1513-chromoink-uv-1000-ml-pullo-uv-cleaner",
+    "name": "Chromoink UV 1000 ml pullo UV Cleaner",
+    "shortDesc": "Chromoink",
+    "description": "1 L täyttöpullossa loistavasti toimiva UV -väri Konica Minolta tulostuspäille",
+    "specs": null,
+    "sku": "1513",
+    "category": {
+      "id": "cmmj17x12000ckc72x6qprwmq",
+      "name": "Tulostusvärit",
+      "slug": "tulostusvarit",
+      "parent": null
+    },
+    "images": [],
+    "documents": []
+  }
+]

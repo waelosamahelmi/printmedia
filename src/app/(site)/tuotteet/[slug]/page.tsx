@@ -6,29 +6,69 @@ import { CTA } from '@/components/sections/CTA'
 import { prisma } from '@/lib/db'
 import { ArrowLeft, Package, Tag, Info, FileText, ListOrdered } from 'lucide-react'
 import Link from 'next/link'
+import productsSnapshot from '@/lib/fallback/productsSnapshot.json'
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>
 }
 
+type ProductShape = {
+  id: string
+  slug: string
+  name: string
+  shortDesc: string | null
+  description: string | null
+  specs: string | null
+  sku: string | null
+  category: {
+    id: string
+    name: string
+    slug: string
+    parent: { slug: string } | null
+  } | null
+  images: Array<{ url: string; alt: string | null }>
+  documents: Array<{ url: string; name: string }>
+}
+
+const fallbackProductBySlug = new Map(
+  (productsSnapshot as ProductShape[]).map((product) => [product.slug, product])
+)
+
+function getFallbackProduct(slug: string): ProductShape | null {
+  return fallbackProductBySlug.get(slug) || null
+}
+
 async function getProduct(slug: string) {
-  const product = await prisma.product.findUnique({
-    where: { slug, status: 'PUBLISHED' },
-    include: {
-      category: {
-        include: {
-          parent: {
-            select: {
-              slug: true,
+  try {
+    const product = await prisma.product.findUnique({
+      where: { slug, status: 'PUBLISHED' },
+      include: {
+        category: {
+          include: {
+            parent: {
+              select: {
+                slug: true,
+              },
             },
           },
         },
+        images: { orderBy: { sortOrder: 'asc' } },
+        documents: true,
       },
-      images: { orderBy: { sortOrder: 'asc' } },
-      documents: true
+    })
+
+    if (product) {
+      return product
     }
-  })
-  return product
+  } catch (error) {
+    console.error(`Failed to fetch product ${slug}:`, error)
+  }
+
+  if (process.env.NODE_ENV === 'production') {
+    return getFallbackProduct(slug)
+  }
+
+  return null
 }
 
 function getCategoryHref(product: NonNullable<Awaited<ReturnType<typeof getProduct>>>) {
