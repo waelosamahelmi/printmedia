@@ -99,7 +99,7 @@ export default async function RollUpPage() {
 
                   {specs.Koot && (
                     <div className="mt-4">
-                      <h3 className="font-semibold text-gray-900 mb-2">Saatavana koissa:</h3>
+                      <h3 className="font-semibold text-gray-900 mb-2">Saatavana ko'oissa:</h3>
                       <p className="text-gray-600">{specs.Koot}</p>
                     </div>
                   )}
