@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Save, Eye, Trash2, Plus, X, Upload } from 'lucide-react'
@@ -55,6 +55,9 @@ export default function EditProductPage() {
   })
   const [newSpecKey, setNewSpecKey] = useState('')
   const [newSpecValue, setNewSpecValue] = useState('')
+  const [images, setImages] = useState<{ id: string; url: string; alt: string | null; isPrimary: boolean }[]>([])
+  const [uploadingImage, setUploadingImage] = useState(false)
+  const imageInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     fetchData()
@@ -91,6 +94,7 @@ export default function EditProductPage() {
           isFeatured: product.isFeatured,
           categoryId: product.categoryId || '',
         })
+        setImages(product.images || [])
       } else {
         setError('Tuotetta ei löytynyt')
       }
@@ -188,6 +192,36 @@ export default function EditProductPage() {
       }
     } catch (err) {
       setError('Poisto epäonnistui')
+    }
+  }
+
+  const handleImageUpload = async (files: FileList | null) => {
+    if (!files || files.length === 0) return
+    setUploadingImage(true)
+    for (const file of Array.from(files)) {
+      const fd = new FormData()
+      fd.append('file', file)
+      try {
+        const res = await fetch(`/api/admin/products/${productId}/images`, {
+          method: 'POST',
+          body: fd,
+        })
+        if (res.ok) {
+          const img = await res.json()
+          setImages(prev => [...prev, img])
+        }
+      } catch {}
+    }
+    setUploadingImage(false)
+    if (imageInputRef.current) imageInputRef.current.value = ''
+  }
+
+  const handleImageDelete = async (imageId: string) => {
+    const res = await fetch(`/api/admin/products/${productId}/images/${imageId}`, {
+      method: 'DELETE',
+    })
+    if (res.ok) {
+      setImages(prev => prev.filter(img => img.id !== imageId))
     }
   }
 
@@ -402,6 +436,61 @@ export default function EditProductPage() {
                   <Plus className="w-5 h-5" />
                 </button>
               </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">Kuvat</h2>
+            <div className="space-y-4">
+              {images.length > 0 && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {images.map(img => (
+                    <div key={img.id} className="relative group aspect-square border border-gray-200 rounded-lg overflow-hidden bg-gray-50">
+                      <img src={img.url} alt={img.alt || ''} className="w-full h-full object-cover" />
+                      {img.isPrimary && (
+                        <span className="absolute top-1 left-1 text-xs bg-primary-600 text-white px-1.5 py-0.5 rounded">
+                          Pääkuva
+                        </span>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => handleImageDelete(img.id)}
+                        className="absolute top-1 right-1 p-1 bg-red-600 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                        title="Poista kuva"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div
+                onClick={() => imageInputRef.current?.click()}
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => { e.preventDefault(); handleImageUpload(e.dataTransfer.files) }}
+                className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-primary-400 hover:bg-primary-50 transition-colors"
+              >
+                {uploadingImage ? (
+                  <div className="flex flex-col items-center gap-2 text-primary-600">
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary-600" />
+                    <span className="text-sm">Ladataan...</span>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center gap-2 text-gray-500">
+                    <Upload className="w-6 h-6" />
+                    <span className="text-sm">Klikkaa tai raahaa kuva tähän</span>
+                    <span className="text-xs text-gray-400">JPEG, PNG, WebP — max 5 MB</span>
+                  </div>
+                )}
+              </div>
+              <input
+                ref={imageInputRef}
+                type="file"
+                accept="image/jpeg,image/png,image/webp,image/gif"
+                multiple
+                className="hidden"
+                onChange={(e) => handleImageUpload(e.target.files)}
+              />
             </div>
           </div>
         </div>
