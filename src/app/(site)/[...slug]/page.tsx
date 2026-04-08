@@ -9,6 +9,61 @@ interface PageProps {
   params: Promise<{ slug: string[] }>
 }
 
+function sanitizeLaitteetPageForProduction<T extends { sections: Array<{ type: string; settings: string | null }> }>(page: T): T {
+  const sections = page.sections.map((section) => {
+    if (section.type !== 'categories' || !section.settings) {
+      return section
+    }
+
+    try {
+      const parsed = JSON.parse(section.settings) as {
+        items?: Array<{ title?: string; href?: string }>
+        includeSlugs?: string[]
+        excludeSlugs?: string[]
+      }
+
+      if (Array.isArray(parsed.items)) {
+        parsed.items = parsed.items.filter((item) => {
+          const title = (item.title || '').toLowerCase()
+          const href = (item.href || '').toLowerCase()
+          return !title.includes('display')
+            && !title.includes('roll-up')
+            && !href.startsWith('/display')
+        })
+      }
+
+      if (Array.isArray(parsed.includeSlugs)) {
+        parsed.includeSlugs = parsed.includeSlugs.filter((slug) => {
+          const s = slug.toLowerCase()
+          return s !== 'display-tuotteet' && s !== 'roll-up'
+        })
+      }
+
+      if (Array.isArray(parsed.excludeSlugs)) {
+        parsed.excludeSlugs = Array.from(new Set([
+          ...parsed.excludeSlugs,
+          'display-tuotteet',
+          'roll-up',
+        ]))
+      } else {
+        parsed.excludeSlugs = ['display-tuotteet', 'roll-up']
+      }
+
+      return {
+        ...section,
+        settings: JSON.stringify(parsed),
+      }
+    } catch {
+      return section
+    }
+  })
+
+  return {
+    ...page,
+    sections,
+  }
+}
+
 // Fetch page from database
 async function getPage(slug: string) {
   try {
@@ -37,9 +92,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const slugString = slug.join('/')
 
-  const page = process.env.NODE_ENV === 'production' && slugString === 'yritys'
+  const resolvedPage = process.env.NODE_ENV === 'production' && slugString === 'yritys'
     ? getFallbackPageBySlug(slugString)
     : (await getPage(slugString)) || getFallbackPageBySlug(slugString)
+
+  const page = process.env.NODE_ENV === 'production' && slugString === 'laitteet' && resolvedPage
+    ? sanitizeLaitteetPageForProduction(resolvedPage)
+    : resolvedPage
 
   if (!page) {
     return {
@@ -58,9 +117,13 @@ export default async function DynamicPage({ params }: PageProps) {
   const { slug } = await params
   const slugString = slug.join('/')
 
-  const page = process.env.NODE_ENV === 'production' && slugString === 'yritys'
+  const resolvedPage = process.env.NODE_ENV === 'production' && slugString === 'yritys'
     ? getFallbackPageBySlug(slugString)
     : (await getPage(slugString)) || getFallbackPageBySlug(slugString)
+
+  const page = process.env.NODE_ENV === 'production' && slugString === 'laitteet' && resolvedPage
+    ? sanitizeLaitteetPageForProduction(resolvedPage)
+    : resolvedPage
 
   if (!page) {
     notFound()
