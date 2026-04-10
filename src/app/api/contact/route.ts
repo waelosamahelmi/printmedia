@@ -13,16 +13,47 @@ const SMTP_PASSWORD = process.env.SMTP_PASSWORD || process.env.EMAIL_PASSWORD ||
 const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || 'myynti@printmedia.fi'
 const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || SMTP_USER || 'no-reply@printmedia.fi'
 
-function createTransporter() {
+function createTransporter(port = SMTP_PORT, secure = SMTP_SECURE) {
   return nodemailer.createTransport({
     host: SMTP_HOST,
-    port: SMTP_PORT,
-    secure: SMTP_SECURE,
+    port,
+    secure,
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
     auth: {
       user: SMTP_USER,
       pass: SMTP_PASSWORD,
     },
   })
+}
+
+async function sendMailWithFallback(mailOptions: nodemailer.SendMailOptions) {
+  const attempts: Array<{ port: number; secure: boolean }> = [{ port: SMTP_PORT, secure: SMTP_SECURE }]
+
+  // Hostinger can be configured either as 465/SSL or 587/STARTTLS.
+  if (SMTP_PORT === 465) {
+    attempts.push({ port: 587, secure: false })
+  } else if (SMTP_PORT === 587) {
+    attempts.push({ port: 465, secure: true })
+  }
+
+  let lastError: unknown = null
+
+  for (const attempt of attempts) {
+    try {
+      const transporter = createTransporter(attempt.port, attempt.secure)
+      return await transporter.sendMail(mailOptions)
+    } catch (error) {
+      lastError = error
+      console.error(
+        `SMTP send failed (host=${SMTP_HOST}, port=${attempt.port}, secure=${attempt.secure}):`,
+        error
+      )
+    }
+  }
+
+  throw lastError
 }
 
 export async function POST(request: NextRequest) {
@@ -104,10 +135,8 @@ Tämä viesti lähetettiin PrintMedia PM Solutions Oy:n verkkosivujen yhteydenot
       `,
     }
 
-    const transporter = createTransporter()
-
     // Send primary message to sales inbox
-    await transporter.sendMail(mailOptions)
+    await sendMailWithFallback(mailOptions)
 
     // Send confirmation email to the sender, but do not fail the whole request if this one fails
     const confirmationOptions = {
@@ -158,7 +187,7 @@ myynti@printmedia.fi | www.printmedia.fi
     }
 
     try {
-      await transporter.sendMail(confirmationOptions)
+      await sendMailWithFallback(confirmationOptions)
       return NextResponse.json({ success: true, message: 'Viesti lähetetty onnistuneesti!' })
     } catch (confirmationError) {
       console.error('Confirmation email sending error:', confirmationError)
@@ -170,8 +199,30 @@ myynti@printmedia.fi | www.printmedia.fi
     }
   } catch (error) {
     console.error('Email sending error:', error)
+
+    const knownError =
+      error &&
+      typeof error === 'object' &&
+      'code' in error &&
+      typeof (error as { code?: unknown }).code === 'string'
+        ? (error as { code: string }).code
+        : null
+
+    const timeoutCodes = new Set(['ETIMEDOUT', 'ESOCKET', 'ECONNECTION'])
+    const authCodes = new Set(['EAUTH'])
+
+    let message = 'Viestin lähetys epäonnistui. Yritä myöhemmin uudelleen. (virhekoodi: contact-api-1)'
+
+    if (knownError && timeoutCodes.has(knownError)) {
+      message = 'Yhteys sähköpostipalvelimeen aikakatkaistiin. Yritä hetken kuluttua uudelleen. (virhekoodi: contact-api-timeout)'
+    }
+
+    if (knownError && authCodes.has(knownError)) {
+      message = 'Sähköpostipalvelimen tunnistautuminen epäonnistui. Ota yhteys ylläpitoon. (virhekoodi: contact-api-auth)'
+    }
+
     return NextResponse.json(
-      { error: 'Viestin lähetys epäonnistui. Yritä myöhemmin uudelleen.' },
+      { error: message },
       { status: 500 }
     )
   }
