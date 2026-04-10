@@ -36,9 +36,26 @@ export default function MediaPage() {
 
   const fetchMedia = async () => {
     try {
-    setUploadError('')
+      const res = await fetch('/api/admin/media')
+      if (res.ok) {
+        const data = await res.json()
+        setMedia(data)
+      }
     } catch (error) {
       console.error('Error fetching media:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (!files || files.length === 0) return
+
+    setUploading(true)
+    setUploadError('')
+
+    try {
       for (const file of Array.from(files)) {
         const formData = new FormData()
         formData.append('file', file)
@@ -52,35 +69,18 @@ export default function MediaPage() {
           const data = await res.json().catch(() => ({}))
           throw new Error(data.error || `Lataus epäonnistui (${file.name})`)
         }
-    if (!files || files.length === 0) return
+      }
 
       await fetchMedia()
-
-    setUploading(true)
-      setUploadError(error instanceof Error ? error.message : 'Tiedoston lataus epäonnistui')
-    const formData = new FormData()
-    
-    for (let i = 0; i < files.length; i++) {
-      formData.append('files', files[i])
-    }
-
-    try {
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      })
-
-      if (res.ok) {
-        fetchMedia()
-      }
     } catch (error) {
       console.error('Error uploading files:', error)
+      setUploadError(error instanceof Error ? error.message : 'Tiedoston lataus epäonnistui')
     } finally {
       setUploading(false)
       if (fileInputRef.current) {
         fileInputRef.current.value = ''
       }
-            accept="image/jpeg,image/png,image/gif,image/webp,image/svg+xml,application/pdf"
+    }
   }
 
   const handleDelete = async () => {
@@ -92,12 +92,6 @@ export default function MediaPage() {
       })
       if (res.ok) {
         setMedia(media.filter(m => m.id !== selectedMedia.id))
-
-      {uploadError && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
-          {uploadError}
-        </div>
-      )}
         setDeleteModalOpen(false)
         setSelectedMedia(null)
       }
@@ -165,6 +159,12 @@ export default function MediaPage() {
           </button>
         </div>
       </div>
+
+      {uploadError && (
+        <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+          {uploadError}
+        </div>
+      )}
 
       {/* Filters */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
