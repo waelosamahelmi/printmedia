@@ -68,10 +68,15 @@ export function ContactForm({ showMap = true }: ContactFormProps) {
         body: JSON.stringify(formData),
       })
 
-      const data = await response.json()
+      let data: { error?: string } | null = null
+      try {
+        data = await response.json()
+      } catch {
+        data = null
+      }
 
       if (!response.ok) {
-        throw new Error(data.error || 'Viestin lähetys epäonnistui')
+        throw new Error(data?.error || 'Viestin lähetys epäonnistui')
       }
 
       setIsSubmitted(true)

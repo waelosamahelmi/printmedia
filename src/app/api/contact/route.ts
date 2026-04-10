@@ -159,11 +159,15 @@ myynti@printmedia.fi | www.printmedia.fi
 
     try {
       await transporter.sendMail(confirmationOptions)
+      return NextResponse.json({ success: true, message: 'Viesti lähetetty onnistuneesti!' })
     } catch (confirmationError) {
       console.error('Confirmation email sending error:', confirmationError)
+      return NextResponse.json({
+        success: true,
+        partial: true,
+        message: 'Viesti toimitettu myyntiin. Vahvistusviestiä ei voitu lähettää.',
+      })
     }
-
-    return NextResponse.json({ success: true, message: 'Viesti lähetetty onnistuneesti!' })
   } catch (error) {
     console.error('Email sending error:', error)
     return NextResponse.json(
