@@ -1,19 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
-// Create reusable transporter using Hostinger SMTP
-const transporter = nodemailer.createTransport({
-  host: 'smtp.hostinger.com',
-  port: 465,
-  secure: true, // use SSL
-  auth: {
-    user: process.env.SMTP_USER || 'no-reply@printmedia.fi',
-    pass: process.env.SMTP_PASSWORD || '',
-  },
-})
+const SMTP_HOST = process.env.SMTP_HOST || 'smtp.hostinger.com'
+const SMTP_PORT = Number(process.env.SMTP_PORT || 465)
+const SMTP_SECURE = process.env.SMTP_SECURE
+  ? process.env.SMTP_SECURE === 'true'
+  : SMTP_PORT === 465
+
+const SMTP_USER = process.env.SMTP_USER || process.env.EMAIL_USER || ''
+const SMTP_PASSWORD = process.env.SMTP_PASSWORD || process.env.EMAIL_PASSWORD || process.env.EMAIL_PASS || ''
+
+const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || 'myynti@printmedia.fi'
+const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || SMTP_USER || 'no-reply@printmedia.fi'
+
+function createTransporter() {
+  return nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: SMTP_PORT,
+    secure: SMTP_SECURE,
+    auth: {
+      user: SMTP_USER,
+      pass: SMTP_PASSWORD,
+    },
+  })
+}
 
 export async function POST(request: NextRequest) {
   try {
+    if (!SMTP_USER || !SMTP_PASSWORD) {
+      console.error('Contact form SMTP is not configured: missing SMTP_USER/SMTP_PASSWORD')
+      return NextResponse.json(
+        { error: 'Yhteydenottolomake ei ole konfiguroitu. Ota yhteys myynti@printmedia.fi.' },
+        { status: 500 }
+      )
+    }
+
     const body = await request.json()
     const { name, email, phone, company, subject, message } = body
 
@@ -27,8 +48,8 @@ export async function POST(request: NextRequest) {
 
     // Email content
     const mailOptions = {
-      from: `"PrintMedia Yhteydenotto" <${process.env.SMTP_USER || 'no-reply@printmedia.fi'}>`,
-      to: 'myynti@printmedia.fi',
+      from: `"PrintMedia Yhteydenotto" <${CONTACT_FROM_EMAIL}>`,
+      to: CONTACT_TO_EMAIL,
       replyTo: email,
       subject: `Yhteydenotto: ${subject || 'Yleinen tiedustelu'}`,
       html: `
@@ -83,12 +104,14 @@ Tämä viesti lähetettiin PrintMedia PM Solutions Oy:n verkkosivujen yhteydenot
       `,
     }
 
-    // Send email
+    const transporter = createTransporter()
+
+    // Send primary message to sales inbox
     await transporter.sendMail(mailOptions)
 
-    // Send confirmation email to the sender
+    // Send confirmation email to the sender, but do not fail the whole request if this one fails
     const confirmationOptions = {
-      from: `"PrintMedia PM Solutions Oy" <${process.env.SMTP_USER || 'no-reply@printmedia.fi'}>`,
+      from: `"PrintMedia PM Solutions Oy" <${CONTACT_FROM_EMAIL}>`,
       to: email,
       subject: 'Kiitos yhteydenotostasi - PrintMedia PM Solutions Oy',
       html: `
@@ -134,7 +157,11 @@ myynti@printmedia.fi | www.printmedia.fi
       `,
     }
 
-    await transporter.sendMail(confirmationOptions)
+    try {
+      await transporter.sendMail(confirmationOptions)
+    } catch (confirmationError) {
+      console.error('Confirmation email sending error:', confirmationError)
+    }
 
     return NextResponse.json({ success: true, message: 'Viesti lähetetty onnistuneesti!' })
   } catch (error) {
