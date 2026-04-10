@@ -225,10 +225,10 @@ export function Hero({
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-gray-900">
-                    Valtuutettu jälleenmyyjä
+                    Ammattitaitoinen huolto
                   </div>
                   <div className="text-xs text-gray-500">
-                    GCC
+                    suurkuvatulostimille
                   </div>
                 </div>
               </div>
