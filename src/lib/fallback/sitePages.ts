@@ -29,7 +29,7 @@ export const fallbackHomePage: FallbackPage = {
       type: 'hero',
       title: null,
       content: null,
-      settings: '{"subtitle":"PrintMedia PM Solutions Oy","title":"Suurkuvatulostusalan tukkukauppa","description":"Tarjoamme laajan valikoiman UV-tulostimia, leikkureita, laminaattoreita ja tarvikkeita ammattilaisille.","primaryCta":{"text":"Tutustu laitteisiin","href":"/laitteet"},"secondaryCta":{"text":"Ota yhteyttä","href":"/yhteystiedot"},"image":"/images/devices/J5-132.jpg","features":["Valtuutettu jälleenmyyjä","Ammattitaitoinen huolto","Nopea toimitus"],"images":["/images/devices/J5-132.jpg","/images/devices/cb03ii_500px_500x.jpg","/images/devices/docan-m10-uv-clean.jpg"],"imageFits":["cover","contain","contain"],"scrollButton":true,"scrollTarget":"#miksi-valita-printmedia"}',
+      settings: '{"subtitle":"PrintMedia PM Solutions Oy","title":"Suurkuvatulostusalan tukkukauppa","description":"Tarjoamme laajan valikoiman UV-tulostimia, leikkureita, laminaattoreita ja tarvikkeita ammattilaisille.","primaryCta":{"text":"Tutustu laitteisiin","href":"/laitteet"},"secondaryCta":{"text":"Ota yhteyttä","href":"/yhteystiedot"},"image":"/images/devices/J5-132.jpg","features":["Valtuutettu jälleenmyyjä","Ammattitaitoinen huolto","Nopea toimitus"],"images":["/images/devices/J5-132.jpg","/images/devices/cb03ii_500px_500x.jpg","/images/devices/docan-m10-uv-clean.jpg"],"imageFits":["cover","contain","contain"],"scrollButton":true,"scrollTarget":"#miksi-valita-printmedia","badgeTitle":"Valtuutettu jälleenmyyjä","badgeSubtitle":"GCC"}',
       sortOrder: 0,
       isVisible: true,
     },

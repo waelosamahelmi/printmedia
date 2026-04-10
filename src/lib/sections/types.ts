@@ -19,6 +19,8 @@ export interface HeroSettings {
   image?: string
   images?: string[]
   features?: string[]
+  badgeTitle?: string
+  badgeSubtitle?: string
 }
 
 export interface Feature {

@@ -28,6 +28,8 @@ interface HeroProps {
   image?: string
   images?: string[]
   features?: string[]
+  badgeTitle?: string
+  badgeSubtitle?: string
 }
 
 export function Hero({
@@ -48,6 +50,8 @@ export function Hero({
     'Ammattitaitoinen huolto',
     'Kilpailukykyiset hinnat',
   ],
+  badgeTitle = 'Ammattitaitoinen huolto',
+  badgeSubtitle = 'suurkuvatulostimille',
 }: HeroProps) {
   const titleWords = useMemo(() => title.split(' '), [title])
 
@@ -225,10 +229,10 @@ export function Hero({
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-gray-900">
-                    Ammattitaitoinen huolto
+                    {badgeTitle}
                   </div>
                   <div className="text-xs text-gray-500">
-                    suurkuvatulostimille
+                    {badgeSubtitle}
                   </div>
                 </div>
               </div>
