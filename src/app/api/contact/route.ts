@@ -13,7 +13,20 @@ const SMTP_PASSWORD = process.env.SMTP_PASSWORD || process.env.EMAIL_PASSWORD ||
 const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || 'myynti@printmedia.fi'
 const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || SMTP_USER || 'no-reply@printmedia.fi'
 
-function createTransporter(port = SMTP_PORT, secure = SMTP_SECURE) {
+const SMTP_AUTH_USERS = Array.from(
+  new Set(
+    [SMTP_USER, CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL]
+      .map((value) => value.trim())
+      .filter(Boolean)
+  )
+)
+
+function createTransporter(
+  port = SMTP_PORT,
+  secure = SMTP_SECURE,
+  authUser = SMTP_USER,
+  authPass = SMTP_PASSWORD
+) {
   return nodemailer.createTransport({
     host: SMTP_HOST,
     port,
@@ -22,8 +35,8 @@ function createTransporter(port = SMTP_PORT, secure = SMTP_SECURE) {
     greetingTimeout: 10000,
     socketTimeout: 15000,
     auth: {
-      user: SMTP_USER,
-      pass: SMTP_PASSWORD,
+      user: authUser,
+      pass: authPass,
     },
   })
 }
@@ -40,16 +53,18 @@ async function sendMailWithFallback(mailOptions: nodemailer.SendMailOptions) {
 
   let lastError: unknown = null
 
-  for (const attempt of attempts) {
-    try {
-      const transporter = createTransporter(attempt.port, attempt.secure)
-      return await transporter.sendMail(mailOptions)
-    } catch (error) {
-      lastError = error
-      console.error(
-        `SMTP send failed (host=${SMTP_HOST}, port=${attempt.port}, secure=${attempt.secure}):`,
-        error
-      )
+  for (const authUser of SMTP_AUTH_USERS) {
+    for (const attempt of attempts) {
+      try {
+        const transporter = createTransporter(attempt.port, attempt.secure, authUser, SMTP_PASSWORD)
+        return await transporter.sendMail(mailOptions)
+      } catch (error) {
+        lastError = error
+        console.error(
+          `SMTP send failed (host=${SMTP_HOST}, port=${attempt.port}, secure=${attempt.secure}, user=${authUser}):`,
+          error
+        )
+      }
     }
   }
 
@@ -58,8 +73,8 @@ async function sendMailWithFallback(mailOptions: nodemailer.SendMailOptions) {
 
 export async function POST(request: NextRequest) {
   try {
-    if (!SMTP_USER || !SMTP_PASSWORD) {
-      console.error('Contact form SMTP is not configured: missing SMTP_USER/SMTP_PASSWORD')
+    if (SMTP_AUTH_USERS.length === 0 || !SMTP_PASSWORD) {
+      console.error('Contact form SMTP is not configured: missing SMTP auth username or SMTP password')
       return NextResponse.json(
         { error: 'Yhteydenottolomake ei ole konfiguroitu. Ota yhteys myynti@printmedia.fi.' },
         { status: 500 }
