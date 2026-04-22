@@ -57,9 +57,10 @@ export default function HuoltoPage() {
               Huolto ja tuki
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Tarjoamme kattavat huolto- ja tukipalvelut kaikille myymillemme
-              laitteille. Ammattitaitoiset teknikkomme palvelevat sinua nopeasti
-              ja luotettavasti.
+              Tarjoamme kattavat huolto- ja tuki palvelut lähes kaikille
+              suurkuvatulostimille. Ammattitaitoiset teknikkomme palvelevat
+              sinua nopeasti ja luotettavasti. Meillä on pitkä ja laaja kokemus
+              suurkuvatulostimien huolloista.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button variant="primary" size="lg" href="/yhteystiedot">

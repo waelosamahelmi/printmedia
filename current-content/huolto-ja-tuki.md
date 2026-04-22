@@ -28,7 +28,7 @@
 
 # Huolto- ja tukipalvelut
 
-Meidän kauttamme osaava huolto- ja tuki monille eri suurkuvatulostimille.
+Tarjoamme kattavat huolto- ja tuki palvelut lähes kaikille suurkuvatulostimille. Ammattitaitoiset teknikkomme palvelevat sinua nopeasti ja luotettavasti. Meillä on pitkä ja laaja kokemus suurkuvatulostimien huolloista.
 
 Mutoh, Mimaki, Roland ja monia muita.
 

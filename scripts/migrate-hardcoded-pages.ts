@@ -465,7 +465,7 @@ const pages: PageData[] = [
         settings: {
           subtitle: 'Huoltopalvelut',
           title: 'Huolto ja tuki',
-          description: 'Tarjoamme kattavasti huolto-, korjaus- ja tukipalvelut lähes kaikkiin suurkuvatulostimiin. Lisäksi meiltä saat myös kaikki tarvittavat varaosat. Ammattitaitoiset teknikkomme palvelevat sinua nopeasti ja luotettavasti. Kysy rohkeasti lisää!',
+          description: 'Tarjoamme kattavat huolto- ja tuki palvelut lähes kaikille suurkuvatulostimille. Ammattitaitoiset teknikkomme palvelevat sinua nopeasti ja luotettavasti. Meillä on pitkä ja laaja kokemus suurkuvatulostimien huolloista.',
           primaryCta: { text: 'Ota yhteyttä', href: '/yhteystiedot' },
           secondaryCta: { text: 'Soita 0440 875 025', href: 'tel:+358440875025' }
         }
