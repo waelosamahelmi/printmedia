@@ -62,8 +62,13 @@ export default function HuoltoPage() {
               sinua nopeasti ja luotettavasti. Meillä on pitkä ja laaja kokemus
               suurkuvatulostimien huolloista.
             </p>
+            <ul className="space-y-2 mb-8 text-gray-700">
+              <li>Etätuki</li>
+              <li>Paikan päällä huolto</li>
+              <li>Varaosat</li>
+            </ul>
             <div className="flex flex-wrap gap-4">
-              <Button variant="primary" size="lg" href="/yhteystiedot">
+              <Button variant="primary" size="lg" href="/yhteystiedot?aihe=huolto">
                 <Phone className="w-5 h-5" />
                 Ota yhteyttä
               </Button>

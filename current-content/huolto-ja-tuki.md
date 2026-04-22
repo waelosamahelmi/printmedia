@@ -34,7 +34,7 @@ Mutoh, Mimaki, Roland ja monia muita.
 
 Tarjoamme väriasiakkaillemme laajan puhelin- ja etätuen veloituksetta. Vaikka et olisikiaan vielä meidän väriasiakas, niin älä epäröi ottaa yhteyttä ja pyytää apua.
 
-[Ota yhteyttä!](/index.php/yhteystiedot)
+[Ota yhteyttä!](/index.php/yhteystiedot?aihe=huolto)
 
 [Lataa etätukiohjelma tästä](https://download.teamviewer.com/download/TeamViewerQS.exe)
 
