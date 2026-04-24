@@ -1301,9 +1301,9 @@ export const priceListSections: PriceListSection[] = [
   },
   {
     "id": "huolto-ja-tuki",
-    "title": "Huolto ja tuki",
-    "category": "Huolto ja tuki",
-    "categorySlug": "huolto-ja-tuki",
+    "title": "Huolto",
+    "category": "Huolto",
+    "categorySlug": "huolto",
     "description": "Huoltopalvelut suurkuvatulostimille.",
     "products": [
       {

@@ -58,8 +58,8 @@ const TOOLS_SECTION_TITLES = new Set([
 ])
 
 function resolveCategory(section: PriceListSection) {
-  if (section.title === 'Huolto ja tuki') {
-    return { slug: 'huolto-ja-tuki', name: 'Huolto ja tuki' }
+  if (section.title === 'Huolto') {
+    return { slug: 'huolto', name: 'Huolto' }
   }
 
   if (INK_SECTION_TITLES.has(section.title)) {
