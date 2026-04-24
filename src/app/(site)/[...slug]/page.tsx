@@ -136,7 +136,7 @@ function sanitizeHuoltoPage<T extends { sections: Array<{ type: string; settings
         title: 'Huoltopalvelut listaus',
         content: null,
         settings: JSON.stringify({
-          html: '<section class="py-2"><div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"><div class="max-w-3xl"><div data-huolto-service-list="true" class="bg-white border border-gray-200 rounded-xl p-6"><ul class="list-disc list-inside space-y-2 text-gray-700"><li>Etätuki</li><li>Paikan päällä huolto</li><li>Varaosat</li></ul><p class="mt-4 font-semibold text-gray-900">Huollon hinta 94 € / tunti</p></div></div></div></section>',
+          html: '<section class="py-4"><div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"><div class="max-w-4xl"><div data-huolto-service-list="true" class="rounded-2xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white p-6 sm:p-8 shadow-sm"><div class="flex flex-wrap items-center justify-between gap-4 mb-5"><h2 class="text-xl sm:text-2xl font-bold text-slate-900">Huoltopalvelut</h2><p class="inline-flex items-center rounded-full bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-800 border border-emerald-200">Huollon hinta 94 € / tunti</p></div><div class="grid sm:grid-cols-3 gap-3"><div class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-700 font-medium">Etätuki</div><div class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-700 font-medium">Paikan päällä huolto</div><div class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-700 font-medium">Varaosat</div></div></div></div></div></section>',
         }),
         sortOrder: typeof section.sortOrder === 'number' ? section.sortOrder + 1 : 1,
         isVisible: true,
