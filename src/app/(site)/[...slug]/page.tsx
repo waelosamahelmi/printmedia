@@ -93,6 +93,41 @@ function sanitizeLaitteetPageForProduction<T extends { sections: Array<{ type: s
   }
 }
 
+function sanitizeHuoltoPage<T extends { sections: Array<{ type: string; settings: string | null }> }>(page: T): T {
+  const sections = page.sections.map((section) => {
+    if (section.type !== 'hero' || !section.settings) {
+      return section
+    }
+
+    try {
+      const parsed = JSON.parse(section.settings) as {
+        description?: string
+        features?: string[]
+        primaryCta?: { text?: string; href?: string }
+      }
+
+      parsed.description = 'Tarjoamme kattavat huolto- ja tuki palvelut lähes kaikille suurkuvatulostimille. Ammattitaitoiset teknikkomme palvelevat sinua nopeasti ja luotettavasti. Meillä on pitkä ja laaja kokemus suurkuvatulostimien huolloista.'
+      parsed.features = ['Etätuki', 'Paikan päällä huolto', 'Varaosat']
+      parsed.primaryCta = {
+        ...(parsed.primaryCta || {}),
+        href: '/yhteystiedot?aihe=huolto',
+      }
+
+      return {
+        ...section,
+        settings: JSON.stringify(parsed),
+      }
+    } catch {
+      return section
+    }
+  })
+
+  return {
+    ...page,
+    sections,
+  }
+}
+
 // Fetch page from database
 async function getPage(slug: string) {
   try {
@@ -129,15 +164,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? sanitizeLaitteetPageForProduction(resolvedPage)
     : resolvedPage
 
-  if (!page) {
+  const finalPage = slugString === 'huolto' && page
+    ? sanitizeHuoltoPage(page)
+    : page
+
+  if (!finalPage) {
     return {
       title: 'Sivua ei löytynyt',
     }
   }
 
   return {
-    title: page.metaTitle || page.title,
-    description: page.metaDesc || page.description || undefined,
+    title: finalPage.metaTitle || finalPage.title,
+    description: finalPage.metaDesc || finalPage.description || undefined,
   }
 }
 
@@ -154,13 +193,17 @@ export default async function DynamicPage({ params }: PageProps) {
     ? sanitizeLaitteetPageForProduction(resolvedPage)
     : resolvedPage
 
-  if (!page) {
+  const finalPage = slugString === 'huolto' && page
+    ? sanitizeHuoltoPage(page)
+    : page
+
+  if (!finalPage) {
     notFound()
   }
 
   return (
     <div className="pt-32">
-      {page.sections.map((section) => (
+      {finalPage.sections.map((section) => (
         <SectionRenderer key={section.id} section={section as PageSection} />
       ))}
     </div>
