@@ -94,9 +94,17 @@ function sanitizeLaitteetPageForProduction<T extends { sections: Array<{ type: s
 }
 
 function sanitizeHuoltoPage<T extends { sections: Array<{ type: string; settings: string | null }> }>(page: T): T {
-  const sections = page.sections.map((section) => {
+  const hasInjectedList = page.sections.some((section) => {
+    if (section.type !== 'custom_html' || !section.settings) {
+      return false
+    }
+
+    return section.settings.includes('data-huolto-service-list="true"')
+  })
+
+  const sections = page.sections.flatMap((section: any) => {
     if (section.type !== 'hero' || !section.settings) {
-      return section
+      return [section]
     }
 
     try {
@@ -106,19 +114,37 @@ function sanitizeHuoltoPage<T extends { sections: Array<{ type: string; settings
         primaryCta?: { text?: string; href?: string }
       }
 
-      parsed.description = 'Tarjoamme kattavat huolto- ja tuki palvelut lähes kaikille suurkuvatulostimille. Ammattitaitoiset teknikkomme palvelevat sinua nopeasti ja luotettavasti. Meillä on pitkä ja laaja kokemus suurkuvatulostimien huolloista.'
+      parsed.description = 'Tarjoamme kattavat huolto- ja tuki palvelut lähes kaikille suurkuvatulostimille. Ammattitaitoiset teknikkomme palvelevat sinua nopeasti ja luotettavasti. Meillä on pitkä ja laaja kokemus suurkuvatulostimien huolloista. Huollon hinta 94 € / tunti.'
       parsed.features = ['Etätuki', 'Paikan päällä huolto', 'Varaosat']
       parsed.primaryCta = {
         ...(parsed.primaryCta || {}),
         href: '/yhteystiedot?aihe=huolto',
       }
 
-      return {
+      const updatedHeroSection = {
         ...section,
         settings: JSON.stringify(parsed),
       }
+
+      if (hasInjectedList) {
+        return [updatedHeroSection]
+      }
+
+      const injectedListSection = {
+        id: 'huolto-service-list-injected',
+        type: 'custom_html',
+        title: 'Huoltopalvelut listaus',
+        content: null,
+        settings: JSON.stringify({
+          html: '<section class="py-2"><div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"><div class="max-w-3xl"><div data-huolto-service-list="true" class="bg-white border border-gray-200 rounded-xl p-6"><ul class="list-disc list-inside space-y-2 text-gray-700"><li>Etätuki</li><li>Paikan päällä huolto</li><li>Varaosat</li></ul><p class="mt-4 font-semibold text-gray-900">Huollon hinta 94 € / tunti</p></div></div></div></section>',
+        }),
+        sortOrder: typeof section.sortOrder === 'number' ? section.sortOrder + 1 : 1,
+        isVisible: true,
+      }
+
+      return [updatedHeroSection, injectedListSection]
     } catch {
-      return section
+      return [section]
     }
   })
 
