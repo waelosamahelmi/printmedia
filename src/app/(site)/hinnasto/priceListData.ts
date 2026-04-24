@@ -1298,5 +1298,20 @@ export const priceListSections: PriceListSection[] = [
         "price": "35,29 ?"
       }
     ]
+  },
+  {
+    "id": "huolto-ja-tuki",
+    "title": "Huolto ja tuki",
+    "category": "Huolto ja tuki",
+    "categorySlug": "huolto-ja-tuki",
+    "description": "Huoltopalvelut suurkuvatulostimille.",
+    "products": [
+      {
+        "code": "HUOLTO-94",
+        "name": "Huoltotyö",
+        "details": "Huollon hinta",
+        "price": "94,00 € / tunti"
+      }
+    ]
   }
 ]
