@@ -172,7 +172,7 @@ Tämä viesti lähetettiin PrintMedia PM Solutions Oy:n verkkosivujen yhteydenot
           <hr style="margin-top: 30px; border: none; border-top: 1px solid #ddd;" />
           <p style="color: #666; font-size: 12px;">
             PrintMedia PM Solutions Oy<br>
-            Koskueentie 7, 19700 Sysmä<br>
+            Koskueentie 9, 19700 Sysmä<br>
             Puh. 0440 875 025<br>
             <a href="mailto:myynti@printmedia.fi">myynti@printmedia.fi</a> | 
             <a href="https://www.printmedia.fi">www.printmedia.fi</a>
@@ -195,7 +195,7 @@ ${message}
 ---
 Ystävällisin terveisin,
 PrintMedia PM Solutions Oy
-Koskueentie 7, 19700 Sysmä
+Koskueentie 9, 19700 Sysmä
 Puh. 0440 875 025
 myynti@printmedia.fi | www.printmedia.fi
       `,

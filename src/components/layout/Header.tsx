@@ -123,7 +123,7 @@ export function Header() {
             </div>
             <div className="flex items-center gap-2 text-gray-500">
               <MapPin className="w-4 h-4" />
-              <span>Koskueentie 7, 19700 Sysmä</span>
+              <span>Koskueentie 9, 19700 Sysmä</span>
             </div>
           </div>
         </Container>

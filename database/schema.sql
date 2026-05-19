@@ -159,7 +159,7 @@ INSERT INTO settings (`key`, `value`, type, `group`) VALUES
 ('site_description', 'Valikoimastamme löydät mm. tulostusmediat, tulostusvärit, display-tuotteet sekä monet muut laadukkaat ratkaisut edullisesti juuri sinun tarpeisiin.', 'text', 'general'),
 ('contact_phone', '+358 440 875 025', 'text', 'contact'),
 ('contact_email', 'myynti@printmedia.fi', 'text', 'contact'),
-('contact_address', '{"street":"Koskueentie 7","postalCode":"19700","city":"Sysmä","country":"Finland"}', 'json', 'contact'),
+('contact_address', '{"street":"Koskueentie 9","postalCode":"19700","city":"Sysmä","country":"Finland"}', 'json', 'contact'),
 ('business_hours', '07:30 – 15:30', 'text', 'contact'),
 ('business_id', '1877937-4', 'text', 'company'),
 ('invoicing_ovt', '003718779374', 'text', 'invoicing'),

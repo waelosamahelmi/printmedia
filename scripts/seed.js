@@ -869,7 +869,7 @@ async function seed() {
     { key: 'contact_email', value: 'myynti@printmedia.fi', type: 'string', group: 'contact' },
     { key: 'phone', value: '0440 875 025', type: 'string', group: 'contact' },
     { key: 'contact_phone', value: '0440 875 025', type: 'string', group: 'contact' },
-    { key: 'contact_address', value: 'Koskueentie 7\n19700 Sysmä', type: 'string', group: 'contact' },
+    { key: 'contact_address', value: 'Koskueentie 9\n19700 Sysmä', type: 'string', group: 'contact' },
     { key: 'business_id', value: '1877937-4', type: 'string', group: 'contact' },
     { key: 'office_hours', value: 'Ma-Pe 07:30-15:30', type: 'string', group: 'contact' },
     { key: 'meta_title', value: 'PrintMedia PM Solutions Oy - Suurkuvatulostusalan tukkukauppa', type: 'string', group: 'seo' },

@@ -185,7 +185,7 @@ export function ContactForm({ showMap = true }: ContactFormProps) {
                   <p className="text-gray-600">
                     PrintMedia PM Solutions Oy
                     <br />
-                    Koskueentie 7
+                    Koskueentie 9
                     <br />
                     19700 Sysmä
                   </p>

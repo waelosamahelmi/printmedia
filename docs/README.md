@@ -8,7 +8,7 @@ This is the Next.js 14 website for PrintMedia PM Solutions Oy, a large format pr
 
 - **Company Name:** PrintMedia PM Solutions Oy
 - **Business ID (Y-tunnus):** 1877937-4
-- **Address:** Koskueentie 7, 19700 Sysmä, Finland
+- **Address:** Koskueentie 9, 19700 Sysmä, Finland
 - **Phone:** 0440 875 025
 - **Email:** myynti@printmedia.fi
 - **CEO:** Harri Hynynen (0440 875 020)

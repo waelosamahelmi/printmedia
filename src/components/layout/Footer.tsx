@@ -81,7 +81,7 @@ export function Footer() {
               <div className="flex items-start gap-3 text-gray-400">
                 <MapPin className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
                 <span>
-                  Koskueentie 7
+                  Koskueentie 9
                   <br />
                   19700 Sysmä
                 </span>

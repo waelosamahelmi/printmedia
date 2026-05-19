@@ -47,7 +47,7 @@ Näin ollen alkuperäiseen kuvaan ei tarvitse koskea ja myöskään väriprofiil
 ## Yhteystiedot
 
 PrintMedia PM Solutions Oy  
-Koskueentie 7  
+Koskueentie 9  
 19700 Sysmä
 
 Puh. [0440 875 025](tel:+358440875050)  
@@ -60,4 +60,4 @@ klo 07.30 – 15.30
 
 Ennen klo 13:30 tulleet tilaukset pyrimme toimittamaan Matkahuoltoon vielä samana päivänä.
 
-© PrintMedia PM Solutions Oy • Koskueentie 7 • FI-19700 SYSMÄ • FINLAND • Tel [+358 440 875 025](tel:+358440875050) • myynti(at)printmedia.fi • [www.printmedia.fi](https://www.printmedia.fi) | Layout: **Mainoshuone Force**
+© PrintMedia PM Solutions Oy • Koskueentie 9 • FI-19700 SYSMÄ • FINLAND • Tel [+358 440 875 025](tel:+358440875050) • myynti(at)printmedia.fi • [www.printmedia.fi](https://www.printmedia.fi) | Layout: **Mainoshuone Force**
