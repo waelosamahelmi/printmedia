@@ -149,15 +149,11 @@ export function ContactForm({ showMap = true }: ContactFormProps) {
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Puhelin</h3>
                   <a
-                    href="tel:+358440875025"
+                    href="tel:+358440875020"
                     className="text-gray-600 hover:text-primary-600 transition-colors"
                   >
-                    0440 875 025
+                    0440 875 020
                   </a>
-                  <br />
-                  <span className="text-sm text-gray-500">
-                    Harri Hynynen (Toimitusjohtaja): 0440 875 020
-                  </span>
                 </div>
               </div>
 

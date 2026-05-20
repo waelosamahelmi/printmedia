@@ -107,11 +107,11 @@ export function Header() {
           <div className="hidden md:flex items-center justify-between py-2 text-sm">
             <div className="flex items-center gap-6 text-gray-600">
               <a
-                href="tel:+358440875025"
+                href="tel:+358440875020"
                 className="flex items-center gap-2 hover:text-primary-600 transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                0440 875 025
+                0440 875 020
               </a>
               <a
                 href="mailto:myynti@printmedia.fi"
@@ -315,11 +315,11 @@ export function Header() {
               {/* Mobile contact info */}
               <div className="mt-6 pt-6 border-t border-gray-100 space-y-3 text-sm text-gray-600">
                 <a
-                  href="tel:+358440875025"
+                  href="tel:+358440875020"
                   className="flex items-center gap-3 hover:text-primary-600"
                 >
                   <Phone className="w-4 h-4" />
-                  0440 875 025
+                  0440 875 020
                 </a>
                 <a
                   href="mailto:myynti@printmedia.fi"

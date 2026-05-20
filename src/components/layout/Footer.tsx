@@ -65,11 +65,11 @@ export function Footer() {
             {/* Contact info */}
             <div className="space-y-3">
               <a
-                href="tel:+358440875025"
+                href="tel:+358440875020"
                 className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
               >
                 <Phone className="w-5 h-5 text-primary-500" />
-                0440 875 025
+                0440 875 020
               </a>
               <a
                 href="mailto:myynti@printmedia.fi"
